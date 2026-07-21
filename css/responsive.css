@@ -1,0 +1,66 @@
+@media (max-width: 70rem) {
+  .primary-nav { gap: 1.25rem; }
+  .primary-nav ul { gap: 1.1rem; }
+  .primary-nav ul a { font-size: .7rem; }
+  .hero-art { opacity: .74; inset-left: 48%; }
+}
+
+@media (max-width: 56rem) {
+  :root { --header-height: 5rem; }
+  .container { width: min(calc(100% - 2.5rem), var(--container)); }
+  .nav-toggle { display: block; position: relative; z-index: 2; }
+  .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(.42rem) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-.42rem) rotate(-45deg); }
+  .primary-nav { position: fixed; inset: 0; padding: 7rem 2rem 3rem; flex-direction: column; align-items: stretch; justify-content: center; visibility: hidden; opacity: 0; background: var(--color-forest); transform: translateY(-1rem); transition: visibility var(--transition), opacity var(--transition), transform var(--transition); }
+  .primary-nav.is-open { visibility: visible; opacity: 1; transform: translateY(0); }
+  .primary-nav ul { flex-direction: column; align-items: stretch; }
+  .primary-nav ul a { display: block; font: 500 2.2rem/1.2 var(--font-display); text-align: center; }
+  .primary-nav ul a::after { display: none; }
+  .nav-cta { margin: 1.5rem auto 0; width: min(100%, 20rem); }
+  .hero-content { padding-top: calc(var(--header-height) + 6rem); }
+  .hero-art { inset: 20% -20% -20% 45%; opacity: .38; }
+  .hero-plaque { width: 28rem; }
+  .hero-location { right: 1.25rem; }
+  .scroll-cue { display: none; }
+  .intro-grid { grid-template-columns: 1fr 2fr; gap: 2rem; }
+  .craft-stats { grid-column: 1 / -1; }
+  .collection-grid { grid-template-columns: repeat(2, 1fr); }
+  .collection-card:last-child { grid-column: 1 / -1; min-height: 24rem; }
+  .maker-grid { gap: 3rem; }
+  .maker-visual { min-height: 29rem; }
+  .footer-main { grid-template-columns: 1.5fr 1fr 1fr; }
+  .footer-note { grid-column: 1 / -1; }
+}
+
+@media (max-width: 40rem) {
+  :root { --space-section: 4.5rem; }
+  .container { width: min(calc(100% - 2rem), var(--container)); }
+  h1 { font-size: clamp(3.6rem, 17vw, 5rem); }
+  h2 { font-size: clamp(2.75rem, 13vw, 4rem); }
+  .brand-name { font-size: 1.15rem; }
+  .hero { min-height: 48rem; }
+  .hero-content { padding-bottom: 8rem; }
+  .hero-art { inset: 32% -60% -10% 18%; }
+  .hero-lede { max-width: 29rem; }
+  .hero-actions { align-items: flex-start; flex-direction: column; gap: 1.35rem; }
+  .hero-actions .button { width: 100%; }
+  .hero-location { left: 1rem; right: auto; bottom: 1.25rem; }
+  .intro-grid { display: block; }
+  .intro-grid > .section-kicker { margin-bottom: 1.5rem; }
+  .craft-stats { grid-template-columns: 1fr; gap: 1.25rem; }
+  .craft-stats div { grid-template-columns: 6rem 1fr; align-items: center; }
+  .section-heading { align-items: flex-start; flex-direction: column; }
+  .collection-grid { grid-template-columns: 1fr; }
+  .collection-card, .collection-card:last-child { grid-column: auto; min-height: 29rem; }
+  .maker-grid { grid-template-columns: 1fr; }
+  .maker-visual { min-height: 26rem; order: 2; }
+  .footer-main { grid-template-columns: 1fr 1fr; }
+  .footer-brand, .footer-note { grid-column: 1 / -1; }
+  .footer-bottom { flex-direction: column; gap: .5rem; }
+}
+
+@media (max-width: 23rem) {
+  .brand-name { display: none; }
+  .hero-location { font-size: .57rem; }
+}
