@@ -2,7 +2,7 @@
   .primary-nav { gap: 1.25rem; }
   .primary-nav ul { gap: 1.1rem; }
   .primary-nav ul a { font-size: .7rem; }
-  .hero-art { opacity: .74; inset-left: 48%; }
+  .hero-art { opacity: .74; }
 }
 
 @media (max-width: 56rem) {
@@ -19,14 +19,12 @@
   .primary-nav ul a::after { display: none; }
   .nav-cta { margin: 1.5rem auto 0; width: min(100%, 20rem); }
   .hero-content { padding-top: calc(var(--header-height) + 6rem); }
-  .hero-art { inset: 20% -20% -20% 45%; opacity: .38; }
-  .hero-plaque { width: 28rem; }
+  .hero-art { inset: 0; opacity: .42; }
   .hero-location { right: 1.25rem; }
   .scroll-cue { display: none; }
   .intro-grid { grid-template-columns: 1fr 2fr; gap: 2rem; }
   .craft-stats { grid-column: 1 / -1; }
-  .collection-grid { grid-template-columns: repeat(2, 1fr); }
-  .collection-card:last-child { grid-column: 1 / -1; min-height: 24rem; }
+  .product-card { grid-template-columns: 1.1fr .9fr; }
   .maker-grid { gap: 3rem; }
   .maker-visual { min-height: 29rem; }
   .footer-main { grid-template-columns: 1.5fr 1fr 1fr; }
@@ -41,7 +39,7 @@
   .brand-name { font-size: 1.15rem; }
   .hero { min-height: 48rem; }
   .hero-content { padding-bottom: 8rem; }
-  .hero-art { inset: 32% -60% -10% 18%; }
+  .hero-art { inset: 0; background-position: 58% center; }
   .hero-lede { max-width: 29rem; }
   .hero-actions { align-items: flex-start; flex-direction: column; gap: 1.35rem; }
   .hero-actions .button { width: 100%; }
@@ -51,8 +49,10 @@
   .craft-stats { grid-template-columns: 1fr; gap: 1.25rem; }
   .craft-stats div { grid-template-columns: 6rem 1fr; align-items: center; }
   .section-heading { align-items: flex-start; flex-direction: column; }
-  .collection-grid { grid-template-columns: 1fr; }
-  .collection-card, .collection-card:last-child { grid-column: auto; min-height: 29rem; }
+  .section-heading .carousel-controls { align-self: stretch; justify-content: space-between; }
+  .product-card { display: block; min-height: 0; }
+  .product-image { min-height: 24rem; height: 56vh; max-height: 32rem; }
+  .product-content { min-height: 25rem; }
   .maker-grid { grid-template-columns: 1fr; }
   .maker-visual { min-height: 26rem; order: 2; }
   .footer-main { grid-template-columns: 1fr 1fr; }

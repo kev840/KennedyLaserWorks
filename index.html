@@ -8,7 +8,7 @@
   <meta property="og:title" content="Kennedy Laser Works | Handcrafted Personalized Gifts">
   <meta property="og:description" content="Laser precision. Personalized perfection. Handcrafted in Budd Lake, New Jersey.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="assets/images/kennedy-laser-works-hero.svg">
+  <meta property="og:image" content="assets/images/custom-work.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <title>Kennedy Laser Works | Handcrafted Personalized Gifts</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,7 +27,7 @@
   <header class="site-header" data-header>
     <div class="container nav-shell">
       <a class="brand" href="#top" aria-label="Kennedy Laser Works home">
-        <span class="brand-mark" aria-hidden="true">KLW</span>
+        <img class="brand-logo" src="assets/logos/kennedy-laser-works.svg" alt="" width="54" height="54">
         <span class="brand-name">Kennedy <span>Laser Works</span></span>
       </a>
 
@@ -51,13 +51,7 @@
 
   <main id="main-content">
     <section class="hero" id="top" aria-labelledby="hero-title">
-      <div class="hero-art" aria-hidden="true">
-        <div class="hero-plaque">
-          <span class="plaque-monogram">K</span>
-          <span class="plaque-line"></span>
-          <span class="plaque-copy">Made with purpose</span>
-        </div>
-      </div>
+      <div class="hero-art" aria-hidden="true"></div>
       <div class="container hero-content">
         <p class="eyebrow reveal">Laser precision <span></span> artisan soul</p>
         <h1 id="hero-title" class="reveal reveal--delay-1">Handcrafted<br><em>Personalized Gifts</em></h1>
@@ -90,16 +84,44 @@
       </div>
     </section>
 
-    <section class="collections section section--cream" id="collections" aria-labelledby="collections-title">
+    <section class="collections section section--cream" id="collections" aria-labelledby="collections-title" data-featured>
       <div class="container">
         <div class="section-heading reveal-on-scroll">
           <div><p class="section-kicker">Crafted for every story</p><h2 id="collections-title">Signature Collections</h2></div>
-          <a class="arrow-link" href="#contact">Explore all collections <span aria-hidden="true">→</span></a>
+          <div class="carousel-controls" aria-label="Featured collection controls">
+            <button type="button" data-carousel-prev aria-label="Previous collection">←</button>
+            <span class="carousel-count" aria-live="polite"><strong data-carousel-current>01</strong> / 06</span>
+            <button type="button" data-carousel-next aria-label="Next collection">→</button>
+          </div>
         </div>
-        <div class="collection-grid">
-          <article class="collection-card collection-card--wedding reveal-on-scroll"><div class="card-number">01</div><div><p>For the beginning</p><h3>Weddings & Anniversaries</h3><a href="#contact" aria-label="Explore weddings and anniversaries">Explore <span aria-hidden="true">→</span></a></div></article>
-          <article class="collection-card collection-card--home reveal-on-scroll"><div class="card-number">02</div><div><p>For the everyday</p><h3>Home & Family</h3><a href="#contact" aria-label="Explore home and family gifts">Explore <span aria-hidden="true">→</span></a></div></article>
-          <article class="collection-card collection-card--memory reveal-on-scroll"><div class="card-number">03</div><div><p>For always</p><h3>Remembrance</h3><a href="#contact" aria-label="Explore remembrance pieces">Explore <span aria-hidden="true">→</span></a></div></article>
+        <div class="collection-carousel reveal-on-scroll">
+          <div class="collection-track" data-carousel-track>
+            <article class="product-card is-current" data-carousel-slide aria-hidden="false">
+              <div class="product-image"><img src="assets/images/wedding-sign.jpg" alt="Hand-engraved anniversary plaque made by Kennedy Laser Works" width="1920" height="1080"></div>
+              <div class="product-content"><p class="product-index">Collection 01</p><h3>Wedding Signs</h3><p>Personalized keepsakes that preserve the names, dates, and promises at the heart of every love story.</p><a class="arrow-link" href="#contact">Create yours <span aria-hidden="true">→</span></a></div>
+            </article>
+            <article class="product-card" data-carousel-slide aria-hidden="true">
+              <div class="product-image"><img src="assets/images/christmas-ornaments.jpg" alt="Collection of personalized wooden Christmas ornaments" loading="lazy" width="1152" height="2048"></div>
+              <div class="product-content"><p class="product-index">Collection 02</p><h3>Christmas Ornaments</h3><p>Delicate, personalized ornaments designed to return to the tree—and the family story—year after year.</p><a class="arrow-link" href="#contact">Personalize one <span aria-hidden="true">→</span></a></div>
+            </article>
+            <article class="product-card" data-carousel-slide aria-hidden="true">
+              <div class="product-image"><img src="assets/images/america-250.png" alt="America 250 commemorative door hanger designs" loading="lazy" width="1536" height="1024"></div>
+              <div class="product-content"><p class="product-index">Collection 03</p><h3>America 250</h3><p>Bold commemorative designs celebrating 250 years of American independence, crafted for a landmark year.</p><a class="arrow-link" href="#contact">View the collection <span aria-hidden="true">→</span></a></div>
+            </article>
+            <article class="product-card" data-carousel-slide aria-hidden="true">
+              <div class="product-image"><img src="assets/images/pet-memorial.jpg" alt="Layered engraved memorial heart with angel wings" loading="lazy" width="954" height="960"></div>
+              <div class="product-content"><p class="product-index">Collection 04</p><h3>Pet Memorials</h3><p>Thoughtfully layered tributes that keep a beloved companion’s name and memory close to home.</p><a class="arrow-link" href="#contact">Honor their memory <span aria-hidden="true">→</span></a></div>
+            </article>
+            <article class="product-card" data-carousel-slide aria-hidden="true">
+              <div class="product-image"><img src="assets/images/home-decor.jpg" alt="Personalized live-edge engraved wooden serving board" loading="lazy" width="2048" height="1152"></div>
+              <div class="product-content"><p class="product-index">Collection 05</p><h3>Home Decor</h3><p>Warm, useful pieces elevated by beautiful wood grain and personalization that makes a house feel like home.</p><a class="arrow-link" href="#contact">Make it personal <span aria-hidden="true">→</span></a></div>
+            </article>
+            <article class="product-card" data-carousel-slide aria-hidden="true">
+              <div class="product-image"><img src="assets/images/custom-work.jpg" alt="Kennedy Laser Works laser engraver in the Budd Lake workshop" loading="lazy" width="2048" height="1152"></div>
+              <div class="product-content"><p class="product-index">Collection 06</p><h3>Custom Work</h3><p>Your idea, shaped in our workshop. From one-of-a-kind gifts to business pieces, every project begins with a conversation.</p><a class="arrow-link" href="#custom-work">Begin a project <span aria-hidden="true">→</span></a></div>
+            </article>
+          </div>
+          <div class="carousel-progress" aria-hidden="true"><span></span></div>
         </div>
       </div>
     </section>
@@ -115,7 +137,7 @@
 
     <section class="maker section" id="maker" aria-labelledby="maker-title">
       <div class="container maker-grid">
-        <div class="maker-visual reveal-on-scroll" aria-hidden="true"><span>Designed</span><strong>&</strong><span>Made in NJ</span></div>
+        <div class="maker-visual reveal-on-scroll"><img src="assets/images/artisan-flowers.jpg" alt="Finished layered wooden flowers made by Kennedy Laser Works" loading="lazy"></div>
         <div class="maker-copy reveal-on-scroll">
           <p class="section-kicker">Behind every piece</p>
           <h2 id="maker-title">Craftsmanship with a <em>human touch.</em></h2>
@@ -137,7 +159,7 @@
 
   <footer class="site-footer" id="contact">
     <div class="container footer-main">
-      <div class="footer-brand"><a class="brand" href="#top"><span class="brand-mark">KLW</span><span class="brand-name">Kennedy <span>Laser Works</span></span></a><p>Laser Precision.<br>Personalized Perfection.</p></div>
+      <div class="footer-brand"><a class="brand" href="#top"><img class="brand-logo" src="assets/logos/kennedy-laser-works.svg" alt="" width="54" height="54"><span class="brand-name">Kennedy <span>Laser Works</span></span></a><p>Laser Precision.<br>Personalized Perfection.</p></div>
       <div><h2>Explore</h2><ul><li><a href="#collections">Collections</a></li><li><a href="#custom-work">Custom Work</a></li><li><a href="#maker">Our Story</a></li><li><a href="#reviews">Reviews</a></li></ul></div>
       <div><h2>Connect</h2><ul><li><a href="mailto:hello@kennedylaserworks.com">Email Us</a></li><li><a href="#collections">Etsy Shop <span aria-hidden="true">↗</span></a></li><li><a href="#contact">Facebook <span aria-hidden="true">↗</span></a></li></ul></div>
       <div class="footer-note"><p class="section-kicker">From our workshop to your home</p><p>Handcrafted with purpose in<br>Budd Lake, New Jersey.</p></div>
