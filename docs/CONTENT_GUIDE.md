@@ -25,4 +25,17 @@ Use actual finished-work photography wherever available. Write alt text that des
 
 ## Seasonal content
 
-Update the configuration in `js/seasonal.js`. Begin promotion early enough for made-to-order lead times, but keep all collections permanently available through the catalog.
+Update the configuration in `js/seasonal.js`. Each month has a label, heading, introduction, and ordered category slugs. Specific seasonal categories take priority over broad Home Décor or Personalized Gifts tags. Selection order is seasonal featured products, other seasonal matches, verified customer favorites, then recently added products when dates exist (stable catalog order otherwise). Keep all collections permanently available through the catalog.
+
+## Homepage merchandising
+
+- Collection tiles appear only when an active product uses the exact category slug.
+- Tiles use a featured product image when one exists, otherwise the first active matching product.
+- Customer Favorites must have `customerFavorite: true` from a verified source.
+- Editorially selected work uses `featured: true` and must never be described as a bestseller.
+- Custom examples demonstrate style and capability; copy must explain that customer wording and details are agreed for each order.
+- Prices, current options, availability, shipping, and checkout remain authoritative on Etsy.
+
+## Homepage images
+
+The hero, seasonal products, collection tiles, featured designs, custom examples, and process sections use real Kennedy Laser Works product or workshop images. There are no visible homepage artwork placeholders. A dedicated Kevin portrait remains optional future photography; do not imply that a workshop or product image is a portrait.

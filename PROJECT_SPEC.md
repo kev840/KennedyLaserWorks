@@ -1087,5 +1087,31 @@ Phase 3 completes the public-facing static site with:
 - WCAG-oriented landmarks, focus states, labels, reduced-motion support, and mobile navigation
 - Deployment, catalog-import, and content-maintenance documentation
 
-Before launch, verified Etsy product data, verified reviews, final canonical URLs, and a real maker photograph must replace the documented placeholders.
+Before launch, confirm final canonical URLs and refresh the verified Etsy catalog snapshot. Reviews remain linked to Etsy, and a dedicated maker portrait is an optional future enhancement rather than a required placeholder replacement.
+
+---
+
+## Homepage Storefront Implementation
+
+The production homepage extends the established design system with this section architecture:
+
+1. Header and navigation
+2. Product-led hero using real Kennedy Laser Works photography
+3. Made-to-order, personalization, hand-finishing, and fulfillment trust points
+4. Four data-driven seasonal products
+5. Non-empty collection tiles with real images, counts, and query-string links
+6. Up to six verified customer favorites or editorially featured designs
+7. Real-product custom-work showcase
+8. Budd Lake process story
+9. Meet the Maker preview
+10. Verified Etsy review destination
+11. Arranged local pickup and discount guidance
+12. Three-path final call to action
+13. Shared premium footer
+
+Seasonal products follow the documented fallback order: seasonal featured items, other seasonal matches, verified customer favorites, then recently added items when dates are available. Stable catalog order is used when `dateAdded` is unavailable so the section never becomes empty.
+
+All homepage product content comes from the verified 65-listing catalog snapshot. The homepage does not publish prices, aggregate ratings, bestseller claims, invented reviews, or a public telephone number. Etsy remains the authority for current configuration, price, availability, shipping, reviews, and checkout.
+
+Real product and workshop photography replaces every visible homepage artwork placeholder. A dedicated Kevin portrait has not been supplied and remains an optional future enhancement rather than a launch blocker.
 

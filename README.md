@@ -15,8 +15,8 @@ Product photography is stored locally as optimized WebP with an optimized JPEG f
 - `css/pages.css`: catalog, quick-view, seasonal, form, and interior-page components
 - `css/responsive.css`: tablet and mobile layout changes
 - `css/animations.css`: restrained motion with reduced-motion support
-- `js/app.js`: reveal behavior, rotating real-product feature, and copyright year
-- `js/seasonal.js`: month-aware real-product promotion with documented fallbacks
+- `js/app.js`: reduced-motion-aware reveal behavior and copyright year
+- `js/seasonal.js`: one homepage data request that supplies seasonal products, collection tiles, featured designs, and custom-work examples
 - `js/catalog.js`: JSON-backed search, compound filters, URL state, filter chips, quick-view, and ItemList schema
 - `data/products.json`: verified listing snapshot
 - `data/categories.json`: reusable category taxonomy
@@ -48,16 +48,36 @@ Visitors can search across display titles, full Etsy titles, descriptions, categ
 
 Quick-view dialogs keep discovery on-site while Etsy remains the final destination for configuration and secure checkout. Prices are explicitly disclosed as a static snapshot.
 
+## Homepage architecture
+
+The homepage is arranged as a persuasive storefront while preserving the shared design system:
+
+1. Product-led hero with Collections, Custom Work, and Etsy paths
+2. Four service and fulfillment trust points
+3. Four live seasonal products
+4. Non-empty collection tiles with live product counts
+5. Up to six verified customer favorites or editorially featured designs
+6. Real-product custom-work showcase
+7. Budd Lake process story and workshop photography
+8. Meet the Maker preview
+9. Etsy reputation, arranged local pickup, and final conversion choices
+
+The hero uses one prioritized WebP/JPEG product image and two lazy-loaded supporting images. All imagery below the fold is lazy-loaded.
+
 ## Seasonal behavior
 
-`js/seasonal.js` maps each month to three relevant category slugs. Product selection follows this order:
+`js/seasonal.js` maps each month to a label, headline, introduction, and relevant category slugs. Broad utility categories such as Home Décor and Personalized Gifts do not outrank the specific seasonal categories. Product selection follows this order:
 
 1. Editorially featured products matching the current season
 2. Other matching products
 3. Verified customer favorites, if such a flag is ever supported
-4. Current Etsy catalog order
+4. Recently added products when `dateAdded` is available; otherwise stable catalog order
 
-The final fallback prevents an empty homepage. No `dateAdded` or customer-favorite claims are made because those fields were not reliably available in the public listing capture.
+The final fallback prevents an empty homepage. Featured homepage designs come from `customerFavorite: true` when verified, followed by `featured: true`. The current snapshot has no verified customer-favorite flags, so the section is accurately titled “Customer Favorites and Featured Designs.”
+
+## Homepage photography
+
+Every public homepage image is real product or workshop photography already owned by Kennedy Laser Works. No visible artwork placeholders remain. A dedicated portrait of Kevin has not been supplied; the Meet the Maker preview therefore uses real finished-work photography, while the Budd Lake story uses the available workshop image.
 
 ## Reviews
 

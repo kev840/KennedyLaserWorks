@@ -1,5 +1,18 @@
 # Changelog
 
+## Homepage Storefront Expansion — 2026-07-22
+
+- Rebuilt the homepage flow around real catalog discovery without changing the established design system
+- Added a product-led hero with three clear conversion paths and real optimized photography
+- Added four concise service, personalization, finishing, and fulfillment trust points
+- Expanded the live seasonal feature to four products with more specific category prioritization
+- Added data-driven collection tiles with real imagery, active product counts, and filtered catalog links
+- Added a six-item customer-favorites/featured-designs section using the shared catalog card treatment
+- Strengthened Custom Work with three real project examples and transparent personalization language
+- Added Budd Lake process, Meet the Maker, verified Etsy review, arranged pickup, and final-choice sections
+- Updated homepage metadata and accurate LocalBusiness structured data without ratings or product offers
+- Added hero fetch priority, below-fold lazy loading, intrinsic image dimensions, and responsive storefront layouts
+
 ## Phase 4 — 2026-07-22
 
 - Replaced the six-record sample catalog with 65 verified active Etsy listings
