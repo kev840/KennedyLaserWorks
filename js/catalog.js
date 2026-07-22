@@ -18,6 +18,8 @@
   const dialogContent = dialog?.querySelector("[data-quick-view-content]");
   let products = [];
   let categoryLabels = new Map();
+  let renderTimer;
+  let hasRendered = false;
 
   const escapeHtml = (value = "") => String(value).replace(/[&<>'"]/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[character]);
   const titleCase = (value) => value.split("-").map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
@@ -28,15 +30,34 @@
     <img src="${escapeHtml(product.imageFallback)}" alt="${escapeHtml(product.displayTitle)}" loading="${loading}" width="${product.imageWidth || 794}" height="${product.imageHeight || 794}">
   </picture>`;
 
+  const badgeDefinitions = [
+    { category: "christmas-winter", label: "Christmas", className: "christmas" },
+    { category: "weddings-anniversaries", label: "Wedding", className: "wedding" },
+    { category: "memorial-keepsakes", label: "Memorial", className: "memorial" },
+    { category: "patriotic-americana", label: "Patriotic", className: "patriotic" },
+    { category: "custom-projects", label: "Custom", className: "custom" },
+    { category: "home-decor", label: "Home Decor", className: "home" }
+  ];
+
+  const productBadges = (product) => {
+    const badges = [];
+    if (product.bestSeller === true) badges.push({ label: "Best Seller", className: "best-seller" });
+    if (product.isNew === true) badges.push({ label: "New", className: "new" });
+    badgeDefinitions.forEach((definition) => {
+      if (product.categories.includes(definition.category)) badges.push(definition);
+    });
+    return badges.slice(0, 2).map((badge) => `<span class="collection-badge collection-badge--${badge.className}">${badge.label}</span>`).join("");
+  };
+
   const productCard = (product) => `<article class="catalog-card" data-product-id="${escapeHtml(product.id)}">
     <button class="catalog-card__image" type="button" data-open-quick-view="${escapeHtml(product.id)}" aria-label="Quick view: ${escapeHtml(product.displayTitle)}">
-      ${picture(product)}<span class="catalog-card__quick-label">Quick view</span>
+      ${picture(product)}<span class="catalog-badges">${productBadges(product)}</span><span class="catalog-card__quick-label">Quick view</span>
     </button>
     <div class="catalog-card__body">
       <p class="catalog-card__category">${escapeHtml(categoryLabels.get(product.categories[0]) || titleCase(product.categories[0]))}</p>
       <h2>${escapeHtml(product.displayTitle)}</h2>
       <p>${escapeHtml(product.shortDescription)}</p>
-      <div class="catalog-card__meta"><strong>${escapeHtml(product.priceDisplay)}</strong>${product.personalized ? '<span class="badge">Personalizable</span>' : ""}</div>
+      <div class="catalog-card__meta"><p class="catalog-card__pricing">See Etsy for current pricing.</p>${product.personalized ? '<span class="badge">Personalizable</span>' : ""}</div>
       <div class="catalog-card__actions">
         <button class="button button--outline" type="button" data-open-quick-view="${escapeHtml(product.id)}">Quick view</button>
         <a class="button button--forest" href="${escapeHtml(product.etsyUrl)}" target="_blank" rel="noopener">View on Etsy <span aria-hidden="true">↗</span></a>
@@ -108,6 +129,13 @@
     chips.hidden = active.length === 0;
   };
 
+  const updateFieldIndicators = () => {
+    search.closest(".field")?.classList.toggle("is-active", Boolean(search.value.trim()));
+    selects.forEach((select) => select.closest(".field")?.classList.toggle("is-active", Boolean(select.value)));
+    const toggleGroup = catalog.querySelector(".filter-toggles");
+    toggleGroup?.classList.toggle("is-active", toggles.some((toggle) => toggle.checked));
+  };
+
   const render = () => {
     const state = currentState();
     const term = state.search.toLowerCase();
@@ -124,11 +152,26 @@
         && (!state.customAvailable || product.customAvailable === true)
         && priceMatches(priceNumber(product.priceDisplay), state.price);
     });
-    grid.innerHTML = filtered.map(productCard).join("");
-    count.textContent = `${filtered.length} ${filtered.length === 1 ? "piece" : "pieces"}`;
-    empty.hidden = filtered.length > 0;
-    updateChips(state);
-    syncUrl(state);
+    const commitRender = () => {
+      grid.innerHTML = filtered.map(productCard).join("");
+      count.textContent = `${filtered.length} ${filtered.length === 1 ? "piece" : "pieces"}`;
+      empty.hidden = filtered.length > 0;
+      updateChips(state);
+      updateFieldIndicators();
+      syncUrl(state);
+      grid.classList.remove("is-filtering");
+      grid.setAttribute("aria-busy", "false");
+      hasRendered = true;
+    };
+
+    window.clearTimeout(renderTimer);
+    if (!hasRendered || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      commitRender();
+      return;
+    }
+    grid.classList.add("is-filtering");
+    grid.setAttribute("aria-busy", "true");
+    renderTimer = window.setTimeout(commitRender, 120);
   };
 
   const closeDialog = () => { if (dialog?.open) dialog.close(); };
@@ -137,12 +180,12 @@
     const product = products.find((item) => item.id === id);
     if (!product || !dialog || !dialogContent) return;
     const related = products.filter((item) => item.id !== product.id && item.categories.some((category) => product.categories.includes(category))).slice(0, 3);
-    dialogContent.innerHTML = `<div class="quick-view__image">${picture(product, "eager")}</div>
+    dialogContent.innerHTML = `<div class="quick-view__image">${picture(product)}</div>
       <div class="quick-view__copy">
         <p class="section-kicker">${escapeHtml(categoryLabels.get(product.categories[0]) || titleCase(product.categories[0]))}</p>
         <h2 id="quick-view-title">${escapeHtml(product.displayTitle)}</h2>
         <p>${escapeHtml(product.shortDescription)}</p>
-        <p class="quick-view__price">${escapeHtml(product.priceDisplay)} <small>price snapshot ${escapeHtml(product.priceSnapshotDate)}</small></p>
+        <p class="quick-view__price">See Etsy for current pricing.</p>
         ${product.personalized ? '<p class="quick-view__note"><strong>Personalization available.</strong> Choose verified options on the Etsy listing.</p>' : ""}
         <p class="quick-view__pickup">Local to Budd Lake? Contact us before ordering to arrange pickup and the local discount.</p>
         <a class="button button--forest" href="${escapeHtml(product.etsyUrl)}" target="_blank" rel="noopener">Order on Etsy <span aria-hidden="true">↗</span></a>
@@ -202,7 +245,7 @@
     categoryLabels = new Map(categoryData.categories.map((category) => [category.slug, category.label]));
     populateSelects();
     applyQueryState();
-    notice.textContent = `${catalogData.priceNotice} Catalog checked ${catalogData.catalogSnapshotDate}.`;
+    notice.textContent = `Price filters use a catalog snapshot checked ${catalogData.catalogSnapshotDate}. See Etsy for current pricing, options, and availability.`;
     injectItemListSchema();
     render();
   }).catch(() => {
