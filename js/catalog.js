@@ -224,15 +224,7 @@
   };
 
   const activateProgressiveImages = (scope) => {
-    if (window.KLW?.enhanceImages) {
-      window.KLW.enhanceImages(scope);
-      return;
-    }
-    scope.querySelectorAll("img.progressive-image").forEach((image) => {
-      const reveal = () => image.classList.add("is-loaded");
-      if (image.complete) reveal();
-      else image.addEventListener("load", reveal, { once: true });
-    });
+    window.KLW?.enhanceImages(scope);
   };
 
   const render = () => {
@@ -367,6 +359,7 @@
     lightboxImage.alt = image.alt;
     lightboxImage.width = image.width;
     lightboxImage.height = image.height;
+    window.KLW?.enhanceImages(lightboxImage);
     if (lightboxCaption) lightboxCaption.textContent = image.alt;
     if (lightboxPosition) lightboxPosition.textContent = `${activeGalleryIndex + 1} of ${activeGallery.length}`;
     lightbox?.classList.toggle("has-multiple", activeGallery.length > 1);
@@ -450,10 +443,6 @@
     if (event.key === "Escape" && lightbox?.open) closeLightbox();
     else if (event.key === "Escape" && quickView?.open) closeQuickView();
   });
-  grid.addEventListener("error", (event) => {
-    if (event.target instanceof HTMLImageElement) event.target.closest(".catalog-card__image")?.classList.add("image-missing");
-  }, true);
-
   Promise.all([
     fetch("data/products.json").then((response) => { if (!response.ok) throw new Error("Catalog unavailable"); return response.json(); }),
     fetch("data/categories.json").then((response) => { if (!response.ok) throw new Error("Categories unavailable"); return response.json(); })

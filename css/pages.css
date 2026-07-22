@@ -145,6 +145,8 @@
 .catalog-card__quick-label { position: absolute; right: .75rem; bottom: .75rem; padding: .38rem .65rem; border-radius: var(--radius-pill); color: white; background: rgba(23,58,43,.9); font-size: .62rem; letter-spacing: .07em; text-transform: uppercase; opacity: 0; transform: translateY(.5rem); transition: opacity var(--transition), transform var(--transition); }
 .catalog-card:hover .catalog-card__quick-label, .catalog-card__image:focus-visible .catalog-card__quick-label { opacity: 1; transform: translateY(0); }
 .catalog-card__image.image-missing::after { content: "Product photo unavailable"; position: absolute; inset: 0; display: grid; place-items: center; color: var(--color-muted); font: 600 1.4rem var(--font-display); }
+:is(.home-collection-card__image, .home-custom-example, .quick-view__main-image, .quick-view__thumbnails button, .quick-view__related-grid button, .product-lightbox figure).image-missing { position: relative; }
+:is(.home-collection-card__image, .home-custom-example, .quick-view__main-image, .quick-view__thumbnails button, .quick-view__related-grid button, .product-lightbox figure).image-missing::after { content: "Photo unavailable"; position: absolute; inset: 0; z-index: 1; display: grid; place-items: center; padding: 1rem; color: var(--color-muted); background: var(--color-cream-deep); font: 600 1rem/1.3 var(--font-display); text-align: center; pointer-events: none; }
 .catalog-card__body { display: flex; flex-direction: column; padding: 1.75rem; }
 .catalog-card__category { min-height: 1.3em; margin-bottom: .55rem; overflow: hidden; color: var(--color-bronze); font-size: .62rem; font-weight: 600; letter-spacing: .12em; text-overflow: ellipsis; text-transform: uppercase; white-space: nowrap; }
 .catalog-card__body :is(h2,h3) { display: -webkit-box; min-height: 2.16em; max-height: 2.16em; margin: 0 0 .8rem; overflow: hidden; color: var(--color-forest); font-size: clamp(1.85rem,2.2vw,2.08rem); line-height: 1.08; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
@@ -193,8 +195,10 @@
 .field small { display: block; margin-top: .5rem; color: var(--color-muted); font-size: .66rem; line-height: 1.5; }
 .clear-filters { display: inline-flex; align-items: center; min-height: 2.75rem; }
 .catalog-card mark { padding: 0 .08em; color: inherit; background: rgba(187,137,68,.24); border-radius: .12rem; }
-.progressive-image { opacity: 0; transition: opacity 420ms ease, transform var(--transition); }
-.progressive-image.is-loaded { opacity: 1; }
+.progressive-image { opacity: 1; visibility: visible; filter: none; transition: opacity 420ms ease, transform var(--transition); }
+.progressive-image.is-loading { opacity: 0; }
+.progressive-image.is-loaded,
+.progressive-image.is-error { opacity: 1; visibility: visible; filter: none; }
 
 .quick-view__content { display: block; min-height: 0; }
 .quick-view__top { display: grid; grid-template-columns: minmax(0,1.35fr) minmax(22rem,.85fr); min-height: 40rem; }

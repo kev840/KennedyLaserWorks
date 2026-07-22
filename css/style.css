@@ -105,7 +105,7 @@ main > .section + .section::before { content: ""; position: absolute; inset: 0 m
 .hero-product--primary { width: 73%; aspect-ratio: 1/1; top: 0; right: 0; z-index: 2; }
 .hero-product--secondary { width: 46%; aspect-ratio: 1/1; left: 0; bottom: 0; z-index: 3; }
 .hero-product--tertiary { width: 37%; aspect-ratio: 1/1; right: 2%; bottom: 1%; z-index: 4; }
-.hero-product-note { position: absolute; left: 8%; top: 4%; z-index: 5; max-width: 9rem; color: rgba(255,255,255,.72); font-size: .58rem; font-weight: 600; letter-spacing: .13em; line-height: 1.5; text-transform: uppercase; }
+.hero-product-note { position: absolute; left: -1.5rem; top: 2.5rem; z-index: 5; max-width: 8.25rem; color: rgba(255,255,255,.9); font-size: .68rem; font-weight: 700; letter-spacing: .14em; line-height: 1.7; text-shadow: 0 1px 12px rgba(20,12,8,.46); text-transform: uppercase; }
 .hero-art { position: absolute; inset: 0; z-index: -3; background: url("../assets/images/custom-work.jpg") center/cover no-repeat; transform: scale(1.02); animation: hero-image-settle 8s ease-out both; }
 .hero-location { position: absolute; right: 2.5rem; bottom: 2rem; z-index: 3; display: flex; align-items: center; gap: .65rem; color: rgba(255,255,255,.68); font-size: .67rem; letter-spacing: .14em; text-transform: uppercase; }
 .location-pin { width: .6rem; height: .6rem; border: 1px solid var(--color-bronze-light); border-radius: 50% 50% 50% 0; transform: rotate(-45deg); }
