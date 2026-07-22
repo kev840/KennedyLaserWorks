@@ -10,55 +10,203 @@
   const form = catalog.querySelector("[data-filter-form]");
   const search = catalog.querySelector("[data-product-search]");
   const selects = [...catalog.querySelectorAll("select[data-filter]")];
+  const toggles = [...catalog.querySelectorAll("input[data-toggle-filter]")];
   const clearButton = catalog.querySelector("[data-clear-filters]");
+  const chips = catalog.querySelector("[data-active-filters]");
+  const notice = catalog.querySelector("[data-price-notice]");
+  const dialog = document.querySelector("[data-quick-view]");
+  const dialogContent = dialog?.querySelector("[data-quick-view-content]");
   let products = [];
+  let categoryLabels = new Map();
 
-  const requestedCategory = new URLSearchParams(window.location.search).get("category");
-  const categorySelect = selects.find((select) => select.dataset.filter === "categories");
-  if (requestedCategory && categorySelect && [...categorySelect.options].some((option) => option.value === requestedCategory)) categorySelect.value = requestedCategory;
+  const escapeHtml = (value = "") => String(value).replace(/[&<>'"]/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[character]);
+  const titleCase = (value) => value.split("-").map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
+  const priceNumber = (value) => Number(String(value).replace(/[^0-9.]/g, "")) || 0;
 
-  const escapeHtml = (value) => String(value).replace(/[&<>'"]/g, (character) => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"})[character]);
+  const picture = (product, loading = "lazy") => `<picture>
+    <source srcset="${escapeHtml(product.primaryImage)}" type="image/webp">
+    <img src="${escapeHtml(product.imageFallback)}" alt="${escapeHtml(product.displayTitle)}" loading="${loading}" width="${product.imageWidth || 794}" height="${product.imageHeight || 794}">
+  </picture>`;
 
-  const productCard = (product) => {
-    const action = product.etsyUrl
-      ? `<a class="button button--forest product-card__action" href="${escapeHtml(product.etsyUrl)}" target="_blank" rel="noopener">View on Etsy <span aria-hidden="true">↗</span></a>`
-      : `<a class="button button--outline product-card__action" href="contact.html">Ask about this style <span aria-hidden="true">→</span></a>`;
-    return `<article class="catalog-card">
-      <a class="catalog-card__image" href="contact.html" aria-label="Ask about ${escapeHtml(product.title)}">
-        <img src="${escapeHtml(product.primaryImage)}" alt="${escapeHtml(product.title)} example" loading="lazy" width="720" height="540" onerror="this.closest('.catalog-card__image').classList.add('image-missing');this.remove()">
-      </a>
-      <div class="catalog-card__body">
-        ${product.sample ? '<span class="badge badge--sample">Sample catalog entry</span>' : ''}
-        <h2>${escapeHtml(product.title)}</h2>
-        <p>${escapeHtml(product.shortDescription)}</p>
-        <div class="catalog-card__meta"><strong>${escapeHtml(product.priceDisplay)}</strong>${product.personalized ? '<span class="badge">Personalizable</span>' : ''}</div>
-        ${action}
+  const productCard = (product) => `<article class="catalog-card" data-product-id="${escapeHtml(product.id)}">
+    <button class="catalog-card__image" type="button" data-open-quick-view="${escapeHtml(product.id)}" aria-label="Quick view: ${escapeHtml(product.displayTitle)}">
+      ${picture(product)}<span class="catalog-card__quick-label">Quick view</span>
+    </button>
+    <div class="catalog-card__body">
+      <p class="catalog-card__category">${escapeHtml(categoryLabels.get(product.categories[0]) || titleCase(product.categories[0]))}</p>
+      <h2>${escapeHtml(product.displayTitle)}</h2>
+      <p>${escapeHtml(product.shortDescription)}</p>
+      <div class="catalog-card__meta"><strong>${escapeHtml(product.priceDisplay)}</strong>${product.personalized ? '<span class="badge">Personalizable</span>' : ""}</div>
+      <div class="catalog-card__actions">
+        <button class="button button--outline" type="button" data-open-quick-view="${escapeHtml(product.id)}">Quick view</button>
+        <a class="button button--forest" href="${escapeHtml(product.etsyUrl)}" target="_blank" rel="noopener">View on Etsy <span aria-hidden="true">↗</span></a>
       </div>
-    </article>`;
+    </div>
+  </article>`;
+
+  const uniqueValues = (key) => [...new Set(products.flatMap((product) => product[key] || []))].sort((a, b) => {
+    const aLabel = key === "categories" ? categoryLabels.get(a) || a : titleCase(a);
+    const bLabel = key === "categories" ? categoryLabels.get(b) || b : titleCase(b);
+    return aLabel.localeCompare(bLabel);
+  });
+
+  const populateSelects = () => {
+    selects.forEach((select) => {
+      if (select.dataset.filter === "price") return;
+      const key = select.dataset.filter;
+      const firstLabel = select.dataset.allLabel || "All";
+      const options = uniqueValues(key).map((value) => {
+        const label = key === "categories" ? categoryLabels.get(value) || titleCase(value) : titleCase(value);
+        const matches = products.filter((product) => product[key]?.includes(value)).length;
+        return `<option value="${escapeHtml(value)}">${escapeHtml(label)} (${matches})</option>`;
+      });
+      select.innerHTML = `<option value="">${escapeHtml(firstLabel)}</option>${options.join("")}`;
+    });
   };
 
-  const matchesArray = (product, key, value) => !value || product[key].includes(value);
+  const applyQueryState = () => {
+    const params = new URLSearchParams(window.location.search);
+    search.value = params.get("search") || "";
+    selects.forEach((select) => {
+      const value = params.get(select.dataset.param || select.dataset.filter) || "";
+      if ([...select.options].some((option) => option.value === value)) select.value = value;
+    });
+    toggles.forEach((toggle) => { toggle.checked = params.get(toggle.dataset.param) === "1"; });
+  };
+
+  const currentState = () => ({
+    search: search.value.trim(),
+    ...Object.fromEntries(selects.map((select) => [select.dataset.filter, select.value])),
+    ...Object.fromEntries(toggles.map((toggle) => [toggle.dataset.toggleFilter, toggle.checked]))
+  });
+
+  const syncUrl = (state) => {
+    const params = new URLSearchParams();
+    if (state.search) params.set("search", state.search);
+    selects.forEach((select) => { if (select.value) params.set(select.dataset.param || select.dataset.filter, select.value); });
+    toggles.forEach((toggle) => { if (toggle.checked) params.set(toggle.dataset.param, "1"); });
+    const next = `${window.location.pathname}${params.size ? `?${params}` : ""}${window.location.hash}`;
+    window.history.replaceState(null, "", next);
+  };
+
+  const priceMatches = (price, range) => {
+    if (!range) return true;
+    if (range === "under-15") return price < 15;
+    if (range === "15-25") return price >= 15 && price <= 25;
+    if (range === "25-50") return price > 25 && price <= 50;
+    return price > 50;
+  };
+
+  const updateChips = (state) => {
+    const active = [];
+    if (state.search) active.push({ key: "search", label: `Search: ${state.search}` });
+    selects.forEach((select) => {
+      if (select.value) active.push({ key: select.dataset.filter, label: select.options[select.selectedIndex].text.replace(/ \(\d+\)$/, "") });
+    });
+    toggles.forEach((toggle) => { if (toggle.checked) active.push({ key: toggle.dataset.toggleFilter, label: toggle.dataset.chipLabel }); });
+    chips.innerHTML = active.map((item) => `<button type="button" data-remove-filter="${escapeHtml(item.key)}">${escapeHtml(item.label)} <span aria-hidden="true">×</span><span class="visually-hidden"> filter</span></button>`).join("");
+    chips.hidden = active.length === 0;
+  };
+
   const render = () => {
-    const term = search.value.trim().toLowerCase();
-    const selected = Object.fromEntries(selects.map((select) => [select.dataset.filter, select.value]));
+    const state = currentState();
+    const term = state.search.toLowerCase();
     const filtered = products.filter((product) => {
-      const searchable = [product.title, product.shortDescription, ...product.tags].join(" ").toLowerCase();
-      return product.active && (!term || searchable.includes(term)) && matchesArray(product, "categories", selected.categories) && matchesArray(product, "occasions", selected.occasions) && matchesArray(product, "recipients", selected.recipients);
+      const categoryText = product.categories.map((slug) => categoryLabels.get(slug) || slug);
+      const searchable = [product.displayTitle, product.etsyTitle, product.shortDescription, ...product.tags, ...categoryText, ...product.occasions, ...product.recipients].join(" ").toLowerCase();
+      return product.active
+        && (!term || searchable.includes(term))
+        && (!state.categories || product.categories.includes(state.categories))
+        && (!state.occasions || product.occasions.includes(state.occasions))
+        && (!state.recipients || product.recipients.includes(state.recipients))
+        && (!state.seasons || product.seasons.includes(state.seasons))
+        && (!state.personalized || product.personalized === true)
+        && (!state.customAvailable || product.customAvailable === true)
+        && priceMatches(priceNumber(product.priceDisplay), state.price);
     });
     grid.innerHTML = filtered.map(productCard).join("");
-    count.textContent = `${filtered.length} ${filtered.length === 1 ? "result" : "results"}`;
+    count.textContent = `${filtered.length} ${filtered.length === 1 ? "piece" : "pieces"}`;
     empty.hidden = filtered.length > 0;
+    updateChips(state);
+    syncUrl(state);
+  };
+
+  const closeDialog = () => { if (dialog?.open) dialog.close(); };
+
+  const openQuickView = (id) => {
+    const product = products.find((item) => item.id === id);
+    if (!product || !dialog || !dialogContent) return;
+    const related = products.filter((item) => item.id !== product.id && item.categories.some((category) => product.categories.includes(category))).slice(0, 3);
+    dialogContent.innerHTML = `<div class="quick-view__image">${picture(product, "eager")}</div>
+      <div class="quick-view__copy">
+        <p class="section-kicker">${escapeHtml(categoryLabels.get(product.categories[0]) || titleCase(product.categories[0]))}</p>
+        <h2 id="quick-view-title">${escapeHtml(product.displayTitle)}</h2>
+        <p>${escapeHtml(product.shortDescription)}</p>
+        <p class="quick-view__price">${escapeHtml(product.priceDisplay)} <small>price snapshot ${escapeHtml(product.priceSnapshotDate)}</small></p>
+        ${product.personalized ? '<p class="quick-view__note"><strong>Personalization available.</strong> Choose verified options on the Etsy listing.</p>' : ""}
+        <p class="quick-view__pickup">Local to Budd Lake? Contact us before ordering to arrange pickup and the local discount.</p>
+        <a class="button button--forest" href="${escapeHtml(product.etsyUrl)}" target="_blank" rel="noopener">Order on Etsy <span aria-hidden="true">↗</span></a>
+        ${related.length ? `<div class="quick-view__related"><h3>Related pieces</h3>${related.map((item) => `<button type="button" data-open-quick-view="${escapeHtml(item.id)}">${escapeHtml(item.displayTitle)}</button>`).join("")}</div>` : ""}
+      </div>`;
+    dialog.showModal();
+  };
+
+  const injectItemListSchema = () => {
+    const script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.dataset.catalogSchema = "";
+    script.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      name: "Kennedy Laser Works active Etsy catalog",
+      numberOfItems: products.length,
+      itemListElement: products.map((product, index) => ({ "@type": "ListItem", position: index + 1, name: product.displayTitle, url: product.etsyUrl }))
+    });
+    document.head.append(script);
   };
 
   form.addEventListener("input", render);
   form.addEventListener("submit", (event) => event.preventDefault());
-  clearButton.addEventListener("click", () => { form.reset(); render(); search.focus(); });
+  const clearAll = () => { form.reset(); render(); search.focus(); };
+  clearButton.addEventListener("click", clearAll);
+  chips.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-remove-filter]");
+    if (!button) return;
+    const key = button.dataset.removeFilter;
+    if (key === "search") search.value = "";
+    else {
+      const select = selects.find((item) => item.dataset.filter === key);
+      const toggle = toggles.find((item) => item.dataset.toggleFilter === key);
+      if (select) select.value = "";
+      if (toggle) toggle.checked = false;
+    }
+    render();
+  });
+  document.addEventListener("click", (event) => {
+    if (event.target.closest("[data-clear-filters]") && event.target !== clearButton) clearAll();
+    const opener = event.target.closest("[data-open-quick-view]");
+    if (opener) openQuickView(opener.dataset.openQuickView);
+    if (event.target.closest("[data-close-quick-view]")) closeDialog();
+  });
+  dialog?.addEventListener("click", (event) => { if (event.target === dialog) closeDialog(); });
+  document.addEventListener("keydown", (event) => { if (event.key === "Escape") closeDialog(); });
+  grid.addEventListener("error", (event) => {
+    if (event.target instanceof HTMLImageElement) event.target.closest(".catalog-card__image")?.classList.add("image-missing");
+  }, true);
 
-  fetch("data/products.json")
-    .then((response) => { if (!response.ok) throw new Error("Catalog unavailable"); return response.json(); })
-    .then((data) => { products = data.products; render(); })
-    .catch(() => {
-      grid.innerHTML = '<div class="catalog-load-error"><h2>Catalog preview needs a local server</h2><p>Open this site through a local preview server to load the demonstration catalog, or browse the complete shop on Etsy.</p><a class="button button--forest" href="https://kennedylaserworks.etsy.com/" target="_blank" rel="noopener">Browse Etsy <span aria-hidden="true">↗</span></a></div>';
-      count.textContent = "Catalog preview unavailable";
-    });
+  Promise.all([
+    fetch("data/products.json").then((response) => { if (!response.ok) throw new Error("Catalog unavailable"); return response.json(); }),
+    fetch("data/categories.json").then((response) => { if (!response.ok) throw new Error("Categories unavailable"); return response.json(); })
+  ]).then(([catalogData, categoryData]) => {
+    products = catalogData.products.filter((product) => product.listingStatus === "active");
+    categoryLabels = new Map(categoryData.categories.map((category) => [category.slug, category.label]));
+    populateSelects();
+    applyQueryState();
+    notice.textContent = `${catalogData.priceNotice} Catalog checked ${catalogData.catalogSnapshotDate}.`;
+    injectItemListSchema();
+    render();
+  }).catch(() => {
+    grid.innerHTML = '<div class="catalog-load-error"><h2>The catalog could not load</h2><p>Please refresh the page or browse every current piece in the Etsy shop.</p><a class="button button--forest" href="https://kennedylaserworks.etsy.com/" target="_blank" rel="noopener">Browse Etsy <span aria-hidden="true">↗</span></a></div>';
+    count.textContent = "Catalog unavailable";
+  });
 })();
