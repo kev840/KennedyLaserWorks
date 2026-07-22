@@ -32,7 +32,6 @@
   .scroll-cue { display: none; }
   .intro-grid { grid-template-columns: 1fr 2fr; gap: 2rem; }
   .craft-stats { grid-column: 1 / -1; }
-  .product-card { grid-template-columns: 1.1fr .9fr; }
   .maker-grid { gap: 3rem; }
   .maker-visual { min-height: 29rem; }
   .footer-main { grid-template-columns: 1.5fr 1fr 1fr; }
@@ -69,10 +68,6 @@
   .craft-stats { grid-template-columns: 1fr; gap: 1.25rem; }
   .craft-stats div { grid-template-columns: 6rem 1fr; align-items: center; }
   .section-heading { align-items: flex-start; flex-direction: column; }
-  .section-heading .carousel-controls { align-self: stretch; justify-content: space-between; }
-  .product-card { display: block; min-height: 0; }
-  .product-image { min-height: 24rem; height: 56vh; max-height: 32rem; }
-  .product-content { min-height: 25rem; }
   .maker-grid { grid-template-columns: 1fr; }
   .maker-visual { min-height: 26rem; order: 2; }
   .footer-main { grid-template-columns: 1fr 1fr; }

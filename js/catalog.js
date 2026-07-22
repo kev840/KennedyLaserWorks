@@ -14,21 +14,109 @@
   const clearButton = catalog.querySelector("[data-clear-filters]");
   const chips = catalog.querySelector("[data-active-filters]");
   const notice = catalog.querySelector("[data-price-notice]");
-  const dialog = document.querySelector("[data-quick-view]");
-  const dialogContent = dialog?.querySelector("[data-quick-view-content]");
+  const quickView = document.querySelector("[data-quick-view]");
+  const quickViewContent = quickView?.querySelector("[data-quick-view-content]");
+  const lightbox = document.querySelector("[data-lightbox]");
+  const lightboxImage = lightbox?.querySelector("[data-lightbox-image]");
+  const lightboxCaption = lightbox?.querySelector("[data-lightbox-caption]");
+  const lightboxPosition = lightbox?.querySelector("[data-lightbox-position]");
   let products = [];
   let categoryLabels = new Map();
   let renderTimer;
   let hasRendered = false;
+  let lastQuickViewOpener = null;
+  let activeGallery = [];
+  let activeGalleryIndex = 0;
 
   const escapeHtml = (value = "") => String(value).replace(/[&<>'"]/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[character]);
+  const escapeRegex = (value = "") => String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const normalize = (value = "") => String(value).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, " ").trim();
+  const words = (value = "") => normalize(value).split(/\s+/).filter(Boolean);
   const titleCase = (value) => value.split("-").map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
   const priceNumber = (value) => Number(String(value).replace(/[^0-9.]/g, "")) || 0;
 
-  const picture = (product, loading = "lazy") => `<picture>
-    <source srcset="${escapeHtml(product.primaryImage)}" type="image/webp">
-    <img src="${escapeHtml(product.imageFallback)}" alt="${escapeHtml(product.displayTitle)}" loading="${loading}" width="${product.imageWidth || 794}" height="${product.imageHeight || 794}">
+  const editDistance = (left, right) => {
+    const previous = Array.from({ length: right.length + 1 }, (_, index) => index);
+    for (let leftIndex = 1; leftIndex <= left.length; leftIndex += 1) {
+      const current = [leftIndex];
+      for (let rightIndex = 1; rightIndex <= right.length; rightIndex += 1) {
+        current[rightIndex] = Math.min(
+          current[rightIndex - 1] + 1,
+          previous[rightIndex] + 1,
+          previous[rightIndex - 1] + (left[leftIndex - 1] === right[rightIndex - 1] ? 0 : 1)
+        );
+      }
+      previous.splice(0, previous.length, ...current);
+    }
+    return previous[right.length];
+  };
+
+  const fuzzyWordMatch = (queryWord, candidateWord) => {
+    if (candidateWord.includes(queryWord)) return true;
+    if (queryWord.length < 4 || candidateWord.length < 3) return false;
+    const tolerance = queryWord.length >= 8 ? 2 : 1;
+    return Math.abs(queryWord.length - candidateWord.length) <= tolerance && editDistance(queryWord, candidateWord) <= tolerance;
+  };
+
+  const productSearchText = (product) => {
+    const categoryText = product.categories.map((slug) => categoryLabels.get(slug) || slug);
+    const customText = product.customAvailable === true ? ["custom", "custom work", "made to order"] : [];
+    return [
+      product.displayTitle,
+      product.etsyTitle,
+      product.shortDescription,
+      ...(product.keywords || []),
+      ...(product.tags || []),
+      ...categoryText,
+      ...(product.occasions || []),
+      ...(product.recipients || []),
+      ...(product.seasons || []),
+      ...customText
+    ].filter(Boolean).join(" ");
+  };
+
+  const searchMatches = (product, term) => {
+    const queryWords = words(term);
+    if (!queryWords.length) return true;
+    const candidateWords = words(productSearchText(product));
+    const normalizedText = candidateWords.join(" ");
+    if (normalizedText.includes(normalize(term))) return true;
+    return queryWords.every((queryWord) => candidateWords.some((candidateWord) => fuzzyWordMatch(queryWord, candidateWord)));
+  };
+
+  const highlightText = (value, term) => {
+    const queryWords = words(term).filter((word) => word.length > 1);
+    const source = String(value || "");
+    if (!queryWords.length) return escapeHtml(source);
+    const matchingWords = words(source).filter((candidate) => queryWords.some((query) => fuzzyWordMatch(query, candidate)));
+    const terms = [...new Set([...queryWords, ...matchingWords])].sort((a, b) => b.length - a.length);
+    if (!terms.length) return escapeHtml(source);
+    const expression = new RegExp(`(${terms.map(escapeRegex).join("|")})`, "gi");
+    return source.split(expression).map((part, index) => index % 2 ? `<mark>${escapeHtml(part)}</mark>` : escapeHtml(part)).join("");
+  };
+
+  const imageObject = (image, product, index = 0) => {
+    if (typeof image === "string") return { webp: image, fallback: image, alt: `${product.displayTitle}${index ? ` — view ${index + 1}` : ""}`, width: product.imageWidth || 794, height: product.imageHeight || 794 };
+    return {
+      webp: image?.src || image?.primaryImage || image?.webp || image?.fallback || product.primaryImage,
+      fallback: image?.fallback || image?.imageFallback || image?.src || product.imageFallback,
+      alt: image?.alt || `${product.displayTitle}${index ? ` — view ${index + 1}` : ""}`,
+      width: image?.width || product.imageWidth || 794,
+      height: image?.height || product.imageHeight || 794
+    };
+  };
+
+  const productGallery = (product) => [
+    imageObject({ src: product.primaryImage, fallback: product.imageFallback, alt: product.displayTitle }, product),
+    ...(product.alternateImages || []).map((image, index) => imageObject(image, product, index + 1))
+  ];
+
+  const pictureFromImage = (image, loading = "lazy", className = "progressive-image") => `<picture>
+    ${image.webp && image.webp !== image.fallback ? `<source srcset="${escapeHtml(image.webp)}" type="image/webp">` : ""}
+    <img class="${className}" src="${escapeHtml(image.fallback)}" alt="${escapeHtml(image.alt)}" loading="${loading}" decoding="async" width="${image.width}" height="${image.height}">
   </picture>`;
+
+  const picture = (product, loading = "lazy") => pictureFromImage(productGallery(product)[0], loading);
 
   const badgeDefinitions = [
     { category: "christmas-winter", label: "Christmas", className: "christmas" },
@@ -49,14 +137,14 @@
     return badges.slice(0, 2).map((badge) => `<span class="collection-badge collection-badge--${badge.className}">${badge.label}</span>`).join("");
   };
 
-  const productCard = (product) => `<article class="catalog-card" data-product-id="${escapeHtml(product.id)}">
+  const productCard = (product, term = "") => `<article class="catalog-card" data-product-id="${escapeHtml(product.id)}">
     <button class="catalog-card__image" type="button" data-open-quick-view="${escapeHtml(product.id)}" aria-label="Quick view: ${escapeHtml(product.displayTitle)}">
       ${picture(product)}<span class="catalog-badges">${productBadges(product)}</span><span class="catalog-card__quick-label">Quick view</span>
     </button>
     <div class="catalog-card__body">
-      <p class="catalog-card__category">${escapeHtml(categoryLabels.get(product.categories[0]) || titleCase(product.categories[0]))}</p>
-      <h2>${escapeHtml(product.displayTitle)}</h2>
-      <p>${escapeHtml(product.shortDescription)}</p>
+      <p class="catalog-card__category">${highlightText(categoryLabels.get(product.categories[0]) || titleCase(product.categories[0]), term)}</p>
+      <h2>${highlightText(product.displayTitle, term)}</h2>
+      <p>${highlightText(product.shortDescription, term)}</p>
       <div class="catalog-card__meta"><p class="catalog-card__pricing">See Etsy for current pricing.</p>${product.personalized ? '<span class="badge">Personalizable</span>' : ""}</div>
       <div class="catalog-card__actions">
         <button class="button button--outline" type="button" data-open-quick-view="${escapeHtml(product.id)}">Quick view</button>
@@ -132,33 +220,37 @@
   const updateFieldIndicators = () => {
     search.closest(".field")?.classList.toggle("is-active", Boolean(search.value.trim()));
     selects.forEach((select) => select.closest(".field")?.classList.toggle("is-active", Boolean(select.value)));
-    const toggleGroup = catalog.querySelector(".filter-toggles");
-    toggleGroup?.classList.toggle("is-active", toggles.some((toggle) => toggle.checked));
+    catalog.querySelector(".filter-toggles")?.classList.toggle("is-active", toggles.some((toggle) => toggle.checked));
+  };
+
+  const activateProgressiveImages = (scope) => {
+    scope.querySelectorAll("img.progressive-image").forEach((image) => {
+      const reveal = () => image.classList.add("is-loaded");
+      if (image.complete) reveal();
+      else image.addEventListener("load", reveal, { once: true });
+    });
   };
 
   const render = () => {
     const state = currentState();
-    const term = state.search.toLowerCase();
-    const filtered = products.filter((product) => {
-      const categoryText = product.categories.map((slug) => categoryLabels.get(slug) || slug);
-      const searchable = [product.displayTitle, product.etsyTitle, product.shortDescription, ...product.tags, ...categoryText, ...product.occasions, ...product.recipients].join(" ").toLowerCase();
-      return product.active
-        && (!term || searchable.includes(term))
-        && (!state.categories || product.categories.includes(state.categories))
-        && (!state.occasions || product.occasions.includes(state.occasions))
-        && (!state.recipients || product.recipients.includes(state.recipients))
-        && (!state.seasons || product.seasons.includes(state.seasons))
-        && (!state.personalized || product.personalized === true)
-        && (!state.customAvailable || product.customAvailable === true)
-        && priceMatches(priceNumber(product.priceDisplay), state.price);
-    });
+    const filtered = products.filter((product) => product.active
+      && searchMatches(product, state.search)
+      && (!state.categories || product.categories.includes(state.categories))
+      && (!state.occasions || product.occasions.includes(state.occasions))
+      && (!state.recipients || product.recipients.includes(state.recipients))
+      && (!state.seasons || product.seasons.includes(state.seasons))
+      && (!state.personalized || product.personalized === true)
+      && (!state.customAvailable || product.customAvailable === true)
+      && priceMatches(priceNumber(product.priceDisplay), state.price));
+
     const commitRender = () => {
-      grid.innerHTML = filtered.map(productCard).join("");
+      grid.innerHTML = filtered.map((product) => productCard(product, state.search)).join("");
       count.textContent = `${filtered.length} ${filtered.length === 1 ? "piece" : "pieces"}`;
       empty.hidden = filtered.length > 0;
       updateChips(state);
       updateFieldIndicators();
       syncUrl(state);
+      activateProgressiveImages(grid);
       grid.classList.remove("is-filtering");
       grid.setAttribute("aria-busy", "false");
       hasRendered = true;
@@ -171,28 +263,123 @@
     }
     grid.classList.add("is-filtering");
     grid.setAttribute("aria-busy", "true");
-    renderTimer = window.setTimeout(commitRender, 120);
+    renderTimer = window.setTimeout(commitRender, 150);
   };
 
-  const closeDialog = () => { if (dialog?.open) dialog.close(); };
+  const intersectionCount = (left = [], right = []) => left.filter((value) => right.includes(value)).length;
+  const recommendationScore = (source, candidate) => (
+    intersectionCount(source.categories, candidate.categories) * 5
+    + intersectionCount(source.seasons, candidate.seasons) * 4
+    + intersectionCount(source.occasions, candidate.occasions) * 3
+    + intersectionCount(source.recipients, candidate.recipients) * 3
+    + intersectionCount(source.tags, candidate.tags)
+  );
 
-  const openQuickView = (id) => {
+  const relatedProducts = (product) => products
+    .filter((candidate) => candidate.id !== product.id && candidate.active)
+    .map((candidate) => ({ candidate, score: recommendationScore(product, candidate) }))
+    .filter(({ score }) => score > 0)
+    .sort((a, b) => b.score - a.score || a.candidate.displayTitle.localeCompare(b.candidate.displayTitle))
+    .slice(0, 4)
+    .map(({ candidate }) => candidate);
+
+  const quickViewFacts = (product) => {
+    const facts = [
+      { label: "Personalization", value: product.personalized === true ? "Available — choose current options on Etsy." : "See the Etsy listing for available options." },
+      ...(product.dimensions ? [{ label: "Dimensions", value: Array.isArray(product.dimensions) ? product.dimensions.join(", ") : product.dimensions }] : []),
+      ...(product.materials ? [{ label: "Materials", value: Array.isArray(product.materials) ? product.materials.join(", ") : product.materials }] : []),
+      { label: "Production timing", value: product.productionTime || "Varies by piece and current workload; confirm a needed-by date before ordering." },
+      { label: "Local pickup", value: "Available by advance arrangement in Budd Lake, New Jersey. Contact us before ordering." }
+    ];
+    return facts.map((fact) => `<div><dt>${escapeHtml(fact.label)}</dt><dd>${escapeHtml(fact.value)}</dd></div>`).join("");
+  };
+
+  const galleryMarkup = (product) => {
+    const gallery = productGallery(product);
+    const main = gallery[0];
+    return `<div class="quick-view__gallery">
+      <button class="quick-view__main-image" type="button" data-open-lightbox="0" aria-label="Enlarge ${escapeHtml(product.displayTitle)}">
+        ${pictureFromImage(main, "eager")}
+        <span>View larger</span>
+      </button>
+      ${gallery.length > 1 ? `<div class="quick-view__thumbnails" aria-label="Product images">${gallery.map((image, index) => `<button type="button" data-gallery-index="${index}" class="${index === 0 ? "is-current" : ""}" aria-label="Show image ${index + 1} of ${gallery.length}" aria-pressed="${index === 0}">${pictureFromImage(image)}</button>`).join("")}</div>` : ""}
+    </div>`;
+  };
+
+  const relatedMarkup = (product) => {
+    const related = relatedProducts(product);
+    if (!related.length) return "";
+    return `<section class="quick-view__related" aria-labelledby="quick-view-related-title">
+      <div><p class="section-kicker">Chosen by shared details</p><h3 id="quick-view-related-title">You May Also Like</h3></div>
+      <div class="quick-view__related-grid">${related.map((item) => `<button type="button" data-open-quick-view="${escapeHtml(item.id)}" aria-label="Quick view: ${escapeHtml(item.displayTitle)}">${picture(item)}<span>${escapeHtml(item.displayTitle)}</span></button>`).join("")}</div>
+    </section>`;
+  };
+
+  const openQuickView = (id, opener = null) => {
     const product = products.find((item) => item.id === id);
-    if (!product || !dialog || !dialogContent) return;
-    const related = products.filter((item) => item.id !== product.id && item.categories.some((category) => product.categories.includes(category))).slice(0, 3);
-    dialogContent.innerHTML = `<div class="quick-view__image">${picture(product)}</div>
+    if (!product || !quickView || !quickViewContent) return;
+    if (opener && !quickView.open) lastQuickViewOpener = opener;
+    activeGallery = productGallery(product);
+    activeGalleryIndex = 0;
+    quickViewContent.innerHTML = `<div class="quick-view__top">
+      ${galleryMarkup(product)}
       <div class="quick-view__copy">
         <p class="section-kicker">${escapeHtml(categoryLabels.get(product.categories[0]) || titleCase(product.categories[0]))}</p>
         <h2 id="quick-view-title">${escapeHtml(product.displayTitle)}</h2>
-        <p>${escapeHtml(product.shortDescription)}</p>
+        <p class="quick-view__description">${escapeHtml(product.shortDescription)}</p>
         <p class="quick-view__price">See Etsy for current pricing.</p>
-        ${product.personalized ? '<p class="quick-view__note"><strong>Personalization available.</strong> Choose verified options on the Etsy listing.</p>' : ""}
-        <p class="quick-view__pickup">Local to Budd Lake? Contact us before ordering to arrange pickup and the local discount.</p>
-        <a class="button button--forest" href="${escapeHtml(product.etsyUrl)}" target="_blank" rel="noopener">Order on Etsy <span aria-hidden="true">↗</span></a>
-        ${related.length ? `<div class="quick-view__related"><h3>Related pieces</h3>${related.map((item) => `<button type="button" data-open-quick-view="${escapeHtml(item.id)}">${escapeHtml(item.displayTitle)}</button>`).join("")}</div>` : ""}
-      </div>`;
-    dialog.showModal();
+        <dl class="quick-view__facts">${quickViewFacts(product)}</dl>
+        <div class="quick-view__actions"><a class="button button--forest" href="${escapeHtml(product.etsyUrl)}" target="_blank" rel="noopener">Purchase on Etsy <span aria-hidden="true">↗</span></a><a class="arrow-link" href="contact.html">Ask a question <span aria-hidden="true">→</span></a></div>
+      </div>
+    </div>${relatedMarkup(product)}`;
+    activateProgressiveImages(quickViewContent);
+    if (!quickView.open) quickView.showModal();
+    quickView.scrollTop = 0;
   };
+
+  const updateQuickViewImage = (index) => {
+    if (!activeGallery.length || !quickViewContent) return;
+    activeGalleryIndex = (index + activeGallery.length) % activeGallery.length;
+    const imageButton = quickViewContent.querySelector("[data-open-lightbox]");
+    if (imageButton) {
+      imageButton.dataset.openLightbox = String(activeGalleryIndex);
+      const image = activeGallery[activeGalleryIndex];
+      imageButton.querySelector("picture")?.remove();
+      imageButton.insertAdjacentHTML("afterbegin", pictureFromImage(image, "eager"));
+      activateProgressiveImages(imageButton);
+    }
+    quickViewContent.querySelectorAll("[data-gallery-index]").forEach((button) => {
+      const isCurrent = Number(button.dataset.galleryIndex) === activeGalleryIndex;
+      button.classList.toggle("is-current", isCurrent);
+      button.setAttribute("aria-pressed", String(isCurrent));
+    });
+  };
+
+  const showLightboxImage = (index) => {
+    if (!activeGallery.length || !lightboxImage) return;
+    activeGalleryIndex = (index + activeGallery.length) % activeGallery.length;
+    const image = activeGallery[activeGalleryIndex];
+    lightboxImage.src = image.fallback;
+    lightboxImage.alt = image.alt;
+    lightboxImage.width = image.width;
+    lightboxImage.height = image.height;
+    if (lightboxCaption) lightboxCaption.textContent = image.alt;
+    if (lightboxPosition) lightboxPosition.textContent = `${activeGalleryIndex + 1} of ${activeGallery.length}`;
+    lightbox?.classList.toggle("has-multiple", activeGallery.length > 1);
+    updateQuickViewImage(activeGalleryIndex);
+  };
+
+  const openLightbox = (index) => {
+    if (!lightbox || !activeGallery.length) return;
+    showLightboxImage(index);
+    if (!lightbox.open) lightbox.showModal();
+  };
+
+  const closeQuickView = () => {
+    if (quickView?.open) quickView.close();
+    lastQuickViewOpener?.focus();
+  };
+  const closeLightbox = () => { if (lightbox?.open) lightbox.close(); };
 
   const injectItemListSchema = () => {
     const script = document.createElement("script");
@@ -225,14 +412,29 @@
     }
     render();
   });
+
   document.addEventListener("click", (event) => {
     if (event.target.closest("[data-clear-filters]") && event.target !== clearButton) clearAll();
     const opener = event.target.closest("[data-open-quick-view]");
-    if (opener) openQuickView(opener.dataset.openQuickView);
-    if (event.target.closest("[data-close-quick-view]")) closeDialog();
+    if (opener) openQuickView(opener.dataset.openQuickView, opener);
+    const thumbnail = event.target.closest("[data-gallery-index]");
+    if (thumbnail) updateQuickViewImage(Number(thumbnail.dataset.galleryIndex));
+    const lightboxOpener = event.target.closest("[data-open-lightbox]");
+    if (lightboxOpener) openLightbox(Number(lightboxOpener.dataset.openLightbox));
+    if (event.target.closest("[data-close-quick-view]")) closeQuickView();
+    if (event.target.closest("[data-close-lightbox]")) closeLightbox();
+    if (event.target.closest("[data-lightbox-prev]")) showLightboxImage(activeGalleryIndex - 1);
+    if (event.target.closest("[data-lightbox-next]")) showLightboxImage(activeGalleryIndex + 1);
   });
-  dialog?.addEventListener("click", (event) => { if (event.target === dialog) closeDialog(); });
-  document.addEventListener("keydown", (event) => { if (event.key === "Escape") closeDialog(); });
+
+  quickView?.addEventListener("click", (event) => { if (event.target === quickView) closeQuickView(); });
+  lightbox?.addEventListener("click", (event) => { if (event.target === lightbox) closeLightbox(); });
+  document.addEventListener("keydown", (event) => {
+    if (lightbox?.open && event.key === "ArrowLeft") showLightboxImage(activeGalleryIndex - 1);
+    if (lightbox?.open && event.key === "ArrowRight") showLightboxImage(activeGalleryIndex + 1);
+    if (event.key === "Escape" && lightbox?.open) closeLightbox();
+    else if (event.key === "Escape" && quickView?.open) closeQuickView();
+  });
   grid.addEventListener("error", (event) => {
     if (event.target instanceof HTMLImageElement) event.target.closest(".catalog-card__image")?.classList.add("image-missing");
   }, true);
