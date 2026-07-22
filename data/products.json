@@ -1,11 +1,2806 @@
 {
-  "notice": "Demonstration records only. Replace with verified Etsy catalog exports before launch.",
+  "catalogSnapshotDate": "2026-07-22",
+  "sourceShop": "https://kennedylaserworks.etsy.com/",
+  "priceNotice": "Prices are a static snapshot. Options and prices may vary; Etsy is the final authority.",
   "products": [
-    {"id":"sample-wedding-sign","title":"Personalized Wedding & Anniversary Piece","shortDescription":"An example of made-to-order engraving for milestone celebrations.","priceDisplay":"Pricing available on request","etsyUrl":"","primaryImage":"assets/images/wedding-sign.jpg","alternateImages":[],"categories":["Weddings & Anniversaries","Personalized Gifts"],"occasions":["Wedding","Anniversary"],"recipients":["Couples"],"seasons":["spring","summer"],"tags":["engraved","wood","keepsake"],"personalized":true,"customAvailable":true,"featured":true,"customerFavorite":false,"dateAdded":"2026-07-01","active":true,"sample":true},
-    {"id":"sample-christmas-ornament","title":"Personalized Christmas Ornament","shortDescription":"An example of precision-cut ornaments personalized for family and friends.","priceDisplay":"Catalog import pending","etsyUrl":"","primaryImage":"assets/images/christmas-ornaments.jpg","alternateImages":[],"categories":["Christmas & Winter","Ornaments","Personalized Gifts"],"occasions":["Christmas"],"recipients":["Families","Friends"],"seasons":["winter"],"tags":["ornament","personalized","holiday"],"personalized":true,"customAvailable":true,"featured":true,"customerFavorite":false,"dateAdded":"2026-07-01","active":true,"sample":true},
-    {"id":"sample-america-250","title":"America 250 Commemorative Decor","shortDescription":"A preview of commemorative patriotic designs prepared for America’s 250th.","priceDisplay":"Catalog import pending","etsyUrl":"","primaryImage":"assets/images/america-250.png","alternateImages":[],"categories":["Patriotic & Americana"],"occasions":["Patriotic Holidays"],"recipients":["Families","Veterans"],"seasons":["summer"],"tags":["america 250","patriotic","door hanger"],"personalized":false,"customAvailable":true,"featured":true,"customerFavorite":false,"dateAdded":"2026-07-01","active":true,"sample":true},
-    {"id":"sample-memorial","title":"Layered Memorial Keepsake","shortDescription":"An example of a carefully layered and engraved remembrance piece.","priceDisplay":"Pricing available on request","etsyUrl":"","primaryImage":"assets/images/pet-memorial.jpg","alternateImages":[],"categories":["Pet Memorials","Personalized Gifts"],"occasions":["Memorial"],"recipients":["Pet Owners"],"seasons":["year-round"],"tags":["memorial","layered","remembrance"],"personalized":true,"customAvailable":true,"featured":false,"customerFavorite":false,"dateAdded":"2026-07-01","active":true,"sample":true},
-    {"id":"sample-home-decor","title":"Personalized Engraved Serving Board","shortDescription":"An example of useful home decor made personal through precise engraving.","priceDisplay":"Pricing available on request","etsyUrl":"","primaryImage":"assets/images/home-decor.jpg","alternateImages":[],"categories":["Home Decor","Personalized Gifts"],"occasions":["Housewarming","Wedding"],"recipients":["Couples","Families"],"seasons":["year-round"],"tags":["serving board","kitchen","engraved"],"personalized":true,"customAvailable":true,"featured":true,"customerFavorite":false,"dateAdded":"2026-07-01","active":true,"sample":true},
-    {"id":"sample-custom-project","title":"One-of-a-Kind Custom Project","shortDescription":"A starting point for signs, plaques, gifts, and original ideas made to order.","priceDisplay":"Custom quote","etsyUrl":"","primaryImage":"assets/images/custom-work.jpg","alternateImages":[],"categories":["Custom Projects","Profession Gifts"],"occasions":["Graduation","Housewarming"],"recipients":["Professionals","Teachers"],"seasons":["year-round"],"tags":["custom","business","plaque"],"personalized":true,"customAvailable":true,"featured":true,"customerFavorite":false,"dateAdded":"2026-07-01","active":true,"sample":true}
-  ]
+    {
+      "id": "etsy-1862372498",
+      "etsyListingId": "1862372498",
+      "etsyTitle": "Shamrock Wooden Door Hanger: St. Patrick's Day Irish Decor",
+      "displayTitle": "Shamrock Door Hanger",
+      "shortDescription": "Shamrock Door Hanger from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$10.99",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/1862372498/shamrock-wooden-door-hanger-st-patricks",
+      "primaryImage": "assets/images/products/1862372498-shamrock-door-hanger.webp",
+      "imageFallback": "assets/images/products/1862372498-shamrock-door-hanger.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/r/il/409e01/7218519151/il_794xN.7218519151_9nbe.jpg",
+      "alternateImages": [],
+      "categories": [
+        "st-patricks-day",
+        "home-decor"
+      ],
+      "occasions": [
+        "st-patricks-day"
+      ],
+      "recipients": [],
+      "seasons": [
+        "spring"
+      ],
+      "tags": [
+        "shamrock",
+        "door",
+        "hanger",
+        "st-patricks-day",
+        "home-decor"
+      ],
+      "personalized": null,
+      "customAvailable": null,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 794
+    },
+    {
+      "id": "etsy-1862376778",
+      "etsyListingId": "1862376778",
+      "etsyTitle": "St. Patrick’s Day Shamrock Home Decor Sláinte Shamrock Wall Hanging - Irish Blessing Sign",
+      "displayTitle": "Sláinte Shamrock Wall Hanging",
+      "shortDescription": "Sláinte Shamrock Wall Hanging from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$10.99",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/1862376778/st-patricks-day-shamrock-home-decor",
+      "primaryImage": "assets/images/products/1862376778-sla-inte-shamrock-wall-hanging.webp",
+      "imageFallback": "assets/images/products/1862376778-sla-inte-shamrock-wall-hanging.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/r/il/dad3e7/7218487843/il_794xN.7218487843_8w61.jpg",
+      "alternateImages": [],
+      "categories": [
+        "religious-inspirational",
+        "st-patricks-day",
+        "home-decor"
+      ],
+      "occasions": [
+        "st-patricks-day",
+        "housewarming"
+      ],
+      "recipients": [],
+      "seasons": [
+        "spring"
+      ],
+      "tags": [
+        "inte",
+        "shamrock",
+        "wall",
+        "hanging",
+        "religious-inspirational",
+        "st-patricks-day",
+        "home-decor"
+      ],
+      "personalized": null,
+      "customAvailable": null,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 794
+    },
+    {
+      "id": "etsy-1877180521",
+      "etsyListingId": "1877180521",
+      "etsyTitle": "Kiss Me I'm Irish Sign: Funny Leprechaun St. Patrick's Day Decor",
+      "displayTitle": "Kiss Me I'm Irish Sign",
+      "shortDescription": "Kiss Me I'm Irish Sign from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$10.99",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/1877180521/kiss-me-im-irish-sign-funny-leprechaun",
+      "primaryImage": "assets/images/products/1877180521-kiss-me-im-irish-sign.webp",
+      "imageFallback": "assets/images/products/1877180521-kiss-me-im-irish-sign.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/r/il/c47a67/7218427677/il_794xN.7218427677_51tt.jpg",
+      "alternateImages": [],
+      "categories": [
+        "st-patricks-day",
+        "home-decor"
+      ],
+      "occasions": [
+        "st-patricks-day"
+      ],
+      "recipients": [],
+      "seasons": [
+        "spring"
+      ],
+      "tags": [
+        "kiss",
+        "irish",
+        "sign",
+        "st-patricks-day",
+        "home-decor"
+      ],
+      "personalized": null,
+      "customAvailable": null,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 794
+    },
+    {
+      "id": "etsy-1866684180",
+      "etsyListingId": "1866684180",
+      "etsyTitle": "St. Patrick's Day Wooden Door Hanger: Lucky Clover Shamrock Decor",
+      "displayTitle": "Lucky Clover Door Hanger",
+      "shortDescription": "Lucky Clover Door Hanger from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$10.99",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/1866684180/st-patricks-day-wooden-door-hanger-lucky",
+      "primaryImage": "assets/images/products/1866684180-lucky-clover-door-hanger.webp",
+      "imageFallback": "assets/images/products/1866684180-lucky-clover-door-hanger.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/c/1024/1024/0/213/il/a4b8fe/7218404199/il_794xN.7218404199_4f0g.jpg",
+      "alternateImages": [],
+      "categories": [
+        "st-patricks-day",
+        "home-decor"
+      ],
+      "occasions": [
+        "st-patricks-day"
+      ],
+      "recipients": [],
+      "seasons": [
+        "spring"
+      ],
+      "tags": [
+        "lucky",
+        "clover",
+        "door",
+        "hanger",
+        "st-patricks-day",
+        "home-decor"
+      ],
+      "personalized": null,
+      "customAvailable": null,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 794
+    },
+    {
+      "id": "etsy-1866686448",
+      "etsyListingId": "1866686448",
+      "etsyTitle": "St. Patrick’s Day Sign - Let the Shenanigans Begin - Irish Party Decor - Lucky Shamrock Door Hanger",
+      "displayTitle": "Shenanigans Shamrock Sign",
+      "shortDescription": "Shenanigans Shamrock Sign from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$10.99",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/1866686448/st-patricks-day-sign-let-the-shenanigans",
+      "primaryImage": "assets/images/products/1866686448-shenanigans-shamrock-sign.webp",
+      "imageFallback": "assets/images/products/1866686448-shenanigans-shamrock-sign.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/r/il/13b427/7218383643/il_794xN.7218383643_jb3z.jpg",
+      "alternateImages": [],
+      "categories": [
+        "st-patricks-day",
+        "home-decor"
+      ],
+      "occasions": [
+        "st-patricks-day"
+      ],
+      "recipients": [],
+      "seasons": [
+        "spring"
+      ],
+      "tags": [
+        "shenanigans",
+        "shamrock",
+        "sign",
+        "st-patricks-day",
+        "home-decor"
+      ],
+      "personalized": null,
+      "customAvailable": null,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 1191
+    },
+    {
+      "id": "etsy-1876924045",
+      "etsyListingId": "1876924045",
+      "etsyTitle": "St. Patrick's Day Door Corner Decor: Green Shamrock Pair",
+      "displayTitle": "Shamrock Door Corner Pair",
+      "shortDescription": "Shamrock Door Corner Pair from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$30.00",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/1876924045/st-patricks-day-door-corner-decor-green",
+      "primaryImage": "assets/images/products/1876924045-shamrock-door-corner-pair.webp",
+      "imageFallback": "assets/images/products/1876924045-shamrock-door-corner-pair.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/c/1024/1024/0/127/il/53bdaa/7218464023/il_794xN.7218464023_7m0d.jpg",
+      "alternateImages": [],
+      "categories": [
+        "st-patricks-day",
+        "home-decor"
+      ],
+      "occasions": [
+        "st-patricks-day"
+      ],
+      "recipients": [],
+      "seasons": [
+        "spring"
+      ],
+      "tags": [
+        "shamrock",
+        "door",
+        "corner",
+        "pair",
+        "st-patricks-day",
+        "home-decor"
+      ],
+      "personalized": null,
+      "customAvailable": null,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 794
+    },
+    {
+      "id": "etsy-1882522569",
+      "etsyListingId": "1882522569",
+      "etsyTitle": "Easter Bunny Welcome Sign: Handcrafted Wooden Door Decor, Spring Farmhouse Accent",
+      "displayTitle": "Easter Bunny Welcome Sign",
+      "shortDescription": "Easter Bunny Welcome Sign from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$24.75",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/1882522569/handmade-easter-bunny-welcome-sign",
+      "primaryImage": "assets/images/products/1882522569-easter-bunny-welcome-sign.webp",
+      "imageFallback": "assets/images/products/1882522569-easter-bunny-welcome-sign.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/c/1024/1024/0/156/il/3060e2/7217760145/il_794xN.7217760145_daka.jpg",
+      "alternateImages": [],
+      "categories": [
+        "spring-easter",
+        "home-decor"
+      ],
+      "occasions": [
+        "easter",
+        "housewarming"
+      ],
+      "recipients": [],
+      "seasons": [
+        "spring"
+      ],
+      "tags": [
+        "easter",
+        "bunny",
+        "welcome",
+        "sign",
+        "spring-easter",
+        "home-decor"
+      ],
+      "personalized": null,
+      "customAvailable": null,
+      "featured": true,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 794
+    },
+    {
+      "id": "etsy-1883039621",
+      "etsyListingId": "1883039621",
+      "etsyTitle": "Handmade Easter Bunny Sign: Spring Wooden Door Hanger",
+      "displayTitle": "Easter Bunny Door Hanger",
+      "shortDescription": "Easter Bunny Door Hanger from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$10.99",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/1883039621/handmade-easter-bunny-sign-spring-wooden",
+      "primaryImage": "assets/images/products/1883039621-easter-bunny-door-hanger.webp",
+      "imageFallback": "assets/images/products/1883039621-easter-bunny-door-hanger.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/c/1024/1024/0/180/il/73071a/7168008452/il_794xN.7168008452_k917.jpg",
+      "alternateImages": [],
+      "categories": [
+        "spring-easter",
+        "home-decor"
+      ],
+      "occasions": [
+        "easter"
+      ],
+      "recipients": [],
+      "seasons": [
+        "spring"
+      ],
+      "tags": [
+        "easter",
+        "bunny",
+        "door",
+        "hanger",
+        "spring-easter",
+        "home-decor"
+      ],
+      "personalized": null,
+      "customAvailable": null,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 794
+    },
+    {
+      "id": "etsy-1870389588",
+      "etsyListingId": "1870389588",
+      "etsyTitle": "Easter Bunny Welcome Sign: Farmhouse Carrot Door Hanger",
+      "displayTitle": "Carrot Bunny Welcome Sign",
+      "shortDescription": "Carrot Bunny Welcome Sign from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$10.99",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/1870389588/easter-bunny-welcome-sign-farmhouse",
+      "primaryImage": "assets/images/products/1870389588-carrot-bunny-welcome-sign.webp",
+      "imageFallback": "assets/images/products/1870389588-carrot-bunny-welcome-sign.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/r/il/442d1d/7170364350/il_794xN.7170364350_3eq7.jpg",
+      "alternateImages": [],
+      "categories": [
+        "spring-easter",
+        "home-decor"
+      ],
+      "occasions": [
+        "easter",
+        "housewarming"
+      ],
+      "recipients": [],
+      "seasons": [
+        "spring"
+      ],
+      "tags": [
+        "carrot",
+        "bunny",
+        "welcome",
+        "sign",
+        "spring-easter",
+        "home-decor"
+      ],
+      "personalized": null,
+      "customAvailable": null,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 794
+    },
+    {
+      "id": "etsy-1868853834",
+      "etsyListingId": "1868853834",
+      "etsyTitle": "He Is Risen Easter Sign: Laser-Cut Wooden Christian Decor",
+      "displayTitle": "He Is Risen Easter Sign",
+      "shortDescription": "He Is Risen Easter Sign from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$10.99",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/1868853834/he-is-risen-easter-sign-laser-cut-wooden",
+      "primaryImage": "assets/images/products/1868853834-he-is-risen-easter-sign.webp",
+      "imageFallback": "assets/images/products/1868853834-he-is-risen-easter-sign.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/c/1024/1024/0/175/il/51d049/7218368883/il_794xN.7218368883_5d92.jpg",
+      "alternateImages": [],
+      "categories": [
+        "religious-inspirational",
+        "spring-easter",
+        "home-decor"
+      ],
+      "occasions": [
+        "easter"
+      ],
+      "recipients": [
+        "christian"
+      ],
+      "seasons": [
+        "spring"
+      ],
+      "tags": [
+        "risen",
+        "easter",
+        "sign",
+        "religious-inspirational",
+        "spring-easter",
+        "home-decor"
+      ],
+      "personalized": null,
+      "customAvailable": null,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 794
+    },
+    {
+      "id": "etsy-1870390726",
+      "etsyListingId": "1870390726",
+      "etsyTitle": "Easter Bunny Welcome Sign - Spring Door Hanger - Wooden Farmhouse Decor - Handmade Bunny Wall Art",
+      "displayTitle": "Spring Bunny Door Hanger",
+      "shortDescription": "Spring Bunny Door Hanger from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$10.99",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/1870390726/easter-bunny-welcome-sign-spring-door",
+      "primaryImage": "assets/images/products/1870390726-spring-bunny-door-hanger.webp",
+      "imageFallback": "assets/images/products/1870390726-spring-bunny-door-hanger.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/r/il/f3e760/7170353372/il_794xN.7170353372_gg6f.jpg",
+      "alternateImages": [],
+      "categories": [
+        "spring-easter",
+        "home-decor"
+      ],
+      "occasions": [
+        "easter",
+        "housewarming"
+      ],
+      "recipients": [],
+      "seasons": [
+        "spring"
+      ],
+      "tags": [
+        "spring",
+        "bunny",
+        "door",
+        "hanger",
+        "spring-easter",
+        "home-decor"
+      ],
+      "personalized": null,
+      "customAvailable": null,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 794
+    },
+    {
+      "id": "etsy-1884571887",
+      "etsyListingId": "1884571887",
+      "etsyTitle": "Hip Hop Easter Sign: Handmade Bunny Carrot Wooden Door Hanger",
+      "displayTitle": "Hip Hop Easter Sign",
+      "shortDescription": "Hip Hop Easter Sign from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$10.99",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/1884571887/hip-hop-easter-sign-handmade-bunny",
+      "primaryImage": "assets/images/products/1884571887-hip-hop-easter-sign.webp",
+      "imageFallback": "assets/images/products/1884571887-hip-hop-easter-sign.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/r/il/1dc559/7218219121/il_794xN.7218219121_66g7.jpg",
+      "alternateImages": [],
+      "categories": [
+        "spring-easter",
+        "home-decor"
+      ],
+      "occasions": [
+        "easter"
+      ],
+      "recipients": [],
+      "seasons": [
+        "spring"
+      ],
+      "tags": [
+        "hip",
+        "hop",
+        "easter",
+        "sign",
+        "spring-easter",
+        "home-decor"
+      ],
+      "personalized": null,
+      "customAvailable": null,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 794
+    },
+    {
+      "id": "etsy-1870393112",
+      "etsyListingId": "1870393112",
+      "etsyTitle": "Handmade Easter Chick Sign: Spring Farmhouse Decor",
+      "displayTitle": "Easter Chick Sign",
+      "shortDescription": "Easter Chick Sign from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$10.99",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/1870393112/handmade-easter-chick-sign-spring",
+      "primaryImage": "assets/images/products/1870393112-easter-chick-sign.webp",
+      "imageFallback": "assets/images/products/1870393112-easter-chick-sign.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/r/il/791358/7218136639/il_794xN.7218136639_ih6v.jpg",
+      "alternateImages": [],
+      "categories": [
+        "spring-easter",
+        "home-decor"
+      ],
+      "occasions": [
+        "easter"
+      ],
+      "recipients": [],
+      "seasons": [
+        "spring"
+      ],
+      "tags": [
+        "easter",
+        "chick",
+        "sign",
+        "spring-easter",
+        "home-decor"
+      ],
+      "personalized": null,
+      "customAvailable": null,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 1191
+    },
+    {
+      "id": "etsy-1861595697",
+      "etsyListingId": "1861595697",
+      "etsyTitle": "Personalized Wooden Rose Decoration: Laser Cut Name Gift",
+      "displayTitle": "Personalized Wooden Rose",
+      "shortDescription": "Personalized Wooden Rose from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$20.00",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/1861595697/personalized-wooden-rose-decoration",
+      "primaryImage": "assets/images/products/1861595697-personalized-wooden-rose.webp",
+      "imageFallback": "assets/images/products/1861595697-personalized-wooden-rose.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/r/il/6c0c0f/7218850585/il_794xN.7218850585_9yul.jpg",
+      "alternateImages": [],
+      "categories": [
+        "personalized-gifts",
+        "custom-projects",
+        "valentines-day",
+        "home-decor"
+      ],
+      "occasions": [
+        "valentines-day"
+      ],
+      "recipients": [],
+      "seasons": [
+        "year-round"
+      ],
+      "tags": [
+        "personalized",
+        "wooden",
+        "rose",
+        "personalized-gifts",
+        "custom-projects",
+        "valentines-day",
+        "home-decor"
+      ],
+      "personalized": true,
+      "customAvailable": true,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 1191
+    },
+    {
+      "id": "etsy-1848995784",
+      "etsyListingId": "1848995784",
+      "etsyTitle": "Customizable Laser-Cut Rose with Heart Stand – Personalized Valentine’s Gift",
+      "displayTitle": "Personalized Rose & Heart Stand",
+      "shortDescription": "Personalized Rose & Heart Stand from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$15.00",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/1848995784/customizable-laser-cut-rose-with-heart",
+      "primaryImage": "assets/images/products/1848995784-personalized-rose-heart-stand.webp",
+      "imageFallback": "assets/images/products/1848995784-personalized-rose-heart-stand.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/c/1024/1024/478/0/il/0608c2/7170845286/il_794xN.7170845286_4msa.jpg",
+      "alternateImages": [],
+      "categories": [
+        "personalized-gifts",
+        "custom-projects",
+        "valentines-day"
+      ],
+      "occasions": [
+        "valentines-day"
+      ],
+      "recipients": [],
+      "seasons": [
+        "year-round"
+      ],
+      "tags": [
+        "personalized",
+        "rose",
+        "heart",
+        "stand",
+        "personalized-gifts",
+        "custom-projects",
+        "valentines-day"
+      ],
+      "personalized": true,
+      "customAvailable": true,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 794
+    },
+    {
+      "id": "etsy-1850465654",
+      "etsyListingId": "1850465654",
+      "etsyTitle": "Laser Cut Wooden Rose Bouquet, Valentines Day Vase, Personalized Heart Decor",
+      "displayTitle": "Wooden Rose Bouquet & Vase",
+      "shortDescription": "Wooden Rose Bouquet & Vase from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$15.00",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/1850465654/laser-cut-wooden-rose-bouquet-valentines",
+      "primaryImage": "assets/images/products/1850465654-wooden-rose-bouquet-vase.webp",
+      "imageFallback": "assets/images/products/1850465654-wooden-rose-bouquet-vase.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/c/1024/1024/0/45/il/c64907/7170819030/il_794xN.7170819030_czky.jpg",
+      "alternateImages": [],
+      "categories": [
+        "personalized-gifts",
+        "custom-projects",
+        "valentines-day",
+        "home-decor"
+      ],
+      "occasions": [
+        "valentines-day"
+      ],
+      "recipients": [],
+      "seasons": [
+        "year-round"
+      ],
+      "tags": [
+        "wooden",
+        "rose",
+        "bouquet",
+        "vase",
+        "personalized-gifts",
+        "custom-projects",
+        "valentines-day",
+        "home-decor"
+      ],
+      "personalized": true,
+      "customAvailable": true,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 794
+    },
+    {
+      "id": "etsy-1850475366",
+      "etsyListingId": "1850475366",
+      "etsyTitle": "Personalized Wooden Flower Bouquet: Laser-Cut Floral Home Decor",
+      "displayTitle": "Personalized Wooden Flower Bouquet",
+      "shortDescription": "Personalized Wooden Flower Bouquet from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$20.00",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/1850475366/personalized-wooden-flower-bouquet-laser",
+      "primaryImage": "assets/images/products/1850475366-personalized-wooden-flower-bouquet.webp",
+      "imageFallback": "assets/images/products/1850475366-personalized-wooden-flower-bouquet.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/c/1024/1024/0/137/il/92a928/7170807472/il_794xN.7170807472_85ah.jpg",
+      "alternateImages": [],
+      "categories": [
+        "personalized-gifts",
+        "custom-projects",
+        "home-decor"
+      ],
+      "occasions": [
+        "housewarming"
+      ],
+      "recipients": [],
+      "seasons": [
+        "year-round"
+      ],
+      "tags": [
+        "personalized",
+        "wooden",
+        "flower",
+        "bouquet",
+        "personalized-gifts",
+        "custom-projects",
+        "home-decor"
+      ],
+      "personalized": true,
+      "customAvailable": true,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 794
+    },
+    {
+      "id": "etsy-1885903579",
+      "etsyListingId": "1885903579",
+      "etsyTitle": "Personalized Mom Sunflower Sign – Handmade Wooden Mother's Day Gift",
+      "displayTitle": "Personalized Mom Sunflower Sign",
+      "shortDescription": "Personalized Mom Sunflower Sign from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$24.74",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/1885903579/personalized-mom-sunflower-sign-handmade",
+      "primaryImage": "assets/images/products/1885903579-personalized-mom-sunflower-sign.webp",
+      "imageFallback": "assets/images/products/1885903579-personalized-mom-sunflower-sign.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/r/il/cac715/7482160550/il_794xN.7482160550_p5ab.jpg",
+      "alternateImages": [],
+      "categories": [
+        "personalized-gifts",
+        "family-gifts",
+        "custom-projects",
+        "mothers-day",
+        "home-decor"
+      ],
+      "occasions": [
+        "mothers-day"
+      ],
+      "recipients": [
+        "mom"
+      ],
+      "seasons": [
+        "year-round"
+      ],
+      "tags": [
+        "personalized",
+        "mom",
+        "sunflower",
+        "sign",
+        "personalized-gifts",
+        "family-gifts",
+        "custom-projects",
+        "mothers-day",
+        "home-decor"
+      ],
+      "personalized": true,
+      "customAvailable": true,
+      "featured": true,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 794
+    },
+    {
+      "id": "etsy-1870692117",
+      "etsyListingId": "1870692117",
+      "etsyTitle": "Personalized Wooden Valentine's Gift Card Holder: Engraved Keepsake",
+      "displayTitle": "Personalized Valentine Gift Card Holder",
+      "shortDescription": "Personalized Valentine Gift Card Holder from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$14.95",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/1870692117/personalized-wooden-valentines-gift-card",
+      "primaryImage": "assets/images/products/1870692117-personalized-valentine-gift-card-holder.webp",
+      "imageFallback": "assets/images/products/1870692117-personalized-valentine-gift-card-holder.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/c/1024/1024/252/0/il/794d49/7170549922/il_794xN.7170549922_r54v.jpg",
+      "alternateImages": [],
+      "categories": [
+        "personalized-gifts",
+        "custom-projects",
+        "valentines-day"
+      ],
+      "occasions": [
+        "valentines-day"
+      ],
+      "recipients": [],
+      "seasons": [
+        "year-round"
+      ],
+      "tags": [
+        "personalized",
+        "valentine",
+        "gift",
+        "card",
+        "holder",
+        "personalized-gifts",
+        "custom-projects",
+        "valentines-day"
+      ],
+      "personalized": true,
+      "customAvailable": true,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 794
+    },
+    {
+      "id": "etsy-1849696848",
+      "etsyListingId": "1849696848",
+      "etsyTitle": "Custom Laser-Cut Wooden Vase with Roses - Love Conquers All or Personalized Text",
+      "displayTitle": "Custom Rose Vase",
+      "shortDescription": "Custom Rose Vase from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$10.00",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/1849696848/custom-laser-cut-wooden-vase-with-roses",
+      "primaryImage": "assets/images/products/1849696848-custom-rose-vase.webp",
+      "imageFallback": "assets/images/products/1849696848-custom-rose-vase.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/c/1024/1024/0/271/il/4d93ed/7170832144/il_794xN.7170832144_sl78.jpg",
+      "alternateImages": [],
+      "categories": [
+        "personalized-gifts",
+        "custom-projects",
+        "valentines-day",
+        "home-decor"
+      ],
+      "occasions": [
+        "valentines-day"
+      ],
+      "recipients": [],
+      "seasons": [
+        "year-round"
+      ],
+      "tags": [
+        "custom",
+        "rose",
+        "vase",
+        "personalized-gifts",
+        "custom-projects",
+        "valentines-day",
+        "home-decor"
+      ],
+      "personalized": true,
+      "customAvailable": true,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 794
+    },
+    {
+      "id": "etsy-1884780928",
+      "etsyListingId": "1884780928",
+      "etsyTitle": "Custom Sunshine Wooden Sign: Personalized Grandma, Mom, Aunt Gift",
+      "displayTitle": "Personalized Sunshine Sign",
+      "shortDescription": "Personalized Sunshine Sign from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$10.99",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/1884780928/custom-sunshine-wooden-sign-personalized",
+      "primaryImage": "assets/images/products/1884780928-personalized-sunshine-sign.webp",
+      "imageFallback": "assets/images/products/1884780928-personalized-sunshine-sign.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/c/1024/1024/0/55/il/742e5c/7215889305/il_794xN.7215889305_2eyy.jpg",
+      "alternateImages": [],
+      "categories": [
+        "personalized-gifts",
+        "family-gifts",
+        "custom-projects",
+        "mothers-day",
+        "home-decor"
+      ],
+      "occasions": [
+        "mothers-day"
+      ],
+      "recipients": [
+        "mom",
+        "grandmother",
+        "aunt"
+      ],
+      "seasons": [
+        "year-round"
+      ],
+      "tags": [
+        "personalized",
+        "sunshine",
+        "sign",
+        "personalized-gifts",
+        "family-gifts",
+        "custom-projects",
+        "mothers-day",
+        "home-decor"
+      ],
+      "personalized": true,
+      "customAvailable": true,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 794
+    },
+    {
+      "id": "etsy-1532033461",
+      "etsyListingId": "1532033461",
+      "etsyTitle": "Custom Engraved Cedar Anniversary Plaque - Milestone Keepsake",
+      "displayTitle": "Cedar Anniversary Plaque",
+      "shortDescription": "Cedar Anniversary Plaque from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$10.00",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/1532033461/custom-engraved-cedar-anniversary-plaque",
+      "primaryImage": "assets/images/products/1532033461-cedar-anniversary-plaque.webp",
+      "imageFallback": "assets/images/products/1532033461-cedar-anniversary-plaque.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/r/il/8f842c/7218555557/il_794xN.7218555557_fgif.jpg",
+      "alternateImages": [],
+      "categories": [
+        "weddings-anniversaries",
+        "personalized-gifts",
+        "custom-projects",
+        "home-decor"
+      ],
+      "occasions": [
+        "anniversary"
+      ],
+      "recipients": [
+        "couple",
+        "family"
+      ],
+      "seasons": [
+        "year-round"
+      ],
+      "tags": [
+        "cedar",
+        "anniversary",
+        "plaque",
+        "weddings-anniversaries",
+        "personalized-gifts",
+        "custom-projects",
+        "home-decor"
+      ],
+      "personalized": true,
+      "customAvailable": true,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 794
+    },
+    {
+      "id": "etsy-1788982364",
+      "etsyListingId": "1788982364",
+      "etsyTitle": "Personalized Acacia Cutting Board, Custom Engraved Family Name Gift",
+      "displayTitle": "Personalized Acacia Cutting Board",
+      "shortDescription": "Personalized Acacia Cutting Board from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$59.99",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/1788982364/personalized-acacia-cutting-board-custom",
+      "primaryImage": "assets/images/products/1788982364-personalized-acacia-cutting-board.webp",
+      "imageFallback": "assets/images/products/1788982364-personalized-acacia-cutting-board.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/r/il/3e8d26/7482114010/il_794xN.7482114010_knyo.jpg",
+      "alternateImages": [],
+      "categories": [
+        "kitchen-cutting-boards",
+        "home-decor",
+        "family-gifts",
+        "personalized-gifts",
+        "custom-projects"
+      ],
+      "occasions": [
+        "housewarming"
+      ],
+      "recipients": [
+        "couple",
+        "family"
+      ],
+      "seasons": [
+        "year-round"
+      ],
+      "tags": [
+        "personalized",
+        "acacia",
+        "cutting",
+        "board",
+        "kitchen-cutting-boards",
+        "home-decor",
+        "family-gifts",
+        "personalized-gifts",
+        "custom-projects"
+      ],
+      "personalized": true,
+      "customAvailable": true,
+      "featured": true,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 794
+    },
+    {
+      "id": "etsy-1883936482",
+      "etsyListingId": "1883936482",
+      "etsyTitle": "Custom Engraved Cherry Wood Scripture Plaque - Religious Gift",
+      "displayTitle": "Cherry Wood Scripture Plaque",
+      "shortDescription": "Cherry Wood Scripture Plaque from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$74.99",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/1883936482/custom-engraved-cherry-wood-scripture",
+      "primaryImage": "assets/images/products/1883936482-cherry-wood-scripture-plaque.webp",
+      "imageFallback": "assets/images/products/1883936482-cherry-wood-scripture-plaque.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/r/il/f78750/6766570494/il_794xN.6766570494_tka2.jpg",
+      "alternateImages": [],
+      "categories": [
+        "personalized-gifts",
+        "religious-inspirational",
+        "custom-projects",
+        "home-decor"
+      ],
+      "occasions": [],
+      "recipients": [
+        "christian"
+      ],
+      "seasons": [
+        "year-round"
+      ],
+      "tags": [
+        "cherry",
+        "wood",
+        "scripture",
+        "plaque",
+        "personalized-gifts",
+        "religious-inspirational",
+        "custom-projects",
+        "home-decor"
+      ],
+      "personalized": true,
+      "customAvailable": true,
+      "featured": true,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 1059
+    },
+    {
+      "id": "etsy-4419416776",
+      "etsyListingId": "4419416776",
+      "etsyTitle": "Personalized Baby's First Christmas Ornament, Baby Feet Keepsake",
+      "displayTitle": "Baby's First Christmas Ornament",
+      "shortDescription": "Baby's First Christmas Ornament from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$17.99",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/4419416776/personalized-babys-first-christmas",
+      "primaryImage": "assets/images/products/4419416776-babys-first-christmas-ornament.webp",
+      "imageFallback": "assets/images/products/4419416776-babys-first-christmas-ornament.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/r/il/d3c7aa/7530230161/il_794xN.7530230161_mn8p.jpg",
+      "alternateImages": [],
+      "categories": [
+        "christmas-winter",
+        "ornaments",
+        "personalized-gifts",
+        "family-gifts",
+        "custom-projects"
+      ],
+      "occasions": [
+        "christmas",
+        "new-baby"
+      ],
+      "recipients": [
+        "new-parents",
+        "baby"
+      ],
+      "seasons": [
+        "winter"
+      ],
+      "tags": [
+        "baby",
+        "first",
+        "christmas",
+        "ornament",
+        "christmas-winter",
+        "ornaments",
+        "personalized-gifts",
+        "family-gifts",
+        "custom-projects"
+      ],
+      "personalized": true,
+      "customAvailable": true,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 794
+    },
+    {
+      "id": "etsy-4419409067",
+      "etsyListingId": "4419409067",
+      "etsyTitle": "Personalized Baby's First Christmas Plaque - Birth Stats Ornament with Stand",
+      "displayTitle": "Baby Birth Stats Christmas Plaque",
+      "shortDescription": "Baby Birth Stats Christmas Plaque from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$24.99",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/4419409067/personalized-babys-first-christmas",
+      "primaryImage": "assets/images/products/4419409067-baby-birth-stats-christmas-plaque.webp",
+      "imageFallback": "assets/images/products/4419409067-baby-birth-stats-christmas-plaque.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/r/il/56d775/7482262240/il_794xN.7482262240_fipw.jpg",
+      "alternateImages": [],
+      "categories": [
+        "christmas-winter",
+        "ornaments",
+        "personalized-gifts",
+        "family-gifts",
+        "custom-projects",
+        "home-decor"
+      ],
+      "occasions": [
+        "christmas",
+        "new-baby"
+      ],
+      "recipients": [
+        "new-parents",
+        "baby"
+      ],
+      "seasons": [
+        "winter"
+      ],
+      "tags": [
+        "baby",
+        "birth",
+        "stats",
+        "christmas",
+        "plaque",
+        "christmas-winter",
+        "ornaments",
+        "personalized-gifts",
+        "family-gifts",
+        "custom-projects",
+        "home-decor"
+      ],
+      "personalized": true,
+      "customAvailable": true,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 1191
+    },
+    {
+      "id": "etsy-4416978452",
+      "etsyListingId": "4416978452",
+      "etsyTitle": "Merry Christmas Red Truck • Layered Wood Holiday Wall Decor • Rustic Round Sign",
+      "displayTitle": "Christmas Red Truck Sign",
+      "shortDescription": "Christmas Red Truck Sign from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$10.99",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/4416978452/merry-christmas-red-truck-layered-wood",
+      "primaryImage": "assets/images/products/4416978452-christmas-red-truck-sign.webp",
+      "imageFallback": "assets/images/products/4416978452-christmas-red-truck-sign.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/r/il/a795d6/7468537976/il_794xN.7468537976_p19n.jpg",
+      "alternateImages": [],
+      "categories": [
+        "christmas-winter",
+        "home-decor"
+      ],
+      "occasions": [
+        "christmas",
+        "housewarming"
+      ],
+      "recipients": [],
+      "seasons": [
+        "winter"
+      ],
+      "tags": [
+        "christmas",
+        "red",
+        "truck",
+        "sign",
+        "christmas-winter",
+        "home-decor"
+      ],
+      "personalized": null,
+      "customAvailable": null,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 794
+    },
+    {
+      "id": "etsy-4416978641",
+      "etsyListingId": "4416978641",
+      "etsyTitle": "Merry Christmas Sign • Layered Wood Santa, Tree, and Snowflakes",
+      "displayTitle": "Santa & Tree Christmas Sign",
+      "shortDescription": "Santa & Tree Christmas Sign from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$10.99",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/4416978641/merry-christmas-sign-layered-wood-santa",
+      "primaryImage": "assets/images/products/4416978641-santa-tree-christmas-sign.webp",
+      "imageFallback": "assets/images/products/4416978641-santa-tree-christmas-sign.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/r/il/611347/7518726429/il_794xN.7518726429_oplg.jpg",
+      "alternateImages": [],
+      "categories": [
+        "christmas-winter",
+        "home-decor"
+      ],
+      "occasions": [
+        "christmas"
+      ],
+      "recipients": [],
+      "seasons": [
+        "winter"
+      ],
+      "tags": [
+        "santa",
+        "tree",
+        "christmas",
+        "sign",
+        "christmas-winter",
+        "home-decor"
+      ],
+      "personalized": null,
+      "customAvailable": null,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 794
+    },
+    {
+      "id": "etsy-4416967967",
+      "etsyListingId": "4416967967",
+      "etsyTitle": "Santa Stop Here Sign, Layered Wooden Christmas Door Hanger",
+      "displayTitle": "Santa Stop Here Sign",
+      "shortDescription": "Santa Stop Here Sign from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$10.99",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/4416967967/santa-stop-here-sign-layered-wooden",
+      "primaryImage": "assets/images/products/4416967967-santa-stop-here-sign.webp",
+      "imageFallback": "assets/images/products/4416967967-santa-stop-here-sign.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/r/il/3cee70/7516326663/il_794xN.7516326663_maxe.jpg",
+      "alternateImages": [],
+      "categories": [
+        "christmas-winter",
+        "home-decor"
+      ],
+      "occasions": [
+        "christmas"
+      ],
+      "recipients": [],
+      "seasons": [
+        "winter"
+      ],
+      "tags": [
+        "santa",
+        "stop",
+        "here",
+        "sign",
+        "christmas-winter",
+        "home-decor"
+      ],
+      "personalized": null,
+      "customAvailable": null,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 529
+    },
+    {
+      "id": "etsy-4416948895",
+      "etsyListingId": "4416948895",
+      "etsyTitle": "Layered Wood Christmas Sign • Winter Cabin, Santa Sleigh Wall Decor",
+      "displayTitle": "Winter Cabin Christmas Sign",
+      "shortDescription": "Winter Cabin Christmas Sign from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$10.99",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/4416948895/layered-wood-christmas-sign-winter-cabin",
+      "primaryImage": "assets/images/products/4416948895-winter-cabin-christmas-sign.webp",
+      "imageFallback": "assets/images/products/4416948895-winter-cabin-christmas-sign.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/r/il/4db9da/7516274205/il_794xN.7516274205_jpsr.jpg",
+      "alternateImages": [],
+      "categories": [
+        "christmas-winter",
+        "home-decor"
+      ],
+      "occasions": [
+        "christmas",
+        "housewarming"
+      ],
+      "recipients": [],
+      "seasons": [
+        "winter"
+      ],
+      "tags": [
+        "winter",
+        "cabin",
+        "christmas",
+        "sign",
+        "christmas-winter",
+        "home-decor"
+      ],
+      "personalized": null,
+      "customAvailable": null,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 794
+    },
+    {
+      "id": "etsy-4416934607",
+      "etsyListingId": "4416934607",
+      "etsyTitle": "JOY Christmas Wreath Sign - Layered Wooden Holiday Wall Decor",
+      "displayTitle": "JOY Christmas Wreath Sign",
+      "shortDescription": "JOY Christmas Wreath Sign from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$10.99",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/4416934607/joy-christmas-wreath-sign-layered-wooden",
+      "primaryImage": "assets/images/products/4416934607-joy-christmas-wreath-sign.webp",
+      "imageFallback": "assets/images/products/4416934607-joy-christmas-wreath-sign.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/r/il/08457b/7516201069/il_794xN.7516201069_7p65.jpg",
+      "alternateImages": [],
+      "categories": [
+        "christmas-winter",
+        "home-decor"
+      ],
+      "occasions": [
+        "christmas",
+        "housewarming"
+      ],
+      "recipients": [],
+      "seasons": [
+        "winter"
+      ],
+      "tags": [
+        "joy",
+        "christmas",
+        "wreath",
+        "sign",
+        "christmas-winter",
+        "home-decor"
+      ],
+      "personalized": null,
+      "customAvailable": null,
+      "featured": true,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 794
+    },
+    {
+      "id": "etsy-4387533985",
+      "etsyListingId": "4387533985",
+      "etsyTitle": "Christmas Gingerbread House Welcome Sign – Layered Wooden Holiday Wall Décor",
+      "displayTitle": "Gingerbread House Welcome Sign",
+      "shortDescription": "Gingerbread House Welcome Sign from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$10.99",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/4387533985/christmas-gingerbread-house-welcome-sign",
+      "primaryImage": "assets/images/products/4387533985-gingerbread-house-welcome-sign.webp",
+      "imageFallback": "assets/images/products/4387533985-gingerbread-house-welcome-sign.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/c/682/682/496/44/il/8f63c6/7289985556/il_794xN.7289985556_2rnu.jpg",
+      "alternateImages": [],
+      "categories": [
+        "christmas-winter",
+        "home-decor"
+      ],
+      "occasions": [
+        "christmas",
+        "housewarming"
+      ],
+      "recipients": [],
+      "seasons": [
+        "winter"
+      ],
+      "tags": [
+        "gingerbread",
+        "house",
+        "welcome",
+        "sign",
+        "christmas-winter",
+        "home-decor"
+      ],
+      "personalized": null,
+      "customAvailable": null,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 794
+    },
+    {
+      "id": "etsy-4388098488",
+      "etsyListingId": "4388098488",
+      "etsyTitle": "Gingerbread Mug “Merry Christmas” Ornament - Handcrafted 3D Wooden Holiday Décor",
+      "displayTitle": "Gingerbread Mug Ornament",
+      "shortDescription": "Gingerbread Mug Ornament from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$14.99",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/4388098488/gingerbread-mug-merry-christmas-ornament",
+      "primaryImage": "assets/images/products/4388098488-gingerbread-mug-ornament.webp",
+      "imageFallback": "assets/images/products/4388098488-gingerbread-mug-ornament.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/r/il/0069e6/7341297739/il_794xN.7341297739_5cru.jpg",
+      "alternateImages": [],
+      "categories": [
+        "christmas-winter",
+        "ornaments"
+      ],
+      "occasions": [
+        "christmas"
+      ],
+      "recipients": [],
+      "seasons": [
+        "winter"
+      ],
+      "tags": [
+        "gingerbread",
+        "mug",
+        "ornament",
+        "christmas-winter",
+        "ornaments"
+      ],
+      "personalized": null,
+      "customAvailable": null,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 794
+    },
+    {
+      "id": "etsy-4411996661",
+      "etsyListingId": "4411996661",
+      "etsyTitle": "Wood Cross Ornament with Scripture | Christian Christmas Ornament | Religious Faith Decor",
+      "displayTitle": "Scripture Cross Ornament",
+      "shortDescription": "Scripture Cross Ornament from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$14.99",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/4411996661/wood-cross-ornament-with-scripture",
+      "primaryImage": "assets/images/products/4411996661-scripture-cross-ornament.webp",
+      "imageFallback": "assets/images/products/4411996661-scripture-cross-ornament.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/r/il/801ed4/7439782670/il_794xN.7439782670_qi5m.jpg",
+      "alternateImages": [],
+      "categories": [
+        "christmas-winter",
+        "ornaments",
+        "religious-inspirational",
+        "home-decor"
+      ],
+      "occasions": [
+        "christmas"
+      ],
+      "recipients": [
+        "christian"
+      ],
+      "seasons": [
+        "winter"
+      ],
+      "tags": [
+        "scripture",
+        "cross",
+        "ornament",
+        "christmas-winter",
+        "ornaments",
+        "religious-inspirational",
+        "home-decor"
+      ],
+      "personalized": null,
+      "customAvailable": null,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 993
+    },
+    {
+      "id": "etsy-1803229743",
+      "etsyListingId": "1803229743",
+      "etsyTitle": "Personalized Wooden Christmas Ornament: Laser Cut Snowflake Gift",
+      "displayTitle": "Personalized Snowflake Ornament",
+      "shortDescription": "Personalized Snowflake Ornament from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$15.00",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/1803229743/personalized-wooden-christmas-ornament",
+      "primaryImage": "assets/images/products/1803229743-personalized-snowflake-ornament.webp",
+      "imageFallback": "assets/images/products/1803229743-personalized-snowflake-ornament.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/r/il/31a5fd/7215904243/il_794xN.7215904243_a9dv.jpg",
+      "alternateImages": [],
+      "categories": [
+        "christmas-winter",
+        "ornaments",
+        "personalized-gifts",
+        "custom-projects"
+      ],
+      "occasions": [
+        "christmas"
+      ],
+      "recipients": [],
+      "seasons": [
+        "winter"
+      ],
+      "tags": [
+        "personalized",
+        "snowflake",
+        "ornament",
+        "christmas-winter",
+        "ornaments",
+        "personalized-gifts",
+        "custom-projects"
+      ],
+      "personalized": true,
+      "customAvailable": true,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 1191
+    },
+    {
+      "id": "etsy-1812525171",
+      "etsyListingId": "1812525171",
+      "etsyTitle": "Hand-Painted Wooden Santa Ornament - customizable",
+      "displayTitle": "Hand-Painted Santa Ornament",
+      "shortDescription": "Hand-Painted Santa Ornament from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$18.00",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/1812525171/hand-painted-wooden-santa-ornament",
+      "primaryImage": "assets/images/products/1812525171-hand-painted-santa-ornament.webp",
+      "imageFallback": "assets/images/products/1812525171-hand-painted-santa-ornament.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/r/il/61bd11/7170428212/il_794xN.7170428212_l8ch.jpg",
+      "alternateImages": [],
+      "categories": [
+        "christmas-winter",
+        "ornaments",
+        "personalized-gifts",
+        "custom-projects"
+      ],
+      "occasions": [
+        "christmas"
+      ],
+      "recipients": [],
+      "seasons": [
+        "winter"
+      ],
+      "tags": [
+        "hand",
+        "painted",
+        "santa",
+        "ornament",
+        "christmas-winter",
+        "ornaments",
+        "personalized-gifts",
+        "custom-projects"
+      ],
+      "personalized": true,
+      "customAvailable": true,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 1191
+    },
+    {
+      "id": "etsy-1789669600",
+      "etsyListingId": "1789669600",
+      "etsyTitle": "Year ornament, multi-layered wood and painted.",
+      "displayTitle": "Multi-Layer Year Ornament",
+      "shortDescription": "Multi-Layer Year Ornament from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$15.00",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/1789669600/year-ornament-multi-layered-wood-and",
+      "primaryImage": "assets/images/products/1789669600-multi-layer-year-ornament.webp",
+      "imageFallback": "assets/images/products/1789669600-multi-layer-year-ornament.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/c/1024/1024/0/103/il/62455f/7218677245/il_794xN.7218677245_3mb5.jpg",
+      "alternateImages": [],
+      "categories": [
+        "ornaments"
+      ],
+      "occasions": [
+        "christmas"
+      ],
+      "recipients": [],
+      "seasons": [
+        "year-round"
+      ],
+      "tags": [
+        "multi",
+        "layer",
+        "year",
+        "ornament",
+        "ornaments"
+      ],
+      "personalized": null,
+      "customAvailable": null,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 794
+    },
+    {
+      "id": "etsy-1822156267",
+      "etsyListingId": "1822156267",
+      "etsyTitle": "Trump - Daddy’s Home 2024 Engraved Wooden Ornament",
+      "displayTitle": "Trump “Daddy's Home” Ornament",
+      "shortDescription": "Trump “Daddy's Home” Ornament from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$20.00",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/1822156267/trump-daddys-home-2024-engraved-wooden",
+      "primaryImage": "assets/images/products/1822156267-trump-daddys-home-ornament.webp",
+      "imageFallback": "assets/images/products/1822156267-trump-daddys-home-ornament.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/r/il/f8ee66/7173686054/il_794xN.7173686054_gwye.jpg",
+      "alternateImages": [],
+      "categories": [
+        "ornaments",
+        "patriotic-americana",
+        "custom-projects",
+        "fathers-day"
+      ],
+      "occasions": [
+        "christmas",
+        "patriotic-holidays"
+      ],
+      "recipients": [],
+      "seasons": [
+        "year-round"
+      ],
+      "tags": [
+        "trump",
+        "daddy",
+        "home",
+        "ornament",
+        "ornaments",
+        "patriotic-americana",
+        "custom-projects",
+        "fathers-day"
+      ],
+      "personalized": null,
+      "customAvailable": null,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 794
+    },
+    {
+      "id": "etsy-1822162411",
+      "etsyListingId": "1822162411",
+      "etsyTitle": "Trump 2024 Engraved Wooden Ornament",
+      "displayTitle": "Trump 2024 Ornament",
+      "shortDescription": "Trump 2024 Ornament from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$20.00",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/1822162411/trump-2024-engraved-wooden-ornament",
+      "primaryImage": "assets/images/products/1822162411-trump-2024-ornament.webp",
+      "imageFallback": "assets/images/products/1822162411-trump-2024-ornament.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/r/il/e36d57/7221676841/il_794xN.7221676841_8aa2.jpg",
+      "alternateImages": [],
+      "categories": [
+        "ornaments",
+        "patriotic-americana",
+        "custom-projects"
+      ],
+      "occasions": [
+        "christmas",
+        "patriotic-holidays"
+      ],
+      "recipients": [],
+      "seasons": [
+        "year-round"
+      ],
+      "tags": [
+        "trump",
+        "2024",
+        "ornament",
+        "ornaments",
+        "patriotic-americana",
+        "custom-projects"
+      ],
+      "personalized": null,
+      "customAvailable": null,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 794
+    },
+    {
+      "id": "etsy-1807980228",
+      "etsyListingId": "1807980228",
+      "etsyTitle": "Handcrafted Laser-Cut Wooden Decorative Box",
+      "displayTitle": "Laser-Cut Wooden Decorative Box",
+      "shortDescription": "Laser-Cut Wooden Decorative Box from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$20.00",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/1807980228/handcrafted-laser-cut-wooden-decorative",
+      "primaryImage": "assets/images/products/1807980228-laser-cut-wooden-decorative-box.webp",
+      "imageFallback": "assets/images/products/1807980228-laser-cut-wooden-decorative-box.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/c/1024/1024/0/0/il/342c66/7218120209/il_794xN.7218120209_e9zk.jpg",
+      "alternateImages": [],
+      "categories": [
+        "home-decor"
+      ],
+      "occasions": [],
+      "recipients": [],
+      "seasons": [
+        "year-round"
+      ],
+      "tags": [
+        "laser",
+        "cut",
+        "wooden",
+        "decorative",
+        "box",
+        "home-decor"
+      ],
+      "personalized": null,
+      "customAvailable": null,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 794
+    },
+    {
+      "id": "etsy-1788571932",
+      "etsyListingId": "1788571932",
+      "etsyTitle": "Personalized Memorial Angel Wings Ornament • In Loving Memory Christmas Ornament • Engraved Remembrance Keepsake Gift",
+      "displayTitle": "Personalized Memorial Angel Wings Ornament",
+      "shortDescription": "Personalized Memorial Angel Wings Ornament from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$25.00",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/1788571932/personalized-memorial-angel-wings",
+      "primaryImage": "assets/images/products/1788571932-personalized-memorial-angel-wings-ornament.webp",
+      "imageFallback": "assets/images/products/1788571932-personalized-memorial-angel-wings-ornament.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/r/il/a899e5/7482062146/il_794xN.7482062146_7wmu.jpg",
+      "alternateImages": [],
+      "categories": [
+        "christmas-winter",
+        "ornaments",
+        "personalized-gifts",
+        "memorial-keepsakes",
+        "custom-projects"
+      ],
+      "occasions": [
+        "christmas",
+        "memorial"
+      ],
+      "recipients": [],
+      "seasons": [
+        "winter"
+      ],
+      "tags": [
+        "personalized",
+        "memorial",
+        "angel",
+        "wings",
+        "ornament",
+        "christmas-winter",
+        "ornaments",
+        "personalized-gifts",
+        "memorial-keepsakes",
+        "custom-projects"
+      ],
+      "personalized": true,
+      "customAvailable": true,
+      "featured": true,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 1191
+    },
+    {
+      "id": "etsy-1802696847",
+      "etsyListingId": "1802696847",
+      "etsyTitle": "Personalized Wooden Reindeer Ornament – Hand-Painted Christmas Gift",
+      "displayTitle": "Personalized Reindeer Ornament",
+      "shortDescription": "Personalized Reindeer Ornament from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$11.99",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/1802696847/personalized-wooden-reindeer-ornament",
+      "primaryImage": "assets/images/products/1802696847-personalized-reindeer-ornament.webp",
+      "imageFallback": "assets/images/products/1802696847-personalized-reindeer-ornament.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/r/il/e186ee/7530137363/il_794xN.7530137363_cvem.jpg",
+      "alternateImages": [],
+      "categories": [
+        "christmas-winter",
+        "ornaments",
+        "personalized-gifts",
+        "custom-projects"
+      ],
+      "occasions": [
+        "christmas"
+      ],
+      "recipients": [],
+      "seasons": [
+        "winter"
+      ],
+      "tags": [
+        "personalized",
+        "reindeer",
+        "ornament",
+        "christmas-winter",
+        "ornaments",
+        "personalized-gifts",
+        "custom-projects"
+      ],
+      "personalized": true,
+      "customAvailable": true,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 1191
+    },
+    {
+      "id": "etsy-4358215881",
+      "etsyListingId": "4358215881",
+      "etsyTitle": "Star Inspired Wood Sign: Layered Sci-Fi Wall Art",
+      "displayTitle": "Star-Inspired Sci-Fi Sign",
+      "shortDescription": "Star-Inspired Sci-Fi Sign from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$10.99",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/4358215881/star-inspired-wood-sign-layered-sci-fi",
+      "primaryImage": "assets/images/products/4358215881-star-inspired-sci-fi-sign.webp",
+      "imageFallback": "assets/images/products/4358215881-star-inspired-sci-fi-sign.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/c/1024/1024/0/372/il/ed66b8/7167585762/il_794xN.7167585762_2of4.jpg",
+      "alternateImages": [],
+      "categories": [
+        "geek-fandom",
+        "home-decor"
+      ],
+      "occasions": [],
+      "recipients": [],
+      "seasons": [
+        "year-round"
+      ],
+      "tags": [
+        "star",
+        "inspired",
+        "sci",
+        "sign",
+        "geek-fandom",
+        "home-decor"
+      ],
+      "personalized": null,
+      "customAvailable": null,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 794
+    },
+    {
+      "id": "etsy-4358161160",
+      "etsyListingId": "4358161160",
+      "etsyTitle": "Dark Galactic Helmet Wood Art: Laser Cut Sci-Fi Decor",
+      "displayTitle": "Dark Galactic Helmet Art",
+      "shortDescription": "Dark Galactic Helmet Art from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$10.99",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/4358161160/dark-galactic-helmet-wood-art-laser-cut",
+      "primaryImage": "assets/images/products/4358161160-dark-galactic-helmet-art.webp",
+      "imageFallback": "assets/images/products/4358161160-dark-galactic-helmet-art.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/r/il/861569/7173631516/il_794xN.7173631516_t51i.jpg",
+      "alternateImages": [],
+      "categories": [
+        "geek-fandom",
+        "home-decor"
+      ],
+      "occasions": [],
+      "recipients": [],
+      "seasons": [
+        "year-round"
+      ],
+      "tags": [
+        "dark",
+        "galactic",
+        "helmet",
+        "art",
+        "geek-fandom",
+        "home-decor"
+      ],
+      "personalized": null,
+      "customAvailable": null,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 1191
+    },
+    {
+      "id": "etsy-4358199201",
+      "etsyListingId": "4358199201",
+      "etsyTitle": "Astromech Droid Wood Wall Art: Laser Cut Sci-Fi Decor",
+      "displayTitle": "Astromech Droid Wall Art",
+      "shortDescription": "Astromech Droid Wall Art from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$10.99",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/4358199201/astromech-droid-wood-wall-art-laser-cut",
+      "primaryImage": "assets/images/products/4358199201-astromech-droid-wall-art.webp",
+      "imageFallback": "assets/images/products/4358199201-astromech-droid-wall-art.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/r/il/072a6a/7173633062/il_794xN.7173633062_kgt2.jpg",
+      "alternateImages": [],
+      "categories": [
+        "geek-fandom",
+        "home-decor"
+      ],
+      "occasions": [],
+      "recipients": [],
+      "seasons": [
+        "year-round"
+      ],
+      "tags": [
+        "astromech",
+        "droid",
+        "wall",
+        "art",
+        "geek-fandom",
+        "home-decor"
+      ],
+      "personalized": null,
+      "customAvailable": null,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 1191
+    },
+    {
+      "id": "etsy-4358191831",
+      "etsyListingId": "4358191831",
+      "etsyTitle": "Laser Cut Galactic Soldier Helmet Wood Sign - Sci-Fi Wall Art",
+      "displayTitle": "Galactic Soldier Helmet Sign",
+      "shortDescription": "Galactic Soldier Helmet Sign from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$10.99",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/4358191831/laser-cut-galactic-soldier-helmet-wood",
+      "primaryImage": "assets/images/products/4358191831-galactic-soldier-helmet-sign.webp",
+      "imageFallback": "assets/images/products/4358191831-galactic-soldier-helmet-sign.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/c/1024/1024/0/127/il/a88ff6/7215695975/il_794xN.7215695975_beor.jpg",
+      "alternateImages": [],
+      "categories": [
+        "geek-fandom",
+        "home-decor"
+      ],
+      "occasions": [],
+      "recipients": [],
+      "seasons": [
+        "year-round"
+      ],
+      "tags": [
+        "galactic",
+        "soldier",
+        "helmet",
+        "sign",
+        "geek-fandom",
+        "home-decor"
+      ],
+      "personalized": null,
+      "customAvailable": null,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 794
+    },
+    {
+      "id": "etsy-4358139752",
+      "etsyListingId": "4358139752",
+      "etsyTitle": "Laser Cut Wood Bounty Hunter Helmet Wall Art: Sci-Fi Decor",
+      "displayTitle": "Bounty Hunter Helmet Wall Art",
+      "shortDescription": "Bounty Hunter Helmet Wall Art from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$10.99",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/4358139752/laser-cut-wood-bounty-hunter-helmet-wall",
+      "primaryImage": "assets/images/products/4358139752-bounty-hunter-helmet-wall-art.webp",
+      "imageFallback": "assets/images/products/4358139752-bounty-hunter-helmet-wall-art.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/r/il/9ed77f/7221611195/il_794xN.7221611195_sa3l.jpg",
+      "alternateImages": [],
+      "categories": [
+        "geek-fandom",
+        "home-decor"
+      ],
+      "occasions": [],
+      "recipients": [],
+      "seasons": [
+        "year-round"
+      ],
+      "tags": [
+        "bounty",
+        "hunter",
+        "helmet",
+        "wall",
+        "art",
+        "geek-fandom",
+        "home-decor"
+      ],
+      "personalized": null,
+      "customAvailable": null,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 1191
+    },
+    {
+      "id": "etsy-4369100262",
+      "etsyListingId": "4369100262",
+      "etsyTitle": "Hello Fall Wooden Sign Pumpkin Coffee Cup Autumn Wall Décor",
+      "displayTitle": "Hello Fall Coffee Sign",
+      "shortDescription": "Hello Fall Coffee Sign from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$10.99",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/4369100262/hello-fall-wooden-sign-pumpkin-coffee",
+      "primaryImage": "assets/images/products/4369100262-hello-fall-coffee-sign.webp",
+      "imageFallback": "assets/images/products/4369100262-hello-fall-coffee-sign.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/r/il/20fa8a/7196619660/il_794xN.7196619660_kad0.jpg",
+      "alternateImages": [],
+      "categories": [
+        "halloween-fall",
+        "home-decor"
+      ],
+      "occasions": [
+        "fall-season"
+      ],
+      "recipients": [],
+      "seasons": [
+        "fall"
+      ],
+      "tags": [
+        "hello",
+        "fall",
+        "coffee",
+        "sign",
+        "halloween-fall",
+        "home-decor"
+      ],
+      "personalized": null,
+      "customAvailable": null,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 794
+    },
+    {
+      "id": "etsy-4369106717",
+      "etsyListingId": "4369106717",
+      "etsyTitle": "Hello Fall Pumpkin Wooden Sign Layered Autumn Wall Décor with Colorful Leaves",
+      "displayTitle": "Hello Fall Pumpkin Sign",
+      "shortDescription": "Hello Fall Pumpkin Sign from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$10.99",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/4369106717/hello-fall-pumpkin-wooden-sign-layered",
+      "primaryImage": "assets/images/products/4369106717-hello-fall-pumpkin-sign.webp",
+      "imageFallback": "assets/images/products/4369106717-hello-fall-pumpkin-sign.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/r/il/a218b3/7244588639/il_794xN.7244588639_pl5w.jpg",
+      "alternateImages": [],
+      "categories": [
+        "halloween-fall",
+        "home-decor"
+      ],
+      "occasions": [
+        "fall-season"
+      ],
+      "recipients": [],
+      "seasons": [
+        "fall"
+      ],
+      "tags": [
+        "hello",
+        "fall",
+        "pumpkin",
+        "sign",
+        "halloween-fall",
+        "home-decor"
+      ],
+      "personalized": null,
+      "customAvailable": null,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 794
+    },
+    {
+      "id": "etsy-4367356545",
+      "etsyListingId": "4367356545",
+      "etsyTitle": "Buffalo Plaid Pumpkin Fall Sign Rustic Round Wooden Autumn Wall Décor",
+      "displayTitle": "Buffalo Plaid Pumpkin Sign",
+      "shortDescription": "Buffalo Plaid Pumpkin Sign from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$10.99",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/4367356545/buffalo-plaid-pumpkin-fall-sign-rustic",
+      "primaryImage": "assets/images/products/4367356545-buffalo-plaid-pumpkin-sign.webp",
+      "imageFallback": "assets/images/products/4367356545-buffalo-plaid-pumpkin-sign.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/r/il/3011ff/7188409932/il_794xN.7188409932_9kz7.jpg",
+      "alternateImages": [],
+      "categories": [
+        "halloween-fall",
+        "home-decor"
+      ],
+      "occasions": [
+        "fall-season"
+      ],
+      "recipients": [],
+      "seasons": [
+        "fall"
+      ],
+      "tags": [
+        "buffalo",
+        "plaid",
+        "pumpkin",
+        "sign",
+        "halloween-fall",
+        "home-decor"
+      ],
+      "personalized": null,
+      "customAvailable": null,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 794
+    },
+    {
+      "id": "etsy-4358228565",
+      "etsyListingId": "4358228565",
+      "etsyTitle": "Welcome Fall Truck Sign: Layered Wood Farmhouse Autumn Decor",
+      "displayTitle": "Welcome Fall Truck Sign",
+      "shortDescription": "Welcome Fall Truck Sign from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$10.99",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/4358228565/welcome-fall-truck-sign-layered-wood",
+      "primaryImage": "assets/images/products/4358228565-welcome-fall-truck-sign.webp",
+      "imageFallback": "assets/images/products/4358228565-welcome-fall-truck-sign.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/c/1024/1024/0/218/il/f7f2d7/7215494593/il_794xN.7215494593_91az.jpg",
+      "alternateImages": [],
+      "categories": [
+        "halloween-fall",
+        "home-decor"
+      ],
+      "occasions": [
+        "fall-season",
+        "housewarming"
+      ],
+      "recipients": [],
+      "seasons": [
+        "fall"
+      ],
+      "tags": [
+        "welcome",
+        "fall",
+        "truck",
+        "sign",
+        "halloween-fall",
+        "home-decor"
+      ],
+      "personalized": null,
+      "customAvailable": null,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 794
+    },
+    {
+      "id": "etsy-4365036709",
+      "etsyListingId": "4365036709",
+      "etsyTitle": "Home Sweet Haunted Home Sign - Halloween Wall Hanging - Spooky Wooden Door Decor",
+      "displayTitle": "Home Sweet Haunted Home Sign",
+      "shortDescription": "Home Sweet Haunted Home Sign from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$10.99",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/4365036709/home-sweet-haunted-home-sign-halloween",
+      "primaryImage": "assets/images/products/4365036709-home-sweet-haunted-home-sign.webp",
+      "imageFallback": "assets/images/products/4365036709-home-sweet-haunted-home-sign.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/c/1024/1024/0/99/il/8342af/7176860246/il_794xN.7176860246_700y.jpg",
+      "alternateImages": [],
+      "categories": [
+        "halloween-fall",
+        "personalized-gifts",
+        "family-gifts",
+        "home-decor"
+      ],
+      "occasions": [
+        "halloween"
+      ],
+      "recipients": [
+        "aunt"
+      ],
+      "seasons": [
+        "fall"
+      ],
+      "tags": [
+        "home",
+        "sweet",
+        "haunted",
+        "sign",
+        "halloween-fall",
+        "personalized-gifts",
+        "family-gifts",
+        "home-decor"
+      ],
+      "personalized": null,
+      "customAvailable": null,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 794
+    },
+    {
+      "id": "etsy-4365034883",
+      "etsyListingId": "4365034883",
+      "etsyTitle": "Halloween Trick or Treat Sign - Ghost & Bat Wall Hanging - Spooky Wooden Door Decor",
+      "displayTitle": "Trick or Treat Ghost Sign",
+      "shortDescription": "Trick or Treat Ghost Sign from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$10.99",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/4365034883/halloween-trick-or-treat-sign-ghost-bat",
+      "primaryImage": "assets/images/products/4365034883-trick-or-treat-ghost-sign.webp",
+      "imageFallback": "assets/images/products/4365034883-trick-or-treat-ghost-sign.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/r/il/1daf3f/7224838159/il_794xN.7224838159_hn2u.jpg",
+      "alternateImages": [],
+      "categories": [
+        "halloween-fall",
+        "home-decor"
+      ],
+      "occasions": [
+        "halloween"
+      ],
+      "recipients": [],
+      "seasons": [
+        "fall"
+      ],
+      "tags": [
+        "trick",
+        "treat",
+        "ghost",
+        "sign",
+        "halloween-fall",
+        "home-decor"
+      ],
+      "personalized": null,
+      "customAvailable": null,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 1191
+    },
+    {
+      "id": "etsy-4365032439",
+      "etsyListingId": "4365032439",
+      "etsyTitle": "Halloween Welcome Sign: Spider & Bat Birch Wood Wall Hanging",
+      "displayTitle": "Halloween Spider & Bat Welcome Sign",
+      "shortDescription": "Halloween Spider & Bat Welcome Sign from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$10.99",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/4365032439/halloween-welcome-sign-spider-bat-birch",
+      "primaryImage": "assets/images/products/4365032439-halloween-spider-bat-welcome-sign.webp",
+      "imageFallback": "assets/images/products/4365032439-halloween-spider-bat-welcome-sign.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/r/il/3291f2/7224826917/il_794xN.7224826917_47bl.jpg",
+      "alternateImages": [],
+      "categories": [
+        "halloween-fall",
+        "home-decor"
+      ],
+      "occasions": [
+        "halloween",
+        "housewarming"
+      ],
+      "recipients": [],
+      "seasons": [
+        "fall"
+      ],
+      "tags": [
+        "halloween",
+        "spider",
+        "bat",
+        "welcome",
+        "sign",
+        "halloween-fall",
+        "home-decor"
+      ],
+      "personalized": null,
+      "customAvailable": null,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 1191
+    },
+    {
+      "id": "etsy-4365030081",
+      "etsyListingId": "4365030081",
+      "etsyTitle": "Haunted House Halloween Welcome Sign: Spooky Door Decor",
+      "displayTitle": "Haunted House Welcome Sign",
+      "shortDescription": "Haunted House Welcome Sign from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$10.99",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/4365030081/haunted-house-halloween-welcome-sign",
+      "primaryImage": "assets/images/products/4365030081-haunted-house-welcome-sign.webp",
+      "imageFallback": "assets/images/products/4365030081-haunted-house-welcome-sign.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/r/il/6b888a/7224811745/il_794xN.7224811745_blwf.jpg",
+      "alternateImages": [],
+      "categories": [
+        "halloween-fall",
+        "personalized-gifts",
+        "family-gifts",
+        "home-decor"
+      ],
+      "occasions": [
+        "halloween",
+        "housewarming"
+      ],
+      "recipients": [
+        "aunt"
+      ],
+      "seasons": [
+        "fall"
+      ],
+      "tags": [
+        "haunted",
+        "house",
+        "welcome",
+        "sign",
+        "halloween-fall",
+        "personalized-gifts",
+        "family-gifts",
+        "home-decor"
+      ],
+      "personalized": null,
+      "customAvailable": null,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 1191
+    },
+    {
+      "id": "etsy-4363030172",
+      "etsyListingId": "4363030172",
+      "etsyTitle": "Salem Broom Co. Halloween Sign: Layered Witch Broom Shop Decor",
+      "displayTitle": "Salem Broom Co. Sign",
+      "shortDescription": "Salem Broom Co. Sign from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$10.99",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/4363030172/salem-broom-co-halloween-sign-layered",
+      "primaryImage": "assets/images/products/4363030172-salem-broom-co-sign.webp",
+      "imageFallback": "assets/images/products/4363030172-salem-broom-co-sign.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/r/il/b8dd06/7166943614/il_794xN.7166943614_9ycv.jpg",
+      "alternateImages": [],
+      "categories": [
+        "halloween-fall",
+        "home-decor"
+      ],
+      "occasions": [
+        "halloween"
+      ],
+      "recipients": [],
+      "seasons": [
+        "fall"
+      ],
+      "tags": [
+        "salem",
+        "broom",
+        "sign",
+        "halloween-fall",
+        "home-decor"
+      ],
+      "personalized": null,
+      "customAvailable": null,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 1191
+    },
+    {
+      "id": "etsy-4363024932",
+      "etsyListingId": "4363024932",
+      "etsyTitle": "Spider Web Welcome Sign: Layered Wood Gothic Halloween Decor",
+      "displayTitle": "Gothic Spider Web Welcome Sign",
+      "shortDescription": "Gothic Spider Web Welcome Sign from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$10.99",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/4363024932/spider-web-welcome-sign-layered-wood",
+      "primaryImage": "assets/images/products/4363024932-gothic-spider-web-welcome-sign.webp",
+      "imageFallback": "assets/images/products/4363024932-gothic-spider-web-welcome-sign.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/r/il/3fa36b/7166906036/il_794xN.7166906036_q6z2.jpg",
+      "alternateImages": [],
+      "categories": [
+        "halloween-fall",
+        "home-decor"
+      ],
+      "occasions": [
+        "halloween",
+        "housewarming"
+      ],
+      "recipients": [],
+      "seasons": [
+        "fall"
+      ],
+      "tags": [
+        "gothic",
+        "spider",
+        "web",
+        "welcome",
+        "sign",
+        "halloween-fall",
+        "home-decor"
+      ],
+      "personalized": null,
+      "customAvailable": null,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 1191
+    },
+    {
+      "id": "etsy-4363044963",
+      "etsyListingId": "4363044963",
+      "etsyTitle": "Layered Wood Relax Sign: Coastal Adirondack Chair Decor",
+      "displayTitle": "Coastal Adirondack Relax Sign",
+      "shortDescription": "Coastal Adirondack Relax Sign from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$10.99",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/4363044963/layered-wood-relax-sign-coastal",
+      "primaryImage": "assets/images/products/4363044963-coastal-adirondack-relax-sign.webp",
+      "imageFallback": "assets/images/products/4363044963-coastal-adirondack-relax-sign.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/c/1024/1024/0/84/il/93037f/7214964429/il_794xN.7214964429_ep0k.jpg",
+      "alternateImages": [],
+      "categories": [
+        "home-decor"
+      ],
+      "occasions": [],
+      "recipients": [],
+      "seasons": [
+        "summer"
+      ],
+      "tags": [
+        "coastal",
+        "adirondack",
+        "relax",
+        "sign",
+        "home-decor"
+      ],
+      "personalized": null,
+      "customAvailable": null,
+      "featured": true,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 794
+    },
+    {
+      "id": "etsy-1894832635",
+      "etsyListingId": "1894832635",
+      "etsyTitle": "Dental Office Welcome Sign | Smiling Tooth Wall or Desk Decor | Pediatric Dentist Office Decor",
+      "displayTitle": "Dental Office Welcome Sign",
+      "shortDescription": "Dental Office Welcome Sign from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$44.99",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/1894832635/dental-office-welcome-sign-smiling-tooth",
+      "primaryImage": "assets/images/products/1894832635-dental-office-welcome-sign.webp",
+      "imageFallback": "assets/images/products/1894832635-dental-office-welcome-sign.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/r/il/18aa8c/6750086870/il_794xN.6750086870_2zd9.jpg",
+      "alternateImages": [],
+      "categories": [
+        "profession-gifts",
+        "business-office",
+        "home-decor"
+      ],
+      "occasions": [
+        "housewarming"
+      ],
+      "recipients": [
+        "dentist",
+        "dental-office"
+      ],
+      "seasons": [
+        "year-round"
+      ],
+      "tags": [
+        "dental",
+        "office",
+        "welcome",
+        "sign",
+        "profession-gifts",
+        "business-office",
+        "home-decor"
+      ],
+      "personalized": null,
+      "customAvailable": null,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 865
+    },
+    {
+      "id": "etsy-1879838368",
+      "etsyListingId": "1879838368",
+      "etsyTitle": "Lavender Om Lotus Wood Wall Art: Yoga Meditation Decor",
+      "displayTitle": "Lavender Om Lotus Wall Art",
+      "shortDescription": "Lavender Om Lotus Wall Art from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$10.99",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/1879838368/lavender-om-lotus-wood-wall-art-yoga",
+      "primaryImage": "assets/images/products/1879838368-lavender-om-lotus-wall-art.webp",
+      "imageFallback": "assets/images/products/1879838368-lavender-om-lotus-wall-art.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/r/il/e7ede9/7217769785/il_794xN.7217769785_ewg8.jpg",
+      "alternateImages": [],
+      "categories": [
+        "religious-inspirational",
+        "home-decor"
+      ],
+      "occasions": [],
+      "recipients": [],
+      "seasons": [
+        "year-round"
+      ],
+      "tags": [
+        "lavender",
+        "lotus",
+        "wall",
+        "art",
+        "religious-inspirational",
+        "home-decor"
+      ],
+      "personalized": null,
+      "customAvailable": null,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 794
+    },
+    {
+      "id": "etsy-1877081874",
+      "etsyListingId": "1877081874",
+      "etsyTitle": "F-Bomb Desk Accessory: Funny Laser Cut Wood Novelty Gift",
+      "displayTitle": "F-Bomb Desk Accessory",
+      "shortDescription": "F-Bomb Desk Accessory from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$6.99",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/1877081874/f-bomb-desk-accessory-funny-laser-cut",
+      "primaryImage": "assets/images/products/1877081874-f-bomb-desk-accessory.webp",
+      "imageFallback": "assets/images/products/1877081874-f-bomb-desk-accessory.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/r/il/9ac231/7217910181/il_794xN.7217910181_eqpp.jpg",
+      "alternateImages": [],
+      "categories": [
+        "business-office",
+        "novelty-gifts"
+      ],
+      "occasions": [],
+      "recipients": [],
+      "seasons": [
+        "year-round"
+      ],
+      "tags": [
+        "bomb",
+        "desk",
+        "accessory",
+        "business-office",
+        "novelty-gifts"
+      ],
+      "personalized": null,
+      "customAvailable": null,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 794
+    },
+    {
+      "id": "etsy-1876931456",
+      "etsyListingId": "1876931456",
+      "etsyTitle": "Cash is King Sign: Wooden Business Wall Decor (8.5\" x 11.75\")",
+      "displayTitle": "Cash Is King Business Sign",
+      "shortDescription": "Cash Is King Business Sign from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$30.00",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/1876931456/cash-is-king-sign-wooden-business-wall",
+      "primaryImage": "assets/images/products/1876931456-cash-is-king-business-sign.webp",
+      "imageFallback": "assets/images/products/1876931456-cash-is-king-business-sign.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/r/il/fcb3ea/7218060609/il_794xN.7218060609_6f8x.jpg",
+      "alternateImages": [],
+      "categories": [
+        "profession-gifts",
+        "business-office",
+        "home-decor"
+      ],
+      "occasions": [
+        "housewarming"
+      ],
+      "recipients": [],
+      "seasons": [
+        "year-round"
+      ],
+      "tags": [
+        "cash",
+        "king",
+        "business",
+        "sign",
+        "profession-gifts",
+        "business-office",
+        "home-decor"
+      ],
+      "personalized": null,
+      "customAvailable": null,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 794
+    },
+    {
+      "id": "etsy-1788479534",
+      "etsyListingId": "1788479534",
+      "etsyTitle": "Thin Blue Line Flag Plaque - Personalized Police Officer Tribute",
+      "displayTitle": "Personalized Thin Blue Line Plaque",
+      "shortDescription": "Personalized Thin Blue Line Plaque from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$75.00",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/1788479534/thin-blue-line-flag-plaque-personalized",
+      "primaryImage": "assets/images/products/1788479534-personalized-thin-blue-line-plaque.webp",
+      "imageFallback": "assets/images/products/1788479534-personalized-thin-blue-line-plaque.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/r/il/c9e48f/7218755619/il_794xN.7218755619_ec5t.jpg",
+      "alternateImages": [],
+      "categories": [
+        "patriotic-americana",
+        "personalized-gifts",
+        "profession-gifts",
+        "custom-projects",
+        "home-decor"
+      ],
+      "occasions": [
+        "patriotic-holidays"
+      ],
+      "recipients": [
+        "police-officer"
+      ],
+      "seasons": [
+        "year-round"
+      ],
+      "tags": [
+        "personalized",
+        "thin",
+        "blue",
+        "line",
+        "plaque",
+        "patriotic-americana",
+        "personalized-gifts",
+        "profession-gifts",
+        "custom-projects",
+        "home-decor"
+      ],
+      "personalized": true,
+      "customAvailable": true,
+      "featured": true,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 1191
+    },
+    {
+      "id": "etsy-1800371919",
+      "etsyListingId": "1800371919",
+      "etsyTitle": "Personalized Wooden Sports Phone Holder: Engraved Gift for Athletes",
+      "displayTitle": "Personalized Sports Phone Holder",
+      "shortDescription": "Personalized Sports Phone Holder from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$15.00",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/1800371919/personalized-wooden-sports-phone-holder",
+      "primaryImage": "assets/images/products/1800371919-personalized-sports-phone-holder.webp",
+      "imageFallback": "assets/images/products/1800371919-personalized-sports-phone-holder.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/c/1024/1024/0/120/il/8eef45/7218782699/il_794xN.7218782699_i4ur.jpg",
+      "alternateImages": [],
+      "categories": [
+        "personalized-gifts",
+        "business-office",
+        "custom-projects"
+      ],
+      "occasions": [],
+      "recipients": [
+        "athlete"
+      ],
+      "seasons": [
+        "year-round"
+      ],
+      "tags": [
+        "personalized",
+        "sports",
+        "phone",
+        "holder",
+        "personalized-gifts",
+        "business-office",
+        "custom-projects"
+      ],
+      "personalized": true,
+      "customAvailable": true,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 794
+    },
+    {
+      "id": "etsy-1535491922",
+      "etsyListingId": "1535491922",
+      "etsyTitle": "Custom Engraved Pencils",
+      "displayTitle": "Custom Engraved Pencils",
+      "shortDescription": "Custom Engraved Pencils from Kennedy Laser Works. See the Etsy listing for current options and complete details.",
+      "priceDisplay": "$2.00",
+      "priceSnapshotDate": "2026-07-22",
+      "etsyUrl": "https://www.etsy.com/listing/1535491922/custom-engraved-pencils",
+      "primaryImage": "assets/images/products/1535491922-custom-engraved-pencils.webp",
+      "imageFallback": "assets/images/products/1535491922-custom-engraved-pencils.jpg",
+      "remoteImageSource": "https://i.etsystatic.com/45577697/r/il/729ce6/7167487410/il_794xN.7167487410_6clb.jpg",
+      "alternateImages": [],
+      "categories": [
+        "personalized-gifts",
+        "profession-gifts",
+        "business-office",
+        "custom-projects"
+      ],
+      "occasions": [],
+      "recipients": [
+        "teacher",
+        "student"
+      ],
+      "seasons": [
+        "year-round"
+      ],
+      "tags": [
+        "custom",
+        "engraved",
+        "pencils",
+        "personalized-gifts",
+        "profession-gifts",
+        "business-office",
+        "custom-projects"
+      ],
+      "personalized": true,
+      "customAvailable": true,
+      "featured": false,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "imageWidth": 794,
+      "imageHeight": 794
+    }
+  ],
+  "imagePolicy": {
+    "format": "Optimized local WebP with local JPEG fallback",
+    "source": "Primary listing photographs from the shop owner's active Etsy listings"
+  }
 }

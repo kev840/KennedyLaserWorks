@@ -1,22 +1,40 @@
-# Catalog Import Guide
+# Catalog Refresh Guide
 
-The current catalog proves the interface with explicitly labeled sample records. Do not remove the sample label until a record has been verified against a current Etsy listing.
+## Current source and provenance
 
-## Import checklist
+The current `data/products.json` snapshot was captured from the public Kennedy Laser Works Etsy shop on 2026-07-22 with the shop owner's permission. It contains 65 unique active listings.
 
-1. Export or collect current Etsy listing data with permission.
-2. Copy optimized listing images into `assets/images/products/`.
-3. Add one object per listing to `data/products.json`.
-4. Use the exact current Etsy listing URL and displayed price.
-5. Assign taxonomy values found in `data/categories.json`.
-6. Set `active: true` only for available listings.
-7. Set `sample: false` only after title, price, URL, and imagery are verified.
-8. Preview through a local HTTP server and test every filter and external link.
+For each listing, the capture verified:
 
-## Reviews
+- Etsy listing ID and exact public URL
+- full Etsy card title
+- displayed price
+- primary listing image
+- active presence in the shop's complete two-page inventory
 
-Replace the review empty state only with verified customer review text. Record the Etsy source URL, review date, rating, and product context internally. Do not alter meaning, invent names, or publish private customer details. The current placeholder cards in `reviews.html` are structural only and are visibly labeled.
+Concise display titles and taxonomy are editorial website fields. They do not replace the original title, which remains preserved as `etsyTitle`.
 
-## Removing samples
+## Refresh procedure
 
-Sample records can be deleted directly from the `products` array without changing HTML or JavaScript. Remove sample image files only after a repository-wide reference check.
+1. Capture every active shop page and record a snapshot date.
+2. Verify the listing count and uniqueness by Etsy listing ID and URL.
+3. Preserve the exact Etsy title, displayed price, listing URL, and primary image source.
+4. Update concise display titles only when they remain faithful to the listing.
+5. Assign category, occasion, recipient, and season slugs from `data/categories.json` based only on listing evidence.
+6. Set personalization or custom availability only when the listing title or verified listing details support it.
+7. Download the owner's listing photographs and generate local WebP and JPEG variants.
+8. Remove inactive products rather than leaving dead Etsy links in the public collection.
+9. Update `catalogSnapshotDate` and each `priceSnapshotDate` together.
+10. Run `node scripts/validate-catalog.mjs`, then test search, filters, quick-view, and Etsy links through HTTP.
+
+## Pricing policy
+
+Website prices are a dated static snapshot, never a promise. Etsy is the final authority for current price, variations, availability, shipping, and checkout.
+
+## Categories with no current match
+
+Taxonomy can retain useful future categories, but the public filter menu is generated only from categories used by active listings. This prevents empty or fabricated collections. In this snapshot, no active listing could be truthfully classified as a pet memorial or graduation/retirement product.
+
+## Reviews and favorites
+
+Do not invent review text, ratings, customer names, or customer-favorite badges. The site links to Etsy for current verified feedback. `customerFavorite` remains `null` unless a reliable source supports the claim.

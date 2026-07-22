@@ -1,5 +1,96 @@
 {
-  "categories": ["Christmas & Winter", "Halloween & Fall", "Patriotic & Americana", "Weddings & Anniversaries", "Home Decor", "Personalized Gifts", "Pet Memorials", "Profession Gifts", "Religious & Inspirational", "Ornaments", "Custom Projects"],
-  "occasions": ["Anniversary", "Christmas", "Graduation", "Housewarming", "Memorial", "Patriotic Holidays", "Wedding"],
-  "recipients": ["Couples", "Families", "Friends", "Pet Owners", "Professionals", "Teachers", "Veterans"]
+  "categories": [
+    {
+      "slug": "christmas-winter",
+      "label": "Christmas & Winter"
+    },
+    {
+      "slug": "halloween-fall",
+      "label": "Halloween & Fall"
+    },
+    {
+      "slug": "patriotic-americana",
+      "label": "Patriotic & Americana"
+    },
+    {
+      "slug": "weddings-anniversaries",
+      "label": "Weddings & Anniversaries"
+    },
+    {
+      "slug": "home-decor",
+      "label": "Home Decor"
+    },
+    {
+      "slug": "personalized-gifts",
+      "label": "Personalized Gifts"
+    },
+    {
+      "slug": "pet-memorials",
+      "label": "Pet Memorials"
+    },
+    {
+      "slug": "memorial-keepsakes",
+      "label": "Memorial Keepsakes"
+    },
+    {
+      "slug": "profession-gifts",
+      "label": "Police, Firefighter, Military & Profession Gifts"
+    },
+    {
+      "slug": "religious-inspirational",
+      "label": "Religious & Inspirational"
+    },
+    {
+      "slug": "ornaments",
+      "label": "Ornaments"
+    },
+    {
+      "slug": "family-gifts",
+      "label": "Family Gifts"
+    },
+    {
+      "slug": "kitchen-cutting-boards",
+      "label": "Kitchen & Cutting Boards"
+    },
+    {
+      "slug": "business-office",
+      "label": "Business & Office"
+    },
+    {
+      "slug": "custom-projects",
+      "label": "Custom Projects"
+    },
+    {
+      "slug": "spring-easter",
+      "label": "Spring & Easter"
+    },
+    {
+      "slug": "valentines-day",
+      "label": "Valentine's Day"
+    },
+    {
+      "slug": "mothers-day",
+      "label": "Mother's Day"
+    },
+    {
+      "slug": "fathers-day",
+      "label": "Father's Day"
+    },
+    {
+      "slug": "graduation-retirement",
+      "label": "Graduation & Retirement"
+    },
+    {
+      "slug": "st-patricks-day",
+      "label": "St. Patrick's Day"
+    },
+    {
+      "slug": "geek-fandom",
+      "label": "Geek & Fandom"
+    },
+    {
+      "slug": "novelty-gifts",
+      "label": "Novelty Gifts"
+    }
+  ]
 }
