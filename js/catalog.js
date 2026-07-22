@@ -224,6 +224,10 @@
   };
 
   const activateProgressiveImages = (scope) => {
+    if (window.KLW?.enhanceImages) {
+      window.KLW.enhanceImages(scope);
+      return;
+    }
     scope.querySelectorAll("img.progressive-image").forEach((image) => {
       const reveal = () => image.classList.add("is-loaded");
       if (image.complete) reveal();
@@ -429,6 +433,17 @@
 
   quickView?.addEventListener("click", (event) => { if (event.target === quickView) closeQuickView(); });
   lightbox?.addEventListener("click", (event) => { if (event.target === lightbox) closeLightbox(); });
+  let swipeStartX = 0;
+  lightbox?.addEventListener("touchstart", (event) => {
+    if (activeGallery.length > 1) swipeStartX = event.changedTouches[0]?.clientX || 0;
+  }, { passive: true });
+  lightbox?.addEventListener("touchend", (event) => {
+    if (activeGallery.length < 2 || !swipeStartX) return;
+    const distance = (event.changedTouches[0]?.clientX || 0) - swipeStartX;
+    swipeStartX = 0;
+    if (Math.abs(distance) < 45) return;
+    showLightboxImage(activeGalleryIndex + (distance < 0 ? 1 : -1));
+  }, { passive: true });
   document.addEventListener("keydown", (event) => {
     if (lightbox?.open && event.key === "ArrowLeft") showLightboxImage(activeGalleryIndex - 1);
     if (lightbox?.open && event.key === "ArrowRight") showLightboxImage(activeGalleryIndex + 1);

@@ -13,6 +13,7 @@
   --font-display: "Cormorant Garamond", Georgia, serif;
   --font-body: "Inter", Arial, sans-serif;
   --shadow-sm: 0 10px 35px rgba(39, 27, 19, .1);
+  --shadow-card: 0 16px 45px rgba(39, 27, 19, .12);
   --shadow-lg: 0 30px 80px rgba(24, 16, 11, .22);
   --radius-sm: .5rem;
   --radius-md: 1rem;
@@ -40,6 +41,8 @@ em { color: var(--color-bronze-light); font-weight: 500; }
 .container { width: min(calc(100% - 3rem), var(--container)); margin-inline: auto; }
 .section { padding-block: var(--space-section); }
 .section--cream { background: var(--color-cream); }
+main > .section { position: relative; }
+main > .section + .section::before { content: ""; position: absolute; inset: 0 max(1.5rem,calc((100% - var(--container))/2)) auto; height: 1px; background: linear-gradient(90deg,transparent,rgba(45,30,24,.12),transparent); }
 .visually-hidden { clip: rect(0 0 0 0); clip-path: inset(50%); height: 1px; overflow: hidden; position: absolute; white-space: nowrap; width: 1px; }
 .skip-link { position: fixed; left: 1rem; top: 1rem; z-index: 999; background: var(--color-ivory); color: var(--color-forest); padding: .75rem 1rem; transform: translateY(-200%); }
 .skip-link:focus { transform: translateY(0); }
@@ -60,8 +63,8 @@ em { color: var(--color-bronze-light); font-weight: 500; }
 .nav-toggle { display: none; background: none; border: 0; color: white; cursor: pointer; padding: .6rem; }
 .nav-toggle span { display: block; width: 1.7rem; height: 1px; margin: .36rem; background: currentColor; transition: var(--transition); }
 
-.button { display: inline-flex; align-items: center; justify-content: center; gap: 1.25rem; min-height: 3.65rem; padding: .9rem 1.5rem; border: 1px solid transparent; border-radius: var(--radius-pill); font-size: .78rem; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; transition: color var(--transition), background var(--transition), transform var(--transition), border-color var(--transition); }
-.button:hover { transform: translateY(-2px); }
+.button { display: inline-flex; align-items: center; justify-content: center; gap: 1.25rem; min-height: 3.65rem; padding: .9rem 1.5rem; border: 1px solid transparent; border-radius: var(--radius-pill); font-size: .78rem; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; transition: color var(--transition), background var(--transition), transform var(--transition), border-color var(--transition), box-shadow var(--transition); }
+.button:hover { box-shadow: 0 9px 22px rgba(24,16,11,.14); transform: translateY(-2px); }
 .button:active { transform: translateY(0); }
 .button--small { min-height: 2.8rem; padding: .65rem 1.2rem; font-size: .68rem; }
 .button--light { color: var(--color-forest); background: white; }

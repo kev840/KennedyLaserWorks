@@ -23,9 +23,16 @@
   });
 
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
+    if (event.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") {
       setMenuState(false);
       toggle.focus();
+    }
+    if (event.key === "Tab" && toggle.getAttribute("aria-expanded") === "true") {
+      const focusable = [toggle, ...navigation.querySelectorAll("a[href]")];
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
     }
   });
 

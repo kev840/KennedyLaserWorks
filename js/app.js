@@ -7,17 +7,16 @@
   const enhanceImages = (scope = document) => {
     const images = scope.matches?.("img[loading='lazy']") ? [scope] : scope.querySelectorAll?.("img[loading='lazy']") || [];
     images.forEach((image) => {
-      if (image.classList.contains("progressive-image")) return;
+      if (image.dataset.progressiveReady === "true") return;
+      image.dataset.progressiveReady = "true";
       image.classList.add("progressive-image");
       const reveal = () => image.classList.add("is-loaded");
       if (image.complete) reveal();
       else image.addEventListener("load", reveal, { once: true });
     });
   };
+  window.KLW = Object.freeze({ enhanceImages });
   enhanceImages();
-  new MutationObserver((mutations) => mutations.forEach((mutation) => mutation.addedNodes.forEach((node) => {
-    if (node instanceof Element) enhanceImages(node);
-  }))).observe(document.body, { childList: true, subtree: true });
 
   const revealItems = document.querySelectorAll(".reveal-on-scroll");
 
