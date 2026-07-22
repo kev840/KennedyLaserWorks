@@ -6,6 +6,7 @@ const rootDirectory = path.resolve(path.dirname(fileURLToPath(import.meta.url)),
 const pages = (await readdir(rootDirectory)).filter((file) => file.endsWith(".html"));
 const failures = [];
 const localReferencePattern = /(?:href|src)="([^"#]+)"/g;
+const externalLinks = new Set();
 
 for (const page of pages) {
   const markup = await readFile(path.join(rootDirectory, page), "utf8");
@@ -23,6 +24,18 @@ for (const page of pages) {
   ];
   requiredPatterns.forEach(([pattern, label]) => { if (!pattern.test(markup)) failures.push(`${page}: missing ${label}`); });
   if (/href="tel:/.test(markup)) failures.push(`${page}: public phone link found`);
+
+  for (const match of markup.matchAll(/<img\b[^>]*>/g)) {
+    const image = match[0];
+    if (!/\salt="[^"]*"/.test(image)) failures.push(`${page}: image missing alt text`);
+    if (!/\swidth="\d+"/.test(image) || !/\sheight="\d+"/.test(image)) failures.push(`${page}: image missing intrinsic dimensions`);
+  }
+
+  for (const match of markup.matchAll(/<a\b[^>]*href="(https?:[^"]+)"[^>]*>/g)) {
+    const link = match[0];
+    try { externalLinks.add(new URL(match[1]).origin); } catch { failures.push(`${page}: invalid external URL ${match[1]}`); }
+    if (/target="_blank"/.test(link) && !/rel="[^"]*noopener[^"]*"/.test(link)) failures.push(`${page}: external new-tab link missing noopener`);
+  }
 
   for (const match of markup.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
     try { JSON.parse(match[1]); } catch (error) { failures.push(`${page}: invalid JSON-LD (${error.message})`); }
@@ -46,5 +59,5 @@ if (failures.length) {
   console.error(failures.join("\n"));
   process.exitCode = 1;
 } else {
-  console.log(`Validated metadata, structured data, landmarks, IDs, and local references across ${pages.length} HTML pages.`);
+  console.log(`Validated metadata, structured data, headings, images, links, IDs, and local references across ${pages.length} HTML pages (${externalLinks.size} external origins).`);
 }
