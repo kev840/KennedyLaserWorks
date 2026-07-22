@@ -23,7 +23,7 @@
     { slug: "weddings-anniversaries", label: "Weddings & Anniversaries", description: "Personalized pieces that preserve meaningful names and dates." },
     { slug: "home-decor", label: "Home Décor", description: "Warm, distinctive details for doors, walls, kitchens, and gathering spaces." },
     { slug: "personalized-gifts", label: "Personalized Gifts", description: "Made-to-order gifts shaped around the people receiving them." },
-    { slug: "pet-memorials", label: "Pet Memorials", description: "Thoughtful personalized tributes created to keep a memory close." },
+    { slug: "memorial-keepsakes", label: "Memorial Keepsakes", description: "Thoughtful personalized tributes created to keep a memory close." },
     { slug: "ornaments", label: "Ornaments", description: "Layered keepsakes for holidays, milestones, and family traditions." },
     { slug: "custom-projects", label: "Custom Work", description: "A starting point for original wording, dimensions, and design ideas." }
   ];
@@ -42,6 +42,15 @@
   const escapeHtml = (value = "") => String(value).replace(/[&<>'"]/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[character]);
   const uniqueById = (items) => [...new Map(items.map((item) => [item.id, item])).values()];
   const picture = (product, className = "") => `<picture class="${className}"><source srcset="${escapeHtml(product.primaryImage)}" type="image/webp"><img src="${escapeHtml(product.imageFallback)}" alt="${escapeHtml(product.displayTitle)}" loading="lazy" width="${product.imageWidth || 794}" height="${product.imageHeight || 794}"></picture>`;
+  const enhanceGeneratedImages = (scope) => {
+    if (window.KLW?.enhanceImages) return window.KLW.enhanceImages(scope);
+    scope.querySelectorAll("img[loading='lazy']").forEach((image) => {
+      image.classList.add("progressive-image");
+      const reveal = () => image.classList.add("is-loaded");
+      if (image.complete) reveal();
+      else image.addEventListener("load", reveal, { once: true });
+    });
+  };
 
   const badgeFor = (product) => {
     const definitions = [
@@ -113,10 +122,11 @@
       ...active.filter((product) => product.customerFavorite === true),
       ...active.filter((product) => product.featured)
     ]).slice(0, 6);
-    favoritesGrid.innerHTML = favorites.map(productCard).join("");
+    favoritesGrid.innerHTML = favorites.slice(0, 3).map(productCard).join("");
 
     const customProducts = customProductIds.map((id) => active.find((product) => product.id === id)).filter(Boolean);
     customGrid.innerHTML = customProducts.map((product, index) => `<a class="home-custom-example home-custom-example--${index + 1}" href="${escapeHtml(product.etsyUrl)}" target="_blank" rel="noopener">${picture(product)}<span>${escapeHtml(product.displayTitle)}</span></a>`).join("");
+    enhanceGeneratedImages(document.querySelector("main"));
   }).catch(() => {
     seasonalGrid.innerHTML = '<p class="seasonal-fallback">Seasonal pieces could not load. <a href="collections.html">Browse the complete collection</a>.</p>';
     collectionsGrid.innerHTML = '<p>Collections could not load. <a class="arrow-link" href="collections.html">Browse all products <span aria-hidden="true">→</span></a></p>';
