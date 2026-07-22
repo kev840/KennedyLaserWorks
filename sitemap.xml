@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Confirm the production domain before deployment. -->
+  <!-- Generated from the current site pages and populated catalog categories. -->
   <url><loc>https://kennedylaserworks.com/</loc></url>
   <url><loc>https://kennedylaserworks.com/collections.html</loc></url>
   <url><loc>https://kennedylaserworks.com/custom-work.html</loc></url>
@@ -9,7 +9,6 @@
   <url><loc>https://kennedylaserworks.com/contact.html</loc></url>
   <url><loc>https://kennedylaserworks.com/privacy.html</loc></url>
   <url><loc>https://kennedylaserworks.com/terms.html</loc></url>
-  <!-- Bookmarkable live-catalog collection views. -->
   <url><loc>https://kennedylaserworks.com/collections.html?category=christmas-winter</loc></url>
   <url><loc>https://kennedylaserworks.com/collections.html?category=halloween-fall</loc></url>
   <url><loc>https://kennedylaserworks.com/collections.html?category=patriotic-americana</loc></url>
