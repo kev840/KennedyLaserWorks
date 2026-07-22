@@ -3,11 +3,11 @@
 ## Before public launch
 
 - Confirm production domain and add canonical URLs to every page
-- Import verified Etsy listings and remove sample catalog records
-- Supply a real maker/workshop portrait for the About page placeholder
-- Import verified Etsy reviews with customer permission where appropriate
+- Confirm the intended production domain and canonical URLs
+- Re-capture the Etsy inventory immediately before public launch so prices and availability are current
+- Add a dedicated maker portrait later if desired; the About page currently uses real workshop photography
 - Confirm legal copy and final Etsy shop policies
-- Optimize final catalog photography into appropriately sized WebP/AVIF variants
+- Consider AVIF variants if host/browser analytics show a material benefit beyond the current WebP/JPEG set
 - Connect production analytics only if desired, then update privacy/consent handling
 
 ## Future enhancements

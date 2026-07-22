@@ -5,8 +5,8 @@
 - Confirm the final domain
 - Add unique canonical URLs to all HTML pages
 - Update `sitemap.xml` and the sitemap line in `robots.txt` if the domain differs
-- Import verified catalog data or intentionally retain visible sample labels
-- Replace the About page maker-photo placeholder
+- Run `node scripts/validate-catalog.mjs` against the verified 65-listing snapshot
+- Confirm that the dated price disclosure appears above the catalog
 - Test from an HTTP preview, not only `file://`
 - Verify Etsy, Facebook, and email links
 - Run accessibility, responsive, console, and broken-path checks

@@ -2,55 +2,67 @@
 
 Production-oriented static website for Kennedy Laser Works, a made-to-order laser engraving and cutting business in Budd Lake, New Jersey.
 
+## Current catalog
+
+Phase 4 imports all 65 active Etsy listings captured on 2026-07-22. Every product record includes the verified Etsy listing title, a concise display title, displayed price snapshot, exact listing URL, primary listing photograph, taxonomy, and only those personalization/custom flags supported by the listing title.
+
+Product photography is stored locally as optimized WebP with an optimized JPEG fallback. Checkout, current options, and final pricing remain on Etsy.
+
 ## Architecture
 
-- Eight semantic HTML pages with one visual system and consistent navigation/footer
+- Eight semantic HTML pages with one responsive visual system
 - `css/style.css`: design tokens and foundational components
-- `css/pages.css`: interior-page, catalog, form, and content components
+- `css/pages.css`: catalog, quick-view, seasonal, form, and interior-page components
 - `css/responsive.css`: tablet and mobile layout changes
 - `css/animations.css`: restrained motion with reduced-motion support
-- `js/navigation.js`: accessible mobile navigation and sticky-header state
-- `js/app.js`: reveal behavior, rotating featured collection, and copyright year
-- `js/seasonal.js`: documented month-to-promotion homepage schedule
-- `js/catalog.js`: JSON-backed search, filters, product rendering, and missing-image handling
-- `js/form.js`: transparent mailto quote-request workflow
-- `data/products.json`: replaceable product records
-- `data/categories.json`: catalog taxonomy
+- `js/app.js`: reveal behavior, rotating real-product feature, and copyright year
+- `js/seasonal.js`: month-aware real-product promotion with documented fallbacks
+- `js/catalog.js`: JSON-backed search, compound filters, URL state, filter chips, quick-view, and ItemList schema
+- `data/products.json`: verified listing snapshot
+- `data/categories.json`: reusable category taxonomy
+- `scripts/validate-catalog.mjs`: catalog, image, claim, and local-path validation
 
 ## Preview locally
 
-The JSON catalog must be served over HTTP because browsers normally block `fetch()` from `file://` pages.
-
-From the repository root, run either:
+The catalog uses `fetch()`, so serve the site over HTTP from the repository root:
 
 ```text
 python -m http.server 8000
 ```
 
-or any static-site preview server, then open `http://localhost:8000/`. Opening `index.html` directly still displays every page, but the collections grid shows a helpful server-required message.
+Then open `http://localhost:8000/`.
 
-## Update product data
+## Validate
 
-Edit `data/products.json`. Each record supports `id`, `title`, `shortDescription`, `priceDisplay`, `etsyUrl`, `primaryImage`, `alternateImages`, `categories`, `occasions`, `recipients`, `seasons`, `tags`, `personalized`, `customAvailable`, `featured`, `customerFavorite`, `dateAdded`, `active`, and `sample`.
+Run:
 
-Use verified listing titles, prices, images, and Etsy URLs. Set `sample` to `false` only for verified records. See `docs/CATALOG_IMPORT.md`.
+```text
+node scripts/validate-catalog.mjs
+```
 
-## Seasonal rotation
+The validator checks the expected 65 unique active listings, price snapshot consistency, Etsy URL/ID matching, taxonomy, all 130 local image variants, public sample language, the no-public-phone rule, and local HTML references.
 
-The `seasonalSchedule` object in `js/seasonal.js` maps every calendar month to a label, headline, and three collection links. Edit that object to shift promotion lead times without changing homepage HTML. All collections remain accessible in `collections.html` regardless of seasonal promotion.
+## Catalog behavior
 
-## Replace sample content
+Visitors can search across display titles, full Etsy titles, descriptions, categories, occasions, recipients, and tags. Category, season, occasion, recipient, price, personalization, and custom-option filters can be combined. State is encoded in query parameters so a result set can be bookmarked or shared.
 
-The catalog records currently have `sample: true` and are visibly labeled. Replace them with verified Etsy records, then remove unused sample images only after confirming no page references them. Reviews remain an explicit empty state until verified Etsy reviews are supplied.
+Quick-view dialogs keep discovery on-site while Etsy remains the final destination for configuration and secure checkout. Prices are explicitly disclosed as a static snapshot.
+
+## Seasonal behavior
+
+`js/seasonal.js` maps each month to three relevant category slugs. Product selection follows this order:
+
+1. Editorially featured products matching the current season
+2. Other matching products
+3. Verified customer favorites, if such a flag is ever supported
+4. Current Etsy catalog order
+
+The final fallback prevents an empty homepage. No `dateAdded` or customer-favorite claims are made because those fields were not reliably available in the public listing capture.
+
+## Reviews
+
+The website does not reproduce or invent review text or ratings. Review calls-to-action lead to Etsy, where feedback remains connected to a verified purchase.
 
 ## Deployment
 
-This is a framework-free static site and can be hosted on GitHub Pages, Netlify, Cloudflare Pages, Vercel static hosting, conventional cPanel hosting, or another static host. Confirm the production domain and uncomment/add canonical tags before launch. See `docs/DEPLOYMENT.md`.
-
-## GoDaddy Website Builder limitations
-
-GoDaddy Website Builder generally does not provide direct deployment of an arbitrary multi-file static site with custom JSON and JavaScript architecture. Rebuilding this site inside its visual editor would lose the maintainable file structure and may limit catalog filtering, source control, and deployment automation. If the domain remains registered at GoDaddy, it can point to a separate static host through DNS. Conventional GoDaddy web hosting with file upload is different from Website Builder and may host these files.
-
-## Recommended hosting
-
-GitHub Pages is suitable for a simple public repository workflow. Netlify or Cloudflare Pages are recommended when preview deployments, redirects, custom headers, or easy form integrations may be useful later. Checkout should continue on Etsy.
+This framework-free site can be hosted on GitHub Pages, Netlify, Cloudflare Pages, Vercel static hosting, or conventional file hosting. Confirm the production domain and add canonical tags before launch. See `docs/DEPLOYMENT.md` and `docs/CATALOG_IMPORT.md`.
