@@ -16,7 +16,8 @@ const SHOP_NAME = process.env.ETSY_SHOP_NAME || "KennedyLaserWorks";
 const CONCURRENCY = Math.max(1, Math.min(6, Number(process.env.ETSY_IMPORT_CONCURRENCY) || 3));
 const MAX_IMAGE_EDGE = Math.max(794, Math.min(2000, Number(process.env.ETSY_IMAGE_MAX_EDGE) || 1200));
 const IMAGE_ROTATIONS = new Map([
-  ["6704286019", 270]
+  ["6704286019", 270],
+  ["6419056349", 270]
 ]);
 
 const catalog = JSON.parse(await readFile(catalogPath, "utf8"));

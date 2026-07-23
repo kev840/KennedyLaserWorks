@@ -76,7 +76,7 @@
 .catalog-card__image { position: relative; display: block; width: 100%; aspect-ratio: 1/1; padding: 0; overflow: hidden; border: 0; background: #eee8dd; cursor: pointer; }
 .catalog-card__image picture { display: block; width: 100%; height: 100%; }
 .catalog-card__image img { width: 100%; height: 100%; object-fit: contain; transition: transform 700ms cubic-bezier(.2,.7,.2,1), filter 350ms ease; }
-.catalog-card:hover .catalog-card__image img { transform: scale(1.055); filter: saturate(1.035); }
+.catalog-card:hover .catalog-card__image img { transform: scale(1.02); filter: saturate(1.035); }
 .catalog-badges { position: absolute; top: .9rem; left: .9rem; z-index: 1; display: flex; flex-wrap: wrap; gap: .4rem; max-width: calc(100% - 1.8rem); pointer-events: none; }
 .collection-badge { display: inline-flex; align-items: center; min-height: 1.65rem; padding: .32rem .65rem; border: 1px solid rgba(255,255,255,.35); border-radius: var(--radius-pill); color: white; background: rgba(23,58,43,.9); box-shadow: 0 5px 15px rgba(20,24,20,.14); backdrop-filter: blur(5px); font-size: .55rem; font-weight: 600; letter-spacing: .09em; line-height: 1; text-transform: uppercase; }
 .catalog-card:hover .catalog-card__quick-label, .catalog-card__image:focus-visible .catalog-card__quick-label { opacity: 1; transform: translateY(0); }

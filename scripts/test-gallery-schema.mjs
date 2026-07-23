@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const source = await readFile(path.join(root, "js", "product-gallery.js"), "utf8");
+const galleryStyles = await readFile(path.join(root, "css", "collections.css"), "utf8");
 const preloaded = [];
 class TestImage {
   set src(value) { preloaded.push(value); }
@@ -46,4 +47,10 @@ const legacy = tools.images({ displayTitle: "Legacy", primaryImage: "legacy.webp
 assert.equal(legacy.length, 1, "Single-image legacy products should remain unchanged.");
 assert.equal(legacy[0].fallback, "legacy.jpg");
 
-console.log("Validated canonical multi-image galleries, next-image preloading, and single-image backward compatibility.");
+assert.match(galleryStyles, /\.quick-view__main-image picture\s*\{[^}]*display:\s*grid[^}]*min-height:\s*0/s, "Quick View pictures must establish a stable, constrained viewport.");
+assert.match(galleryStyles, /\.quick-view__main-image img\s*\{[^}]*object-fit:\s*contain[^}]*object-position:\s*center/s, "Quick View images must remain fully visible and centered.");
+assert.match(galleryStyles, /\.product-detail__zoom img\s*\{[^}]*object-fit:\s*contain[^}]*object-position:\s*center/s, "Product-detail images must remain fully visible and centered.");
+assert.match(galleryStyles, /\.product-lightbox img\s*\{[^}]*object-fit:\s*contain[^}]*object-position:\s*center/s, "Lightbox images must remain fully visible and centered.");
+assert.doesNotMatch(galleryStyles, /(?:quick-view__main-image|product-detail__zoom|product-lightbox)[^{]*\{[^}]*object-fit:\s*cover/s, "Full-size gallery images must never use cover cropping.");
+
+console.log("Validated canonical multi-image galleries, uncropped contain-mode presentation, next-image preloading, and single-image backward compatibility.");

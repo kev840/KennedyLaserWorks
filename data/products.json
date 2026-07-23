@@ -5131,8 +5131,8 @@
         {
           "src": "assets/images/products/1812525171-hand-painted-santa-ornament-03.webp",
           "fallback": "assets/images/products/1812525171-hand-painted-santa-ornament-03.jpg",
-          "width": 916,
-          "height": 1200,
+          "width": 1200,
+          "height": 916,
           "alt": "Hand-Painted Santa Ornament — view 3",
           "rank": 3,
           "etsyImageId": "6419056349",
@@ -5198,8 +5198,8 @@
           "remoteSource": "https://i.etsystatic.com/45577697/r/il/201151/7170416720/il_fullxfull.7170416720_2krp.jpg"
         },
         {
-          "width": 916,
-          "height": 1200,
+          "width": 1200,
+          "height": 916,
           "alt": "Hand-Painted Santa Ornament — view 3",
           "rank": 3,
           "etsyImageId": "6419056349",
