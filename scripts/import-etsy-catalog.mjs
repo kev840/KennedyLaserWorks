@@ -15,6 +15,9 @@ const API_BASE = "https://openapi.etsy.com/v3/application";
 const SHOP_NAME = process.env.ETSY_SHOP_NAME || "KennedyLaserWorks";
 const CONCURRENCY = Math.max(1, Math.min(6, Number(process.env.ETSY_IMPORT_CONCURRENCY) || 3));
 const MAX_IMAGE_EDGE = Math.max(794, Math.min(2000, Number(process.env.ETSY_IMAGE_MAX_EDGE) || 1200));
+const IMAGE_ROTATIONS = new Map([
+  ["6704286019", 270]
+]);
 
 const catalog = JSON.parse(await readFile(catalogPath, "utf8"));
 
@@ -150,8 +153,10 @@ const imageFileBase = (product, index) => {
   return index === 0 ? firstBase : `${firstBase}-${String(index + 1).padStart(2, "0")}`;
 };
 
-const optimizeImage = async (buffer, jpgPath, webpPath) => {
-  const pipeline = sharp(buffer).rotate().resize({ width: MAX_IMAGE_EDGE, height: MAX_IMAGE_EDGE, fit: "inside", withoutEnlargement: true });
+const optimizeImage = async (buffer, jpgPath, webpPath, rotation = 0) => {
+  let pipeline = sharp(buffer).rotate();
+  if (rotation) pipeline = pipeline.rotate(rotation);
+  pipeline = pipeline.resize({ width: MAX_IMAGE_EDGE, height: MAX_IMAGE_EDGE, fit: "inside", withoutEnlargement: true });
   const { data: jpg, info } = await pipeline.clone().flatten({ background: "#eee8dd" }).jpeg({ quality: 84, progressive: true, mozjpeg: true }).toBuffer({ resolveWithObject: true });
   const webp = await pipeline.clone().webp({ quality: 80, effort: 5, smartSubsample: true }).toBuffer();
   if (!dryRun) await Promise.all([writeFile(jpgPath, jpg), writeFile(webpPath, webp)]);
@@ -171,7 +176,7 @@ const importProductImages = async (product, listing) => {
     const jpgPath = path.join(imageDirectory, `${base}.jpg`);
     const webpPath = path.join(imageDirectory, `${base}.webp`);
     const buffer = Buffer.from(await (await request(remoteSource)).arrayBuffer());
-    const dimensions = await optimizeImage(buffer, jpgPath, webpPath);
+    const dimensions = await optimizeImage(buffer, jpgPath, webpPath, IMAGE_ROTATIONS.get(String(image.listing_image_id)) || 0);
     records.push({
       webp: toWebPath(webpPath),
       fallback: toWebPath(jpgPath),

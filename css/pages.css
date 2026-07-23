@@ -189,6 +189,16 @@
 .maker-story__photo img { width: 100%; height: 37rem; object-fit: cover; }
 .review-empty { max-width: 48rem; margin-inline: auto; padding: clamp(2rem,6vw,5rem); text-align: center; border-radius: var(--radius-md); background: var(--color-cream); }
 .review-empty h2 { color: var(--color-forest); }
+.page-hero--not-found { min-height: min(50rem,88vh); display: grid; align-items: center; }
+.page-hero--not-found h1 { max-width: 14ch; font-size: clamp(3.15rem,6vw,6.25rem); }
+.not-found-hero { display: grid; grid-template-columns: minmax(0,1.35fr) minmax(16rem,.65fr); gap: clamp(2.5rem,7vw,7rem); align-items: center; }
+.not-found-hero .final-actions { justify-content: flex-start; margin-top: 2rem; }
+.not-found-mark { width: min(100%,24rem); justify-self: end; color: rgba(255,253,248,.86); }
+.not-found-mark svg { display: block; width: 100%; height: auto; }
+.not-found-mark circle, .not-found-mark__grain { fill: none; stroke: currentColor; stroke-width: 3; }
+.not-found-mark__laser { fill: none; stroke: var(--color-sage,#6f8b70); stroke-width: 10; stroke-linecap: round; stroke-linejoin: round; }
+.not-found-mark__spark { fill: none; stroke: var(--color-bronze,#d6ae79); stroke-width: 7; stroke-linecap: round; }
+.not-found-mark__grain { opacity: .38; stroke-linecap: round; }
 .contact-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; }
 .contact-card { padding: 2rem; border-radius: var(--radius-sm); background: var(--color-cream); }
 .contact-card h2 { color: var(--color-forest); font-size: 2rem; }
@@ -352,6 +362,9 @@
 
 @media (max-width: 40rem) {
   .page-hero { padding: calc(var(--header-height) + 4rem) 0 4rem; }
+  .page-hero--not-found { min-height: auto; }
+  .not-found-hero { grid-template-columns: 1fr; }
+  .not-found-mark { width: min(16rem,68vw); justify-self: start; order: -1; opacity: .8; }
   .breadcrumbs a, .clear-filters, .catalog-toolbar .arrow-link { display: inline-flex; align-items: center; min-height: 2.75rem; }
   .trust-grid { grid-template-columns: 1fr; gap: 0; }
   .trust-item, .trust-item:first-child, .trust-item:last-child { padding: 1rem 0; border-right: 0; border-bottom: 1px solid var(--color-cream-deep); }

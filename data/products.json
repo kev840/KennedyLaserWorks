@@ -39,8 +39,8 @@
         {
           "src": "assets/images/products/1862372498-shamrock-door-hanger-04.webp",
           "fallback": "assets/images/products/1862372498-shamrock-door-hanger-04.jpg",
-          "width": 1200,
-          "height": 1077,
+      "width": 1077,
+      "height": 1200,
           "alt": "Shamrock Door Hanger — view 4",
           "rank": 4,
           "etsyImageId": "6704286019",
@@ -111,8 +111,8 @@
           "remoteSource": "https://i.etsystatic.com/45577697/r/il/951a63/6656244022/il_fullxfull.6656244022_neip.jpg"
         },
         {
-          "width": 1200,
-          "height": 1077,
+        "width": 1077,
+        "height": 1200,
           "alt": "Shamrock Door Hanger — view 4",
           "rank": 4,
           "etsyImageId": "6704286019",

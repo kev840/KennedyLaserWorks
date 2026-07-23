@@ -1,1 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#173a2b"/><circle cx="32" cy="32" r="22" fill="none" stroke="#d6ae79" stroke-width="2"/><text x="32" y="39" fill="#fffdf8" font-family="Georgia,serif" font-size="21" text-anchor="middle">KLW</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title id="title">Kennedy Laser Works</title>
+  <rect width="512" height="512" rx="88" fill="#4a1f16"/>
+  <circle cx="256" cy="256" r="218" fill="none" stroke="#fffdf8" stroke-width="16"/>
+  <g fill="none" stroke="#2f6a43" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M192 112v86l35 35h58l35-35v-86" stroke-width="22"/>
+    <path d="M192 146h92M192 177h92" stroke-width="16"/>
+    <path d="M256 233v57" stroke-width="14"/>
+    <path d="M187 290h138M208 315h96" stroke-width="13"/>
+    <path d="M256 267v46M232 279l48 24M280 279l-48 24" stroke="#fffdf8" stroke-width="10"/>
+  </g>
+  <g fill="none" stroke="#fffdf8" stroke-width="17" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M174 350v66M174 385l45-35M174 385l47 31"/>
+    <path d="M243 350v66h43"/>
+    <path d="M303 350l15 66 22-49 22 49 15-66"/>
+  </g>
+</svg>

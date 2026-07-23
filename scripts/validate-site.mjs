@@ -9,6 +9,17 @@ const localReferencePattern = /(?:href|src)="([^"#]+)"/g;
 const externalLinks = new Set();
 const productionOrigin = "https://kennedylaserworks.com";
 const canonicalUrls = new Set();
+const requiredBrandAssets = [
+  "assets/icons/favicon.svg",
+  "assets/icons/favicon.ico",
+  "assets/icons/favicon-16x16.png",
+  "assets/icons/favicon-32x32.png",
+  "assets/icons/favicon-48x48.png",
+  "assets/icons/apple-touch-icon.png",
+  "assets/icons/android-chrome-192x192.png",
+  "assets/icons/android-chrome-512x512.png",
+  "site.webmanifest"
+];
 
 for (const page of pages) {
   const markup = await readFile(path.join(rootDirectory, page), "utf8");
@@ -44,6 +55,9 @@ for (const page of pages) {
     if (!/<meta name="twitter:card" content="summary_large_image">/.test(markup)) failures.push(`${page}: missing Twitter card`);
   }
   if (/href="tel:/.test(markup)) failures.push(`${page}: public phone link found`);
+  if (!/rel="apple-touch-icon"/.test(markup)) failures.push(`${page}: missing Apple touch icon`);
+  if (!/rel="manifest" href="site\.webmanifest"/.test(markup)) failures.push(`${page}: missing web manifest`);
+  if (/etsy[^"'<>]*favicon|favicon[^"'<>]*etsy/i.test(markup)) failures.push(`${page}: Etsy favicon reference found`);
 
   for (const match of markup.matchAll(/<img\b[^>]*>/g)) {
     const image = match[0];
@@ -68,6 +82,15 @@ for (const page of pages) {
     if (!cleanReference) continue;
     try { await access(path.resolve(rootDirectory, cleanReference)); } catch { failures.push(`${page}: missing local reference ${cleanReference}`); }
   }
+}
+
+for (const asset of requiredBrandAssets) {
+  try { await access(path.join(rootDirectory, asset)); } catch { failures.push(`missing brand asset ${asset}`); }
+}
+
+const manifest = JSON.parse(await readFile(path.join(rootDirectory, "site.webmanifest"), "utf8"));
+for (const size of ["192x192", "512x512"]) {
+  if (!manifest.icons?.some((icon) => icon.sizes === size && icon.type === "image/png")) failures.push(`site.webmanifest: missing ${size} PNG icon`);
 }
 
 const robots = await readFile(path.join(rootDirectory, "robots.txt"), "utf8");
