@@ -419,3 +419,180 @@
   .catalog-card__actions .button { width: 100%; }
   .active-filters { gap: .4rem; }
 }
+/* Quick View: wider gallery, readable long titles, responsive reflow. */
+.quick-view {
+  width: min(96vw, 92rem);
+  max-width: 92rem;
+  max-height: 94vh;
+  max-height: 94dvh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.quick-view__top {
+  grid-template-columns: minmax(34rem, 1.45fr) minmax(27rem, 1fr);
+  min-width: 0;
+  min-height: 44rem;
+}
+
+.quick-view__gallery {
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.quick-view__main-image {
+  height: clamp(36rem, 72vh, 48rem);
+  min-height: 0;
+}
+
+.quick-view__copy {
+  align-self: start;
+  min-width: 0;
+  padding:
+    clamp(4.5rem, 5vw, 5.25rem)
+    clamp(2.25rem, 3.5vw, 4rem)
+    clamp(2.75rem, 4vw, 4rem);
+  overflow: visible;
+}
+
+.quick-view__copy h2 {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  min-height: 0;
+  max-height: none;
+  margin-bottom: 1rem;
+  overflow: visible;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: normal;
+  text-overflow: clip;
+  -webkit-box-orient: initial;
+  -webkit-line-clamp: unset;
+}
+
+.quick-view__close {
+  top: 1rem;
+  right: 1rem;
+}
+
+/* Flexible two-column tablet/compact-desktop layout. */
+@media (max-width: 70rem) {
+  .quick-view {
+    width: min(96vw, 78rem);
+  }
+
+  .quick-view__top {
+    grid-template-columns: minmax(0, 1.15fr) minmax(21rem, 0.85fr);
+    min-height: 40rem;
+  }
+
+  .quick-view__main-image {
+    height: clamp(30rem, 62vh, 38rem);
+  }
+
+  .quick-view__copy {
+    padding: 4.25rem 2.25rem 3rem;
+  }
+}
+
+/* Stack before the two columns become cramped. */
+@media (max-width: 56rem) {
+  .quick-view {
+    width: min(94vw, 48rem);
+  }
+
+  .quick-view__top {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+  }
+
+  .quick-view__gallery {
+    width: 100%;
+  }
+
+  .quick-view__main-image {
+    height: clamp(28rem, 60vh, 38rem);
+  }
+
+  .quick-view__copy {
+    align-self: stretch;
+    padding: 2.75rem 2rem 3rem;
+  }
+}
+
+/* Touch-friendly, image-first mobile layout. */
+@media (max-width: 40rem) {
+  .quick-view {
+    width: calc(100% - 1rem);
+    max-width: none;
+    max-height: calc(100vh - 1rem);
+    max-height: calc(100dvh - 1rem);
+  }
+
+  .quick-view__top {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .quick-view__gallery {
+    min-width: 0;
+    padding: 0.65rem;
+  }
+
+  .quick-view__main-image {
+    height: clamp(21rem, 52vh, 30rem);
+  }
+
+  .quick-view__copy {
+    padding: 2rem 1.25rem 2.5rem;
+  }
+
+  .quick-view__copy h2 {
+    max-width: 100%;
+    font-size: clamp(2.25rem, 12vw, 3.25rem);
+    overflow-wrap: break-word;
+  }
+
+  .quick-view__close {
+    top: 0.75rem;
+    right: 0.75rem;
+  }
+}
+/* Quick View selected image: match the uncropped lightbox presentation. */
+.quick-view__main-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*
+ * The picture element fills the stable gallery viewport only to provide
+ * consistent centering. It does not control the rendered image dimensions.
+ */
+.quick-view__main-image picture {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* Support selected images rendered with or without a picture wrapper. */
+.quick-view__main-image picture > img,
+.quick-view__main-image > img {
+  display: block;
+  flex: 0 1 auto;
+  width: auto !important;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  min-width: 0;
+  min-height: 0;
+  object-fit: contain;
+  object-position: center;
+  margin: auto;
+}
