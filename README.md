@@ -4,23 +4,26 @@ Production-oriented static website for Kennedy Laser Works, a made-to-order lase
 
 ## Current catalog
 
-Phase 4 imports all 65 active Etsy listings captured on 2026-07-22. Every product record includes the verified Etsy listing title, a concise display title, displayed price snapshot, exact listing URL, primary listing photograph, taxonomy, and only those personalization/custom flags supported by the listing title.
+The catalog contains all 65 active Etsy listings captured on 2026-07-22. Every product record includes the verified Etsy listing title, a concise display title, displayed price snapshot, exact listing URL, an ordered image gallery, taxonomy, and only those personalization/custom flags supported by the listing title.
 
-Product photography is stored locally as optimized WebP with an optimized JPEG fallback. Checkout, current options, and final pricing remain on Etsy.
+Product photography is stored locally as ordered optimized WebP galleries with aligned JPEG fallbacks and intrinsic dimensions. The first image remains the catalog-card image. Checkout, current options, and final pricing remain on Etsy.
 
 ## Architecture
 
-- Eight canonical HTML pages plus a branded, non-indexed 404 page
+- Eight canonical HTML pages, a data-backed non-indexed product detail page, and a branded non-indexed 404 page
 - `css/style.css`: design tokens and foundational components
 - `css/pages.css`: catalog, quick-view, seasonal, form, and interior-page components
 - `css/responsive.css`: tablet and mobile layout changes
 - `css/animations.css`: restrained motion with reduced-motion support
 - `js/app.js`: progressive image state, reduced-motion-aware reveal behavior, and copyright year
 - `js/seasonal.js`: one homepage data request that supplies seasonal products, collection tiles, featured designs, and custom-work examples
-- `js/catalog.js`: JSON-backed search, compound filters, URL state, filter chips, quick-view, and ItemList schema
+- `js/product-gallery.js`: shared ordered-image normalization, picture markup, and next-image preloading
+- `js/catalog.js`: JSON-backed search, compound filters, URL state, card hover galleries, Quick View, lightbox, and ItemList schema
+- `js/product.js`: dedicated product gallery, swipe/keyboard controls, lightbox, related products, and Product schema
 - `data/products.json`: verified listing snapshot
 - `data/categories.json`: reusable category taxonomy
-- `scripts/validate-catalog.mjs`: catalog, image, claim, and local-path validation
+- `scripts/import-etsy-catalog.mjs`: Etsy Open API import, ordered image download, JPEG/WebP optimization, and atomic catalog updates
+- `scripts/validate-catalog.mjs`: catalog, ordered gallery, claim, and local-path validation
 
 ## Preview locally
 
@@ -37,16 +40,16 @@ Then open `http://localhost:8000/`.
 Run:
 
 ```text
-node scripts/validate-catalog.mjs
+npm run validate
 ```
 
-The validator checks the expected 65 unique active listings, price snapshot consistency, Etsy URL/ID matching, taxonomy, all 130 local image variants, public sample language, the no-public-phone rule, and local HTML references.
+The validators check the expected 65 unique active listings, price snapshot consistency, Etsy URL/ID matching, taxonomy, ordered gallery metadata, every local JPEG/WebP variant, public sample language, the no-public-phone rule, metadata, and local HTML references.
 
 ## Catalog behavior
 
 Visitors can search across display titles, full Etsy titles, descriptions, categories, occasions, recipients, and tags. Category, season, occasion, recipient, price, personalization, and custom-option filters can be combined. State is encoded in query parameters so a result set can be bookmarked or shared.
 
-Quick-view dialogs keep discovery on-site while Etsy remains the final destination for configuration and secure checkout. Prices are explicitly disclosed as a static snapshot.
+Cards retain the primary image and crossfade to the second image only on precise hover devices. Quick View and dedicated product details provide thumbnails, previous/next controls, keyboard navigation, swipe gestures, progressive loading, and a full-screen lightbox while Etsy remains the final destination for configuration and secure checkout. Prices are explicitly disclosed as a static snapshot.
 
 ## Homepage architecture
 

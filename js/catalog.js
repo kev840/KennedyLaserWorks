@@ -18,13 +18,16 @@
   const quickViewContent = quickView?.querySelector("[data-quick-view-content]");
   const lightbox = document.querySelector("[data-lightbox]");
   const lightboxImage = lightbox?.querySelector("[data-lightbox-image]");
+  const lightboxSource = lightbox?.querySelector("[data-lightbox-source]");
   const lightboxCaption = lightbox?.querySelector("[data-lightbox-caption]");
   const lightboxPosition = lightbox?.querySelector("[data-lightbox-position]");
+  const galleryTools = window.KLWProductGallery;
   let products = [];
   let categoryLabels = new Map();
   let renderTimer;
   let hasRendered = false;
   let lastQuickViewOpener = null;
+  let lastLightboxOpener = null;
   let activeGallery = [];
   let activeGalleryIndex = 0;
 
@@ -95,26 +98,9 @@
     return source.split(expression).map((part, index) => index % 2 ? `<mark>${escapeHtml(part)}</mark>` : escapeHtml(part)).join("");
   };
 
-  const imageObject = (image, product, index = 0) => {
-    if (typeof image === "string") return { webp: image, fallback: image, alt: `${product.displayTitle}${index ? ` — view ${index + 1}` : ""}`, width: product.imageWidth || 794, height: product.imageHeight || 794 };
-    return {
-      webp: image?.src || image?.primaryImage || image?.webp || image?.fallback || product.primaryImage,
-      fallback: image?.fallback || image?.imageFallback || image?.src || product.imageFallback,
-      alt: image?.alt || `${product.displayTitle}${index ? ` — view ${index + 1}` : ""}`,
-      width: image?.width || product.imageWidth || 794,
-      height: image?.height || product.imageHeight || 794
-    };
-  };
+  const productGallery = (product) => galleryTools.images(product);
 
-  const productGallery = (product) => [
-    imageObject({ src: product.primaryImage, fallback: product.imageFallback, alt: product.displayTitle }, product),
-    ...(product.alternateImages || []).map((image, index) => imageObject(image, product, index + 1))
-  ];
-
-  const pictureFromImage = (image, loading = "lazy", className = "progressive-image") => `<picture>
-    ${image.webp && image.webp !== image.fallback ? `<source srcset="${escapeHtml(image.webp)}" type="image/webp">` : ""}
-    <img class="${className}" src="${escapeHtml(image.fallback)}" alt="${escapeHtml(image.alt)}" loading="${loading}" decoding="async" width="${image.width}" height="${image.height}">
-  </picture>`;
+  const pictureFromImage = (image, loading = "lazy", className = "progressive-image", decorative = false) => galleryTools.picture(image, { loading, className, decorative });
 
   const picture = (product, loading = "lazy") => pictureFromImage(productGallery(product)[0], loading);
 
@@ -137,13 +123,15 @@
     return badges.slice(0, 2).map((badge) => `<span class="collection-badge collection-badge--${badge.className}">${badge.label}</span>`).join("");
   };
 
-  const productCard = (product, term = "") => `<article class="catalog-card" data-product-id="${escapeHtml(product.id)}">
+  const productCard = (product, term = "") => {
+    const gallery = productGallery(product);
+    return `<article class="catalog-card${gallery.length > 1 ? " has-gallery" : ""}" data-product-id="${escapeHtml(product.id)}">
     <button class="catalog-card__image" type="button" data-open-quick-view="${escapeHtml(product.id)}">
-      ${picture(product)}<span class="catalog-badges" aria-hidden="true">${productBadges(product)}</span><span class="catalog-card__quick-label">Quick view</span>
+      <span class="catalog-card__primary-image">${pictureFromImage(gallery[0])}</span>${gallery.length > 1 ? `<span class="catalog-card__hover-image">${pictureFromImage(gallery[1], "lazy", "progressive-image catalog-card__secondary-image", true)}</span>` : ""}<span class="catalog-badges" aria-hidden="true">${productBadges(product)}</span>${gallery.length > 1 ? '<span class="catalog-card__gallery-count" aria-hidden="true">Multiple photos</span>' : ""}<span class="catalog-card__quick-label">Quick view</span>
     </button>
     <div class="catalog-card__body">
       <p class="catalog-card__category">${highlightText(categoryLabels.get(product.categories[0]) || titleCase(product.categories[0]), term)}</p>
-      <h2>${highlightText(product.displayTitle, term)}</h2>
+      <h2><a href="product.html?id=${encodeURIComponent(product.id)}">${highlightText(product.displayTitle, term)}</a></h2>
       <p>${highlightText(product.shortDescription, term)}</p>
       <div class="catalog-card__meta"><p class="catalog-card__pricing">See Etsy for current pricing.</p>${product.personalized ? '<span class="badge">Personalizable</span>' : ""}</div>
       <div class="catalog-card__actions">
@@ -152,6 +140,7 @@
       </div>
     </div>
   </article>`;
+  };
 
   const uniqueValues = (key) => [...new Set(products.flatMap((product) => product[key] || []))].sort((a, b) => {
     const aLabel = key === "categories" ? categoryLabels.get(a) || a : titleCase(a);
@@ -293,11 +282,14 @@
   const galleryMarkup = (product) => {
     const gallery = productGallery(product);
     const main = gallery[0];
-    return `<div class="quick-view__gallery">
-      <button class="quick-view__main-image" type="button" data-open-lightbox="0" aria-label="Enlarge ${escapeHtml(product.displayTitle)}">
-        ${pictureFromImage(main, "eager")}
-        <span>View larger</span>
-      </button>
+    return `<div class="quick-view__gallery" data-swipe-gallery>
+      <div class="quick-view__main-image">
+        <button class="quick-view__zoom" type="button" data-open-lightbox="0" aria-label="Enlarge ${escapeHtml(product.displayTitle)}">
+          ${pictureFromImage(main, "eager")}
+          <span>View larger</span>
+        </button>
+        ${gallery.length > 1 ? `<button class="gallery-arrow gallery-arrow--previous" type="button" data-gallery-prev aria-label="Previous product image">←</button><button class="gallery-arrow gallery-arrow--next" type="button" data-gallery-next aria-label="Next product image">→</button><span class="gallery-position" data-gallery-position aria-live="polite">1 of ${gallery.length}</span>` : ""}
+      </div>
       ${gallery.length > 1 ? `<div class="quick-view__thumbnails" aria-label="Product images">${gallery.map((image, index) => `<button type="button" data-gallery-index="${index}" class="${index === 0 ? "is-current" : ""}" aria-label="Show image ${index + 1} of ${gallery.length}" aria-pressed="${index === 0}">${pictureFromImage(image)}</button>`).join("")}</div>` : ""}
     </div>`;
   };
@@ -325,10 +317,11 @@
         <p class="quick-view__description">${escapeHtml(product.shortDescription)}</p>
         <p class="quick-view__price">See Etsy for current pricing.</p>
         <dl class="quick-view__facts">${quickViewFacts(product)}</dl>
-        <div class="quick-view__actions"><a class="button button--forest" href="${escapeHtml(product.etsyUrl)}" target="_blank" rel="noopener">Purchase on Etsy <span aria-hidden="true">↗</span></a><a class="arrow-link" href="contact.html">Ask a question <span aria-hidden="true">→</span></a></div>
+        <div class="quick-view__actions"><a class="button button--forest" href="${escapeHtml(product.etsyUrl)}" target="_blank" rel="noopener">Purchase on Etsy <span aria-hidden="true">↗</span></a><a class="arrow-link" href="product.html?id=${encodeURIComponent(product.id)}">Full details <span aria-hidden="true">→</span></a><a class="arrow-link" href="contact.html">Ask a question <span aria-hidden="true">→</span></a></div>
       </div>
     </div>${relatedMarkup(product)}`;
     activateProgressiveImages(quickViewContent);
+    galleryTools.preloadNext(activeGallery, 0);
     if (!quickView.open) quickView.showModal();
     quickView.scrollTop = 0;
   };
@@ -338,23 +331,30 @@
     activeGalleryIndex = (index + activeGallery.length) % activeGallery.length;
     const imageButton = quickViewContent.querySelector("[data-open-lightbox]");
     if (imageButton) {
+      imageButton.classList.add("is-changing");
       imageButton.dataset.openLightbox = String(activeGalleryIndex);
       const image = activeGallery[activeGalleryIndex];
       imageButton.querySelector("picture")?.remove();
       imageButton.insertAdjacentHTML("afterbegin", pictureFromImage(image, "eager"));
       activateProgressiveImages(imageButton);
+      window.requestAnimationFrame(() => imageButton.classList.remove("is-changing"));
     }
     quickViewContent.querySelectorAll("[data-gallery-index]").forEach((button) => {
       const isCurrent = Number(button.dataset.galleryIndex) === activeGalleryIndex;
       button.classList.toggle("is-current", isCurrent);
       button.setAttribute("aria-pressed", String(isCurrent));
+      if (isCurrent) button.scrollIntoView({ block: "nearest", inline: "nearest" });
     });
+    const position = quickViewContent.querySelector("[data-gallery-position]");
+    if (position) position.textContent = `${activeGalleryIndex + 1} of ${activeGallery.length}`;
+    galleryTools.preloadNext(activeGallery, activeGalleryIndex);
   };
 
   const showLightboxImage = (index) => {
     if (!activeGallery.length || !lightboxImage) return;
     activeGalleryIndex = (index + activeGallery.length) % activeGallery.length;
     const image = activeGallery[activeGalleryIndex];
+    if (lightboxSource) lightboxSource.srcset = image.webp || image.fallback;
     lightboxImage.src = image.fallback;
     lightboxImage.alt = image.alt;
     lightboxImage.width = image.width;
@@ -368,6 +368,7 @@
 
   const openLightbox = (index) => {
     if (!lightbox || !activeGallery.length) return;
+    lastLightboxOpener = document.activeElement;
     showLightboxImage(index);
     if (!lightbox.open) lightbox.showModal();
   };
@@ -376,7 +377,11 @@
     if (quickView?.open) quickView.close();
     lastQuickViewOpener?.focus();
   };
-  const closeLightbox = () => { if (lightbox?.open) lightbox.close(); };
+  const closeLightbox = () => {
+    if (!lightbox?.open) return;
+    lightbox.close();
+    lastLightboxOpener?.focus();
+  };
 
   const injectItemListSchema = () => {
     const script = document.createElement("script");
@@ -416,6 +421,8 @@
     if (opener) openQuickView(opener.dataset.openQuickView, opener);
     const thumbnail = event.target.closest("[data-gallery-index]");
     if (thumbnail) updateQuickViewImage(Number(thumbnail.dataset.galleryIndex));
+    if (event.target.closest("[data-gallery-prev]")) updateQuickViewImage(activeGalleryIndex - 1);
+    if (event.target.closest("[data-gallery-next]")) updateQuickViewImage(activeGalleryIndex + 1);
     const lightboxOpener = event.target.closest("[data-open-lightbox]");
     if (lightboxOpener) openLightbox(Number(lightboxOpener.dataset.openLightbox));
     if (event.target.closest("[data-close-quick-view]")) closeQuickView();
@@ -426,6 +433,16 @@
 
   quickView?.addEventListener("click", (event) => { if (event.target === quickView) closeQuickView(); });
   lightbox?.addEventListener("click", (event) => { if (event.target === lightbox) closeLightbox(); });
+  let quickViewSwipeStartX = 0;
+  quickViewContent?.addEventListener("touchstart", (event) => {
+    if (activeGallery.length > 1 && event.target.closest("[data-swipe-gallery]")) quickViewSwipeStartX = event.changedTouches[0]?.clientX || 0;
+  }, { passive: true });
+  quickViewContent?.addEventListener("touchend", (event) => {
+    if (activeGallery.length < 2 || !quickViewSwipeStartX || !event.target.closest("[data-swipe-gallery]")) return;
+    const distance = (event.changedTouches[0]?.clientX || 0) - quickViewSwipeStartX;
+    quickViewSwipeStartX = 0;
+    if (Math.abs(distance) >= 45) updateQuickViewImage(activeGalleryIndex + (distance < 0 ? 1 : -1));
+  }, { passive: true });
   let swipeStartX = 0;
   lightbox?.addEventListener("touchstart", (event) => {
     if (activeGallery.length > 1) swipeStartX = event.changedTouches[0]?.clientX || 0;
@@ -440,6 +457,8 @@
   document.addEventListener("keydown", (event) => {
     if (lightbox?.open && event.key === "ArrowLeft") showLightboxImage(activeGalleryIndex - 1);
     if (lightbox?.open && event.key === "ArrowRight") showLightboxImage(activeGalleryIndex + 1);
+    if (!lightbox?.open && quickView?.open && event.key === "ArrowLeft") updateQuickViewImage(activeGalleryIndex - 1);
+    if (!lightbox?.open && quickView?.open && event.key === "ArrowRight") updateQuickViewImage(activeGalleryIndex + 1);
     if (event.key === "Escape" && lightbox?.open) closeLightbox();
     else if (event.key === "Escape" && quickView?.open) closeQuickView();
   });

@@ -9,23 +9,32 @@ For each listing, the capture verified:
 - Etsy listing ID and exact public URL
 - full Etsy card title
 - displayed price
-- primary listing image
+- every listing image in Etsy rank order
 - active presence in the shop's complete two-page inventory
 
 Concise display titles and taxonomy are editorial website fields. They do not replace the original title, which remains preserved as `etsyTitle`.
 
 ## Refresh procedure
 
-1. Capture every active shop page and record a snapshot date.
-2. Verify the listing count and uniqueness by Etsy listing ID and URL.
-3. Preserve the exact Etsy title, displayed price, listing URL, and primary image source.
-4. Update concise display titles only when they remain faithful to the listing.
-5. Assign category, occasion, recipient, and season slugs from `data/categories.json` based only on listing evidence.
-6. Set personalization or custom availability only when the listing title or verified listing details support it.
-7. Download the owner's listing photographs and generate local WebP and JPEG variants.
-8. Remove inactive products rather than leaving dead Etsy links in the public collection.
-9. Update `catalogSnapshotDate` and each `priceSnapshotDate` together.
-10. Run `node scripts/validate-catalog.mjs`, then test search, filters, quick-view, and Etsy links through HTTP.
+1. Register an Etsy application and keep its `keystring:shared_secret` value in the private `ETSY_API_KEY` environment variable. Never commit it.
+2. Run `npm install` once to install the pinned image optimizer.
+3. Run `npm run catalog:import` from the repository root.
+4. The importer resolves the shop, verifies that active Etsy membership matches the curated catalog, retrieves every listing image, and sorts images by Etsy `rank`.
+5. Each source photograph is downloaded once and converted into an optimized local JPEG fallback and responsive WebP with a maximum 1200-pixel edge.
+6. The importer writes ordered `images`, `imageFallbacks`, and `imageMetadata` arrays. The first entry also remains `primaryImage` for backward compatibility.
+7. Existing concise titles and editorial taxonomy remain intact. If Etsy contains a new or removed listing, the import stops with an exact reconciliation list rather than inventing categories.
+8. After a successful import, run `npm run validate`, then test cards, Quick View, the dedicated product page, thumbnails, arrows, swipe gestures, keyboard navigation, and the full-screen lightbox through HTTP.
+
+Optional environment controls:
+
+- `ETSY_SHOP_NAME` defaults to `KennedyLaserWorks`.
+- `ETSY_SHOP_ID` skips shop-name lookup when the numeric ID is known.
+- `ETSY_IMPORT_CONCURRENCY` controls parallel listing work from 1–6; the default is 3.
+- `ETSY_IMAGE_MAX_EDGE` controls the optimized maximum edge from 794–2000 pixels; the default is 1200.
+
+Use `npm run catalog:normalize-images` to migrate older single-image catalog records into the gallery schema without contacting Etsy. This compatibility command does not discover additional Etsy images.
+
+Use `npm run catalog:import -- --dry-run` to retrieve and optimize into memory without replacing `data/products.json` or writing image files.
 
 ## Pricing policy
 

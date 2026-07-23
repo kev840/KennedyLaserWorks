@@ -10,6 +10,7 @@ const products = catalog.products;
 const allowedCategories = new Set(categoryData.categories.map((category) => category.slug));
 const errors = [];
 const assert = (condition, message) => { if (!condition) errors.push(message); };
+let totalImageCount = 0;
 
 assert(products.length === 65, `Expected 65 live listings; found ${products.length}.`);
 assert(Boolean(catalog.catalogSnapshotDate), "Catalog snapshot date is missing.");
@@ -29,11 +30,27 @@ for (const product of products) {
   assert(product.customerFavorite !== true, `${label}: customer-favorite claim is not verified.`);
   assert(Array.isArray(product.categories) && product.categories.length > 0, `${label}: no category assigned.`);
   product.categories.forEach((category) => assert(allowedCategories.has(category), `${label}: unknown category ${category}.`));
-  for (const imagePath of [product.primaryImage, product.imageFallback]) {
-    const absolute = path.join(root, imagePath);
-    assert(fs.existsSync(absolute), `${label}: missing image ${imagePath}.`);
-    if (fs.existsSync(absolute)) assert(fs.statSync(absolute).size > 1_000, `${label}: image file appears invalid: ${imagePath}.`);
-  }
+  assert(Array.isArray(product.images) && product.images.length > 0, `${label}: images array is missing or empty.`);
+  assert(Array.isArray(product.imageFallbacks) && product.imageFallbacks.length === product.images.length, `${label}: imageFallbacks must align with images.`);
+  assert(Array.isArray(product.imageMetadata) && product.imageMetadata.length === product.images.length, `${label}: imageMetadata must align with images.`);
+  assert(product.images?.[0] === product.primaryImage, `${label}: the first gallery image must remain primaryImage.`);
+  assert(product.imageFallbacks?.[0] === product.imageFallback, `${label}: the first gallery fallback must remain imageFallback.`);
+  assert(new Set(product.images || []).size === product.images?.length, `${label}: duplicate gallery image paths found.`);
+  (product.images || []).forEach((imagePath, index) => {
+    const fallbackPath = product.imageFallbacks[index];
+    const metadata = product.imageMetadata[index];
+    assert(typeof imagePath === "string" && imagePath.endsWith(".webp"), `${label}: gallery image ${index + 1} must be a WebP path.`);
+    assert(typeof fallbackPath === "string" && /\.jpe?g$/i.test(fallbackPath), `${label}: gallery fallback ${index + 1} must be a JPEG path.`);
+    assert(metadata?.rank === index + 1, `${label}: gallery rank ${index + 1} is missing or out of order.`);
+    assert(metadata?.width > 0 && metadata?.height > 0, `${label}: gallery image ${index + 1} dimensions are missing.`);
+    assert(Boolean(metadata?.alt), `${label}: gallery image ${index + 1} alt text is missing.`);
+    for (const localPath of [imagePath, fallbackPath]) {
+      const absolute = path.join(root, localPath);
+      assert(fs.existsSync(absolute), `${label}: missing image ${localPath}.`);
+      if (fs.existsSync(absolute)) assert(fs.statSync(absolute).size > 1_000, `${label}: image file appears invalid: ${localPath}.`);
+    }
+  });
+  totalImageCount += product.images?.length || 0;
   assert(product.imageWidth > 0 && product.imageHeight > 0, `${label}: image dimensions are missing.`);
 }
 
@@ -56,4 +73,4 @@ if (errors.length) {
 }
 
 const usedCategories = new Set(products.flatMap((product) => product.categories));
-console.log(`Validated ${products.length} active listings, ${usedCategories.size} populated categories, ${products.length * 2} optimized image files, and ${htmlFiles.length} HTML pages.`);
+console.log(`Validated ${products.length} active listings, ${usedCategories.size} populated categories, ${totalImageCount} ordered gallery images, ${totalImageCount * 2} optimized image files, and ${htmlFiles.length} HTML pages.`);

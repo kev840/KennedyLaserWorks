@@ -12,7 +12,7 @@ const canonicalUrls = new Set();
 
 for (const page of pages) {
   const markup = await readFile(path.join(rootDirectory, page), "utf8");
-  const isErrorPage = page === "404.html";
+  const isNonIndexablePage = /<meta name="robots" content="noindex,follow">/.test(markup);
   const ids = [...markup.matchAll(/\sid="([^"]+)"/g)].map((match) => match[1]);
   const duplicateIds = [...new Set(ids.filter((id, index) => ids.indexOf(id) !== index))];
   if (duplicateIds.length) failures.push(`${page}: duplicate IDs (${duplicateIds.join(", ")})`);
@@ -28,8 +28,8 @@ for (const page of pages) {
   requiredPatterns.forEach(([pattern, label]) => { if (!pattern.test(markup)) failures.push(`${page}: missing ${label}`); });
   if (!/<html[^>]+class="no-js"/.test(markup) || !/classList\.replace\("no-js",\s*"js"\)/.test(markup)) failures.push(`${page}: missing resilient JavaScript capability class`);
   if (/replace with production|add the production|add the final production/i.test(markup)) failures.push(`${page}: unresolved deployment placeholder comment`);
-  if (isErrorPage) {
-    if (!/<meta name="robots" content="noindex,follow">/.test(markup)) failures.push("404.html: missing noindex directive");
+  if (isNonIndexablePage) {
+    if (page === "404.html" && !/<meta name="robots" content="noindex,follow">/.test(markup)) failures.push("404.html: missing noindex directive");
   } else {
     const expectedCanonical = `${productionOrigin}${page === "index.html" ? "/" : `/${page}`}`;
     const canonical = markup.match(/<link rel="canonical" href="([^"]+)">/)?.[1];

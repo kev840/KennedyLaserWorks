@@ -1,0 +1,4 @@
+node_modules/
+.env
+*.tmp
+data/products.import-backup.json
