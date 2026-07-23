@@ -3,12 +3,6 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes line-drift {
-  0%, 100% { transform: scaleY(.55); transform-origin: top; }
-  50% { transform: scaleY(1); transform-origin: top; }
-}
-
-@keyframes hero-image-settle { from { transform: scale(1.1); } to { transform: scale(1.02); } }
 @keyframes catalog-card-in {
   from { opacity: 0; transform: translateY(.6rem); }
   to { opacity: 1; transform: translateY(0); }
@@ -26,9 +20,9 @@
 .reveal--delay-1 { animation-delay: 120ms; }
 .reveal--delay-2 { animation-delay: 240ms; }
 .reveal--delay-3 { animation-delay: 360ms; }
-.scroll-cue span { animation: line-drift 2s ease-in-out infinite; }
-.reveal-on-scroll { opacity: 0; transform: translateY(2rem); transition: opacity 750ms cubic-bezier(.2,.7,.2,1), transform 750ms cubic-bezier(.2,.7,.2,1); }
-.reveal-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
+.reveal-on-scroll { opacity: 1; transform: none; }
+.js .reveal-on-scroll { opacity: 0; transform: translateY(2rem); transition: opacity 750ms cubic-bezier(.2,.7,.2,1), transform 750ms cubic-bezier(.2,.7,.2,1); }
+.js .reveal-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

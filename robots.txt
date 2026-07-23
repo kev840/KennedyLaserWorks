@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-# Replace with the final production domain before deployment if it changes.
 Sitemap: https://kennedylaserworks.com/sitemap.xml

@@ -39,6 +39,18 @@
   const customGrid = document.querySelector("[data-custom-products]");
   const labels = new Map();
 
+  const scheduleRender = (callback) => {
+    if ("requestIdleCallback" in window) window.requestIdleCallback(callback, { timeout: 1200 });
+    else window.setTimeout(callback, 0);
+  };
+
+  const renderFallbacks = () => {
+    seasonalGrid.innerHTML = '<p class="seasonal-fallback">Seasonal pieces could not load. <a href="collections.html">Browse the complete collection</a>.</p>';
+    collectionsGrid.innerHTML = '<p>Collections could not load. <a class="arrow-link" href="collections.html">Browse all products <span aria-hidden="true">→</span></a></p>';
+    favoritesGrid.innerHTML = '<p>Featured designs could not load. <a class="arrow-link" href="collections.html">Browse all products <span aria-hidden="true">→</span></a></p>';
+    customGrid.innerHTML = '<a class="button button--bronze" href="custom-work.html">Explore Custom Work</a>';
+  };
+
   const escapeHtml = (value = "") => String(value).replace(/[&<>'"]/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[character]);
   const uniqueById = (items) => [...new Map(items.map((item) => [item.id, item])).values()];
   const picture = (product, className = "") => `<picture class="${className}"><source srcset="${escapeHtml(product.primaryImage)}" type="image/webp"><img src="${escapeHtml(product.imageFallback)}" alt="${escapeHtml(product.displayTitle)}" loading="lazy" width="${product.imageWidth || 794}" height="${product.imageHeight || 794}"></picture>`;
@@ -55,7 +67,7 @@
 
   const productCard = (product) => `<article class="catalog-card catalog-card--home">
     <a class="catalog-card__image" href="${escapeHtml(product.etsyUrl)}" target="_blank" rel="noopener" aria-label="View ${escapeHtml(product.displayTitle)} on Etsy">
-      ${picture(product)}<span class="catalog-badges">${badgeFor(product)}</span>
+      ${picture(product)}<span class="catalog-badges" aria-hidden="true">${badgeFor(product)}</span>
     </a>
     <div class="catalog-card__body">
       <p class="catalog-card__category">${escapeHtml(labels.get(product.categories[0]) || "Kennedy Laser Works")}</p>
@@ -96,7 +108,7 @@
       ...active.filter((product) => product.customerFavorite === true),
       ...recentlyAdded
     ]).slice(0, 4);
-    seasonalGrid.innerHTML = seasonalProducts.map(productCard).join("");
+    const seasonalMarkup = seasonalProducts.map(productCard).join("");
 
     const collectionTiles = collectionPriorities.map((collection) => {
       const matches = active.filter((product) => product.categories.includes(collection.slug));
@@ -107,21 +119,33 @@
         <div><p>${matches.length} ${matches.length === 1 ? "piece" : "pieces"}</p><h3><a href="collections.html?category=${encodeURIComponent(collection.slug)}">${escapeHtml(collection.label)}</a></h3><p>${escapeHtml(collection.description)}</p><a class="arrow-link" href="collections.html?category=${encodeURIComponent(collection.slug)}" aria-label="Explore ${escapeHtml(collection.label)}">Explore collection <span aria-hidden="true">→</span></a></div>
       </article>`;
     }).join("");
-    collectionsGrid.innerHTML = collectionTiles;
-
     const favorites = uniqueById([
       ...active.filter((product) => product.customerFavorite === true),
       ...active.filter((product) => product.featured)
     ]).slice(0, 6);
-    favoritesGrid.innerHTML = favorites.slice(0, 3).map(productCard).join("");
+    const favoritesMarkup = favorites.slice(0, 3).map(productCard).join("");
 
     const customProducts = customProductIds.map((id) => active.find((product) => product.id === id)).filter(Boolean);
-    customGrid.innerHTML = customProducts.map((product, index) => `<a class="home-custom-example home-custom-example--${index + 1}" href="${escapeHtml(product.etsyUrl)}" target="_blank" rel="noopener">${picture(product)}<span>${escapeHtml(product.displayTitle)}</span></a>`).join("");
-    window.KLW?.enhanceImages(document.querySelector("main"));
-  }).catch(() => {
-    seasonalGrid.innerHTML = '<p class="seasonal-fallback">Seasonal pieces could not load. <a href="collections.html">Browse the complete collection</a>.</p>';
-    collectionsGrid.innerHTML = '<p>Collections could not load. <a class="arrow-link" href="collections.html">Browse all products <span aria-hidden="true">→</span></a></p>';
-    favoritesGrid.innerHTML = '<p>Featured designs could not load. <a class="arrow-link" href="collections.html">Browse all products <span aria-hidden="true">→</span></a></p>';
-    customGrid.innerHTML = '<a class="button button--bronze" href="custom-work.html">Explore Custom Work</a>';
-  });
+    const customMarkup = customProducts.map((product, index) => `<a class="home-custom-example home-custom-example--${index + 1}" href="${escapeHtml(product.etsyUrl)}" target="_blank" rel="noopener">${picture(product)}<span>${escapeHtml(product.displayTitle)}</span></a>`).join("");
+    const renderQueue = [
+      [seasonalGrid, seasonalMarkup],
+      [collectionsGrid, collectionTiles],
+      [favoritesGrid, favoritesMarkup],
+      [customGrid, customMarkup]
+    ];
+    const renderNext = () => scheduleRender(() => {
+      const next = renderQueue.shift();
+      if (!next) return;
+      try {
+        const [target, markup] = next;
+        target.innerHTML = markup;
+        window.KLW?.enhanceImages(target);
+        renderNext();
+      } catch {
+        renderQueue.length = 0;
+        renderFallbacks();
+      }
+    });
+    renderNext();
+  }).catch(renderFallbacks);
 })();

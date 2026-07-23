@@ -138,8 +138,8 @@
   };
 
   const productCard = (product, term = "") => `<article class="catalog-card" data-product-id="${escapeHtml(product.id)}">
-    <button class="catalog-card__image" type="button" data-open-quick-view="${escapeHtml(product.id)}" aria-label="Quick view: ${escapeHtml(product.displayTitle)}">
-      ${picture(product)}<span class="catalog-badges">${productBadges(product)}</span><span class="catalog-card__quick-label">Quick view</span>
+    <button class="catalog-card__image" type="button" data-open-quick-view="${escapeHtml(product.id)}">
+      ${picture(product)}<span class="catalog-badges" aria-hidden="true">${productBadges(product)}</span><span class="catalog-card__quick-label">Quick view</span>
     </button>
     <div class="catalog-card__body">
       <p class="catalog-card__category">${highlightText(categoryLabels.get(product.categories[0]) || titleCase(product.categories[0]), term)}</p>
@@ -443,7 +443,13 @@
     if (event.key === "Escape" && lightbox?.open) closeLightbox();
     else if (event.key === "Escape" && quickView?.open) closeQuickView();
   });
-  Promise.all([
+  let catalogInitialized = false;
+  const initializeCatalog = () => {
+    if (catalogInitialized) return;
+    catalogInitialized = true;
+    const catalogStyles = document.querySelector("[data-catalog-styles]");
+    if (catalogStyles) catalogStyles.media = "all";
+    Promise.all([
     fetch("data/products.json").then((response) => { if (!response.ok) throw new Error("Catalog unavailable"); return response.json(); }),
     fetch("data/categories.json").then((response) => { if (!response.ok) throw new Error("Categories unavailable"); return response.json(); })
   ]).then(([catalogData, categoryData]) => {
@@ -458,4 +464,18 @@
     grid.innerHTML = '<div class="catalog-load-error"><h2>The catalog could not load</h2><p>Please refresh the page or browse every current piece in the Etsy shop.</p><a class="button button--forest" href="https://kennedylaserworks.etsy.com/" target="_blank" rel="noopener">Browse Etsy <span aria-hidden="true">↗</span></a></div>';
     count.textContent = "Catalog unavailable";
   });
+  };
+
+  const catalogStyles = document.querySelector("[data-catalog-styles]");
+  let catalogScheduled = false;
+  const scheduleCatalog = () => {
+    if (catalogScheduled) return;
+    catalogScheduled = true;
+    window.requestAnimationFrame(() => window.requestAnimationFrame(initializeCatalog));
+  };
+  if (!catalogStyles || catalogStyles.sheet) scheduleCatalog();
+  else {
+    catalogStyles.addEventListener("load", scheduleCatalog, { once: true });
+    catalogStyles.addEventListener("error", scheduleCatalog, { once: true });
+  }
 })();

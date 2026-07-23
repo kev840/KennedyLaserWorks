@@ -10,12 +10,12 @@ Product photography is stored locally as optimized WebP with an optimized JPEG f
 
 ## Architecture
 
-- Eight semantic HTML pages with one responsive visual system
+- Eight canonical HTML pages plus a branded, non-indexed 404 page
 - `css/style.css`: design tokens and foundational components
 - `css/pages.css`: catalog, quick-view, seasonal, form, and interior-page components
 - `css/responsive.css`: tablet and mobile layout changes
 - `css/animations.css`: restrained motion with reduced-motion support
-- `js/app.js`: reduced-motion-aware reveal behavior and copyright year
+- `js/app.js`: progressive image state, reduced-motion-aware reveal behavior, and copyright year
 - `js/seasonal.js`: one homepage data request that supplies seasonal products, collection tiles, featured designs, and custom-work examples
 - `js/catalog.js`: JSON-backed search, compound filters, URL state, filter chips, quick-view, and ItemList schema
 - `data/products.json`: verified listing snapshot
@@ -53,7 +53,7 @@ Quick-view dialogs keep discovery on-site while Etsy remains the final destinati
 The homepage is arranged as a persuasive storefront while preserving the shared design system:
 
 1. Product-led hero with Collections, Custom Work, and Etsy paths
-2. Four service and fulfillment trust points
+2. Five service and fulfillment trust points
 3. Four live seasonal products
 4. Non-empty collection tiles with live product counts
 5. Up to six verified customer favorites or editorially featured designs
@@ -85,4 +85,4 @@ The website does not reproduce or invent review text or ratings. Review calls-to
 
 ## Deployment
 
-This framework-free site can be hosted on GitHub Pages, Netlify, Cloudflare Pages, Vercel static hosting, or conventional file hosting. Confirm the production domain and add canonical tags before launch. See `docs/DEPLOYMENT.md` and `docs/CATALOG_IMPORT.md`.
+This framework-free site can be hosted on GitHub Pages, Netlify, Cloudflare Pages, Vercel static hosting, or conventional file hosting. Production canonicals, social metadata, crawler directives, and the sitemap use `https://kennedylaserworks.com`; update them together if the final domain changes. See `docs/DEPLOYMENT.md` and `docs/CATALOG_IMPORT.md`.

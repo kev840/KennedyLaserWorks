@@ -8,6 +8,11 @@
 
   document.querySelectorAll("[data-quote-form]").forEach((form) => {
     const status = form.querySelector("[data-form-status]");
+    const today = new Date();
+    today.setMinutes(today.getMinutes() - today.getTimezoneOffset());
+    form.querySelectorAll('input[type="date"]').forEach((input) => {
+      if (!input.min) input.min = today.toISOString().slice(0, 10);
+    });
 
     form.addEventListener("submit", (event) => {
       event.preventDefault();
@@ -17,7 +22,7 @@
       const projectType = valueOr(data, "projectType", "Custom project");
       const reference = data.get("referenceImage");
       const referenceName = reference instanceof File && reference.name ? reference.name : "None selected";
-      const subject = `Custom project inquiry — ${projectType}`;
+      const subject = `${form.dataset.formContext || "Custom project inquiry"} — ${projectType}`;
       const body = [
         `Name: ${valueOr(data, "name")}`,
         `Email: ${valueOr(data, "email")}`,

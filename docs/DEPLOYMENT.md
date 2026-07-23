@@ -2,14 +2,16 @@
 
 ## Preflight
 
-- Confirm the final domain
-- Add unique canonical URLs to all HTML pages
+- Confirm that `https://kennedylaserworks.com` is the final domain
+- If the domain changes, update canonical, Open Graph, structured-data, sitemap, and robots URLs together
 - Update `sitemap.xml` and the sitemap line in `robots.txt` if the domain differs
-- Run `node scripts/validate-catalog.mjs` against the verified 65-listing snapshot
+- Run `node scripts/validate-site.mjs` and `node scripts/validate-catalog.mjs` against the verified 65-listing snapshot
 - Confirm that the dated price disclosure appears above the catalog
 - Test from an HTTP preview, not only `file://`
 - Verify Etsy, Facebook, and email links
 - Run accessibility, responsive, console, and broken-path checks
+- Configure the host to serve `404.html` for unknown paths
+- Configure HTTPS, compression, long-lived caching for versioned static assets, and security headers at the host
 
 ## Static hosting
 

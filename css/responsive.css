@@ -2,7 +2,6 @@
   .primary-nav { gap: 1.25rem; }
   .primary-nav ul { gap: 1.1rem; }
   .primary-nav ul a { font-size: .7rem; }
-  .hero-art { opacity: .74; }
   .hero-storefront-grid { grid-template-columns: minmax(0,1fr) minmax(24rem,.85fr); gap: 3rem; }
   .hero-product-collage { min-height: 33rem; }
   .hero-product-note { left: -1.25rem; max-width: 7rem; }
@@ -21,19 +20,11 @@
   .primary-nav ul a { display: block; font: 500 2.2rem/1.2 var(--font-display); text-align: center; }
   .primary-nav ul a::after { display: none; }
   .nav-cta { margin: 1.5rem auto 0; width: min(100%, 20rem); }
-  .hero-content { padding-top: calc(var(--header-height) + 6rem); }
   .hero--storefront { min-height: 0; }
   .hero-storefront-grid { grid-template-columns: 1fr; padding-block: calc(var(--header-height) + 5rem) 4.5rem; }
   .hero-storefront-copy h1 { max-width: 11ch; }
   .hero-product-collage { width: min(100%,34rem); min-height: 31rem; margin-inline: auto; }
   .hero-product-note { left: 0; top: .35rem; max-width: 8.25rem; }
-  .hero-art { inset: 0; opacity: .42; }
-  .hero-location { right: 1.25rem; }
-  .scroll-cue { display: none; }
-  .intro-grid { grid-template-columns: 1fr 2fr; gap: 2rem; }
-  .craft-stats { grid-column: 1 / -1; }
-  .maker-grid { gap: 3rem; }
-  .maker-visual { min-height: 29rem; }
   .footer-main { grid-template-columns: 1.5fr 1fr 1fr; }
   .footer-note { grid-column: 1 / -1; }
 }
@@ -54,19 +45,10 @@
   .hero-support { align-items: flex-start; line-height: 1.5; }
   .hero-product-collage { min-height: 26rem; }
   .hero-product-note { display: none; }
-  .hero-content { padding-bottom: 8rem; }
-  .hero-art { inset: 0; background-position: 58% center; }
   .hero-lede { max-width: 29rem; }
   .hero-actions { align-items: flex-start; flex-direction: column; gap: 1.35rem; }
   .hero-actions .button { width: 100%; }
-  .hero-location { left: 1rem; right: auto; bottom: 1.25rem; }
-  .intro-grid { display: block; }
-  .intro-grid > .section-kicker { margin-bottom: 1.5rem; }
-  .craft-stats { grid-template-columns: 1fr; gap: 1.25rem; }
-  .craft-stats div { grid-template-columns: 6rem 1fr; align-items: center; }
   .section-heading { align-items: flex-start; flex-direction: column; }
-  .maker-grid { grid-template-columns: 1fr; }
-  .maker-visual { min-height: 26rem; order: 2; }
   .footer-main { grid-template-columns: 1fr 1fr; }
   .footer-brand, .footer-note { grid-column: 1 / -1; }
   .footer-bottom { flex-direction: column; gap: .5rem; }
@@ -74,5 +56,4 @@
 
 @media (max-width: 23rem) {
   .brand-name { display: none; }
-  .hero-location { font-size: .57rem; }
 }

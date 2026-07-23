@@ -1,0 +1,20 @@
+/* Above-the-fold Collections layout. The complete catalog bundle loads non-blocking. */
+.page-hero { position: relative; padding: calc(var(--header-height) + 6rem) 0 6rem; overflow: hidden; color: white; background: var(--color-forest); }
+.page-hero::after { content: ""; position: absolute; width: 38rem; height: 38rem; right: -12rem; top: -12rem; border: 1px solid rgba(214,174,121,.2); border-radius: 50%; box-shadow: 0 0 0 4rem rgba(255,255,255,.015), 0 0 0 8rem rgba(255,255,255,.012); }
+.page-hero .container { position: relative; z-index: 1; }
+.page-hero h1 { max-width: 12ch; margin-bottom: 1.25rem; font-size: clamp(3.75rem,7vw,7rem); }
+.page-hero__lede { max-width: 42rem; margin-bottom: 0; color: rgba(255,255,255,.72); font-size: 1.1rem; }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: .55rem; margin-bottom: 2.2rem; color: rgba(255,255,255,.6); font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; }
+.breadcrumbs a:hover { color: var(--color-bronze-light); }
+.breadcrumbs span::before { content: "/"; margin-right: .55rem; }
+.collection-shortcuts { border-bottom: 1px solid var(--color-cream-deep); background: var(--color-ivory); }
+.collection-shortcuts .container { display: flex; align-items: center; gap: .65rem; padding-block: 1rem; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.collection-shortcuts .container::-webkit-scrollbar { display: none; }
+.collection-shortcuts span, .collection-shortcuts a { flex: 0 0 auto; }
+.collection-shortcuts span { margin-right: .5rem; color: var(--color-muted); font-size: .62rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+.collection-shortcuts a { display: inline-flex; align-items: center; min-height: 2.7rem; padding: .55rem .9rem; border: 1px solid var(--color-cream-deep); border-radius: var(--radius-pill); color: var(--color-forest); background: white; font-size: .68rem; font-weight: 600; transition: color var(--transition), background var(--transition), border-color var(--transition), transform var(--transition); }
+.collection-shortcuts a:hover { border-color: var(--color-forest); color: white; background: var(--color-forest); transform: translateY(-1px); }
+@media (max-width: 40rem) {
+  .page-hero { padding: calc(var(--header-height) + 4rem) 0 4rem; }
+  .breadcrumbs a { display: inline-flex; align-items: center; min-height: 2.75rem; }
+}

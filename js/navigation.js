@@ -37,11 +37,21 @@
   });
 
   const updateHeader = () => header.classList.toggle("is-scrolled", window.scrollY > 24);
+  let scrollFrame = 0;
+  const queueHeaderUpdate = () => {
+    if (scrollFrame) return;
+    scrollFrame = window.requestAnimationFrame(() => {
+      scrollFrame = 0;
+      updateHeader();
+    });
+  };
   updateHeader();
-  window.addEventListener("scroll", updateHeader, { passive: true });
+  window.addEventListener("scroll", queueHeaderUpdate, { passive: true });
 
   const mediaQuery = window.matchMedia("(min-width: 56.01rem)");
-  mediaQuery.addEventListener("change", ({ matches }) => {
+  const handleViewportChange = ({ matches }) => {
     if (matches) setMenuState(false);
-  });
+  };
+  if (mediaQuery.addEventListener) mediaQuery.addEventListener("change", handleViewportChange);
+  else mediaQuery.addListener(handleViewportChange);
 })();
