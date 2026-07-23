@@ -33,9 +33,9 @@
 
   const galleryMarkup = () => `<section class="product-detail__gallery" aria-label="${tools.escapeHtml(product.displayTitle)} image gallery" data-product-gallery>
     <div class="product-detail__main">
-      <button class="product-detail__zoom" type="button" data-open-lightbox="0" aria-label="Enlarge ${tools.escapeHtml(product.displayTitle)}">
+      <button class="product-detail__zoom" type="button" data-open-lightbox="0" aria-label="${gallery.length > 1 ? "View all photos for" : "View photo of"} ${tools.escapeHtml(product.displayTitle)}">
         ${tools.picture(gallery[0], { loading: "eager" })}
-        <span>View larger</span>
+        <span>${gallery.length > 1 ? "View All Photos" : "View Photo"}</span>
       </button>
       ${gallery.length > 1 ? `<button class="gallery-arrow gallery-arrow--previous" type="button" data-gallery-prev aria-label="Previous product image">←</button><button class="gallery-arrow gallery-arrow--next" type="button" data-gallery-next aria-label="Next product image">→</button><span class="gallery-position" data-gallery-position aria-live="polite">1 of ${gallery.length}</span>` : ""}
     </div>

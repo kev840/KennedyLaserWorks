@@ -284,9 +284,9 @@
     const main = gallery[0];
     return `<div class="quick-view__gallery" data-swipe-gallery>
       <div class="quick-view__main-image">
-        <button class="quick-view__zoom" type="button" data-open-lightbox="0" aria-label="Enlarge ${escapeHtml(product.displayTitle)}">
+        <button class="quick-view__zoom" type="button" data-open-lightbox="0" aria-label="${gallery.length > 1 ? "View all photos for" : "View photo of"} ${escapeHtml(product.displayTitle)}">
           ${pictureFromImage(main, "eager")}
-          <span>View larger</span>
+          <span>${gallery.length > 1 ? "View All Photos" : "View Photo"}</span>
         </button>
         ${gallery.length > 1 ? `<button class="gallery-arrow gallery-arrow--previous" type="button" data-gallery-prev aria-label="Previous product image">←</button><button class="gallery-arrow gallery-arrow--next" type="button" data-gallery-next aria-label="Next product image">→</button><span class="gallery-position" data-gallery-position aria-live="polite">1 of ${gallery.length}</span>` : ""}
       </div>
