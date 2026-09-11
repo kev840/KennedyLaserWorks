@@ -1,0 +1,593 @@
+{
+  "projects": [
+    {
+      "id": "casa-de-kelly",
+      "title": "Casa de Kelly",
+      "type": "Fully custom outdoor family sign",
+      "description": [
+        "The customer provided an AI-generated image as inspiration for a personalized \"Casa de Kelly\" sign incorporating Irish and Spanish design elements.",
+        "Kennedy Laser Works adapted the concept into a design that could actually be fabricated from wood, including layered Celtic knotwork, dimensional lettering, and painted flag elements. The finished sign was constructed, detailed, finished for outdoor use, and installed at the customer's home."
+      ],
+      "heroImage": "assets/images/custom-projects/casa-de-kelly-02-hero-finished-installed.jpg",
+      "disclosure": "",
+      "images": [
+        {
+          "src": "assets/images/custom-projects/casa-de-kelly-01-customer-ai-inspiration.jpg",
+          "fallback": "assets/images/custom-projects/casa-de-kelly-01-customer-ai-inspiration.jpg",
+          "alt": "Casa de Kelly customer-supplied reference: The AI-generated concept image provided by the customer as inspiration for the project.",
+          "width": 1024,
+          "height": 559,
+          "label": "Customer Inspiration",
+          "caption": "The AI-generated concept image provided by the customer as inspiration for the project.",
+          "category": "CUSTOMER-SUPPLIED REFERENCE"
+        },
+        {
+          "src": "assets/images/custom-projects/casa-de-kelly-02-hero-finished-installed.jpg",
+          "fallback": "assets/images/custom-projects/casa-de-kelly-02-hero-finished-installed.jpg",
+          "alt": "Casa de Kelly Finished Project: The completed Casa de Kelly sign installed at the customer's home.",
+          "width": 1536,
+          "height": 2048,
+          "label": "Finished Project",
+          "caption": "The completed Casa de Kelly sign installed at the customer's home.",
+          "category": "FINISHED PROJECT"
+        },
+        {
+          "src": "assets/images/custom-projects/casa-de-kelly-03-installed-wide-view.jpg",
+          "fallback": "assets/images/custom-projects/casa-de-kelly-03-installed-wide-view.jpg",
+          "alt": "Casa de Kelly Installed View: A wider view showing the finished sign in its intended location.",
+          "width": 1195,
+          "height": 896,
+          "label": "Installed View",
+          "caption": "A wider view showing the finished sign in its intended location.",
+          "category": "FINISHED PROJECT"
+        },
+        {
+          "src": "assets/images/custom-projects/casa-de-kelly-04-finished-sign-full-view.jpg",
+          "fallback": "assets/images/custom-projects/casa-de-kelly-04-finished-sign-full-view.jpg",
+          "alt": "Casa de Kelly Finished Design: The completed physical design, translating the original concept into a handcrafted wooden sign.",
+          "width": 4000,
+          "height": 1848,
+          "label": "Finished Design",
+          "caption": "The completed physical design, translating the original concept into a handcrafted wooden sign.",
+          "category": "FINISHED PROJECT"
+        },
+        {
+          "src": "assets/images/custom-projects/casa-de-kelly-05-layered-construction-detail.jpg",
+          "fallback": "assets/images/custom-projects/casa-de-kelly-05-layered-construction-detail.jpg",
+          "alt": "Casa de Kelly Layered Construction: An angled view showing the dimensional construction and layered design elements.",
+          "width": 4000,
+          "height": 1848,
+          "label": "Layered Construction",
+          "caption": "An angled view showing the dimensional construction and layered design elements.",
+          "category": "IN PROGRESS"
+        },
+        {
+          "src": "assets/images/custom-projects/casa-de-kelly-06-kelly-lettering-detail.jpg",
+          "fallback": "assets/images/custom-projects/casa-de-kelly-06-kelly-lettering-detail.jpg",
+          "alt": "Casa de Kelly Personalized Detail: Close-up of the custom Kelly lettering, Celtic design elements, and Irish-inspired colors.",
+          "width": 4000,
+          "height": 1848,
+          "label": "Personalized Detail",
+          "caption": "Close-up of the custom Kelly lettering, Celtic design elements, and Irish-inspired colors.",
+          "category": "IN PROGRESS"
+        },
+        {
+          "src": "assets/images/custom-projects/casa-de-kelly-07-celtic-knotwork-detail.jpg",
+          "fallback": "assets/images/custom-projects/casa-de-kelly-07-celtic-knotwork-detail.jpg",
+          "alt": "Casa de Kelly Celtic Knotwork: Close-up showing the detailed Celtic knotwork and precision of the laser-cut components.",
+          "width": 4000,
+          "height": 1848,
+          "label": "Celtic Knotwork",
+          "caption": "Close-up showing the detailed Celtic knotwork and precision of the laser-cut components.",
+          "category": ""
+        },
+        {
+          "src": "assets/images/custom-projects/casa-de-kelly-08-klw-makers-mark.jpg",
+          "fallback": "assets/images/custom-projects/casa-de-kelly-08-klw-makers-mark.jpg",
+          "alt": "Casa de Kelly Made by Kennedy Laser Works: The back of the completed sign featuring the engraved Kennedy Laser Works maker's mark.",
+          "width": 4000,
+          "height": 1848,
+          "label": "Made by Kennedy Laser Works",
+          "caption": "The back of the completed sign featuring the engraved Kennedy Laser Works maker's mark.",
+          "category": "FINISHED PROJECT"
+        }
+      ]
+    },
+    {
+      "id": "custom-camp-sign-set",
+      "title": "Custom Camp Sign Set",
+      "type": "Fully custom personalized wooden sign set",
+      "description": [
+        "A coordinated set of four rustic camping-themed signs created for a family birthday celebration.",
+        "Kennedy Laser Works designed and built the matching signs as a cohesive set, including personalized signs for Frida, Carter, and Sebastian along with a larger \"Triplets Camp Out - Est. 2016\" sign. Each piece shares the same rustic outdoor theme while giving the individual signs their own personalized identity."
+      ],
+      "heroImage": "assets/images/custom-projects/custom-camp-sign-set-01-hero-complete-camp-sign-set.jpg",
+      "disclosure": "",
+      "images": [
+        {
+          "src": "assets/images/custom-projects/custom-camp-sign-set-01-hero-complete-camp-sign-set.jpg",
+          "fallback": "assets/images/custom-projects/custom-camp-sign-set-01-hero-complete-camp-sign-set.jpg",
+          "alt": "Custom Camp Sign Set Complete Sign Set: The completed four-piece personalized camping sign set.",
+          "width": 4000,
+          "height": 1848,
+          "label": "Complete Sign Set",
+          "caption": "The completed four-piece personalized camping sign set.",
+          "category": "FINISHED PROJECT"
+        },
+        {
+          "src": "assets/images/custom-projects/custom-camp-sign-set-02-triplets-camp-out-sign.jpg",
+          "fallback": "assets/images/custom-projects/custom-camp-sign-set-02-triplets-camp-out-sign.jpg",
+          "alt": "Custom Camp Sign Set Triplets Camp Out: The larger centerpiece sign created for the family's \"Triplets Camp Out - Est. 2016\" celebration.",
+          "width": 4000,
+          "height": 1848,
+          "label": "Triplets Camp Out",
+          "caption": "The larger centerpiece sign created for the family's \"Triplets Camp Out - Est. 2016\" celebration.",
+          "category": ""
+        },
+        {
+          "src": "assets/images/custom-projects/custom-camp-sign-set-03-sebastian-sign-detail.jpg",
+          "fallback": "assets/images/custom-projects/custom-camp-sign-set-03-sebastian-sign-detail.jpg",
+          "alt": "Custom Camp Sign Set Personalized Detail: Sebastian's personalized camp sign featuring layered lettering and camping-themed design elements.",
+          "width": 4000,
+          "height": 1848,
+          "label": "Personalized Detail",
+          "caption": "Sebastian's personalized camp sign featuring layered lettering and camping-themed design elements.",
+          "category": "IN PROGRESS"
+        },
+        {
+          "src": "assets/images/custom-projects/custom-camp-sign-set-04-frida-sign-detail.jpg",
+          "fallback": "assets/images/custom-projects/custom-camp-sign-set-04-frida-sign-detail.jpg",
+          "alt": "Custom Camp Sign Set Personalized Detail: Frida's personalized camp sign, designed to coordinate with the rest of the set.",
+          "width": 4000,
+          "height": 1848,
+          "label": "Personalized Detail",
+          "caption": "Frida's personalized camp sign, designed to coordinate with the rest of the set.",
+          "category": "IN PROGRESS"
+        },
+        {
+          "src": "assets/images/custom-projects/custom-camp-sign-set-05-carter-sign-detail.jpg",
+          "fallback": "assets/images/custom-projects/custom-camp-sign-set-05-carter-sign-detail.jpg",
+          "alt": "Custom Camp Sign Set Personalized Detail: Carter's personalized camp sign completing the coordinated family set.",
+          "width": 4000,
+          "height": 1848,
+          "label": "Personalized Detail",
+          "caption": "Carter's personalized camp sign completing the coordinated family set.",
+          "category": ""
+        },
+        {
+          "src": "assets/images/custom-projects/custom-camp-sign-set-06-klw-makers-mark-back.jpg",
+          "fallback": "assets/images/custom-projects/custom-camp-sign-set-06-klw-makers-mark-back.jpg",
+          "alt": "Custom Camp Sign Set Made by Kennedy Laser Works: The reverse of the finished sign featuring the Kennedy Laser Works maker's mark.",
+          "width": 4000,
+          "height": 1848,
+          "label": "Made by Kennedy Laser Works",
+          "caption": "The reverse of the finished sign featuring the Kennedy Laser Works maker's mark.",
+          "category": "FINISHED PROJECT"
+        }
+      ]
+    },
+    {
+      "id": "growth-chart",
+      "title": "Growth Chart",
+      "type": "Fully custom personalized wooden growth chart",
+      "description": [
+        "The customer provided a photo of an existing personalized growth chart as inspiration and asked Kennedy Laser Works to create a custom version.",
+        "Using the original idea as a starting point, Kennedy Laser Works created a personalized wooden growth chart with measurement markings, decorative heart accents, and custom lettering, turning the customer's inspiration into a unique piece made specifically for their family."
+      ],
+      "heroImage": "assets/images/custom-projects/growth-chart-02-hero-finished-growth-chart.jpg",
+      "disclosure": "",
+      "images": [
+        {
+          "src": "assets/images/custom-projects/growth-chart-01-customer-inspiration.jpg",
+          "fallback": "assets/images/custom-projects/growth-chart-01-customer-inspiration.jpg",
+          "alt": "Growth Chart customer-supplied reference: The reference photo provided by the customer as inspiration for the project.",
+          "width": 720,
+          "height": 960,
+          "label": "Customer Inspiration",
+          "caption": "The reference photo provided by the customer as inspiration for the project.",
+          "category": "CUSTOMER-SUPPLIED REFERENCE"
+        },
+        {
+          "src": "assets/images/custom-projects/growth-chart-02-hero-finished-growth-chart.jpg",
+          "fallback": "assets/images/custom-projects/growth-chart-02-hero-finished-growth-chart.jpg",
+          "alt": "Growth Chart Finished Project: The completed Kennedy Laser Works growth chart, personalized with custom lettering, measurement markings, and decorative heart details.",
+          "width": 739,
+          "height": 1600,
+          "label": "Finished Project",
+          "caption": "The completed Kennedy Laser Works growth chart, personalized with custom lettering, measurement markings, and decorative heart details.",
+          "category": "FINISHED PROJECT"
+        }
+      ]
+    },
+    {
+      "id": "grabowski-cutting-board",
+      "title": "Grabowski Cutting Board",
+      "type": "Custom engraving on a customer-supplied wooden cutting board",
+      "description": [
+        "The customer supplied a wooden cutting board and asked Kennedy Laser Works to personalize it as a custom keepsake for Damian and Jamie Grabowski.",
+        "Kennedy Laser Works created and laser engraved the personalized design directly onto the customer's board, incorporating their names, family name, decorative flourishes, and special date."
+      ],
+      "heroImage": "assets/images/custom-projects/grabowski-cutting-board-01-hero-personalized-cutting-board.jpg",
+      "disclosure": "",
+      "images": [
+        {
+          "src": "assets/images/custom-projects/grabowski-cutting-board-01-hero-personalized-cutting-board.jpg",
+          "fallback": "assets/images/custom-projects/grabowski-cutting-board-01-hero-personalized-cutting-board.jpg",
+          "alt": "Grabowski Cutting Board Finished Project: The completed customer-supplied cutting board after custom laser engraving by Kennedy Laser Works.",
+          "width": 3759,
+          "height": 2256,
+          "label": "Finished Project",
+          "caption": "The completed customer-supplied cutting board after custom laser engraving by Kennedy Laser Works.",
+          "category": "FINISHED PROJECT"
+        }
+      ]
+    },
+    {
+      "id": "dundon-thank-you-plaque",
+      "title": "Dundon Thank-You Plaque",
+      "type": "Custom engraved appreciation plaque",
+      "description": [
+        "A custom engraved thank-you plaque created as a personalized appreciation gift.",
+        "Kennedy Laser Works prepared the design digitally, engraved the finished artwork into wood, and completed the plaque as a one-of-a-kind presentation piece. The project combines custom layout work, detailed laser engraving, and personalized finishing to create a meaningful recognition gift."
+      ],
+      "heroImage": "assets/images/custom-projects/dundon-thank-you-plaque-03-hero-finished-plaque.png",
+      "disclosure": "Images 03 and 05 are photographs of the actual completed project. AI-assisted editing was used only to remove or clean up the original backgrounds. The plaque, engraving, finish, colors, construction, and workmanship were not AI-generated or altered.",
+      "images": [
+        {
+          "src": "assets/images/custom-projects/dundon-thank-you-plaque-01-design-layout.png",
+          "fallback": "assets/images/custom-projects/dundon-thank-you-plaque-01-design-layout.png",
+          "alt": "Dundon Thank-You Plaque Design: The custom plaque design prepared in the engraving software before production.",
+          "width": 1510,
+          "height": 1052,
+          "label": "Design",
+          "caption": "The custom plaque design prepared in the engraving software before production.",
+          "category": "IN PROGRESS"
+        },
+        {
+          "src": "assets/images/custom-projects/dundon-thank-you-plaque-02-engraving-in-progress.jpg",
+          "fallback": "assets/images/custom-projects/dundon-thank-you-plaque-02-engraving-in-progress.jpg",
+          "alt": "Dundon Thank-You Plaque In Production: The plaque being laser engraved during production.",
+          "width": 1152,
+          "height": 1536,
+          "label": "In Production",
+          "caption": "The plaque being laser engraved during production.",
+          "category": "IN PROGRESS"
+        },
+        {
+          "src": "assets/images/custom-projects/dundon-thank-you-plaque-03-hero-finished-plaque.png",
+          "fallback": "assets/images/custom-projects/dundon-thank-you-plaque-03-hero-finished-plaque.png",
+          "alt": "Dundon Thank-You Plaque Finished Project: The completed engraved thank-you plaque shown with the background cleaned up for presentation.",
+          "width": 1086,
+          "height": 1448,
+          "label": "Finished Project",
+          "caption": "The completed engraved thank-you plaque shown with the background cleaned up for presentation.",
+          "category": "FINISHED PROJECT"
+        },
+        {
+          "src": "assets/images/custom-projects/dundon-thank-you-plaque-04-original-finished-plaque.jpg",
+          "fallback": "assets/images/custom-projects/dundon-thank-you-plaque-04-original-finished-plaque.jpg",
+          "alt": "Dundon Thank-You Plaque Original Finished Photo: An original unedited photograph of the completed plaque.",
+          "width": 4000,
+          "height": 1848,
+          "label": "Original Finished Photo",
+          "caption": "An original unedited photograph of the completed plaque.",
+          "category": "FINISHED PROJECT"
+        },
+        {
+          "src": "assets/images/custom-projects/dundon-thank-you-plaque-05-klw-makers-mark-back.png",
+          "fallback": "assets/images/custom-projects/dundon-thank-you-plaque-05-klw-makers-mark-back.png",
+          "alt": "Dundon Thank-You Plaque Made by Kennedy Laser Works: The reverse of the finished plaque featuring the Kennedy Laser Works maker's mark.",
+          "width": 1086,
+          "height": 1448,
+          "label": "Made by Kennedy Laser Works",
+          "caption": "The reverse of the finished plaque featuring the Kennedy Laser Works maker's mark.",
+          "category": "FINISHED PROJECT"
+        }
+      ]
+    },
+    {
+      "id": "coasters",
+      "title": "Coasters",
+      "type": "Custom laser-engraved slate coasters",
+      "description": [
+        "A collection of custom slate coaster projects created by Kennedy Laser Works, demonstrating several different approaches to personalized laser engraving.",
+        "These examples include a coordinated family monogram set, a location-themed design, and a detailed organizational seal. Each design was adapted for engraving onto natural slate, creating personalized pieces suitable for gifts, keepsakes, or everyday use."
+      ],
+      "heroImage": "assets/images/custom-projects/coasters-01-hero-castellano-coaster-set.jpg",
+      "disclosure": "",
+      "images": [
+        {
+          "src": "assets/images/custom-projects/coasters-01-hero-castellano-coaster-set.jpg",
+          "fallback": "assets/images/custom-projects/coasters-01-hero-castellano-coaster-set.jpg",
+          "alt": "Coasters Custom Coaster Set: A completed four-piece Castellano monogram coaster set featuring coordinated custom engraving.",
+          "width": 2195,
+          "height": 2230,
+          "label": "Custom Coaster Set",
+          "caption": "A completed four-piece Castellano monogram coaster set featuring coordinated custom engraving.",
+          "category": "FINISHED PROJECT"
+        },
+        {
+          "src": "assets/images/custom-projects/coasters-02-castellano-coaster-detail.jpg",
+          "fallback": "assets/images/custom-projects/coasters-02-castellano-coaster-detail.jpg",
+          "alt": "Coasters Personalized Detail: A closer view of an individual Castellano coaster showing the personalized monogram design.",
+          "width": 2219,
+          "height": 2309,
+          "label": "Personalized Detail",
+          "caption": "A closer view of an individual Castellano coaster showing the personalized monogram design.",
+          "category": "IN PROGRESS"
+        },
+        {
+          "src": "assets/images/custom-projects/coasters-03-hartwell-street-coasters.jpg",
+          "fallback": "assets/images/custom-projects/coasters-03-hartwell-street-coasters.jpg",
+          "alt": "Coasters Location Design: A custom slate coaster set featuring a Hartwell Street design and New Jersey outline.",
+          "width": 1606,
+          "height": 1560,
+          "label": "Location Design",
+          "caption": "A custom slate coaster set featuring a Hartwell Street design and New Jersey outline.",
+          "category": "IN PROGRESS"
+        },
+        {
+          "src": "assets/images/custom-projects/coasters-04-mcpo-seal-coaster.jpg",
+          "fallback": "assets/images/custom-projects/coasters-04-mcpo-seal-coaster.jpg",
+          "alt": "Coasters Detailed Engraving: A slate coaster engraved with a detailed Morris County Prosecutor's Office seal.",
+          "width": 1821,
+          "height": 1758,
+          "label": "Detailed Engraving",
+          "caption": "A slate coaster engraved with a detailed Morris County Prosecutor's Office seal.",
+          "category": ""
+        },
+        {
+          "src": "assets/images/custom-projects/coasters-05-engraving-in-progress.jpg",
+          "fallback": "assets/images/custom-projects/coasters-05-engraving-in-progress.jpg",
+          "alt": "Coasters In Production: A slate coaster being laser engraved in the Kennedy Laser Works shop.",
+          "width": 4000,
+          "height": 1848,
+          "label": "In Production",
+          "caption": "A slate coaster being laser engraved in the Kennedy Laser Works shop.",
+          "category": "IN PROGRESS"
+        }
+      ]
+    },
+    {
+      "id": "squirtle",
+      "title": "Squirtle",
+      "type": "Custom layered laser-cut and hand-painted wood artwork",
+      "description": [
+        "The project began with supplied character artwork that was used as the visual reference for a custom layered wood build.",
+        "Kennedy Laser Works translated the two-dimensional source artwork into a multi-layer wooden design suitable for laser cutting, assembly, and hand painting. The individual components were precisely cut, assembled to create physical depth and dimension, and then painted by hand to recreate the character as a finished dimensional piece.",
+        "The gallery follows the complete transformation from the original source artwork through raw wood construction, assembly, painting, detail work, and the completed project."
+      ],
+      "heroImage": "assets/images/custom-projects/squirtle-09-hero-finished-squirtle.jpg",
+      "disclosure": "",
+      "images": [
+        {
+          "src": "assets/images/custom-projects/squirtle-01-customer-source-artwork.png",
+          "fallback": "assets/images/custom-projects/squirtle-01-customer-source-artwork.png",
+          "alt": "Squirtle customer-supplied reference: The original character artwork supplied as the visual reference for the custom project.",
+          "width": 860,
+          "height": 908,
+          "label": "Source Artwork",
+          "caption": "The original character artwork supplied as the visual reference for the custom project.",
+          "category": "CUSTOMER-SUPPLIED REFERENCE"
+        },
+        {
+          "src": "assets/images/custom-projects/squirtle-02-bare-layered-wood.jpg",
+          "fallback": "assets/images/custom-projects/squirtle-02-bare-layered-wood.jpg",
+          "alt": "Squirtle Raw Wood Construction: The laser-cut wood components assembled into the basic layered Squirtle design before painting begins.",
+          "width": 4000,
+          "height": 1848,
+          "label": "Raw Wood Construction",
+          "caption": "The laser-cut wood components assembled into the basic layered Squirtle design before painting begins.",
+          "category": "IN PROGRESS"
+        },
+        {
+          "src": "assets/images/custom-projects/squirtle-03-layer-assembly-progress.jpg",
+          "fallback": "assets/images/custom-projects/squirtle-03-layer-assembly-progress.jpg",
+          "alt": "Squirtle Layered Assembly: The individual laser-cut components being positioned and assembled to create the dimensional structure.",
+          "width": 4000,
+          "height": 1848,
+          "label": "Layered Assembly",
+          "caption": "The individual laser-cut components being positioned and assembled to create the dimensional structure.",
+          "category": "IN PROGRESS"
+        },
+        {
+          "src": "assets/images/custom-projects/squirtle-04-painting-begins.jpg",
+          "fallback": "assets/images/custom-projects/squirtle-04-painting-begins.jpg",
+          "alt": "Squirtle Painting Begins: The first colors being applied to the assembled wooden layers.",
+          "width": 4000,
+          "height": 1848,
+          "label": "Painting Begins",
+          "caption": "The first colors being applied to the assembled wooden layers.",
+          "category": "IN PROGRESS"
+        },
+        {
+          "src": "assets/images/custom-projects/squirtle-05-color-build-progress.jpg",
+          "fallback": "assets/images/custom-projects/squirtle-05-color-build-progress.jpg",
+          "alt": "Squirtle Building the Color: Additional hand-painted color begins bringing the layered character to life while preserving the dimensional construction.",
+          "width": 4000,
+          "height": 1848,
+          "label": "Building the Color",
+          "caption": "Additional hand-painted color begins bringing the layered character to life while preserving the dimensional construction.",
+          "category": "IN PROGRESS"
+        },
+        {
+          "src": "assets/images/custom-projects/squirtle-06-painting-progress.jpg",
+          "fallback": "assets/images/custom-projects/squirtle-06-painting-progress.jpg",
+          "alt": "Squirtle Painting Progress: More of the individual components receive their final colors as the finished design starts to emerge.",
+          "width": 4000,
+          "height": 1848,
+          "label": "Painting Progress",
+          "caption": "More of the individual components receive their final colors as the finished design starts to emerge.",
+          "category": "FINISHED PROJECT"
+        },
+        {
+          "src": "assets/images/custom-projects/squirtle-07-detail-painting.jpg",
+          "fallback": "assets/images/custom-projects/squirtle-07-detail-painting.jpg",
+          "alt": "Squirtle Detail Work: Later-stage hand painting adds the smaller color areas and details that define the finished character.",
+          "width": 4000,
+          "height": 1848,
+          "label": "Detail Work",
+          "caption": "Later-stage hand painting adds the smaller color areas and details that define the finished character.",
+          "category": "FINISHED PROJECT"
+        },
+        {
+          "src": "assets/images/custom-projects/squirtle-08-nearly-finished-squirtle.jpg",
+          "fallback": "assets/images/custom-projects/squirtle-08-nearly-finished-squirtle.jpg",
+          "alt": "Squirtle Nearly Finished: The assembled and painted project nearing completion after the major color and detail work has been applied.",
+          "width": 4000,
+          "height": 1848,
+          "label": "Nearly Finished",
+          "caption": "The assembled and painted project nearing completion after the major color and detail work has been applied.",
+          "category": "FINISHED PROJECT"
+        },
+        {
+          "src": "assets/images/custom-projects/squirtle-09-hero-finished-squirtle.jpg",
+          "fallback": "assets/images/custom-projects/squirtle-09-hero-finished-squirtle.jpg",
+          "alt": "Squirtle Finished Project: The completed layered wood Squirtle, fully assembled and hand-painted by Kennedy Laser Works.",
+          "width": 4000,
+          "height": 1848,
+          "label": "Finished Project",
+          "caption": "The completed layered wood Squirtle, fully assembled and hand-painted by Kennedy Laser Works.",
+          "category": "FINISHED PROJECT"
+        },
+        {
+          "src": "assets/images/custom-projects/squirtle-10-layered-depth-detail.jpg",
+          "fallback": "assets/images/custom-projects/squirtle-10-layered-depth-detail.jpg",
+          "alt": "Squirtle Layered Construction Detail: A low-angle detail view showing the physical depth created by the multiple laser-cut wood layers.",
+          "width": 4000,
+          "height": 1848,
+          "label": "Layered Construction Detail",
+          "caption": "A low-angle detail view showing the physical depth created by the multiple laser-cut wood layers.",
+          "category": "IN PROGRESS"
+        }
+      ]
+    },
+    {
+      "id": "celtics",
+      "title": "Celtics",
+      "type": "Custom layered laser-cut and hand-painted wood sign",
+      "description": [
+        "This custom project began with customer-supplied artwork of a Boston Celtics design. Kennedy Laser Works recreated the artwork as a dimensional layered wood piece, adapting the original image for laser cutting, assembly, and hand painting.",
+        "Individual wood layers were laser cut and assembled to create depth and dimension. The piece was then carefully hand painted, building the colors and details in stages before final assembly.",
+        "The completed sign preserves the character and overall appearance of the customer's reference artwork while transforming it into a unique dimensional wood piece."
+      ],
+      "heroImage": "assets/images/custom-projects/celtics-07-hero-finished-celtics.jpg",
+      "disclosure": "",
+      "images": [
+        {
+          "src": "assets/images/custom-projects/celtics-01-customer-source-artwork.jpg",
+          "fallback": "assets/images/custom-projects/celtics-01-customer-source-artwork.jpg",
+          "alt": "Celtics customer-supplied reference: The customer-supplied artwork used as the reference for the project.",
+          "width": 928,
+          "height": 888,
+          "label": "Customer Reference",
+          "caption": "The customer-supplied artwork used as the reference for the project.",
+          "category": "CUSTOMER-SUPPLIED REFERENCE"
+        },
+        {
+          "src": "assets/images/custom-projects/celtics-02-raw-layered-wood.jpg",
+          "fallback": "assets/images/custom-projects/celtics-02-raw-layered-wood.jpg",
+          "alt": "Celtics Layered Construction: The laser-cut wood components assembled before painting, showing the layered construction of the piece.",
+          "width": 4000,
+          "height": 1848,
+          "label": "Layered Construction",
+          "caption": "The laser-cut wood components assembled before painting, showing the layered construction of the piece.",
+          "category": "IN PROGRESS"
+        },
+        {
+          "src": "assets/images/custom-projects/celtics-03-painting-in-progress.jpg",
+          "fallback": "assets/images/custom-projects/celtics-03-painting-in-progress.jpg",
+          "alt": "Celtics Assembly: A closer look at the individual laser-cut layers during assembly.",
+          "width": 4000,
+          "height": 1848,
+          "label": "Assembly",
+          "caption": "A closer look at the individual laser-cut layers during assembly.",
+          "category": "IN PROGRESS"
+        },
+        {
+          "src": "assets/images/custom-projects/celtics-04-color-assembly-progress.jpg",
+          "fallback": "assets/images/custom-projects/celtics-04-color-assembly-progress.jpg",
+          "alt": "Celtics Painting Begins: Hand painting begins, adding the first colors to the layered wood design.",
+          "width": 4000,
+          "height": 1848,
+          "label": "Painting Begins",
+          "caption": "Hand painting begins, adding the first colors to the layered wood design.",
+          "category": "IN PROGRESS"
+        },
+        {
+          "src": "assets/images/custom-projects/celtics-05-detail-painting-progress.jpg",
+          "fallback": "assets/images/custom-projects/celtics-05-detail-painting-progress.jpg",
+          "alt": "Celtics Color Progress: Additional colors and details are added as the design begins to take shape.",
+          "width": 4000,
+          "height": 1848,
+          "label": "Color Progress",
+          "caption": "Additional colors and details are added as the design begins to take shape.",
+          "category": "IN PROGRESS"
+        },
+        {
+          "src": "assets/images/custom-projects/celtics-06-nearly-finished-celtics.jpg",
+          "fallback": "assets/images/custom-projects/celtics-06-nearly-finished-celtics.jpg",
+          "alt": "Celtics Detail Work: The hand-painted details continue to build across the dimensional wood layers.",
+          "width": 4000,
+          "height": 1848,
+          "label": "Detail Work",
+          "caption": "The hand-painted details continue to build across the dimensional wood layers.",
+          "category": ""
+        },
+        {
+          "src": "assets/images/custom-projects/celtics-07-hero-finished-celtics.jpg",
+          "fallback": "assets/images/custom-projects/celtics-07-hero-finished-celtics.jpg",
+          "alt": "Celtics Finished Project: The completed layered wood Celtics sign, laser cut, assembled, and hand painted by Kennedy Laser Works.",
+          "width": 1848,
+          "height": 2151,
+          "label": "Finished Project",
+          "caption": "The completed layered wood Celtics sign, laser cut, assembled, and hand painted by Kennedy Laser Works.",
+          "category": "FINISHED PROJECT"
+        },
+        {
+          "src": "assets/images/custom-projects/celtics-08-layered-depth-detail.jpg",
+          "fallback": "assets/images/custom-projects/celtics-08-layered-depth-detail.jpg",
+          "alt": "Celtics Nearly Finished: The project nearing completion with the primary colors and details in place.",
+          "width": 4000,
+          "height": 1848,
+          "label": "Nearly Finished",
+          "caption": "The project nearing completion with the primary colors and details in place.",
+          "category": "FINISHED PROJECT"
+        },
+        {
+          "src": "assets/images/custom-projects/celtics-09-reference-vs-finished-comparison.jpg",
+          "fallback": "assets/images/custom-projects/celtics-09-reference-vs-finished-comparison.jpg",
+          "alt": "Celtics Reference vs. Finished Piece: The customer-supplied reference artwork shown alongside the completed layered wood interpretation by Kennedy Laser Works.",
+          "width": 1920,
+          "height": 1140,
+          "label": "Reference vs. Finished Piece",
+          "caption": "The customer-supplied reference artwork shown alongside the completed layered wood interpretation by Kennedy Laser Works.",
+          "category": "FINISHED PROJECT"
+        }
+      ]
+    }
+  ],
+  "workshopImages": [
+    {
+      "src": "assets/images/workshop/klw-workshop-20250428-074515.jpg",
+      "fallback": "assets/images/workshop/klw-workshop-20250428-074515.jpg",
+      "alt": "Kennedy Laser Works workshop equipment and in-house production area",
+      "width": 4000,
+      "height": 1848
+    },
+    {
+      "src": "assets/images/workshop/klw-workshop-20250428-074533.jpg",
+      "fallback": "assets/images/workshop/klw-workshop-20250428-074533.jpg",
+      "alt": "Kennedy Laser Works workshop equipment and in-house production area",
+      "width": 4000,
+      "height": 1848
+    },
+    {
+      "src": "assets/images/workshop/klw-workshop-20250428-074543.jpg",
+      "fallback": "assets/images/workshop/klw-workshop-20250428-074543.jpg",
+      "alt": "Kennedy Laser Works workshop equipment and in-house production area",
+      "width": 4000,
+      "height": 1848
+    }
+  ]
+}

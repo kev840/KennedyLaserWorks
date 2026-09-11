@@ -50,6 +50,14 @@
 .home-custom-example img { width: 100%; height: 100%; object-fit: contain; transition: transform var(--transition); }
 .home-custom-example:hover img { transform: scale(1.04); }
 .home-custom-example span { position: absolute; inset: auto .55rem .55rem; padding: .55rem .65rem; border-radius: .35rem; color: white; background: rgba(23,58,43,.9); font: 600 .9rem/1.1 var(--font-display); }
+.home-project-teaser__grid { display: grid; grid-template-columns: minmax(0,.8fr) minmax(0,1.2fr); gap: clamp(3rem,7vw,7rem); align-items: center; }
+.home-project-teaser__copy h2 { max-width: 12ch; color: var(--color-forest); }
+.home-project-teaser__copy p:not(.section-kicker) { max-width: 34rem; color: var(--color-muted); }
+.home-project-teaser__cards { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: .85rem; }
+.home-project-teaser__card { display: grid; gap: .8rem; color: var(--color-forest); font: 600 1.18rem/1.1 var(--font-display); }
+.home-project-teaser__image { display: grid; place-items: center; aspect-ratio: 3/4; overflow: hidden; border: 1px solid rgba(45,30,24,.08); border-radius: var(--radius-sm); background: #eee8dd; box-shadow: var(--shadow-card); }
+.home-project-teaser__image img { width: 100%; height: 100%; object-fit: contain; transition: transform var(--transition), filter var(--transition); }
+.home-project-teaser__card:hover img { filter: saturate(1.04); transform: scale(1.02); }
 .home-process-grid, .home-maker-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(3rem,7vw,7rem); align-items: center; }
 .home-process-visual, .home-maker-visual { overflow: hidden; border-radius: var(--radius-md); background: var(--color-walnut); box-shadow: var(--shadow-lg); }
 .home-process-visual picture, .home-maker-visual picture { display: block; width: 100%; height: 100%; }
@@ -125,7 +133,7 @@
 @media (max-width: 56rem) {
   .pickup-inner, .form-shell { grid-template-columns: 1fr; gap: 2.5rem; }
   .homepage-product-grid--seasonal, .homepage-product-grid--favorites, .home-collection-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
-  .home-custom-grid, .home-process-grid, .home-maker-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .home-custom-grid, .home-project-teaser__grid, .home-process-grid, .home-maker-grid { grid-template-columns: 1fr; gap: 3rem; }
   .home-custom-gallery { width: min(100%,42rem); margin-inline: auto; }
   .home-process-visual img, .home-maker-visual img { height: 30rem; }
   .home-maker-copy, .home-maker-visual { order: initial; }
@@ -140,6 +148,8 @@
   .section-heading--light .button { width: 100%; }
   .home-custom-gallery { grid-template-columns: 1fr; }
   .home-custom-example, .home-custom-example--2 { aspect-ratio: 4/3; transform: none; }
+  .home-project-teaser__cards { grid-template-columns: 1fr; }
+  .home-project-teaser__image { aspect-ratio: 4/3; }
   .home-process-visual img, .home-maker-visual img { height: 23rem; }
   .home-process-list { grid-template-columns: 1fr; }
   .pickup-actions, .final-actions { align-items: stretch; flex-direction: column; }

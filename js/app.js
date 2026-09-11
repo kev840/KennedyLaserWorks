@@ -6,7 +6,7 @@
 
   const imageRecords = new WeakMap();
   const imageSelector = "img.progressive-image, img[loading='lazy'], img[data-progressive]";
-  const imageWrapper = (image) => image.closest(".catalog-card__image, .home-collection-card__image, .home-custom-example, .quick-view__main-image, .quick-view__thumbnails button, .quick-view__related-grid button, .product-lightbox figure");
+  const imageWrapper = (image) => image.closest(".catalog-card__image, .home-collection-card__image, .home-custom-example, .home-project-teaser__image, .custom-project-card__image, .custom-project-viewer__main, .custom-project-viewer__thumbs button, .quick-view__main-image, .quick-view__thumbnails button, .quick-view__related-grid button, .product-lightbox figure");
   const sourceKey = (image) => {
     const sources = [...(image.closest("picture")?.querySelectorAll("source") || [])].map((source) => source.srcset).join("|");
     return `${sources}|${image.getAttribute("src") || ""}`;

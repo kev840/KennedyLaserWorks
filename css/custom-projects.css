@@ -1,0 +1,77 @@
+.custom-projects-hero .button { margin-top: 2rem; }
+.custom-projects-hero .page-hero__lede + .page-hero__lede { margin-top: .8rem; }
+.custom-projects-copy { max-width: 52rem; margin-bottom: 2.25rem; color: var(--color-muted); }
+.custom-project-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1.45rem; }
+.custom-project-card { display: grid; grid-template-rows: auto 1fr; min-width: 0; overflow: hidden; border: 1px solid rgba(45,30,24,.07); border-radius: var(--radius-md); background: white; box-shadow: var(--shadow-card); transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition); }
+.custom-project-card:hover { border-color: rgba(182,131,77,.25); box-shadow: 0 24px 60px rgba(39,27,19,.16); transform: translateY(-6px); }
+.custom-project-card__image { position: relative; display: grid; place-items: center; width: 100%; aspect-ratio: 1/1; padding: 0; overflow: hidden; border: 0; background: #eee8dd; cursor: pointer; }
+.custom-project-card__image picture { width: 100%; height: 100%; }
+.custom-project-card__image img { width: 100%; height: 100%; object-fit: contain; transition: transform var(--transition), filter var(--transition); }
+.custom-project-card:hover .custom-project-card__image img { filter: saturate(1.04); transform: scale(1.02); }
+.custom-project-card__quick-label { position: absolute; right: .75rem; bottom: .75rem; padding: .38rem .65rem; border-radius: var(--radius-pill); color: white; background: rgba(23,58,43,.9); font-size: .62rem; letter-spacing: .07em; text-transform: uppercase; opacity: 0; transform: translateY(.45rem); transition: opacity var(--transition), transform var(--transition); }
+.custom-project-card:hover .custom-project-card__quick-label, .custom-project-card__image:focus-visible .custom-project-card__quick-label { opacity: 1; transform: translateY(0); }
+.custom-project-card__body { display: flex; flex-direction: column; padding: 1.65rem; }
+.custom-project-card__body h3 { min-height: 2.12em; margin-bottom: .7rem; color: var(--color-forest); font-size: clamp(1.85rem,2.2vw,2.15rem); line-height: 1.06; }
+.custom-project-card__type { min-height: 3.15em; margin-bottom: 1.35rem; color: var(--color-muted); font-size: .78rem; line-height: 1.55; }
+.custom-project-card .button { width: 100%; margin-top: auto; }
+.custom-project-viewer { width: min(96vw,92rem); max-width: 92rem; max-height: 94dvh; overflow-x: hidden; }
+.custom-project-viewer__layout { display: grid; grid-template-columns: minmax(34rem,1.45fr) minmax(27rem,1fr); min-height: 44rem; }
+.custom-project-viewer__gallery { display: grid; grid-template-rows: minmax(0,1fr) auto; min-width: 0; padding: 1rem; overflow: hidden; background: #eee8dd; touch-action: pan-y pinch-zoom; }
+.custom-project-viewer__main { position: relative; display: grid; place-items: center; width: 100%; height: clamp(36rem,72vh,48rem); min-height: 0; overflow: hidden; border-radius: calc(var(--radius-md) - .35rem); background: #eee8dd; }
+.custom-project-viewer__zoom { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; padding: 0; overflow: hidden; border: 0; background: transparent; cursor: zoom-in; transition: opacity 160ms ease; }
+.custom-project-viewer__zoom.is-changing { opacity: .55; }
+.custom-project-viewer__zoom picture { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; min-width: 0; min-height: 0; overflow: hidden; }
+.custom-project-viewer__zoom img { display: block; flex: 0 1 auto; width: auto !important; height: auto !important; max-width: 100% !important; max-height: 100% !important; min-width: 0; min-height: 0; object-fit: contain; object-position: center; margin: auto; }
+.custom-project-viewer__zoom > span { position: absolute; right: 1rem; bottom: 1rem; padding: .55rem .8rem; border-radius: var(--radius-pill); color: white; background: rgba(23,58,43,.9); font-size: .62rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+.custom-project-viewer__thumbs { display: flex; gap: .65rem; padding-top: .85rem; overflow-x: auto; }
+.custom-project-viewer__thumbs button { flex: 0 0 4.5rem; width: 4.5rem; height: 4.5rem; padding: .2rem; overflow: hidden; border: 1px solid transparent; border-radius: .35rem; background: white; cursor: pointer; }
+.custom-project-viewer__thumbs button.is-current { border-color: var(--color-bronze); box-shadow: 0 0 0 1px var(--color-bronze); }
+.custom-project-viewer__thumbs picture, .custom-project-viewer__thumbs img { display: block; width: 100%; height: 100%; }
+.custom-project-viewer__thumbs img { object-fit: contain; object-position: center; }
+.custom-project-viewer__copy { align-self: start; min-width: 0; padding: clamp(4.5rem,5vw,5.25rem) clamp(2.25rem,3.5vw,4rem) clamp(2.75rem,4vw,4rem); }
+.custom-project-viewer__copy h2 { display: block; margin-bottom: 1rem; overflow-wrap: break-word; color: var(--color-forest); font-size: clamp(2.6rem,4vw,4.35rem); }
+.custom-project-viewer__type { color: var(--color-walnut); font: italic 600 1.2rem/1.3 var(--font-display); }
+.custom-project-viewer__description { color: var(--color-muted); font-size: .9rem; }
+.custom-project-viewer__image-text { margin: 1.5rem 0; padding: 1.1rem 0; border-block: 1px solid var(--color-cream-deep); }
+.custom-project-viewer__label { margin-bottom: .45rem; color: var(--color-forest); font: 600 1.45rem/1.05 var(--font-display); }
+.custom-project-viewer__caption { margin: 0; color: var(--color-muted); font-size: .82rem; line-height: 1.65; }
+.custom-project-badge { display: inline-flex; margin-bottom: .75rem; padding: .32rem .65rem; border: 1px solid rgba(23,58,43,.15); border-radius: var(--radius-pill); color: var(--color-forest); background: #e5eee8; font-size: .56rem; font-weight: 600; letter-spacing: .09em; line-height: 1; text-transform: uppercase; }
+.custom-project-badge--reference { color: var(--color-walnut); background: rgba(214,174,121,.24); }
+.custom-project-badge--progress { color: var(--color-walnut-soft); background: rgba(233,224,210,.72); }
+.custom-project-badge--finished { color: white; background: rgba(23,58,43,.92); }
+.custom-project-disclosure, .custom-project-note { padding-left: 1rem; border-left: 2px solid var(--color-bronze); color: var(--color-muted); font-size: .74rem; line-height: 1.6; }
+.custom-project-note { max-width: 38rem; margin: 1.5rem auto 0 !important; color: rgba(255,255,255,.64) !important; text-align: left; }
+.workshop-grid { display: grid; grid-template-columns: minmax(0,.85fr) minmax(0,1.15fr); gap: clamp(3rem,7vw,7rem); align-items: center; }
+.workshop-copy h2 { color: var(--color-forest); }
+.workshop-copy p:not(.section-kicker) { color: var(--color-muted); }
+.workshop-photos { display: grid; grid-template-columns: 1fr 1fr; gap: .85rem; }
+.workshop-photos figure { margin: 0; overflow: hidden; border: 1px solid rgba(45,30,24,.08); border-radius: var(--radius-sm); background: var(--color-walnut); box-shadow: var(--shadow-card); }
+.workshop-photos figure:first-child { grid-row: span 2; }
+.workshop-photos picture, .workshop-photos img { display: block; width: 100%; height: 100%; }
+.workshop-photos img { min-height: 13rem; object-fit: cover; }
+
+@media (max-width: 70rem) {
+  .custom-project-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .custom-project-viewer__layout { grid-template-columns: minmax(0,1.15fr) minmax(21rem,.85fr); min-height: 40rem; }
+  .custom-project-viewer__main { height: clamp(30rem,62vh,38rem); }
+  .custom-project-viewer__copy { padding: 4.25rem 2.25rem 3rem; }
+}
+
+@media (max-width: 56rem) {
+  .custom-project-viewer { width: min(94vw,48rem); }
+  .custom-project-viewer__layout, .workshop-grid { grid-template-columns: 1fr; }
+  .custom-project-viewer__main { height: clamp(28rem,60vh,38rem); }
+  .custom-project-viewer__copy { padding: 2.75rem 2rem 3rem; }
+}
+
+@media (max-width: 40rem) {
+  .custom-project-grid, .workshop-photos { grid-template-columns: 1fr; }
+  .custom-project-card__quick-label { display: none; }
+  .custom-project-viewer { width: calc(100% - 1rem); max-width: none; max-height: calc(100dvh - 1rem); }
+  .custom-project-viewer__gallery { padding: .65rem; }
+  .custom-project-viewer__main { height: clamp(21rem,52vh,30rem); }
+  .custom-project-viewer__copy { padding: 2rem 1.25rem 2.5rem; }
+  .custom-project-viewer__copy h2 { font-size: clamp(2.25rem,12vw,3.25rem); }
+  .custom-project-viewer__copy .button { width: 100%; }
+  .workshop-photos figure:first-child { grid-row: auto; }
+}

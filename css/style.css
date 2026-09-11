@@ -58,9 +58,9 @@ main > .section + .section::before { content: ""; position: absolute; inset: 0 m
 .brand-logo { width: 3.2rem; height: 3.2rem; object-fit: contain; filter: invert(1); }
 .brand-name { font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; letter-spacing: .015em; }
 .brand-name span { display: block; font-family: var(--font-body); font-size: .47rem; font-weight: 500; letter-spacing: .26em; margin-top: .28rem; text-transform: uppercase; }
-.primary-nav { display: flex; align-items: center; gap: 2.4rem; }
-.primary-nav ul { display: flex; align-items: center; gap: 1.8rem; }
-.primary-nav ul a { position: relative; font-size: .78rem; font-weight: 500; letter-spacing: .06em; padding-block: .6rem; }
+.primary-nav { display: flex; align-items: center; gap: 1.4rem; }
+.primary-nav ul { display: flex; align-items: center; gap: 1.05rem; }
+.primary-nav ul a { position: relative; font-size: .74rem; font-weight: 500; letter-spacing: .055em; padding-block: .6rem; }
 .primary-nav ul a::after { content: ""; position: absolute; left: 0; right: 100%; bottom: 0; height: 1px; background: var(--color-bronze-light); transition: right var(--transition); }
 .primary-nav ul a:hover::after, .primary-nav ul a.is-active::after { right: 0; }
 .nav-toggle { display: none; background: none; border: 0; color: white; cursor: pointer; padding: .6rem; }
