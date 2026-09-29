@@ -32,7 +32,7 @@
 .catalog-card--home .catalog-card__body { padding: 1.35rem; }
 .catalog-card--home .catalog-card__body h3 { font-size: clamp(1.5rem,2vw,1.85rem); }
 .catalog-card--home .catalog-card__body > p:not(.catalog-card__category, .catalog-card__pricing) { font-size: .76rem; }
-.catalog-card--home .catalog-card__actions { grid-template-columns: 1fr; }
+.catalog-card--home .catalog-card__actions { grid-template-columns: 1fr; margin-top: auto; }
 .catalog-card--home .catalog-card__actions .button { width: 100%; }
 .home-collection-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1.35rem; }
 .home-collection-card { overflow: hidden; border: 1px solid rgba(45,30,24,.07); border-radius: .8rem; background: white; box-shadow: var(--shadow-sm); transition: transform var(--transition), box-shadow var(--transition); }

@@ -91,7 +91,7 @@
       <p class="catalog-card__category">${escapeHtml(labels.get(product.categories[0]) || "Kennedy Laser Works")}</p>
       <h3><a href="${detailUrl}">${escapeHtml(product.displayTitle)}</a></h3>
       <p>${escapeHtml(product.shortDescription)}</p>
-      <div class="catalog-card__meta"><p class="catalog-card__pricing">See Etsy for current pricing.</p>${product.personalized ? '<span class="badge">Personalizable</span>' : ""}</div>
+      ${product.personalized ? '<div class="catalog-card__meta"><span class="badge">Personalizable</span></div>' : ""}
       <div class="catalog-card__actions"><a class="button button--forest" href="${detailUrl}">View Details <span aria-hidden="true">→</span></a></div>
     </div>
   </article>`;
