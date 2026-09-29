@@ -189,6 +189,7 @@ const importProductImages = async (product, listing) => {
       remoteSource
     });
   }
+  // Refresh Etsy-owned fields only. Keep KLW editorial copy and product facts on the existing record.
   product.etsyTitle = listing.title || product.etsyTitle;
   product.etsyUrl = listing.url || product.etsyUrl;
   product.priceDisplay = moneyDisplay(listing.price, product.priceDisplay);

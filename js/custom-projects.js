@@ -87,6 +87,9 @@
     tools.preloadNext(activeGallery, 0);
     if (!viewer.open) viewer.showModal();
     viewer.scrollTop = 0;
+    const url = new URL(window.location.href);
+    url.searchParams.set("project", id);
+    window.history.replaceState(null, "", url);
   };
 
   const updateViewerImage = (index) => {
@@ -142,6 +145,12 @@
     if (viewer?.open) viewer.close();
     viewerOpener?.focus();
   };
+
+  viewer?.addEventListener("close", () => {
+    const url = new URL(window.location.href);
+    url.searchParams.delete("project");
+    window.history.replaceState(null, "", url);
+  });
 
   const closeLightbox = () => {
     if (!lightbox?.open) return;
@@ -201,6 +210,8 @@
     if (workshopGrid) workshopGrid.innerHTML = workshopMarkup(data.workshopImages || []);
     window.KLW?.enhanceImages(root);
     window.KLW?.enhanceImages(workshopGrid);
+    const requestedProject = new URLSearchParams(window.location.search).get("project");
+    if (requestedProject) openViewer(requestedProject, null);
   }).catch(() => {
     grid.innerHTML = '<div class="catalog-load-error"><h2>Custom projects could not load</h2><p>Please refresh the page or contact Kennedy Laser Works to discuss a custom project.</p><a class="button button--forest" href="custom-work.html#inquiry">Start a Custom Project</a></div>';
   });

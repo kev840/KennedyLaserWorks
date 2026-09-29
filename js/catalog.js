@@ -103,6 +103,7 @@
   const pictureFromImage = (image, loading = "lazy", className = "progressive-image", decorative = false) => galleryTools.picture(image, { loading, className, decorative });
 
   const picture = (product, loading = "lazy") => pictureFromImage(productGallery(product)[0], loading);
+  const productSummary = (product) => product.shortDescription?.trim() || `${product.displayTitle} from Kennedy Laser Works.`;
 
   const badgeDefinitions = [
     { category: "christmas-winter", label: "Christmas", className: "christmas" },
@@ -132,7 +133,7 @@
     <div class="catalog-card__body">
       <p class="catalog-card__category">${highlightText(categoryLabels.get(product.categories[0]) || titleCase(product.categories[0]), term)}</p>
       <h2><a href="product.html?id=${encodeURIComponent(product.id)}">${highlightText(product.displayTitle, term)}</a></h2>
-      <p>${highlightText(product.shortDescription, term)}</p>
+      <p>${highlightText(productSummary(product), term)}</p>
       <div class="catalog-card__meta"><p class="catalog-card__pricing">See Etsy for current pricing.</p>${product.personalized ? '<span class="badge">Personalizable</span>' : ""}</div>
       <div class="catalog-card__actions">
         <button class="button button--outline" type="button" data-open-quick-view="${escapeHtml(product.id)}">Quick view</button>
@@ -270,10 +271,11 @@
 
   const quickViewFacts = (product) => {
     const facts = [
-      { label: "Personalization", value: product.personalized === true ? "Available — choose current options on Etsy." : "See the Etsy listing for available options." },
+      ...(product.bestFor ? [{ label: "Best for", value: product.bestFor }] : []),
+      ...(product.personalizationGuidance ? [{ label: "Personalization", value: product.personalizationGuidance }] : product.personalized === true ? [{ label: "Personalization", value: "Available; see Etsy for current choices." }] : []),
+      ...(product.variantOverview ? [{ label: "Options", value: product.variantOverview }] : []),
       ...(product.dimensions ? [{ label: "Dimensions", value: Array.isArray(product.dimensions) ? product.dimensions.join(", ") : product.dimensions }] : []),
       ...(product.materials ? [{ label: "Materials", value: Array.isArray(product.materials) ? product.materials.join(", ") : product.materials }] : []),
-      { label: "Production timing", value: product.productionTime || "Varies by piece and current workload; confirm a needed-by date before ordering." },
       { label: "Local pickup", value: "Available by advance arrangement in Budd Lake, New Jersey. Contact us before ordering." }
     ];
     return facts.map((fact) => `<div><dt>${escapeHtml(fact.label)}</dt><dd>${escapeHtml(fact.value)}</dd></div>`).join("");
@@ -314,10 +316,10 @@
       <div class="quick-view__copy">
         <p class="section-kicker">${escapeHtml(categoryLabels.get(product.categories[0]) || titleCase(product.categories[0]))}</p>
         <h2 id="quick-view-title">${escapeHtml(product.displayTitle)}</h2>
-        <p class="quick-view__description">${escapeHtml(product.shortDescription)}</p>
-        <p class="quick-view__price">See Etsy for current pricing.</p>
+        <p class="quick-view__description">${escapeHtml(productSummary(product))}</p>
+        <p class="quick-view__price">See Etsy for current pricing, options, and availability.</p>
         <dl class="quick-view__facts">${quickViewFacts(product)}</dl>
-        <div class="quick-view__actions"><a class="button button--forest" href="${escapeHtml(product.etsyUrl)}" target="_blank" rel="noopener">Purchase on Etsy <span aria-hidden="true">↗</span></a><a class="arrow-link" href="product.html?id=${encodeURIComponent(product.id)}">Full details <span aria-hidden="true">→</span></a><a class="arrow-link" href="contact.html">Ask a question <span aria-hidden="true">→</span></a></div>
+        <div class="quick-view__actions"><a class="button button--forest" href="${escapeHtml(product.etsyUrl)}" target="_blank" rel="noopener">Purchase on Etsy <span aria-hidden="true">↗</span></a><a class="arrow-link" href="product.html?id=${encodeURIComponent(product.id)}">Full details <span aria-hidden="true">→</span></a>${product.customAvailable === true ? '<a class="arrow-link" href="custom-work.html#inquiry">Request a custom quote <span aria-hidden="true">→</span></a>' : ""}<a class="arrow-link" href="contact.html">Ask a question <span aria-hidden="true">→</span></a></div>
       </div>
     </div>${relatedMarkup(product)}`;
     activateProgressiveImages(quickViewContent);

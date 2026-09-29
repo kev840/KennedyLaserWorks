@@ -1,6 +1,89 @@
 {
   "projects": [
     {
+      "id": "wisloffs-family-heritage-sign",
+      "title": "The Wisloffs Family Heritage Sign",
+      "type": "Custom Family Heritage Sign",
+      "description": [
+        "A custom family heritage sign made from solid cherry, with the Wisloffs name and Est. 1997 at its center.",
+        "The design brings together the flags of Norway, Italy, Ireland, and Germany. Laser engraving gives the piece its detail, while hand painting and finishing complete the sign. The gallery follows the work from raw cherry through the finished piece."
+      ],
+      "heroImage": "assets/images/custom-projects/wisloffs-family-heritage-sign-hero.jpg",
+      "disclosure": "",
+      "images": [
+        {
+          "src": "assets/images/custom-projects/wisloffs-family-heritage-sign-20260913_101753.jpg",
+          "fallback": "assets/images/custom-projects/wisloffs-family-heritage-sign-20260913_101753.jpg",
+          "alt": "The Wisloffs Family Heritage Sign Starting with Solid Cherry: Solid cherry prepared for the family heritage sign.",
+          "width": 4000,
+          "height": 1848,
+          "label": "Starting with Solid Cherry",
+          "caption": "Solid cherry prepared for the family heritage sign.",
+          "category": "IN PROGRESS"
+        },
+        {
+          "src": "assets/images/custom-projects/wisloffs-family-heritage-sign-20260916_202655.jpg",
+          "fallback": "assets/images/custom-projects/wisloffs-family-heritage-sign-20260916_202655.jpg",
+          "alt": "The Wisloffs Family Heritage Sign Engraving Complete, Painting Begins: With the laser engraving complete, hand painting begins to bring out the lettering and details.",
+          "width": 4000,
+          "height": 1848,
+          "label": "Engraving Complete, Painting Begins",
+          "caption": "With the laser engraving complete, hand painting begins to bring out the lettering and details.",
+          "category": "IN PROGRESS"
+        },
+        {
+          "src": "assets/images/custom-projects/wisloffs-family-heritage-sign-20260916_205158.jpg",
+          "fallback": "assets/images/custom-projects/wisloffs-family-heritage-sign-20260916_205158.jpg",
+          "alt": "The Wisloffs Family Heritage Sign Engraved Detail: A closer look at the engraved lettering and decorative details.",
+          "width": 4000,
+          "height": 1848,
+          "label": "Engraved Detail",
+          "caption": "A closer look at the engraved lettering and decorative details.",
+          "category": "IN PROGRESS"
+        },
+        {
+          "src": "assets/images/custom-projects/wisloffs-family-heritage-sign-20260919_190822.jpg",
+          "fallback": "assets/images/custom-projects/wisloffs-family-heritage-sign-20260919_190822.jpg",
+          "alt": "The Wisloffs Family Heritage Sign Hand Painting the Details: Painting the sign's flag details by hand.",
+          "width": 4000,
+          "height": 1848,
+          "label": "Hand Painting the Details",
+          "caption": "Painting the sign's flag details by hand.",
+          "category": "IN PROGRESS"
+        },
+        {
+          "src": "assets/images/custom-projects/wisloffs-family-heritage-sign-20260919_234311.jpg",
+          "fallback": "assets/images/custom-projects/wisloffs-family-heritage-sign-20260919_234311.jpg",
+          "alt": "The Wisloffs Family Heritage Sign From Design to Finished Piece: The finished cherry sign alongside its digital design.",
+          "width": 1980,
+          "height": 1848,
+          "label": "From Design to Finished Piece",
+          "caption": "The finished cherry sign alongside its digital design.",
+          "category": ""
+        },
+        {
+          "src": "assets/images/custom-projects/wisloffs-family-heritage-sign-20260918_233836.jpg",
+          "fallback": "assets/images/custom-projects/wisloffs-family-heritage-sign-20260918_233836.jpg",
+          "alt": "The Wisloffs Family Heritage Sign KLW Maker's Mark: The Kennedy Laser Works maker's mark on the reverse.",
+          "width": 4000,
+          "height": 1848,
+          "label": "KLW Maker's Mark",
+          "caption": "The Kennedy Laser Works maker's mark on the reverse.",
+          "category": ""
+        },
+        {
+          "src": "assets/images/custom-projects/wisloffs-family-heritage-sign-hero.jpg",
+          "fallback": "assets/images/custom-projects/wisloffs-family-heritage-sign-hero.jpg",
+          "alt": "The Wisloffs Family Heritage Sign Finished Project: The finished Wisloffs sign features the flags of Norway, Italy, Ireland, and Germany, with Est. 1997 beneath the family name.",
+          "width": 1602,
+          "height": 982,
+          "label": "Finished Project",
+          "caption": "The finished Wisloffs sign features the flags of Norway, Italy, Ireland, and Germany, with Est. 1997 beneath the family name.",
+          "category": "FINISHED PROJECT"
+        }
+      ]
+    },
+    {
       "id": "casa-de-kelly",
       "title": "Casa de Kelly",
       "type": "Fully custom outdoor family sign",
@@ -42,14 +125,14 @@
           "category": "FINISHED PROJECT"
         },
         {
-          "src": "assets/images/custom-projects/casa-de-kelly-04-finished-sign-full-view.jpg",
-          "fallback": "assets/images/custom-projects/casa-de-kelly-04-finished-sign-full-view.jpg",
-          "alt": "Casa de Kelly Finished Design: The completed physical design, translating the original concept into a handcrafted wooden sign.",
+          "src": "assets/images/custom-projects/casa-de-kelly-04-hand-painting-details-upright.jpg",
+          "fallback": "assets/images/custom-projects/casa-de-kelly-04-hand-painting-details-upright.jpg",
+          "alt": "Casa de Kelly Hand Painting the Details: Hand-painted color brings the engraved and layered details of the sign to life.",
           "width": 4000,
           "height": 1848,
-          "label": "Finished Design",
-          "caption": "The completed physical design, translating the original concept into a handcrafted wooden sign.",
-          "category": "FINISHED PROJECT"
+          "label": "Hand Painting the Details",
+          "caption": "Hand-painted color brings the engraved and layered details of the sign to life.",
+          "category": "IN PROGRESS"
         },
         {
           "src": "assets/images/custom-projects/casa-de-kelly-05-layered-construction-detail.jpg",
@@ -101,12 +184,12 @@
         "A coordinated set of four rustic camping-themed signs created for a family birthday celebration.",
         "Kennedy Laser Works designed and built the matching signs as a cohesive set, including personalized signs for Frida, Carter, and Sebastian along with a larger \"Triplets Camp Out - Est. 2016\" sign. Each piece shares the same rustic outdoor theme while giving the individual signs their own personalized identity."
       ],
-      "heroImage": "assets/images/custom-projects/custom-camp-sign-set-01-hero-complete-camp-sign-set.jpg",
+      "heroImage": "assets/images/custom-projects/custom-camp-sign-set-01-hero-complete-camp-sign-set-upright.jpg",
       "disclosure": "",
       "images": [
         {
-          "src": "assets/images/custom-projects/custom-camp-sign-set-01-hero-complete-camp-sign-set.jpg",
-          "fallback": "assets/images/custom-projects/custom-camp-sign-set-01-hero-complete-camp-sign-set.jpg",
+          "src": "assets/images/custom-projects/custom-camp-sign-set-01-hero-complete-camp-sign-set-upright.jpg",
+          "fallback": "assets/images/custom-projects/custom-camp-sign-set-01-hero-complete-camp-sign-set-upright.jpg",
           "alt": "Custom Camp Sign Set Complete Sign Set: The completed four-piece personalized camping sign set.",
           "width": 4000,
           "height": 1848,
@@ -568,20 +651,6 @@
     }
   ],
   "workshopImages": [
-    {
-      "src": "assets/images/workshop/klw-workshop-20250428-074515.jpg",
-      "fallback": "assets/images/workshop/klw-workshop-20250428-074515.jpg",
-      "alt": "Kennedy Laser Works workshop equipment and in-house production area",
-      "width": 4000,
-      "height": 1848
-    },
-    {
-      "src": "assets/images/workshop/klw-workshop-20250428-074533.jpg",
-      "fallback": "assets/images/workshop/klw-workshop-20250428-074533.jpg",
-      "alt": "Kennedy Laser Works workshop equipment and in-house production area",
-      "width": 4000,
-      "height": 1848
-    },
     {
       "src": "assets/images/workshop/klw-workshop-20250428-074543.jpg",
       "fallback": "assets/images/workshop/klw-workshop-20250428-074543.jpg",

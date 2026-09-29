@@ -68,13 +68,67 @@ const findImageFile = (available, requested) => {
   return [...available].find((file) => file.startsWith(`${number}-`) && /\.(jpe?g|png)$/i.test(file)) || "";
 };
 
+// The Wisloff folder has no project-info.txt. Only these seven approved source photos are published.
+const wisloffGallery = [
+  ["20260913_101753.jpg", "Starting with Solid Cherry", "Solid cherry prepared for the family heritage sign.", "IN PROGRESS"],
+  ["20260916_202655.jpg", "Engraving Complete, Painting Begins", "With the laser engraving complete, hand painting begins to bring out the lettering and details.", "IN PROGRESS"],
+  ["20260916_205158.jpg", "Engraved Detail", "A closer look at the engraved lettering and decorative details.", "IN PROGRESS"],
+  ["20260919_190822.jpg", "Hand Painting the Details", "Painting the sign's flag details by hand.", "IN PROGRESS"],
+  ["20260919_234311.jpg", "From Design to Finished Piece", "The finished cherry sign alongside its digital design.", ""],
+  ["20260918_233836.jpg", "KLW Maker's Mark", "The Kennedy Laser Works maker's mark on the reverse.", ""],
+  ["Hero.jpg", "Finished Project", "The finished Wisloffs sign features the flags of Norway, Italy, Ireland, and Germany, with Est. 1997 beneath the family name.", "FINISHED PROJECT"]
+];
+
+const importWisloff = async () => {
+  const title = "The Wisloffs Family Heritage Sign";
+  const sourceDir = path.join(projectSource, "Wisloff Family Sign");
+  const images = [];
+  for (const [fileName, label, caption, category] of wisloffGallery) {
+    const outputName = `wisloffs-family-heritage-sign-${path.basename(fileName).toLowerCase()}`;
+    const sourcePath = path.join(sourceDir, fileName);
+    const outputPath = path.join(projectOutput, outputName);
+    // Preserve the website copies with corrected orientation on re-import:
+    // the cherry boards are rotated 90° counterclockwise, and the maker's mark is upright.
+    if (!["20260913_101753.jpg", "20260918_233836.jpg"].includes(fileName)) await copyFile(sourcePath, outputPath);
+    const { width, height } = await dimensionsFor(outputPath);
+    const src = `assets/images/custom-projects/${outputName}`;
+    images.push({ src, fallback: src, alt: `${title} ${label}: ${caption}`, width, height, label, caption, category });
+  }
+  return {
+    id: "wisloffs-family-heritage-sign",
+    title,
+    type: "Custom Family Heritage Sign",
+    description: [
+      "A custom family heritage sign made from solid cherry, with the Wisloffs name and Est. 1997 at its center.",
+      "The design brings together the flags of Norway, Italy, Ireland, and Germany. Laser engraving gives the piece its detail, while hand painting and finishing complete the sign. The gallery follows the work from raw cherry through the finished piece."
+    ],
+    heroImage: images.at(-1).src,
+    disclosure: "",
+    images
+  };
+};
+
 await mkdir(projectOutput, { recursive: true });
 await mkdir(workshopOutput, { recursive: true });
+
+if (process.argv.includes("--wisloff-only")) {
+  const outputFile = path.join(root, "data", "custom-projects.json");
+  const data = JSON.parse(await readFile(outputFile, "utf8"));
+  const wisloff = await importWisloff();
+  data.projects = [wisloff, ...data.projects.filter((project) => project.id !== wisloff.id)];
+  await writeFile(outputFile, `${JSON.stringify(data, null, 2)}\n`);
+  console.log("Updated the seven-image Wisloff project, preserving its corrected website image orientations.");
+  process.exit(0);
+}
 
 const folders = (await readdir(projectSource, { withFileTypes: true })).filter((entry) => entry.isDirectory() && entry.name !== "Archive");
 const projects = [];
 
 for (const folder of folders) {
+  if (folder.name === "Wisloff Family Sign") {
+    projects.push(await importWisloff());
+    continue;
+  }
   const sourceDir = path.join(projectSource, folder.name);
   const info = await readFile(path.join(sourceDir, "project-info.txt"), "utf8");
   const title = info.match(/^PROJECT:\s*(.+)$/m)?.[1].trim() || folder.name;
@@ -135,11 +189,34 @@ for (const folder of folders) {
     comparisonOutput.category = badgeFor(comparisonMeta);
   }
   project.images.forEach((image) => { image.alt = altFor(project, image); });
+  if (project.id === "casa-de-kelly") {
+    // Use the website-only upright derivative; leave the Drive source untouched.
+    const image = project.images[3];
+    const upright = path.join(projectOutput, "casa-de-kelly-04-hand-painting-details-upright.jpg");
+    const { width, height } = await dimensionsFor(upright);
+    image.src = image.fallback = `assets/images/custom-projects/${path.basename(upright)}`;
+    image.width = width;
+    image.height = height;
+    image.label = "Hand Painting the Details";
+    image.caption = "Hand-painted color brings the engraved and layered details of the sign to life.";
+    image.category = "IN PROGRESS";
+    image.alt = altFor(project, image);
+  }
+  if (project.id === "custom-camp-sign-set") {
+    // The upright website derivative preserves the source photo and fixes its presentation.
+    const upright = path.join(projectOutput, "custom-camp-sign-set-01-hero-complete-camp-sign-set-upright.jpg");
+    const { width, height } = await dimensionsFor(upright);
+    const image = project.images[0];
+    image.src = image.fallback = `assets/images/custom-projects/${path.basename(upright)}`;
+    image.width = width;
+    image.height = height;
+    project.heroImage = image.src;
+  }
   projects.push(project);
 }
 
 const workshopImages = [];
-for (const file of (await readdir(workshopSource, { withFileTypes: true })).filter((entry) => entry.isFile() && /\.(jpe?g|png)$/i.test(entry.name)).sort((a, b) => a.name.localeCompare(b.name))) {
+for (const file of (await readdir(workshopSource, { withFileTypes: true })).filter((entry) => entry.isFile() && entry.name.includes("074543") && /\.(jpe?g|png)$/i.test(entry.name)).sort((a, b) => a.name.localeCompare(b.name))) {
   const sourcePath = path.join(workshopSource, file.name);
   const outputName = `klw-workshop-${path.parse(file.name).name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}${path.extname(file.name).toLowerCase()}`;
   const outputPath = path.join(workshopOutput, outputName);

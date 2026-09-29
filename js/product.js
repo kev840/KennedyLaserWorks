@@ -19,13 +19,15 @@
 
   const categoryLabel = (slug, labels) => labels.get(slug) || slug.split("-").map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
   const productUrl = (item) => `product.html?id=${encodeURIComponent(item.id)}`;
+  const productSummary = (item) => item.shortDescription?.trim() || `${item.displayTitle} from Kennedy Laser Works.`;
 
   const factsMarkup = (item) => {
     const facts = [
-      { label: "Personalization", value: item.personalized === true ? "Available — choose current options on Etsy." : "See the Etsy listing for available options." },
+      ...(item.bestFor ? [{ label: "Best for", value: item.bestFor }] : []),
+      ...(item.personalizationGuidance ? [{ label: "Personalization", value: item.personalizationGuidance }] : item.personalized === true ? [{ label: "Personalization", value: "Available; see Etsy for current choices." }] : []),
+      ...(item.variantOverview ? [{ label: "Options", value: item.variantOverview }] : []),
       ...(item.dimensions ? [{ label: "Dimensions", value: Array.isArray(item.dimensions) ? item.dimensions.join(", ") : item.dimensions }] : []),
       ...(item.materials ? [{ label: "Materials", value: Array.isArray(item.materials) ? item.materials.join(", ") : item.materials }] : []),
-      { label: "Production timing", value: item.productionTime || "Varies by piece and current workload; confirm a needed-by date before ordering." },
       { label: "Local pickup", value: "Available by advance arrangement in Budd Lake, New Jersey. Contact us before ordering." }
     ];
     return facts.map((fact) => `<div><dt>${tools.escapeHtml(fact.label)}</dt><dd>${tools.escapeHtml(fact.value)}</dd></div>`).join("");
@@ -110,10 +112,10 @@
       "@context": "https://schema.org",
       "@type": "Product",
       name: product.displayTitle,
-      description: product.shortDescription,
+      description: productSummary(product),
       image: gallery.map((image) => new URL(image.webp || image.fallback, window.location.href).href),
       url: window.location.href,
-      offers: { "@type": "Offer", url: product.etsyUrl, availability: "https://schema.org/InStock" }
+      offers: { "@type": "Offer", url: product.etsyUrl }
     });
     document.head.append(schema);
   };
@@ -122,16 +124,25 @@
     gallery = tools.images(product);
     const label = categoryLabel(product.categories[0], labels);
     document.title = `${product.displayTitle} | Kennedy Laser Works`;
+    const description = product.seoDescription?.trim() || productSummary(product);
+    for (const selector of ['meta[name="description"]', 'meta[property="og:description"]', 'meta[name="twitter:description"]']) {
+      const meta = document.querySelector(selector);
+      if (meta) meta.content = description;
+    }
+    for (const selector of ['meta[property="og:title"]', 'meta[name="twitter:title"]']) {
+      const meta = document.querySelector(selector);
+      if (meta) meta.content = document.title;
+    }
     document.querySelector("[data-product-crumb]").textContent = product.displayTitle;
     root.innerHTML = `<div class="container product-detail__layout">
       ${galleryMarkup()}
       <article class="product-detail__copy">
         <p class="section-kicker">${tools.escapeHtml(label)}</p>
         <h1>${tools.escapeHtml(product.displayTitle)}</h1>
-        <p class="product-detail__description">${tools.escapeHtml(product.shortDescription)}</p>
-        <p class="product-detail__price">See Etsy for current pricing.</p>
+        <p class="product-detail__description">${tools.escapeHtml(productSummary(product))}</p>
+        <p class="product-detail__price">See Etsy for current pricing, options, and availability.</p>
         <dl class="quick-view__facts">${factsMarkup(product)}</dl>
-        <div class="product-detail__actions"><a class="button button--forest" href="${tools.escapeHtml(product.etsyUrl)}" target="_blank" rel="noopener">Purchase on Etsy <span aria-hidden="true">↗</span></a><a class="arrow-link" href="contact.html">Ask a question <span aria-hidden="true">→</span></a></div>
+        <div class="product-detail__actions"><a class="button button--forest" href="${tools.escapeHtml(product.etsyUrl)}" target="_blank" rel="noopener">Purchase on Etsy <span aria-hidden="true">↗</span></a>${product.customAvailable === true ? '<a class="arrow-link" href="custom-work.html#inquiry">Request a custom quote <span aria-hidden="true">→</span></a>' : ""}<a class="arrow-link" href="contact.html">Ask a question <span aria-hidden="true">→</span></a></div>
       </article>
     </div>${relatedMarkup(products, labels)}`;
     window.KLW?.enhanceImages(root);

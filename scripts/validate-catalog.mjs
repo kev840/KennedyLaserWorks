@@ -23,6 +23,13 @@ for (const product of products) {
   const label = product.displayTitle || product.id;
   assert(product.listingStatus === "active" && product.active === true, `${label}: listing is not marked active.`);
   assert(Boolean(product.etsyTitle && product.displayTitle && product.priceDisplay), `${label}: title or price is missing.`);
+  assert(typeof product.shortDescription === "string" && product.shortDescription.trim().length > 0, `${label}: shortDescription must be meaningful text.`);
+  for (const field of ["seoDescription", "materials", "dimensions", "variantOverview", "personalizationGuidance", "bestFor"]) {
+    if (product[field] === undefined) continue;
+    const value = product[field];
+    const valid = typeof value === "string" ? value.trim().length > 0 : ["materials", "dimensions"].includes(field) && Array.isArray(value) && value.length > 0 && value.every((item) => typeof item === "string" && item.trim().length > 0);
+    assert(valid, `${label}: optional ${field} must be nonempty text${["materials", "dimensions"].includes(field) ? " or a nonempty text array" : ""}.`);
+  }
   assert(product.etsyUrl.includes(`/listing/${product.etsyListingId}/`), `${label}: listing URL does not match its ID.`);
   assert(/^\$\d/.test(product.priceDisplay), `${label}: displayed price is malformed.`);
   assert(product.priceSnapshotDate === catalog.catalogSnapshotDate, `${label}: price snapshot date is inconsistent.`);
