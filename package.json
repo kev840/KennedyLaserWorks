@@ -5,7 +5,9 @@
   "scripts": {
     "catalog:import": "node scripts/import-etsy-catalog.mjs",
     "catalog:normalize-images": "node scripts/import-etsy-catalog.mjs --normalize-only",
-    "validate": "node scripts/validate-site.mjs && node scripts/validate-catalog.mjs && node scripts/test-gallery-schema.mjs"
+    "products:generate": "node scripts/generate-product-pages.mjs && node scripts/generate-sitemap.mjs",
+    "preview": "node scripts/preview.mjs",
+    "validate": "node scripts/validate-site.mjs && node scripts/validate-catalog.mjs && node scripts/test-gallery-schema.mjs && node scripts/validate-product-pages.mjs"
   },
   "engines": {
     "node": ">=20.9.0"

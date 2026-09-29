@@ -18,7 +18,7 @@
   let lightboxSwipeX = 0;
 
   const categoryLabel = (slug, labels) => labels.get(slug) || slug.split("-").map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
-  const productUrl = (item) => `product.html?id=${encodeURIComponent(item.id)}`;
+  const productUrl = (item) => window.KLWProductUrl(item);
   const productSummary = (item) => item.shortDescription?.trim() || `${item.displayTitle} from Kennedy Laser Works.`;
 
   const factsMarkup = (item) => {
@@ -114,8 +114,7 @@
       name: product.displayTitle,
       description: productSummary(product),
       image: gallery.map((image) => new URL(image.webp || image.fallback, window.location.href).href),
-      url: window.location.href,
-      offers: { "@type": "Offer", url: product.etsyUrl }
+      url: window.location.href
     });
     document.head.append(schema);
   };
@@ -140,6 +139,7 @@
         <p class="section-kicker">${tools.escapeHtml(label)}</p>
         <h1>${tools.escapeHtml(product.displayTitle)}</h1>
         <p class="product-detail__description">${tools.escapeHtml(productSummary(product))}</p>
+        ${product.longDescription && product.longDescription !== productSummary(product) ? `<p>${tools.escapeHtml(product.longDescription)}</p>` : ""}
         <p class="product-detail__price">See Etsy for current pricing, options, and availability.</p>
         <dl class="quick-view__facts">${factsMarkup(product)}</dl>
         <div class="product-detail__actions"><a class="button button--forest" href="${tools.escapeHtml(product.etsyUrl)}" target="_blank" rel="noopener">Purchase on Etsy <span aria-hidden="true">↗</span></a>${product.customAvailable === true ? '<a class="arrow-link" href="custom-work.html#inquiry">Request a custom quote <span aria-hidden="true">→</span></a>' : ""}<a class="arrow-link" href="contact.html">Ask a question <span aria-hidden="true">→</span></a></div>
@@ -194,10 +194,16 @@
     fetch("data/categories.json").then((response) => { if (!response.ok) throw new Error("Categories unavailable"); return response.json(); })
   ]).then(([catalog, categoryData]) => {
     const id = new URLSearchParams(window.location.search).get("id");
-    product = catalog.products.find((item) => item.active && (item.id === id || item.etsyListingId === id));
+    const staticId = root.dataset.staticProductId;
+    product = catalog.products.find((item) => item.active && (item.id === (staticId || id) || item.etsyListingId === id));
     if (!product) throw new Error("Product not found");
-    render(catalog.products, new Map(categoryData.categories.map((category) => [category.slug, category.label])));
+    if (staticId) {
+      gallery = tools.images(product);
+      window.KLW?.enhanceImages(root);
+      tools.preloadNext(gallery, 0);
+    } else render(catalog.products, new Map(categoryData.categories.map((category) => [category.slug, category.label])));
   }).catch(() => {
+    if (root.dataset.staticProductId) return;
     root.innerHTML = '<div class="container product-detail__error"><p class="section-kicker">Product unavailable</p><h1>We could not find that piece.</h1><p>It may have moved or is no longer part of the current collection.</p><a class="button button--forest" href="collections.html">Browse the collection</a></div>';
   });
 })();

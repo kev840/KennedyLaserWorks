@@ -5,7 +5,7 @@
 - Confirm that `https://kennedylaserworks.com` is the final domain
 - If the domain changes, update canonical, Open Graph, structured-data, sitemap, and robots URLs together
 - Update `sitemap.xml` and the sitemap line in `robots.txt` if the domain differs
-- Run `node scripts/validate-site.mjs` and `node scripts/validate-catalog.mjs` against the verified 65-listing snapshot
+- Run `npm run products:generate` and `npm run validate` against the verified 65-listing snapshot before publishing files
 - Confirm that the dated price disclosure appears above the catalog
 - Test from an HTTP preview, not only `file://`
 - Verify Etsy, Facebook, and email links
@@ -25,4 +25,4 @@ GoDaddy Website Builder is not an ideal deployment target for this custom multi-
 
 ## Forms
 
-The quote form currently creates a prefilled email to `kennedylaserworks@gmail.com`. It does not collect data on the website. If migrating to a form provider, document the provider, update the privacy policy, add spam protection, and test success/error states before launch.
+The custom-work and contact inquiry forms both POST multipart data to the public Basin endpoint `https://usebasin.com/f/bdd87e7659a2` through BasinJS. They render success and error states on the site. The production Cloudflare Turnstile public site key is set as `data-basin-turnstile-sitekey` on both forms. Before launch, verify the Basin dashboard secret and domain configuration, then test a real submission from the production domain. Never put the Turnstile secret or Basin account API key in website source.

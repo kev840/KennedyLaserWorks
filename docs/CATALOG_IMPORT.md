@@ -23,7 +23,7 @@ Concise display titles and taxonomy are editorial website fields. They do not re
 5. Each source photograph is downloaded once and converted into an optimized local JPEG fallback and responsive WebP with a maximum 1200-pixel edge.
 6. The importer writes ordered `images`, `imageFallbacks`, and `imageMetadata` arrays. The first entry also remains `primaryImage` for backward compatibility.
 7. Existing concise titles and editorial taxonomy remain intact. If Etsy contains a new or removed listing, the import stops with an exact reconciliation list rather than inventing categories.
-8. After a successful import, run `npm run validate`, then test cards, Quick View, the dedicated product page, thumbnails, arrows, swipe gestures, keyboard navigation, and the full-screen lightbox through HTTP.
+8. After a successful import, run `npm run products:generate` to refresh static product pages and the sitemap, then `npm run validate`. Test cards, Quick View, a generated product page, thumbnails, arrows, swipe gestures, keyboard navigation, and the full-screen lightbox through HTTP.
 
 Optional environment controls:
 

@@ -32,13 +32,13 @@
 @media (max-width: 40rem) {
   :root { --space-section: 4.5rem; }
   .container { width: min(calc(100% - 2rem), var(--container)); }
-  h1 { font-size: clamp(3.6rem, 17vw, 5rem); }
+  h1 { font-size: clamp(2.75rem, 12vw, 5rem); }
   h2 { font-size: clamp(2.75rem, 13vw, 4rem); }
   .brand-name { font-size: 1.15rem; }
   .hero { min-height: 48rem; }
   .hero--storefront { min-height: 0; }
   .hero-storefront-grid { gap: 2.5rem; padding-block: calc(var(--header-height) + 4rem) 3.5rem; }
-  .hero-storefront-copy h1 { font-size: clamp(3.5rem,15vw,5rem); }
+  .hero-storefront-copy h1 { font-size: clamp(2.75rem,12vw,5rem); overflow-wrap: normal; }
   .hero-actions--three { align-items: stretch; }
   .hero-actions--three .button { width: 100%; }
   .hero-actions--three .text-link { margin: .35rem 0 0; }

@@ -132,12 +132,12 @@
     </button>
     <div class="catalog-card__body">
       <p class="catalog-card__category">${highlightText(categoryLabels.get(product.categories[0]) || titleCase(product.categories[0]), term)}</p>
-      <h2><a href="product.html?id=${encodeURIComponent(product.id)}">${highlightText(product.displayTitle, term)}</a></h2>
+      <h2><a href="${escapeHtml(window.KLWProductUrl(product))}">${highlightText(product.displayTitle, term)}</a></h2>
       <p>${highlightText(productSummary(product), term)}</p>
       <div class="catalog-card__meta"><p class="catalog-card__pricing">See Etsy for current pricing.</p>${product.personalized ? '<span class="badge">Personalizable</span>' : ""}</div>
       <div class="catalog-card__actions">
         <button class="button button--outline" type="button" data-open-quick-view="${escapeHtml(product.id)}">Quick view</button>
-        <a class="button button--forest" href="${escapeHtml(product.etsyUrl)}" target="_blank" rel="noopener">View on Etsy <span aria-hidden="true">↗</span></a>
+        <a class="button button--forest" href="${escapeHtml(window.KLWProductUrl(product))}">View Details <span aria-hidden="true">→</span></a>
       </div>
     </div>
   </article>`;
@@ -319,7 +319,7 @@
         <p class="quick-view__description">${escapeHtml(productSummary(product))}</p>
         <p class="quick-view__price">See Etsy for current pricing, options, and availability.</p>
         <dl class="quick-view__facts">${quickViewFacts(product)}</dl>
-        <div class="quick-view__actions"><a class="button button--forest" href="${escapeHtml(product.etsyUrl)}" target="_blank" rel="noopener">Purchase on Etsy <span aria-hidden="true">↗</span></a><a class="arrow-link" href="product.html?id=${encodeURIComponent(product.id)}">Full details <span aria-hidden="true">→</span></a>${product.customAvailable === true ? '<a class="arrow-link" href="custom-work.html#inquiry">Request a custom quote <span aria-hidden="true">→</span></a>' : ""}<a class="arrow-link" href="contact.html">Ask a question <span aria-hidden="true">→</span></a></div>
+        <div class="quick-view__actions"><a class="button button--forest" href="${escapeHtml(product.etsyUrl)}" target="_blank" rel="noopener">Purchase on Etsy <span aria-hidden="true">↗</span></a><a class="arrow-link" href="${escapeHtml(window.KLWProductUrl(product))}">Full details <span aria-hidden="true">→</span></a>${product.customAvailable === true ? '<a class="arrow-link" href="custom-work.html#inquiry">Request a custom quote <span aria-hidden="true">→</span></a>' : ""}<a class="arrow-link" href="contact.html">Ask a question <span aria-hidden="true">→</span></a></div>
       </div>
     </div>${relatedMarkup(product)}`;
     activateProgressiveImages(quickViewContent);

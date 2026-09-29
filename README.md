@@ -10,7 +10,7 @@ Product photography is stored locally as ordered optimized WebP galleries with a
 
 ## Architecture
 
-- Eight canonical HTML pages, a data-backed non-indexed product detail page, and a branded non-indexed 404 page
+- Canonical public pages, 65 generated indexable product pages, a data-backed legacy non-indexed product detail page, and a branded non-indexed 404 page
 - `css/style.css`: design tokens and foundational components
 - `css/pages.css`: catalog, quick-view, seasonal, form, and interior-page components
 - `css/responsive.css`: tablet and mobile layout changes
@@ -24,26 +24,31 @@ Product photography is stored locally as ordered optimized WebP galleries with a
 - `data/categories.json`: reusable category taxonomy
 - `scripts/import-etsy-catalog.mjs`: Etsy Open API import, ordered image download, JPEG/WebP optimization, and atomic catalog updates
 - `scripts/validate-catalog.mjs`: catalog, ordered gallery, claim, and local-path validation
+- `scripts/generate-product-pages.mjs`: creates one crawlable HTML page per active catalog item using the shared product-page design
+- `scripts/generate-sitemap.mjs`: writes canonical public URLs, including generated products
 
 ## Preview locally
 
 The catalog uses `fetch()`, so serve the site over HTTP from the repository root:
 
 ```text
-python -m http.server 8000
+npm run preview
 ```
 
-Then open `http://localhost:8000/`.
+Then open `http://127.0.0.1:8000/`. If npm is unavailable, run `node scripts/preview.mjs` directly.
 
 ## Validate
 
-Run:
+After any catalog edit or import, run:
 
 ```text
+npm run products:generate
 npm run validate
 ```
 
-The validators check the expected 65 unique active listings, price snapshot consistency, Etsy URL/ID matching, taxonomy, ordered gallery metadata, every local JPEG/WebP variant, public sample language, the no-public-phone rule, metadata, and local HTML references.
+The validators check the expected 65 unique active listings, price snapshot consistency, Etsy URL/ID matching, taxonomy, ordered gallery metadata, every local JPEG/WebP variant, public sample language, the no-public-phone rule, metadata, local HTML references, generated product canonicals, Product JSON-LD, and sitemap coverage. The legacy `product.html?id=...` URLs remain functional and noindex.
+
+When npm is unavailable, run `node scripts/generate-product-pages.mjs`, `node scripts/generate-sitemap.mjs`, then the validators in the `validate` script directly with Node.
 
 ## Catalog behavior
 
@@ -55,7 +60,7 @@ Cards retain the primary image and crossfade to the second image only on precise
 
 The homepage is arranged as a persuasive storefront while preserving the shared design system:
 
-1. Product-led hero with Collections, Custom Work, and Etsy paths
+1. Product-led hero with Collections, custom inquiry, and Etsy paths
 2. Five service and fulfillment trust points
 3. Four live seasonal products
 4. Non-empty collection tiles with live product counts

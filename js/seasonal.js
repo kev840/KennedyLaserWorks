@@ -25,7 +25,7 @@
     { slug: "personalized-gifts", label: "Personalized Gifts", description: "Made-to-order gifts shaped around the people receiving them." },
     { slug: "memorial-keepsakes", label: "Memorial Keepsakes", description: "Thoughtful personalized tributes created to keep a memory close.", representativeId: "etsy-1788571932", imageIndex: 2 },
     { slug: "ornaments", label: "Ornaments", description: "Layered keepsakes for holidays, milestones, and family traditions.", representativeId: "etsy-4388098488" },
-    { slug: "custom-projects", label: "Custom Work", description: "A starting point for original wording, dimensions, and design ideas." }
+    { slug: "custom-projects", label: "Custom Projects", description: "Completed work shaped around individual ideas and details." }
   ];
   const collectionWindows = {
     "christmas-winter": [1, 9, 10, 11, 12],
@@ -60,7 +60,7 @@
     seasonalGrid.innerHTML = '<p class="seasonal-fallback">Seasonal pieces could not load. <a href="collections.html">Browse the complete collection</a>.</p>';
     collectionsGrid.innerHTML = '<p>Collections could not load. <a class="arrow-link" href="collections.html">Browse all products <span aria-hidden="true">→</span></a></p>';
     favoritesGrid.innerHTML = '<p>Featured projects could not load. <a class="arrow-link" href="custom-projects.html">Browse custom projects <span aria-hidden="true">→</span></a></p>';
-    customGrid.innerHTML = '<a class="button button--bronze" href="custom-work.html">Explore Custom Work</a>';
+    customGrid.innerHTML = '<a class="button button--bronze" href="custom-projects.html">Explore Custom Projects</a>';
   };
 
   const escapeHtml = (value = "") => String(value).replace(/[&<>'"]/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[character]);
@@ -82,7 +82,7 @@
   };
 
   const productCard = (product) => {
-    const detailUrl = `product.html?id=${encodeURIComponent(product.id)}`;
+    const detailUrl = window.KLWProductUrl(product);
     return `<article class="catalog-card catalog-card--home">
     <a class="catalog-card__image" href="${detailUrl}" aria-label="View details for ${escapeHtml(product.displayTitle)}">
       ${picture(product)}<span class="catalog-badges" aria-hidden="true">${badgeFor(product)}</span>
@@ -152,7 +152,7 @@
       if (collection.slug === "custom-projects") {
         const wisloff = projects.find((project) => project.id === "wisloffs-family-heritage-sign") || projects[0];
         if (!wisloff) return "";
-        return `<article class="home-collection-card"><a class="home-collection-card__image" href="custom-projects.html">${projectPicture(wisloff)}</a><div><p>${projects.length} projects</p><h3><a href="custom-projects.html">Custom Work</a></h3><p>${escapeHtml(collection.description)}</p><a class="arrow-link" href="custom-projects.html">Explore custom projects <span aria-hidden="true">→</span></a></div></article>`;
+        return `<article class="home-collection-card"><a class="home-collection-card__image" href="custom-projects.html">${projectPicture(wisloff)}</a><div><p>${projects.length} projects</p><h3><a href="custom-projects.html">Custom Projects</a></h3><p>${escapeHtml(collection.description)}</p><a class="arrow-link" href="custom-projects.html">Explore custom projects <span aria-hidden="true">→</span></a></div></article>`;
       }
       const matches = active.filter((product) => product.categories.includes(collection.slug));
       if (!matches.length) return "";

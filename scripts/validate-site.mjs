@@ -27,6 +27,16 @@ for (const page of pages) {
   const ids = [...markup.matchAll(/\sid="([^"]+)"/g)].map((match) => match[1]);
   const duplicateIds = [...new Set(ids.filter((id, index) => ids.indexOf(id) !== index))];
   if (duplicateIds.length) failures.push(`${page}: duplicate IDs (${duplicateIds.join(", ")})`);
+  for (const match of markup.matchAll(/href="([^\"]*#[^\"]*)"/g)) {
+    const [targetPath, fragment] = match[1].split("#");
+    if (!fragment) { failures.push(`${page}: empty link fragment`); continue; }
+    if (/^(?:https?:|mailto:)/.test(targetPath)) continue;
+    const targetFile = targetPath.split("?")[0] || page;
+    try {
+      const targetMarkup = targetFile === page ? markup : await readFile(path.join(rootDirectory, targetFile), "utf8");
+      if (!targetMarkup.includes(`id="${decodeURIComponent(fragment)}"`)) failures.push(`${page}: broken anchor ${match[1]}`);
+    } catch { failures.push(`${page}: missing anchor target ${targetFile}`); }
+  }
 
   const requiredPatterns = [
     [/<title>[^<]+<\/title>/, "title"],

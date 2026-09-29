@@ -68,7 +68,7 @@ Production launch remains conditional on completing the host- and business-owned
 
 - ✔ External new-window links use `noopener`/`noreferrer` where applicable.
 - ✔ Catalog content is escaped before insertion into HTML.
-- ✔ Forms use browser validation and bounded text fields before composing an email.
+- ✔ Forms use browser validation and bounded text fields before sending a Basin inquiry.
 - ✔ No secrets, payment fields, authentication data, or customer data stores are present in the static site.
 - ✔ Checkout remains on Etsy rather than being imitated locally.
 - ✔ Modal focus management was tested for keyboard traps.
@@ -98,7 +98,7 @@ Customer journeys exercised:
 - ✔ Mobile navigation and narrow-screen catalog browsing.
 - ✔ Slow/lazy image loading followed by cached refresh behavior.
 - ✔ Keyboard-only navigation through menus, dialogs, lightbox controls, and forms.
-- ✔ Custom inquiry and quote-email preparation flows.
+- ✔ Custom inquiry validation and file-selection flows.
 - ✔ Branded 404 recovery path.
 
 ## Lighthouse results
@@ -142,8 +142,8 @@ No visible artwork placeholders remain; current public artwork uses genuine supp
 
 ## Known limitations
 
-- The site is intentionally static. Contact and custom-project forms prepare a `mailto:` message; they do not transmit to a server, store uploads, provide spam protection, or guarantee that a local email client is configured.
-- The image-upload control is represented as inquiry guidance rather than a server upload because the site has no secure upload backend.
+- Contact and custom-project forms send multipart inquiries and reference files to Basin through BasinJS. The production public Turnstile site key is present on both forms; production submission testing remains open.
+- Each form accepts up to five JPG, PNG, WEBP, or PDF reference files of 10 MB or less per file; Basin handles the uploads.
 - Etsy remains the authoritative source for current pricing, variants, inventory, shipping, checkout, and verified reviews.
 - Most catalog products currently have one approved primary image, so lightbox navigation only becomes multi-image when additional gallery data is supplied.
 - Product dimensions, material details, and item-specific production times are omitted when not verified rather than invented.
@@ -172,7 +172,7 @@ Graceful fallbacks are present for reduced motion, missing IntersectionObserver 
 - [ ] Confirm CSS, JavaScript, local fonts, the logo mark, product JSON, and product images return HTTP 200.
 - [ ] Confirm invalid URLs return HTTP 404 rather than a soft-404 HTTP 200.
 - [ ] Exercise search, each filter group, active chips, clear filters, Quick View, related products, and lightbox controls.
-- [ ] Submit both inquiry forms and confirm the generated email content is accurate on mobile and desktop.
+- [ ] Submit both inquiry forms from the production domain and verify Basin notifications, file attachments, and on-page success/error states.
 - [ ] Test every footer/navigation link and a representative sample of Etsy product links.
 - [ ] Check browser console and network panel for errors, mixed content, redirects, or missing assets.
 - [ ] Run Lighthouse three times per target page and record median mobile results.
@@ -190,7 +190,7 @@ Graceful fallbacks are present for reduced motion, missing IntersectionObserver 
 
 ## Suggested future enhancements
 
-- Add an approved server-side inquiry endpoint with secure uploads, rate limiting, validation, spam protection, and a documented retention policy.
+- Review Basin submission notifications and export customer records as needed; do not treat the form inbox as permanent storage.
 - Automate catalog verification against an approved source while keeping Etsy authoritative.
 - Add responsive image widths/AVIF variants if the product photography source set expands.
 - Add consented, source-linked testimonials and richer project case studies when genuine material is available.
