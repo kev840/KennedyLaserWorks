@@ -81,18 +81,21 @@
     return match ? `<span class="collection-badge collection-badge--${match[2]}">${match[1]}</span>` : "";
   };
 
-  const productCard = (product) => `<article class="catalog-card catalog-card--home">
-    <a class="catalog-card__image" href="${escapeHtml(product.etsyUrl)}" target="_blank" rel="noopener" aria-label="View ${escapeHtml(product.displayTitle)} on Etsy">
+  const productCard = (product) => {
+    const detailUrl = `product.html?id=${encodeURIComponent(product.id)}`;
+    return `<article class="catalog-card catalog-card--home">
+    <a class="catalog-card__image" href="${detailUrl}" aria-label="View details for ${escapeHtml(product.displayTitle)}">
       ${picture(product)}<span class="catalog-badges" aria-hidden="true">${badgeFor(product)}</span>
     </a>
     <div class="catalog-card__body">
       <p class="catalog-card__category">${escapeHtml(labels.get(product.categories[0]) || "Kennedy Laser Works")}</p>
-      <h3>${escapeHtml(product.displayTitle)}</h3>
+      <h3><a href="${detailUrl}">${escapeHtml(product.displayTitle)}</a></h3>
       <p>${escapeHtml(product.shortDescription)}</p>
       <div class="catalog-card__meta"><p class="catalog-card__pricing">See Etsy for current pricing.</p>${product.personalized ? '<span class="badge">Personalizable</span>' : ""}</div>
-      <div class="catalog-card__actions"><a class="button button--forest" href="${escapeHtml(product.etsyUrl)}" target="_blank" rel="noopener">View on Etsy <span aria-hidden="true">↗</span></a></div>
+      <div class="catalog-card__actions"><a class="button button--forest" href="${detailUrl}">View Details <span aria-hidden="true">→</span></a></div>
     </div>
   </article>`;
+  };
 
   section.querySelector("[data-season-label]").textContent = current.label;
   section.querySelector("[data-season-title]").textContent = current.title;
