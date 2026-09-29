@@ -90,6 +90,19 @@
       submitButton.innerHTML = defaultButtonContent;
       error.hidden = true;
       success.hidden = false;
+      // Let Basin's success render and the form reflow before moving the viewport.
+      requestAnimationFrame(() => {
+        success.hidden = false;
+        try {
+          success.focus({ preventScroll: true });
+        } catch {
+          success.focus();
+        }
+        success.scrollIntoView({
+          behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+          block: "center"
+        });
+      });
     });
     document.addEventListener("basinjsFormError", (event) => {
       if (!forThisForm(event)) return;
