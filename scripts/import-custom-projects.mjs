@@ -8,6 +8,17 @@ const projectOutput = path.join(root, "assets", "images", "custom-projects");
 const workshopOutput = path.join(root, "assets", "images", "workshop");
 
 const slugify = (value) => value.toLowerCase().replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+const cardTitles = {
+  "wisloffs-family-heritage-sign": "Family Heritage Signs",
+  "casa-de-kelly": "Custom Family Signs",
+  "growth-chart": "Personalized Growth Charts",
+  "grabowski-cutting-board": "Engraved Cutting Boards",
+  "dundon-thank-you-plaque": "Custom Appreciation Plaques",
+  coasters: "Engraved Coasters",
+  squirtle: "Layered Wood Art",
+  celtics: "Custom Layered Wall Art",
+  "custom-camp-sign-set": "Personalized Signs"
+};
 
 const readPngDimensions = (buffer) => {
   if (buffer.length < 24 || buffer.toString("ascii", 1, 4) !== "PNG") return null;
@@ -97,6 +108,7 @@ const importWisloff = async () => {
   return {
     id: "wisloffs-family-heritage-sign",
     title,
+    cardTitle: cardTitles["wisloffs-family-heritage-sign"],
     type: "Custom Family Heritage Sign",
     description: [
       "A custom family heritage sign made from solid cherry, with the Wisloffs name and Est. 1997 at its center.",
@@ -168,6 +180,7 @@ for (const folder of folders) {
   const project = {
     id: slug,
     title,
+    cardTitle: cardTitles[slug] || title,
     type,
     description,
     heroImage: images.find((image) => image.src.includes(path.basename(heroFile || "", path.extname(heroFile || ""))))?.src || images.find((image) => /hero/i.test(image.src))?.src || images[0]?.src,

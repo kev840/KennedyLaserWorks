@@ -8,10 +8,11 @@
 .custom-project-card__image picture { width: 100%; height: 100%; }
 .custom-project-card__image img { width: 100%; height: 100%; object-fit: contain; transition: transform var(--transition), filter var(--transition); }
 .custom-project-card:hover .custom-project-card__image img { filter: saturate(1.04); transform: scale(1.02); }
+.custom-project-card[data-custom-project-id="wisloffs-family-heritage-sign"]:hover .custom-project-card__image img { filter: none; transform: none; }
 .custom-project-card__quick-label { position: absolute; right: .75rem; bottom: .75rem; padding: .38rem .65rem; border-radius: var(--radius-pill); color: white; background: rgba(23,58,43,.9); font-size: .62rem; letter-spacing: .07em; text-transform: uppercase; opacity: 0; transform: translateY(.45rem); transition: opacity var(--transition), transform var(--transition); }
 .custom-project-card:hover .custom-project-card__quick-label, .custom-project-card__image:focus-visible .custom-project-card__quick-label { opacity: 1; transform: translateY(0); }
-.custom-project-card__body { display: flex; flex-direction: column; padding: 1.65rem; }
-.custom-project-card__body h3 { min-height: 2.12em; margin-bottom: .7rem; color: var(--color-forest); font-size: clamp(1.85rem,2.2vw,2.15rem); line-height: 1.06; }
+.custom-project-card__body { display: flex; flex-direction: column; min-width: 0; padding: 1.65rem; }
+.custom-project-card__body h3 { min-height: 2.12em; margin-bottom: .7rem; overflow-wrap: break-word; color: var(--color-forest); font-size: clamp(1.85rem,2.2vw,2.15rem); line-height: 1.06; }
 .custom-project-card__type { min-height: 3.15em; margin-bottom: 1.35rem; color: var(--color-muted); font-size: .78rem; line-height: 1.55; }
 .custom-project-card .button { width: 100%; margin-top: auto; }
 .custom-project-viewer { width: min(96vw,92rem); max-width: 92rem; max-height: 94dvh; overflow-x: hidden; }

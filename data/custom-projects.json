@@ -3,6 +3,7 @@
     {
       "id": "wisloffs-family-heritage-sign",
       "title": "The Wisloffs Family Heritage Sign",
+      "cardTitle": "Family Heritage Signs",
       "type": "Custom Family Heritage Sign",
       "description": [
         "A custom family heritage sign made from solid cherry, with the Wisloffs name and Est. 1997 at its center.",
@@ -86,6 +87,7 @@
     {
       "id": "casa-de-kelly",
       "title": "Casa de Kelly",
+      "cardTitle": "Custom Family Signs",
       "type": "Fully custom outdoor family sign",
       "description": [
         "The customer provided an AI-generated image as inspiration for a personalized \"Casa de Kelly\" sign incorporating Irish and Spanish design elements.",
@@ -179,6 +181,7 @@
     {
       "id": "custom-camp-sign-set",
       "title": "Custom Camp Sign Set",
+      "cardTitle": "Personalized Signs",
       "type": "Fully custom personalized wooden sign set",
       "description": [
         "A coordinated set of four rustic camping-themed signs created for a family birthday celebration.",
@@ -252,6 +255,7 @@
     {
       "id": "growth-chart",
       "title": "Growth Chart",
+      "cardTitle": "Personalized Growth Charts",
       "type": "Fully custom personalized wooden growth chart",
       "description": [
         "The customer provided a photo of an existing personalized growth chart as inspiration and asked Kennedy Laser Works to create a custom version.",
@@ -285,6 +289,7 @@
     {
       "id": "grabowski-cutting-board",
       "title": "Grabowski Cutting Board",
+      "cardTitle": "Engraved Cutting Boards",
       "type": "Custom engraving on a customer-supplied wooden cutting board",
       "description": [
         "The customer supplied a wooden cutting board and asked Kennedy Laser Works to personalize it as a custom keepsake for Damian and Jamie Grabowski.",
@@ -308,6 +313,7 @@
     {
       "id": "dundon-thank-you-plaque",
       "title": "Dundon Thank-You Plaque",
+      "cardTitle": "Custom Appreciation Plaques",
       "type": "Custom engraved appreciation plaque",
       "description": [
         "A custom engraved thank-you plaque created as a personalized appreciation gift.",
@@ -371,6 +377,7 @@
     {
       "id": "coasters",
       "title": "Coasters",
+      "cardTitle": "Engraved Coasters",
       "type": "Custom laser-engraved slate coasters",
       "description": [
         "A collection of custom slate coaster projects created by Kennedy Laser Works, demonstrating several different approaches to personalized laser engraving.",
@@ -434,6 +441,7 @@
     {
       "id": "squirtle",
       "title": "Squirtle",
+      "cardTitle": "Layered Wood Art",
       "type": "Custom layered laser-cut and hand-painted wood artwork",
       "description": [
         "The project began with supplied character artwork that was used as the visual reference for a custom layered wood build.",
@@ -548,6 +556,7 @@
     {
       "id": "celtics",
       "title": "Celtics",
+      "cardTitle": "Custom Layered Wall Art",
       "type": "Custom layered laser-cut and hand-painted wood sign",
       "description": [
         "This custom project began with customer-supplied artwork of a Boston Celtics design. Kennedy Laser Works recreated the artwork as a dimensional layered wood piece, adapting the original image for laser cutting, assembly, and hand painting.",

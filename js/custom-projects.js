@@ -39,7 +39,7 @@
       </button>
       <div class="custom-project-card__body">
         <p class="catalog-card__category">${tools.escapeHtml(project.type)}</p>
-        <h3>${tools.escapeHtml(project.title)}</h3>
+        <h3>${tools.escapeHtml(project.cardTitle || project.title)}</h3>
         <p class="custom-project-card__type">${tools.escapeHtml(project.type)}</p>
         <button class="button button--outline" type="button" data-open-custom-project="${tools.escapeHtml(project.id)}">View Project</button>
       </div>
