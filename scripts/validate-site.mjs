@@ -66,7 +66,7 @@ for (const page of pages) {
   }
   if (/href="tel:/.test(markup)) failures.push(`${page}: public phone link found`);
   if (!/rel="apple-touch-icon"/.test(markup)) failures.push(`${page}: missing Apple touch icon`);
-  if (!/rel="manifest" href="site\.webmanifest"/.test(markup)) failures.push(`${page}: missing web manifest`);
+  if (!/rel="manifest" href="\/?site\.webmanifest"/.test(markup)) failures.push(`${page}: missing web manifest`);
   if (/etsy[^"'<>]*favicon|favicon[^"'<>]*etsy/i.test(markup)) failures.push(`${page}: Etsy favicon reference found`);
 
   for (const match of markup.matchAll(/<img\b[^>]*>/g)) {
@@ -90,8 +90,11 @@ for (const page of pages) {
     if (/^(?:https?:|mailto:|data:)/.test(reference)) continue;
     const cleanReference = reference.split("?")[0];
     if (!cleanReference) continue;
-    try { await access(path.resolve(rootDirectory, cleanReference)); } catch { failures.push(`${page}: missing local reference ${cleanReference}`); }
+    if (page === "404.html" && !cleanReference.startsWith("/")) failures.push(`${page}: local URL must be root-relative (${cleanReference})`);
+    const localPath = cleanReference.startsWith("/") ? `.${cleanReference}` : cleanReference;
+    try { await access(path.resolve(rootDirectory, localPath)); } catch { failures.push(`${page}: missing local reference ${cleanReference}`); }
   }
+  if (page === "404.html" && !/href="\/">Return Home<\/a>/.test(markup)) failures.push("404.html: Return Home must link to /");
 }
 
 for (const asset of requiredBrandAssets) {

@@ -158,6 +158,15 @@
     lightboxOpener?.focus();
   };
 
+  lightbox?.addEventListener("cancel", (event) => {
+    event.preventDefault();
+    closeLightbox();
+  });
+  viewer?.addEventListener("cancel", (event) => {
+    event.preventDefault();
+    if (!lightbox?.open) closeViewer();
+  });
+
   document.addEventListener("click", (event) => {
     const opener = event.target.closest("[data-open-custom-project]");
     const thumbnail = event.target.closest("[data-custom-gallery-index]");
@@ -192,8 +201,6 @@
     if (Math.abs(distance) >= 45) showLightboxImage(activeIndex + (distance < 0 ? 1 : -1));
   }, { passive: true });
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && lightbox?.open) closeLightbox();
-    else if (event.key === "Escape" && viewer?.open) closeViewer();
     if (activeGallery.length < 2) return;
     if (event.key === "ArrowLeft" && lightbox?.open) showLightboxImage(activeIndex - 1);
     else if (event.key === "ArrowRight" && lightbox?.open) showLightboxImage(activeIndex + 1);

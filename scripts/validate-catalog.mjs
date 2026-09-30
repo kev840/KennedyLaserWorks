@@ -68,7 +68,7 @@ for (const file of htmlFiles) {
   assert(!/862[\s.-]*253[\s.-]*3278/.test(html), `${file}: public phone number must not be shown.`);
   const localReferences = [...html.matchAll(/(?:href|src)="([^"#?]+)(?:[?#][^"]*)?"/g)].map((match) => match[1]);
   localReferences.filter((reference) => !/^(?:https?:|mailto:|tel:|data:)/.test(reference)).forEach((reference) => {
-    const target = path.resolve(root, reference);
+    const target = path.resolve(root, reference.startsWith("/") ? `.${reference}` : reference);
     assert(target.startsWith(root) && fs.existsSync(target), `${file}: missing local reference ${reference}.`);
   });
 }
