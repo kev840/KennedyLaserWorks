@@ -90,6 +90,9 @@
       submitButton.innerHTML = defaultButtonContent;
       error.hidden = true;
       success.hidden = false;
+      if (form.dataset.basinSuccessId === "contact-form-success" && typeof window.gtag === "function") {
+        window.gtag("event", "lead_form_submit", { form_name: "contact_form" });
+      }
       // Let Basin's success render and the form reflow before moving the viewport.
       requestAnimationFrame(() => {
         success.hidden = false;
