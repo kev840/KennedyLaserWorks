@@ -81,11 +81,11 @@ const findImageFile = (available, requested) => {
 
 // The Wisloff folder has no project-info.txt. Only these seven approved source photos are published.
 const wisloffGallery = [
-  ["20260913_101753.jpg", "Starting with Solid Cherry", "Solid cherry wood prepared for the family heritage sign.", "IN PROGRESS"],
+  ["20260913_101753.jpg", "Starting with Solid Cherry Wood", "Solid cherry wood prepared for the family heritage sign.", "IN PROGRESS"],
   ["20260916_202655.jpg", "Engraving Complete, Painting Begins", "With the laser engraving complete, hand painting begins to bring out the lettering and details.", "IN PROGRESS"],
   ["20260916_205158.jpg", "Engraved Detail", "A closer look at the engraved lettering and decorative details.", "IN PROGRESS"],
   ["20260919_190822.jpg", "Hand Painting the Details", "Painting the sign's flag details by hand.", "IN PROGRESS"],
-  ["20260919_234311.jpg", "From Design to Finished Piece", "The finished cherry sign alongside its digital design.", ""],
+  ["20260919_234311.jpg", "From Design to Finished Piece", "The finished solid cherry wood sign alongside its digital design.", ""],
   ["20260918_233836.jpg", "KLW Maker's Mark", "The Kennedy Laser Works maker's mark on the reverse.", ""],
   ["Hero.jpg", "Finished Project", "The finished Wisloffs sign features the flags of Norway, Italy, Ireland, and Germany, with Est. 1997 beneath the family name.", "FINISHED PROJECT"]
 ];
@@ -112,7 +112,7 @@ const importWisloff = async () => {
     type: "Custom Family Heritage Sign",
     description: [
       "A custom family heritage sign crafted from solid cherry wood, with the Wisloffs name and Est. 1997 at its center.",
-      "The design brings together the flags of Norway, Italy, Ireland, and Germany. The details are laser engraved in the cherry wood, while hand painting and finishing complete the sign. The gallery follows the work from raw cherry through the finished piece."
+      "The design brings together the flags of Norway, Italy, Ireland, and Germany. The details are laser engraved in solid cherry wood, while hand painting and finishing complete the sign. The gallery follows the work from solid cherry wood through the finished piece."
     ],
     heroImage: images.at(-1).src,
     disclosure: "",
