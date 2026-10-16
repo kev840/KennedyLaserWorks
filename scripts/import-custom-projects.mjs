@@ -81,7 +81,7 @@ const findImageFile = (available, requested) => {
 
 // The Wisloff folder has no project-info.txt. Only these seven approved source photos are published.
 const wisloffGallery = [
-  ["20260913_101753.jpg", "Starting with Solid Cherry", "Solid cherry prepared for the family heritage sign.", "IN PROGRESS"],
+  ["20260913_101753.jpg", "Starting with Solid Cherry", "Solid cherry wood prepared for the family heritage sign.", "IN PROGRESS"],
   ["20260916_202655.jpg", "Engraving Complete, Painting Begins", "With the laser engraving complete, hand painting begins to bring out the lettering and details.", "IN PROGRESS"],
   ["20260916_205158.jpg", "Engraved Detail", "A closer look at the engraved lettering and decorative details.", "IN PROGRESS"],
   ["20260919_190822.jpg", "Hand Painting the Details", "Painting the sign's flag details by hand.", "IN PROGRESS"],
@@ -111,8 +111,8 @@ const importWisloff = async () => {
     cardTitle: cardTitles["wisloffs-family-heritage-sign"],
     type: "Custom Family Heritage Sign",
     description: [
-      "A custom family heritage sign made from solid cherry, with the Wisloffs name and Est. 1997 at its center.",
-      "The design brings together the flags of Norway, Italy, Ireland, and Germany. Laser engraving gives the piece its detail, while hand painting and finishing complete the sign. The gallery follows the work from raw cherry through the finished piece."
+      "A custom family heritage sign crafted from solid cherry wood, with the Wisloffs name and Est. 1997 at its center.",
+      "The design brings together the flags of Norway, Italy, Ireland, and Germany. The details are laser engraved in the cherry wood, while hand painting and finishing complete the sign. The gallery follows the work from raw cherry through the finished piece."
     ],
     heroImage: images.at(-1).src,
     disclosure: "",

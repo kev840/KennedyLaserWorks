@@ -6,6 +6,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const read = (relativePath) => fs.readFileSync(path.join(root, relativePath), "utf8");
 const catalog = JSON.parse(read("data/products.json"));
 const categoryData = JSON.parse(read("data/categories.json"));
+const customProjectData = JSON.parse(read("data/custom-projects.json"));
 const products = catalog.products;
 const allowedCategories = new Set(categoryData.categories.map((category) => category.slug));
 const errors = [];
@@ -46,8 +47,8 @@ for (const product of products) {
   product.categories.forEach((category) => assert(allowedCategories.has(category), `${label}: unknown category ${category}.`));
   if (product.etsyListingId === "4592833137") {
     const heritageText = JSON.stringify(product);
-    assert(!/layered|plywood|laminated|multi-layer/i.test(heritageText), `${label}: inaccurate layered construction language remains.`);
-    assert(product.materials?.includes("One solid cherry wood panel"), `${label}: solid cherry panel construction is missing.`);
+    assert(!/one\s+(?:solid\s+)?(?:cherry\s+wood\s+)?(?:piece|panel)|one\s+continuous\s+piece|layered|plywood|laminated|multi-layer|joinery/i.test(heritageText), `${label}: unsupported construction language remains.`);
+    assert(product.materials?.includes("Solid cherry wood"), `${label}: solid cherry wood material is missing.`);
   }
   assert(Array.isArray(product.images) && product.images.length > 0, `${label}: images array is missing or empty.`);
   assert(Array.isArray(product.imageFallbacks) && product.imageFallbacks.length === product.images.length, `${label}: imageFallbacks must align with images.`);
@@ -71,6 +72,14 @@ for (const product of products) {
   });
   totalImageCount += product.images?.length || 0;
   assert(product.imageWidth > 0 && product.imageHeight > 0, `${label}: image dimensions are missing.`);
+}
+
+const heritageProject = customProjectData.projects.find((project) => project.id === "wisloffs-family-heritage-sign");
+assert(Boolean(heritageProject), "Heritage Plaque custom project is missing.");
+if (heritageProject) {
+  const heritageProjectText = JSON.stringify(heritageProject);
+  assert(/solid cherry wood/i.test(heritageProjectText), "Heritage Plaque custom project is missing the solid cherry wood material.");
+  assert(!/one\s+(?:solid\s+)?(?:cherry\s+wood\s+)?(?:piece|panel)|one\s+continuous\s+piece|layered|plywood|laminated|multi-layer|joinery/i.test(heritageProjectText), "Heritage Plaque custom project contains unsupported construction language.");
 }
 
 const htmlFiles = fs.readdirSync(root).filter((file) => file.endsWith(".html"));
