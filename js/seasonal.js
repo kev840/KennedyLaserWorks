@@ -165,7 +165,11 @@
       </article>`;
     }).join("");
     const showcase = showcaseIds.map((id) => projects.find((project) => project.id === id)).filter(Boolean);
-    const favoritesMarkup = showcase.map((project) => `<a class="home-craft-card" href="custom-projects.html?project=${encodeURIComponent(project.id)}">${projectPicture(project)}<span class="home-craft-card__body"><span class="section-kicker">${escapeHtml(project.type)}</span><strong>${escapeHtml(project.id === "squirtle" ? "Custom Layered Wall Art" : project.title)}</strong><span>View the finished project <span aria-hidden="true">→</span></span></span></a>`).join("");
+    const favoritesMarkup = showcase.map((project) => {
+      const destination = project.productUrl || `custom-projects.html?project=${encodeURIComponent(project.id)}`;
+      const actionLabel = project.productUrl ? "View product details" : "View the finished project";
+      return `<a class="home-craft-card" href="${escapeHtml(destination)}">${projectPicture(project)}<span class="home-craft-card__body"><span class="section-kicker">${escapeHtml(project.type)}</span><strong>${escapeHtml(project.id === "squirtle" ? "Custom Layered Wall Art" : project.title)}</strong><span>${actionLabel} <span aria-hidden="true">→</span></span></span></a>`;
+    }).join("");
 
     const customMarkup = customExamples.map(([id, label], index) => {
       const project = projects.find((item) => item.id === id);

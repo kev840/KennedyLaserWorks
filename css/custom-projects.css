@@ -40,6 +40,9 @@
 .custom-project-viewer__image-text { margin: 1.5rem 0; padding: 1.1rem 0; border-block: 1px solid var(--color-cream-deep); }
 .custom-project-viewer__label { margin-bottom: .45rem; color: var(--color-forest); font: 600 1.45rem/1.05 var(--font-display); }
 .custom-project-viewer__caption { margin: 0; color: var(--color-muted); font-size: .82rem; line-height: 1.65; }
+.custom-project-viewer__actions { display: grid; gap: .75rem; align-items: start; }
+.custom-project-viewer__actions .button { width: 100%; }
+.custom-project-viewer__actions .arrow-link { justify-self: start; }
 .custom-project-badge { display: inline-flex; margin-bottom: .75rem; padding: .32rem .65rem; border: 1px solid rgba(23,58,43,.15); border-radius: var(--radius-pill); color: var(--color-forest); background: #e5eee8; font-size: .56rem; font-weight: 600; letter-spacing: .09em; line-height: 1; text-transform: uppercase; }
 .custom-project-badge--reference { color: var(--color-walnut); background: rgba(214,174,121,.24); }
 .custom-project-badge--progress { color: var(--color-walnut-soft); background: rgba(233,224,210,.72); }

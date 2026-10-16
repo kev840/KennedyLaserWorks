@@ -41,7 +41,7 @@
         <p class="catalog-card__category">${tools.escapeHtml(project.type)}</p>
         <h3>${tools.escapeHtml(project.cardTitle || project.title)}</h3>
         <p class="custom-project-card__type">${tools.escapeHtml(project.type)}</p>
-        <button class="button button--outline" type="button" data-open-custom-project="${tools.escapeHtml(project.id)}">View Project</button>
+        ${project.productUrl ? `<a class="button button--outline" href="${tools.escapeHtml(project.productUrl)}">View Product Details</a>` : `<button class="button button--outline" type="button" data-open-custom-project="${tools.escapeHtml(project.id)}">View Project</button>`}
       </div>
     </article>`;
   };
@@ -68,7 +68,11 @@
         <div class="custom-project-viewer__description">${project.description.map((paragraph) => `<p>${tools.escapeHtml(paragraph)}</p>`).join("")}</div>
         <div class="custom-project-viewer__image-text" data-custom-image-text>${imageTextMarkup(first)}</div>
         ${project.disclosure ? `<p class="custom-project-disclosure">${tools.escapeHtml(project.disclosure)}</p>` : ""}
-        <a class="button button--forest" href="custom-work.html#inquiry">Start a Custom Project <span aria-hidden="true">→</span></a>
+        <div class="custom-project-viewer__actions">
+          ${project.productUrl ? `<a class="button button--forest" href="${tools.escapeHtml(project.productUrl)}">View Product Details <span aria-hidden="true">→</span></a>` : ""}
+          ${project.etsyUrl ? `<a class="button button--bronze" href="${tools.escapeHtml(project.etsyUrl)}" target="_blank" rel="noopener">Buy on Etsy <span aria-hidden="true">↗</span></a>` : ""}
+          <a class="arrow-link" href="custom-work.html#inquiry">Start a Custom Project <span aria-hidden="true">→</span></a>
+        </div>
       </article>
     </div>`;
   };

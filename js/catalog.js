@@ -276,6 +276,8 @@
       ...(product.variantOverview ? [{ label: "Options", value: product.variantOverview }] : []),
       ...(product.dimensions ? [{ label: "Dimensions", value: Array.isArray(product.dimensions) ? product.dimensions.join(", ") : product.dimensions }] : []),
       ...(product.materials ? [{ label: "Materials", value: Array.isArray(product.materials) ? product.materials.join(", ") : product.materials }] : []),
+      ...(product.displayUse ? [{ label: "Display", value: product.displayUse }] : []),
+      ...(product.productionInformation ? [{ label: "Production", value: product.productionInformation }] : []),
       { label: "Local pickup", value: "Available by advance arrangement in Budd Lake, New Jersey. Contact us before ordering." }
     ];
     return facts.map((fact) => `<div><dt>${escapeHtml(fact.label)}</dt><dd>${escapeHtml(fact.value)}</dd></div>`).join("");
@@ -317,9 +319,9 @@
         <p class="section-kicker">${escapeHtml(categoryLabels.get(product.categories[0]) || titleCase(product.categories[0]))}</p>
         <h2 id="quick-view-title">${escapeHtml(product.displayTitle)}</h2>
         <p class="quick-view__description">${escapeHtml(productSummary(product))}</p>
-        <p class="quick-view__price">See Etsy for current pricing, options, and availability.</p>
+        <p class="quick-view__price">${escapeHtml(product.priceSummary || "See Etsy for current pricing, options, and availability.")}</p>
         <dl class="quick-view__facts">${quickViewFacts(product)}</dl>
-        <div class="quick-view__actions"><a class="button button--forest" href="${escapeHtml(product.etsyUrl)}" target="_blank" rel="noopener">Purchase on Etsy <span aria-hidden="true">↗</span></a><a class="arrow-link" href="${escapeHtml(window.KLWProductUrl(product))}">Full details <span aria-hidden="true">→</span></a>${product.customAvailable === true ? '<a class="arrow-link" href="custom-work.html#inquiry">Request a custom quote <span aria-hidden="true">→</span></a>' : ""}<a class="arrow-link" href="contact.html">Ask a question <span aria-hidden="true">→</span></a></div>
+        <div class="quick-view__actions"><a class="button button--forest" href="${escapeHtml(product.etsyUrl)}" target="_blank" rel="noopener">${escapeHtml(product.purchaseLabel || "Purchase on Etsy")} <span aria-hidden="true">↗</span></a><a class="arrow-link" href="${escapeHtml(window.KLWProductUrl(product))}">Full details <span aria-hidden="true">→</span></a>${product.customAvailable === true ? '<a class="arrow-link" href="custom-work.html#inquiry">Request a custom quote <span aria-hidden="true">→</span></a>' : ""}<a class="arrow-link" href="contact.html">Ask a question <span aria-hidden="true">→</span></a></div>
       </div>
     </div>${relatedMarkup(product)}`;
     activateProgressiveImages(quickViewContent);

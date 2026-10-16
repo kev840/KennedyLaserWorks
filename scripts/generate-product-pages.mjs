@@ -13,7 +13,7 @@ const template = await readFile(path.join(root, "product.html"), "utf8");
 const escape = (value = "") => String(value).replace(/[&<>'"]/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[character]);
 const summary = (item) => item.shortDescription?.trim() || `${item.displayTitle} from Kennedy Laser Works.`;
 const title = (item) => `${item.displayTitle} | Kennedy Laser Works`;
-const description = (item) => item.seoDescription?.trim() || summary(item);
+const description = (item) => item.seoDescription?.trim() || `${summary(item)} Handcrafted in Budd Lake, New Jersey by Kennedy Laser Works.`;
 const image = (item, index) => ({
   webp: item.images[index], fallback: item.imageFallbacks[index],
   alt: item.imageMetadata[index]?.alt || `${item.displayTitle}${index ? ` — view ${index + 1}` : ""}`,
@@ -27,17 +27,73 @@ const factRows = (item) => [
   item.variantOverview && ["Options", item.variantOverview],
   item.dimensions && ["Dimensions", Array.isArray(item.dimensions) ? item.dimensions.join(", ") : item.dimensions],
   item.materials && ["Materials", Array.isArray(item.materials) ? item.materials.join(", ") : item.materials],
+  item.displayUse && ["Display", item.displayUse],
   item.productionInformation && ["Production", item.productionInformation],
   ["Local pickup", "Available by advance arrangement in Budd Lake, New Jersey. Contact us before ordering."]
 ].filter(Boolean).map(([label, value]) => `<div><dt>${escape(label)}</dt><dd>${escape(value)}</dd></div>`).join("");
+const intersectionCount = (left = [], right = []) => left.filter((value) => right.includes(value)).length;
+const recommendationScore = (source, candidate) => (
+  intersectionCount(source.categories, candidate.categories) * 5
+  + intersectionCount(source.seasons, candidate.seasons) * 4
+  + intersectionCount(source.occasions, candidate.occasions) * 3
+  + intersectionCount(source.recipients, candidate.recipients) * 3
+  + intersectionCount(source.tags, candidate.tags)
+);
 const relatedMarkup = (item) => {
-  const related = products.filter((other) => other.id !== item.id && other.categories.some((category) => item.categories.includes(category))).slice(0, 4);
+  const related = products
+    .filter((other) => other.id !== item.id)
+    .map((other) => ({ other, score: recommendationScore(item, other) }))
+    .filter(({ score }) => score > 0)
+    .sort((left, right) => right.score - left.score || left.other.displayTitle.localeCompare(right.other.displayTitle))
+    .slice(0, 4)
+    .map(({ other }) => other);
   if (!related.length) return "";
   return `<section class="section product-related" aria-labelledby="related-title"><div class="container"><p class="section-kicker">More handcrafted pieces</p><h2 id="related-title">You May Also Like</h2><div class="product-related__grid">${related.map((other) => `<a href="${escape(productPath(other).slice(1))}">${picture(image(other, 0))}<span><small>${escape(labels.get(other.categories[0]) || other.categories[0])}</small>${escape(other.displayTitle)}</span></a>`).join("")}</div></div></section>`;
 };
 const body = (item) => {
   const gallery = item.images.map((_, index) => image(item, index));
-  return `<div class="container product-detail__layout"><section class="product-detail__gallery" aria-label="${escape(item.displayTitle)} image gallery" data-product-gallery><div class="product-detail__main"><button class="product-detail__zoom" type="button" data-open-lightbox="0" aria-label="${gallery.length > 1 ? "View all photos for" : "View photo of"} ${escape(item.displayTitle)}">${picture(gallery[0], false, "eager")}<span>${gallery.length > 1 ? "View All Photos" : "View Photo"}</span></button>${gallery.length > 1 ? `<button class="gallery-arrow gallery-arrow--previous" type="button" data-gallery-prev aria-label="Previous product image">←</button><button class="gallery-arrow gallery-arrow--next" type="button" data-gallery-next aria-label="Next product image">→</button><span class="gallery-position" data-gallery-position aria-live="polite">1 of ${gallery.length}</span>` : ""}</div>${gallery.length > 1 ? `<div class="product-detail__thumbnails" aria-label="Choose a product image">${gallery.map((value, index) => `<button type="button" data-gallery-index="${index}" class="${index === 0 ? "is-current" : ""}" aria-label="Show image ${index + 1} of ${gallery.length}" aria-pressed="${index === 0}">${picture(value, true)}</button>`).join("")}</div>` : ""}</section><article class="product-detail__copy"><p class="section-kicker">${escape(labels.get(item.categories[0]) || item.categories[0])}</p><h1>${escape(item.displayTitle)}</h1><p class="product-detail__description">${escape(summary(item))}</p>${item.longDescription && item.longDescription !== summary(item) ? `<p>${escape(item.longDescription)}</p>` : ""}<p class="product-detail__price">See Etsy for current pricing, options, and availability.</p><dl class="quick-view__facts">${factRows(item)}</dl><div class="product-detail__actions"><a class="button button--forest" href="${escape(item.etsyUrl)}" target="_blank" rel="noopener">Purchase on Etsy <span aria-hidden="true">↗</span></a>${item.customAvailable === true ? '<a class="arrow-link" href="custom-work.html#inquiry">Request a custom quote <span aria-hidden="true">→</span></a>' : ""}<a class="arrow-link" href="contact.html">Ask a question <span aria-hidden="true">→</span></a></div></article></div>${relatedMarkup(item)}`;
+  return `<div class="container product-detail__layout"><section class="product-detail__gallery" aria-label="${escape(item.displayTitle)} image gallery" data-product-gallery><div class="product-detail__main"><button class="product-detail__zoom" type="button" data-open-lightbox="0" aria-label="${gallery.length > 1 ? "View all photos for" : "View photo of"} ${escape(item.displayTitle)}">${picture(gallery[0], false, "eager")}<span>${gallery.length > 1 ? "View All Photos" : "View Photo"}</span></button>${gallery.length > 1 ? `<button class="gallery-arrow gallery-arrow--previous" type="button" data-gallery-prev aria-label="Previous product image">←</button><button class="gallery-arrow gallery-arrow--next" type="button" data-gallery-next aria-label="Next product image">→</button><span class="gallery-position" data-gallery-position aria-live="polite">1 of ${gallery.length}</span>` : ""}</div>${gallery.length > 1 ? `<div class="product-detail__thumbnails" aria-label="Choose a product image">${gallery.map((value, index) => `<button type="button" data-gallery-index="${index}" class="${index === 0 ? "is-current" : ""}" aria-label="Show image ${index + 1} of ${gallery.length}" aria-pressed="${index === 0}">${picture(value, true)}</button>`).join("")}</div>` : ""}</section><article class="product-detail__copy"><p class="section-kicker">${escape(labels.get(item.categories[0]) || item.categories[0])}</p><h1>${escape(item.displayTitle)}</h1><p class="product-detail__description">${escape(summary(item))}</p>${item.longDescription && item.longDescription !== summary(item) ? `<p>${escape(item.longDescription)}</p>` : ""}<p class="product-detail__price">${escape(item.priceSummary || "See Etsy for current pricing, options, and availability.")}</p><dl class="quick-view__facts">${factRows(item)}</dl><div class="product-detail__actions"><a class="button button--forest" href="${escape(item.etsyUrl)}" target="_blank" rel="noopener">${escape(item.purchaseLabel || "Purchase on Etsy")} <span aria-hidden="true">↗</span></a>${item.customAvailable === true ? '<a class="arrow-link" href="custom-work.html#inquiry">Request a custom quote <span aria-hidden="true">→</span></a>' : ""}<a class="arrow-link" href="contact.html">Ask a question <span aria-hidden="true">→</span></a></div></article></div>${relatedMarkup(item)}`;
+};
+
+const breadcrumbSchema = (item, canonical) => ({
+  "@type": "BreadcrumbList",
+  "@id": `${canonical}#breadcrumb`,
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: `${base}/` },
+    { "@type": "ListItem", position: 2, name: "Collections", item: `${base}/collections.html` },
+    { "@type": "ListItem", position: 3, name: item.displayTitle, item: canonical }
+  ]
+});
+
+const pageSchema = (item, canonical) => {
+  const common = {
+    "@id": `${canonical}#primary`,
+    name: item.displayTitle,
+    description: summary(item),
+    image: item.images.map((source) => `${base}/${source}`),
+    url: canonical
+  };
+  if (item.structuredOffer) {
+    return {
+      "@type": "Product",
+      ...common,
+      brand: { "@type": "Brand", name: "Kennedy Laser Works" },
+      material: Array.isArray(item.materials) ? item.materials.join(", ") : item.materials,
+      offers: {
+        "@type": "Offer",
+        url: item.etsyUrl,
+        priceCurrency: item.structuredOffer.priceCurrency,
+        price: item.structuredOffer.price,
+        availability: item.structuredOffer.availability
+      }
+    };
+  }
+  return {
+    "@type": "WebPage",
+    ...common,
+    isPartOf: { "@type": "WebSite", "@id": `${base}/#website`, name: "Kennedy Laser Works", url: `${base}/` },
+    breadcrumb: { "@id": `${canonical}#breadcrumb` }
+  };
 };
 
 const slugs = products.map(productPath);
@@ -49,7 +105,7 @@ for (const item of products) {
   const urlPath = productPath(item);
   const canonical = `${base}${urlPath}`;
   const socialImage = `${base}/${item.primaryImage}`;
-  const schema = { "@context": "https://schema.org", "@type": "Product", name: item.displayTitle, description: summary(item), image: item.images.map((source) => `${base}/${source}`), url: canonical };
+  const schema = { "@context": "https://schema.org", "@graph": [pageSchema(item, canonical), breadcrumbSchema(item, canonical)] };
   const rendered = template
     .replace("<!doctype html>", "<!-- Generated from data/products.json by scripts/generate-product-pages.mjs. -->\n<!doctype html>")
     .replace('<meta name="viewport"', '<base href="../">\n  <meta name="viewport"')
@@ -73,4 +129,12 @@ for (const file of await readdir(directory)) {
     if (content.startsWith("<!-- Generated from data/products.json by scripts/generate-product-pages.mjs. -->")) await unlink(path.join(directory, file));
   }
 }
+const collectionsPath = path.join(root, "collections.html");
+const directoryStart = "<!-- PRODUCT_LINK_DIRECTORY_START -->";
+const directoryEnd = "<!-- PRODUCT_LINK_DIRECTORY_END -->";
+const directoryLinks = `<ul>${products.map((item) => `<li><a href="${escape(productPath(item).slice(1))}">${escape(item.displayTitle)}</a></li>`).join("")}</ul>`;
+const collections = await readFile(collectionsPath, "utf8");
+if (!collections.includes(directoryStart) || !collections.includes(directoryEnd)) throw new Error("Collections product-directory markers are missing.");
+const updatedCollections = collections.replace(new RegExp(`${directoryStart}[\\s\\S]*?${directoryEnd}`), `${directoryStart}\n          ${directoryLinks}\n          ${directoryEnd}`);
+await writeFile(collectionsPath, updatedCollections, "utf8");
 console.log(`Generated ${products.length} static product pages.`);

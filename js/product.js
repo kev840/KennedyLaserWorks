@@ -28,6 +28,8 @@
       ...(item.variantOverview ? [{ label: "Options", value: item.variantOverview }] : []),
       ...(item.dimensions ? [{ label: "Dimensions", value: Array.isArray(item.dimensions) ? item.dimensions.join(", ") : item.dimensions }] : []),
       ...(item.materials ? [{ label: "Materials", value: Array.isArray(item.materials) ? item.materials.join(", ") : item.materials }] : []),
+      ...(item.displayUse ? [{ label: "Display", value: item.displayUse }] : []),
+      ...(item.productionInformation ? [{ label: "Production", value: item.productionInformation }] : []),
       { label: "Local pickup", value: "Available by advance arrangement in Budd Lake, New Jersey. Contact us before ordering." }
     ];
     return facts.map((fact) => `<div><dt>${tools.escapeHtml(fact.label)}</dt><dd>${tools.escapeHtml(fact.value)}</dd></div>`).join("");
@@ -44,8 +46,23 @@
     ${gallery.length > 1 ? `<div class="product-detail__thumbnails" aria-label="Choose a product image">${gallery.map((image, index) => `<button type="button" data-gallery-index="${index}" class="${index === 0 ? "is-current" : ""}" aria-label="Show image ${index + 1} of ${gallery.length}" aria-pressed="${index === 0}">${tools.picture(image, { decorative: true })}</button>`).join("")}</div>` : ""}
   </section>`;
 
+  const intersectionCount = (left = [], right = []) => left.filter((value) => right.includes(value)).length;
+  const recommendationScore = (source, candidate) => (
+    intersectionCount(source.categories, candidate.categories) * 5
+    + intersectionCount(source.seasons, candidate.seasons) * 4
+    + intersectionCount(source.occasions, candidate.occasions) * 3
+    + intersectionCount(source.recipients, candidate.recipients) * 3
+    + intersectionCount(source.tags, candidate.tags)
+  );
+
   const relatedMarkup = (products, labels) => {
-    const related = products.filter((item) => item.id !== product.id && item.active && item.categories.some((category) => product.categories.includes(category))).slice(0, 4);
+    const related = products
+      .filter((item) => item.id !== product.id && item.active)
+      .map((item) => ({ item, score: recommendationScore(product, item) }))
+      .filter(({ score }) => score > 0)
+      .sort((left, right) => right.score - left.score || left.item.displayTitle.localeCompare(right.item.displayTitle))
+      .slice(0, 4)
+      .map(({ item }) => item);
     if (!related.length) return "";
     return `<section class="section product-related" aria-labelledby="related-title"><div class="container"><p class="section-kicker">More handcrafted pieces</p><h2 id="related-title">You May Also Like</h2><div class="product-related__grid">${related.map((item) => {
       const image = tools.images(item)[0];
@@ -110,7 +127,7 @@
     schema.type = "application/ld+json";
     schema.textContent = JSON.stringify({
       "@context": "https://schema.org",
-      "@type": "Product",
+      "@type": "WebPage",
       name: product.displayTitle,
       description: productSummary(product),
       image: gallery.map((image) => new URL(image.webp || image.fallback, window.location.href).href),
@@ -140,9 +157,9 @@
         <h1>${tools.escapeHtml(product.displayTitle)}</h1>
         <p class="product-detail__description">${tools.escapeHtml(productSummary(product))}</p>
         ${product.longDescription && product.longDescription !== productSummary(product) ? `<p>${tools.escapeHtml(product.longDescription)}</p>` : ""}
-        <p class="product-detail__price">See Etsy for current pricing, options, and availability.</p>
+        <p class="product-detail__price">${tools.escapeHtml(product.priceSummary || "See Etsy for current pricing, options, and availability.")}</p>
         <dl class="quick-view__facts">${factsMarkup(product)}</dl>
-        <div class="product-detail__actions"><a class="button button--forest" href="${tools.escapeHtml(product.etsyUrl)}" target="_blank" rel="noopener">Purchase on Etsy <span aria-hidden="true">↗</span></a>${product.customAvailable === true ? '<a class="arrow-link" href="custom-work.html#inquiry">Request a custom quote <span aria-hidden="true">→</span></a>' : ""}<a class="arrow-link" href="contact.html">Ask a question <span aria-hidden="true">→</span></a></div>
+        <div class="product-detail__actions"><a class="button button--forest" href="${tools.escapeHtml(product.etsyUrl)}" target="_blank" rel="noopener">${tools.escapeHtml(product.purchaseLabel || "Purchase on Etsy")} <span aria-hidden="true">↗</span></a>${product.customAvailable === true ? '<a class="arrow-link" href="custom-work.html#inquiry">Request a custom quote <span aria-hidden="true">→</span></a>' : ""}<a class="arrow-link" href="contact.html">Ask a question <span aria-hidden="true">→</span></a></div>
       </article>
     </div>${relatedMarkup(products, labels)}`;
     window.KLW?.enhanceImages(root);

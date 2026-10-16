@@ -9,6 +9,7 @@ const active = catalog.products.filter((item) => item.active && item.listingStat
 const expectedPaths = active.map(productPath);
 const files = (await readdir(path.join(root, "products"))).filter((file) => file.endsWith(".html"));
 const sitemap = await readFile(path.join(root, "sitemap.xml"), "utf8");
+const collections = await readFile(path.join(root, "collections.html"), "utf8");
 const errors = [];
 const escape = (value) => String(value).replace(/[&<>'"]/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[character]);
 const assert = (condition, message) => { if (!condition) errors.push(message); };
@@ -31,16 +32,29 @@ for (const item of active) {
   canonicals.add(canonical);
   assert(html.includes(`<meta property="og:url" content="${canonical}">`), `${urlPath}: wrong Open Graph URL`);
   assert(html.includes('<meta name="robots" content="index,follow">'), `${urlPath}: not indexable`);
-  assert(!html.includes("InStock"), `${urlPath}: unsupported availability claim`);
+  if (!item.structuredOffer) assert(!html.includes("InStock"), `${urlPath}: unsupported availability claim`);
   assert(html.includes(`href="${item.etsyUrl}"`), `${urlPath}: Etsy destination mismatch`);
   assert(html.includes(`<h1>${escape(item.displayTitle)}</h1>`), `${urlPath}: product heading missing`);
   assert(sitemap.includes(`<loc>${canonical}</loc>`), `${urlPath}: sitemap entry missing`);
+  assert(collections.includes(`href="${urlPath.slice(1)}"`), `${urlPath}: static collections-directory link missing`);
   const schemaMatch = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
   try {
     const schema = JSON.parse(schemaMatch?.[1] || "");
-    assert(schema["@type"] === "Product" && schema.url === canonical && schema.name === item.displayTitle, `${urlPath}: wrong Product JSON-LD`);
-    assert(!schema.offers && !schema.aggregateRating, `${urlPath}: unsupported Product JSON-LD`);
-  } catch { errors.push(`${urlPath}: invalid Product JSON-LD`); }
+    const graph = schema["@graph"];
+    const primary = graph?.find((entry) => entry["@id"] === `${canonical}#primary`);
+    const breadcrumb = graph?.find((entry) => entry["@type"] === "BreadcrumbList");
+    assert(Array.isArray(graph) && primary?.url === canonical && primary?.name === item.displayTitle, `${urlPath}: wrong primary JSON-LD entity`);
+    assert(breadcrumb?.itemListElement?.length === 3, `${urlPath}: breadcrumb JSON-LD missing`);
+    if (item.structuredOffer) {
+      assert(primary?.["@type"] === "Product", `${urlPath}: purchasable page must use Product JSON-LD`);
+      assert(primary?.offers?.["@type"] === "Offer", `${urlPath}: offer missing`);
+      assert(primary?.offers?.price === item.structuredOffer.price && primary?.offers?.priceCurrency === item.structuredOffer.priceCurrency, `${urlPath}: offer price does not match catalog data`);
+      assert(primary?.offers?.url === item.etsyUrl, `${urlPath}: offer URL does not match Etsy listing`);
+    } else {
+      assert(primary?.["@type"] === "WebPage", `${urlPath}: showcase page must use WebPage JSON-LD`);
+      assert(!graph.some((entry) => entry["@type"] === "Product"), `${urlPath}: unsupported Product JSON-LD remains`);
+    }
+  } catch { errors.push(`${urlPath}: invalid structured data`); }
   for (const match of html.matchAll(/(?:href|src|srcset)="([^"#]+)"/g)) {
     const reference = match[1].split(/[?#]/)[0];
     if (/^(?:https?:|mailto:|data:)/.test(reference)) continue;
@@ -60,4 +74,4 @@ for (const item of active) {
 for (const file of files) assert(expectedPaths.includes(`/products/${file}`), `Orphaned product page: ${file}`);
 assert(!/<loc>[^<]*product\.html\?/.test(sitemap), "Dynamic product URL in sitemap");
 if (errors.length) { console.error(errors.join("\n")); process.exitCode = 1; }
-else console.log(`Validated ${active.length} generated product pages, unique titles/canonicals, Product JSON-LD, assets, Etsy URLs, and sitemap entries.`);
+else console.log(`Validated ${active.length} generated product pages, unique titles/canonicals, appropriate WebPage or Product schema, static discovery links, assets, Etsy URLs, and sitemap entries.`);

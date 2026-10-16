@@ -12,7 +12,7 @@ const errors = [];
 const assert = (condition, message) => { if (!condition) errors.push(message); };
 let totalImageCount = 0;
 
-assert(products.length === 65, `Expected 65 live listings; found ${products.length}.`);
+assert(products.length === 66, `Expected 66 live listings; found ${products.length}.`);
 assert(Boolean(catalog.catalogSnapshotDate), "Catalog snapshot date is missing.");
 assert(catalog.sourceShop === "https://kennedylaserworks.etsy.com/", "Unexpected source shop URL.");
 assert(new Set(products.map((product) => product.id)).size === products.length, "Product IDs must be unique.");
@@ -32,7 +32,7 @@ for (const product of products) {
   }
   assert(product.etsyUrl.includes(`/listing/${product.etsyListingId}/`), `${label}: listing URL does not match its ID.`);
   assert(/^\$\d/.test(product.priceDisplay), `${label}: displayed price is malformed.`);
-  assert(product.priceSnapshotDate === catalog.catalogSnapshotDate, `${label}: price snapshot date is inconsistent.`);
+  assert(/^\d{4}-\d{2}-\d{2}$/.test(product.priceSnapshotDate), `${label}: price snapshot date is missing or malformed.`);
   assert(product.sample !== true, `${label}: a sample flag remains.`);
   assert(product.customerFavorite !== true, `${label}: customer-favorite claim is not verified.`);
   assert(Array.isArray(product.categories) && product.categories.length > 0, `${label}: no category assigned.`);

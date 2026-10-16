@@ -4,6 +4,187 @@
   "priceNotice": "Prices are a static snapshot. Options and prices may vary; Etsy is the final authority.",
   "products": [
     {
+      "id": "etsy-4592833137",
+      "etsyListingId": "4592833137",
+      "pageSlug": "personalized-heritage-family-name-plaque",
+      "etsyTitle": "Personalized Heritage Family Name Plaque, Cherry Wood Sign with Country Flags, Custom Anniversary Gift",
+      "displayTitle": "Personalized Heritage Family Name Plaque",
+      "shortDescription": "A made-to-order cherry wood family name plaque with hand-painted country flags, layered details, and an optional established year.",
+      "longDescription": "Designed for weddings, anniversaries, housewarmings, and family heritage gifts, each indoor plaque is personalized with a family name and two, three, or four country flags. Laser precision shapes and engraves the details before the flags are painted and the piece is finished by hand in the Kennedy Laser Works workshop.",
+      "seoDescription": "Personalized cherry wood family name plaque with 2–4 hand-painted country flags, an optional established year, and handcrafted details from Kennedy Laser Works.",
+      "priceDisplay": "$450.00+",
+      "priceSnapshotDate": "2026-10-16",
+      "priceSummary": "Two flags: $450. Three flags: $475. Four flags: $500. Shipping is calculated through Etsy.",
+      "purchaseLabel": "Buy on Etsy",
+      "etsyUrl": "https://www.etsy.com/listing/4592833137/personalized-heritage-family-name-plaque",
+      "primaryImage": "assets/images/products/4592833137-personalized-heritage-family-name-plaque.webp",
+      "imageFallback": "assets/images/products/4592833137-personalized-heritage-family-name-plaque.jpg",
+      "alternateImages": [
+        {
+          "src": "assets/images/products/4592833137-personalized-heritage-family-name-plaque-02.webp",
+          "fallback": "assets/images/products/4592833137-personalized-heritage-family-name-plaque-02.jpg",
+          "width": 1200,
+          "height": 554,
+          "alt": "Solid cherry prepared for a personalized family heritage plaque",
+          "rank": 2
+        },
+        {
+          "src": "assets/images/products/4592833137-personalized-heritage-family-name-plaque-03.webp",
+          "fallback": "assets/images/products/4592833137-personalized-heritage-family-name-plaque-03.jpg",
+          "width": 1200,
+          "height": 554,
+          "alt": "Laser engraving and hand painting in progress on the cherry wood heritage plaque",
+          "rank": 3
+        },
+        {
+          "src": "assets/images/products/4592833137-personalized-heritage-family-name-plaque-04.webp",
+          "fallback": "assets/images/products/4592833137-personalized-heritage-family-name-plaque-04.jpg",
+          "width": 554,
+          "height": 1200,
+          "alt": "Close view of engraved lettering and layered details on the heritage plaque",
+          "rank": 4
+        },
+        {
+          "src": "assets/images/products/4592833137-personalized-heritage-family-name-plaque-05.webp",
+          "fallback": "assets/images/products/4592833137-personalized-heritage-family-name-plaque-05.jpg",
+          "width": 554,
+          "height": 1200,
+          "alt": "Country flag details being painted by hand on the family name plaque",
+          "rank": 5
+        },
+        {
+          "src": "assets/images/products/4592833137-personalized-heritage-family-name-plaque-06.webp",
+          "fallback": "assets/images/products/4592833137-personalized-heritage-family-name-plaque-06.jpg",
+          "width": 1200,
+          "height": 1120,
+          "alt": "Finished personalized cherry heritage plaque beside its digital design",
+          "rank": 6
+        },
+        {
+          "src": "assets/images/products/4592833137-personalized-heritage-family-name-plaque-07.webp",
+          "fallback": "assets/images/products/4592833137-personalized-heritage-family-name-plaque-07.jpg",
+          "width": 1200,
+          "height": 554,
+          "alt": "Kennedy Laser Works maker mark on the reverse of the heritage plaque",
+          "rank": 7
+        }
+      ],
+      "categories": [
+        "personalized-gifts",
+        "weddings-anniversaries",
+        "custom-projects",
+        "home-decor"
+      ],
+      "occasions": [
+        "wedding",
+        "anniversary",
+        "housewarming"
+      ],
+      "recipients": [
+        "couple",
+        "family"
+      ],
+      "seasons": [
+        "year-round"
+      ],
+      "tags": [
+        "heritage",
+        "family-name",
+        "cherry-wood",
+        "country-flags",
+        "anniversary-gift",
+        "wedding-gift",
+        "personalized-gifts",
+        "custom-projects"
+      ],
+      "personalized": true,
+      "customAvailable": true,
+      "featured": true,
+      "customerFavorite": null,
+      "listingStatus": "active",
+      "active": true,
+      "bestFor": "Weddings, anniversaries, housewarmings, and family heritage gifts",
+      "personalizationGuidance": "Choose two, three, or four countries and provide the family name, optional established year, and preferred flag arrangement.",
+      "variantOverview": "One standard size with two, three, or four country flags",
+      "dimensions": "Approximately 23 × 15 inches",
+      "materials": [
+        "Cherry wood",
+        "Layered wooden details",
+        "Hand-painted flag details"
+      ],
+      "productionInformation": "Made to order in 7–10 days; shipping is calculated through Etsy.",
+      "displayUse": "Indoor display only",
+      "structuredOffer": {
+        "priceCurrency": "USD",
+        "price": "450.00",
+        "availability": "https://schema.org/InStock"
+      },
+      "imageWidth": 1200,
+      "imageHeight": 736,
+      "images": [
+        "assets/images/products/4592833137-personalized-heritage-family-name-plaque.webp",
+        "assets/images/products/4592833137-personalized-heritage-family-name-plaque-02.webp",
+        "assets/images/products/4592833137-personalized-heritage-family-name-plaque-03.webp",
+        "assets/images/products/4592833137-personalized-heritage-family-name-plaque-04.webp",
+        "assets/images/products/4592833137-personalized-heritage-family-name-plaque-05.webp",
+        "assets/images/products/4592833137-personalized-heritage-family-name-plaque-06.webp",
+        "assets/images/products/4592833137-personalized-heritage-family-name-plaque-07.webp"
+      ],
+      "imageFallbacks": [
+        "assets/images/products/4592833137-personalized-heritage-family-name-plaque.jpg",
+        "assets/images/products/4592833137-personalized-heritage-family-name-plaque-02.jpg",
+        "assets/images/products/4592833137-personalized-heritage-family-name-plaque-03.jpg",
+        "assets/images/products/4592833137-personalized-heritage-family-name-plaque-04.jpg",
+        "assets/images/products/4592833137-personalized-heritage-family-name-plaque-05.jpg",
+        "assets/images/products/4592833137-personalized-heritage-family-name-plaque-06.jpg",
+        "assets/images/products/4592833137-personalized-heritage-family-name-plaque-07.jpg"
+      ],
+      "imageMetadata": [
+        {
+          "width": 1200,
+          "height": 736,
+          "alt": "Finished personalized Wisloffs family name plaque in cherry wood with four hand-painted country flags",
+          "rank": 1
+        },
+        {
+          "width": 1200,
+          "height": 554,
+          "alt": "Solid cherry prepared for a personalized family heritage plaque",
+          "rank": 2
+        },
+        {
+          "width": 1200,
+          "height": 554,
+          "alt": "Laser engraving and hand painting in progress on the cherry wood heritage plaque",
+          "rank": 3
+        },
+        {
+          "width": 554,
+          "height": 1200,
+          "alt": "Close view of engraved lettering and layered details on the heritage plaque",
+          "rank": 4
+        },
+        {
+          "width": 554,
+          "height": 1200,
+          "alt": "Country flag details being painted by hand on the family name plaque",
+          "rank": 5
+        },
+        {
+          "width": 1200,
+          "height": 1120,
+          "alt": "Finished personalized cherry heritage plaque beside its digital design",
+          "rank": 6
+        },
+        {
+          "width": 1200,
+          "height": 554,
+          "alt": "Kennedy Laser Works maker mark on the reverse of the heritage plaque",
+          "rank": 7
+        }
+      ]
+    },
+    {
       "id": "etsy-1862372498",
       "etsyListingId": "1862372498",
       "etsyTitle": "Shamrock Wooden Door Hanger: St. Patrick&#39;s Day Irish Decor",
