@@ -36,7 +36,11 @@
   const normalize = (value = "") => String(value).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, " ").trim();
   const words = (value = "") => normalize(value).split(/\s+/).filter(Boolean);
   const titleCase = (value) => value.split("-").map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
-  const priceNumber = (value) => Number(String(value).replace(/[^0-9.]/g, "")) || 0;
+  const priceNumber = (value) => {
+    if (!value) return null;
+    const price = Number(String(value).replace(/[^0-9.]/g, ""));
+    return Number.isFinite(price) ? price : null;
+  };
 
   const editDistance = (left, right) => {
     const previous = Array.from({ length: right.length + 1 }, (_, index) => index);
@@ -190,6 +194,7 @@
 
   const priceMatches = (price, range) => {
     if (!range) return true;
+    if (price === null) return false;
     if (range === "under-15") return price < 15;
     if (range === "15-25") return price >= 15 && price <= 25;
     if (range === "25-50") return price > 25 && price <= 50;

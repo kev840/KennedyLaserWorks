@@ -34,6 +34,10 @@ for (const item of active) {
   assert(html.includes('<meta name="robots" content="index,follow">'), `${urlPath}: not indexable`);
   if (!item.structuredOffer) assert(!html.includes("InStock"), `${urlPath}: unsupported availability claim`);
   assert(html.includes(`href="${item.etsyUrl}"`), `${urlPath}: Etsy destination mismatch`);
+  if (item.suppressWebsitePricing) {
+    assert(!/\$\d/.test(html), `${urlPath}: hardcoded price remains on pricing-suppressed page`);
+    assert(html.includes("View Current Pricing &amp; Purchase on Etsy"), `${urlPath}: current-pricing Etsy CTA missing`);
+  }
   assert(html.includes(`<h1>${escape(item.displayTitle)}</h1>`), `${urlPath}: product heading missing`);
   assert(sitemap.includes(`<loc>${canonical}</loc>`), `${urlPath}: sitemap entry missing`);
   assert(collections.includes(`href="${urlPath.slice(1)}"`), `${urlPath}: static collections-directory link missing`);

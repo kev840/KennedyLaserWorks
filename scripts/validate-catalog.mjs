@@ -22,7 +22,7 @@ assert(new Set(products.map((product) => product.etsyUrl)).size === products.len
 for (const product of products) {
   const label = product.displayTitle || product.id;
   assert(product.listingStatus === "active" && product.active === true, `${label}: listing is not marked active.`);
-  assert(Boolean(product.etsyTitle && product.displayTitle && product.priceDisplay), `${label}: title or price is missing.`);
+  assert(Boolean(product.etsyTitle && product.displayTitle), `${label}: title is missing.`);
   assert(typeof product.shortDescription === "string" && product.shortDescription.trim().length > 0, `${label}: shortDescription must be meaningful text.`);
   for (const field of ["seoDescription", "materials", "dimensions", "variantOverview", "personalizationGuidance", "bestFor"]) {
     if (product[field] === undefined) continue;
@@ -31,8 +31,15 @@ for (const product of products) {
     assert(valid, `${label}: optional ${field} must be nonempty text${["materials", "dimensions"].includes(field) ? " or a nonempty text array" : ""}.`);
   }
   assert(product.etsyUrl.includes(`/listing/${product.etsyListingId}/`), `${label}: listing URL does not match its ID.`);
-  assert(/^\$\d/.test(product.priceDisplay), `${label}: displayed price is malformed.`);
-  assert(/^\d{4}-\d{2}-\d{2}$/.test(product.priceSnapshotDate), `${label}: price snapshot date is missing or malformed.`);
+  if (product.suppressWebsitePricing) {
+    assert(product.priceDisplay === undefined && product.priceSnapshotDate === undefined, `${label}: website pricing must remain omitted.`);
+    assert(product.structuredOffer === undefined, `${label}: pricing-suppressed product cannot publish Offer structured data.`);
+    assert(!/\$\d/.test(product.priceSummary || ""), `${label}: website price summary must not contain a hardcoded price.`);
+    assert(product.purchaseLabel === "View Current Pricing & Purchase on Etsy", `${label}: Etsy pricing CTA is missing.`);
+  } else {
+    assert(/^\$\d/.test(product.priceDisplay), `${label}: displayed price is malformed.`);
+    assert(/^\d{4}-\d{2}-\d{2}$/.test(product.priceSnapshotDate), `${label}: price snapshot date is missing or malformed.`);
+  }
   assert(product.sample !== true, `${label}: a sample flag remains.`);
   assert(product.customerFavorite !== true, `${label}: customer-favorite claim is not verified.`);
   assert(Array.isArray(product.categories) && product.categories.length > 0, `${label}: no category assigned.`);

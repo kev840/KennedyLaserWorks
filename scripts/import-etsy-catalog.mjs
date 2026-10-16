@@ -192,8 +192,13 @@ const importProductImages = async (product, listing) => {
   // Refresh Etsy-owned fields only. Keep KLW editorial copy and product facts on the existing record.
   product.etsyTitle = listing.title || product.etsyTitle;
   product.etsyUrl = listing.url || product.etsyUrl;
-  product.priceDisplay = moneyDisplay(listing.price, product.priceDisplay);
-  product.priceSnapshotDate = catalog.catalogSnapshotDate;
+  if (product.suppressWebsitePricing) {
+    delete product.priceDisplay;
+    delete product.priceSnapshotDate;
+  } else {
+    product.priceDisplay = moneyDisplay(listing.price, product.priceDisplay);
+    product.priceSnapshotDate = catalog.catalogSnapshotDate;
+  }
   product.images = records.map((record) => record.webp);
   product.imageFallbacks = records.map((record) => record.fallback);
   product.imageMetadata = records.map(({ webp, fallback, ...metadata }) => metadata);
