@@ -44,6 +44,11 @@ for (const product of products) {
   assert(product.customerFavorite !== true, `${label}: customer-favorite claim is not verified.`);
   assert(Array.isArray(product.categories) && product.categories.length > 0, `${label}: no category assigned.`);
   product.categories.forEach((category) => assert(allowedCategories.has(category), `${label}: unknown category ${category}.`));
+  if (product.etsyListingId === "4592833137") {
+    const heritageText = JSON.stringify(product);
+    assert(!/layered|plywood|laminated|multi-layer/i.test(heritageText), `${label}: inaccurate layered construction language remains.`);
+    assert(product.materials?.includes("One solid cherry wood panel"), `${label}: solid cherry panel construction is missing.`);
+  }
   assert(Array.isArray(product.images) && product.images.length > 0, `${label}: images array is missing or empty.`);
   assert(Array.isArray(product.imageFallbacks) && product.imageFallbacks.length === product.images.length, `${label}: imageFallbacks must align with images.`);
   assert(Array.isArray(product.imageMetadata) && product.imageMetadata.length === product.images.length, `${label}: imageMetadata must align with images.`);
