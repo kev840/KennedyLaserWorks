@@ -64,5 +64,13 @@
     preload.src = next.webp || next.fallback;
   };
 
-  window.KLWProductGallery = Object.freeze({ escapeHtml, images, picture, preloadNext });
+  const revealThumbnailHorizontally = (button) => {
+    const strip = button.parentElement;
+    const stripBounds = strip.getBoundingClientRect();
+    const buttonBounds = button.getBoundingClientRect();
+    if (buttonBounds.left < stripBounds.left) strip.scrollLeft -= stripBounds.left - buttonBounds.left;
+    else if (buttonBounds.right > stripBounds.right) strip.scrollLeft += buttonBounds.right - stripBounds.right;
+  };
+
+  window.KLWProductGallery = Object.freeze({ escapeHtml, images, picture, preloadNext, revealThumbnailHorizontally });
 })();

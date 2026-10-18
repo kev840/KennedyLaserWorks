@@ -335,7 +335,7 @@
       const isCurrent = Number(button.dataset.galleryIndex) === activeGalleryIndex;
       button.classList.toggle("is-current", isCurrent);
       button.setAttribute("aria-pressed", String(isCurrent));
-      if (isCurrent) button.scrollIntoView({ block: "nearest", inline: "nearest" });
+      if (isCurrent) galleryTools.revealThumbnailHorizontally(button);
     });
     const position = quickViewContent.querySelector("[data-gallery-position]");
     if (position) position.textContent = `${activeGalleryIndex + 1} of ${activeGallery.length}`;

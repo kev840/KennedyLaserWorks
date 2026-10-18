@@ -86,7 +86,7 @@
       const selected = Number(button.dataset.galleryIndex) === currentIndex;
       button.classList.toggle("is-current", selected);
       button.setAttribute("aria-pressed", String(selected));
-      if (selected) button.scrollIntoView({ block: "nearest", inline: "nearest" });
+      if (selected) tools.revealThumbnailHorizontally(button);
     });
     const position = root.querySelector("[data-gallery-position]");
     if (position) position.textContent = `${currentIndex + 1} of ${gallery.length}`;
