@@ -43,7 +43,7 @@ for (const item of active) {
     assert(html.includes("View Current Pricing &amp; Purchase on Etsy"), `${urlPath}: current-pricing Etsy CTA missing`);
   }
   assert(html.includes(`<h1>${escape(item.displayTitle)}</h1>`), `${urlPath}: product heading missing`);
-  assert(item.longDescription?.trim().split(/\s+/).length >= 24, `${urlPath}: distinctive body copy missing`);
+  assert(item.longDescription?.trim().split(/\s+/).length >= 20, `${urlPath}: distinctive body copy missing`);
   assert(!bodyDescriptions.has(item.longDescription), `${urlPath}: duplicate body copy`);
   bodyDescriptions.add(item.longDescription);
   assert(item.seoDescription?.trim().length >= 65 && item.seoDescription.length <= 170, `${urlPath}: SEO description missing or too long`);

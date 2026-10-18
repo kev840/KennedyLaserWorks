@@ -1,6 +1,10 @@
 {
   "categories": [
     {
+      "slug": "holidays",
+      "label": "Holidays"
+    },
+    {
       "slug": "christmas-winter",
       "label": "Christmas & Winter"
     },

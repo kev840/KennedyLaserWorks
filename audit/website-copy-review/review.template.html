@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kennedy Laser Works — Copy & UX Review</title>
+  <style>
+    :root { color-scheme: light; --forest:#173a2b; --ink:#1d2924; --muted:#5b6b64; --cream:#f6f3eb; --line:#d8ded8; --bronze:#a66c39; --blue:#164d72; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--cream); color:var(--ink); font:16px/1.5 system-ui,-apple-system,Segoe UI,sans-serif; }
+    button,input,textarea,select { font:inherit; }
+    button { cursor:pointer; }
+    button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,summary:focus-visible { outline:3px solid #d28842; outline-offset:3px; }
+    .wrap { width:min(1320px,calc(100% - 32px)); margin-inline:auto; }
+    header { background:var(--forest); color:white; padding:30px 0 26px; }
+    header .eyebrow { color:#e0b586; margin:0 0 5px; font-weight:800; text-transform:uppercase; letter-spacing:.12em; font-size:.74rem; }
+    h1 { margin:0; font-size:clamp(1.8rem,4vw,2.7rem); line-height:1.16; }
+    header p:last-child { max-width:75ch; color:#e3ece6; margin:13px 0 0; }
+    .notice { background:#fff8e7; border-left:5px solid var(--bronze); padding:14px 17px; margin:22px 0; }
+    .notice strong { display:block; }
+    .toolbar { background:white; border:1px solid var(--line); border-radius:14px; padding:16px; display:grid; grid-template-columns:2fr repeat(3,minmax(150px,1fr)); gap:12px; align-items:end; box-shadow:0 3px 14px #112e2310; }
+    .toolbar label { display:block; font-size:.81rem; font-weight:750; color:var(--muted); margin-bottom:5px; }
+    .toolbar input,.toolbar select { width:100%; border:1px solid #aabbb1; border-radius:8px; padding:10px; background:#fff; color:var(--ink); }
+    .toolbar-actions { display:flex; gap:8px; flex-wrap:wrap; grid-column:1/-1; align-items:center; }
+    .button { border:1px solid var(--forest); border-radius:8px; background:var(--forest); color:white; padding:9px 13px; font-weight:700; }
+    .button.secondary { background:white; color:var(--forest); }
+    .button.subtle { background:transparent; border-color:transparent; color:var(--forest); text-decoration:underline; padding-inline:5px; }
+    .button:disabled { opacity:.5; cursor:not-allowed; }
+    .toolbar-note { font-size:.82rem; color:var(--muted); margin-left:auto; }
+    .progress-wrap { margin:18px 0 0; background:white; border:1px solid var(--line); border-radius:10px; padding:12px 16px; }
+    .progress-wrap label { display:block; font-weight:750; margin-bottom:6px; }
+    .progress-wrap progress { display:block; width:100%; height:14px; accent-color:var(--forest); }
+    .stats { display:grid; grid-template-columns:repeat(5,1fr); gap:10px; margin:18px 0; }
+    .stat { background:white; border:1px solid var(--line); border-radius:10px; padding:10px 12px; }
+    .stat strong { display:block; font-size:1.45rem; line-height:1.15; }
+    .stat span { color:var(--muted); font-size:.83rem; }
+    .result-line { display:flex; justify-content:space-between; gap:16px; align-items:baseline; margin:20px 0 10px; }
+    .result-line h2 { margin:0; font-size:1.2rem; }
+    .result-line p { margin:0; color:var(--muted); font-size:.88rem; }
+    .group { margin:0 0 24px; }
+    .group-heading { background:#e9eee8; border:1px solid var(--line); border-radius:10px 10px 0 0; padding:10px 16px; display:flex; align-items:baseline; justify-content:space-between; gap:10px; }
+    .group-heading h3 { margin:0; font-size:1.05rem; }
+    .group-heading span { color:var(--muted); font-size:.84rem; }
+    .card { background:white; border:1px solid var(--line); border-top:0; padding:17px; }
+    .card:last-child { border-radius:0 0 10px 10px; }
+    .card-top { display:flex; flex-wrap:wrap; align-items:center; gap:7px; }
+    .card h4 { margin:9px 0 5px; font-size:1.13rem; }
+    .chip { display:inline-block; border-radius:999px; padding:3px 8px; background:#eef2ef; color:#335446; font-size:.74rem; font-weight:750; }
+    .chip.prior { background:#e2efe1; color:#1b5b30; }
+    .chip.scope { background:#fff2d8; color:#704a10; }
+    .chip.status-approved { background:#e2efe1; color:#1b5b30; }
+    .chip.status-rejected { background:#eee9e9; color:#654747; }
+    .chip.status-custom { background:#e3ebf7; color:#17466c; }
+    .meta { color:var(--muted); font-size:.82rem; margin:0 0 12px; overflow-wrap:anywhere; }
+    .meta a { color:#145377; }
+    .comparison { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    details { border:1px solid var(--line); border-radius:8px; background:#fbfcfa; }
+    details[open] { padding-bottom:10px; }
+    summary { padding:9px 11px; cursor:pointer; font-weight:750; }
+    .text { white-space:pre-wrap; overflow-wrap:anywhere; margin:0; padding:0 11px; }
+    .why { margin:11px 0; }
+    .warning { margin:10px 0; border-left:4px solid #b27b2c; background:#fff6e6; padding:8px 11px; }
+    .choices { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0 0; }
+    .choice { background:white; color:var(--forest); border:1px solid #9cb1a3; border-radius:8px; padding:7px 10px; font-size:.88rem; font-weight:700; }
+    .choice.selected { background:var(--forest); border-color:var(--forest); color:white; }
+    .choice.reset { border-color:transparent; text-decoration:underline; }
+    .edit-area { margin:13px 0 0; }
+    .edit-area label { display:block; font-weight:750; font-size:.85rem; margin:0 0 5px; }
+    .edit-area textarea { width:100%; min-height:78px; border:1px solid #aabbb1; border-radius:8px; padding:9px; resize:vertical; color:var(--ink); background:white; }
+    .edit-area small { color:var(--muted); }
+    .polish-box { background:#edf4f8; border:1px solid #bdcfdb; border-radius:8px; padding:10px; margin-top:9px; }
+    .polish-box p { margin:4px 0 9px; white-space:pre-wrap; overflow-wrap:anywhere; }
+    .summary { background:white; border:1px solid var(--line); border-radius:12px; padding:20px; margin:24px 0 40px; }
+    .summary h2 { margin-top:0; }
+    .summary-grid { display:grid; grid-template-columns:1fr 1fr; gap:15px; }
+    .summary pre { white-space:pre-wrap; font:inherit; margin:0; }
+    .summary ul { margin-top:5px; padding-left:20px; }
+    .error { color:#a02720; font-weight:700; }
+    footer { color:var(--muted); font-size:.85rem; margin-bottom:30px; }
+    @media(max-width:850px) { .toolbar { grid-template-columns:1fr 1fr; } .stats { grid-template-columns:repeat(3,1fr); } }
+    @media(max-width:580px) { .toolbar,.comparison,.summary-grid { grid-template-columns:1fr; } .stats { grid-template-columns:repeat(2,1fr); } .toolbar-note { width:100%; margin-left:0; } .result-line { display:block; } }
+  </style>
+</head>
+<body>
+<header><div class="wrap"><p class="eyebrow">Offline editorial review · Phase 2</p><h1>Kennedy Laser Works copy &amp; UX review</h1><p>Review proposed changes one at a time. Decisions stay in this browser when storage is available; export a JSON file to keep a reliable copy. This tool does not change the website.</p></div></header>
+<main class="wrap">
+  <div class="notice"><strong>Completed decisions are saved and hidden by default.</strong>Use Show All Items to revisit or reverse them. Your own wording and requested modifications remain visible until you approve the proofread wording or implementation plan. Nothing is published from this tool.</div>
+  <div class="toolbar" aria-label="Review controls">
+    <div><label for="search">Search wording, pages, IDs, and reasons</label><input id="search" type="search" autocomplete="off" placeholder="Search the audit"></div>
+    <div><label for="page-filter">Page / product</label><select id="page-filter"><option value="">All pages</option></select></div>
+    <div><label for="category-filter">Issue category</label><select id="category-filter"><option value="">All categories</option></select></div>
+    <div><label for="status-filter">Review status</label><select id="status-filter"><option value="needs-review">Needs Review</option><option value="approved">Approved</option><option value="rejected">Rejected</option><option value="custom">Custom / Awaiting Approval</option><option value="all">Show All Items</option></select></div>
+    <div class="toolbar-actions"><button class="button secondary" id="show-all" type="button">Show All Items</button><button class="button secondary" id="approve-page" type="button" disabled>Approve undecided on selected page</button><button class="button" id="export" type="button">Export decisions JSON</button><button class="button secondary" id="import-button" type="button">Import decisions JSON</button><input id="import-file" type="file" accept="application/json,.json" hidden><span class="toolbar-note" id="save-state" role="status" aria-live="polite"></span></div>
+  </div>
+  <div class="progress-wrap"><label for="review-progress" id="progress-label">Review progress</label><progress id="review-progress" max="1" value="0"></progress></div>
+  <div class="stats" id="stats" aria-live="polite"></div>
+  <div class="result-line"><h2>Proposed changes</h2><p id="result-count"></p></div>
+  <div id="items"></div>
+  <section class="summary" aria-labelledby="summary-title"><h2 id="summary-title">Final review summary</h2><div class="summary-grid"><div><h3>Decisions</h3><pre id="summary-decisions"></pre></div><div><h3>Before implementation</h3><ul id="summary-next"></ul></div></div><p id="summary-warning" class="error"></p></section>
+  <footer>Audit files are local only. The source fingerprints in exported decisions let Codex detect website changes before implementing anything.</footer>
+</main>
+<script type="application/json" id="audit-data">/*__AUDIT_DATA__*/</script>
+<script>
+(() => {
+  'use strict';
+  const data = JSON.parse(document.getElementById('audit-data').textContent);
+  const storageKey = `klw-copy-review-v${data.schemaVersion}-r${data.reviewRevision}-${data.baseCommit}`;
+  const byId = new Map(data.items.map(item => [item.id, item]));
+  const $ = id => document.getElementById(id);
+  const make = (tag, className = '', value = '') => { const el = document.createElement(tag); if (className) el.className = className; if (value !== '') el.textContent = value; return el; };
+  const defaultState = () => Object.fromEntries(data.items.map(item => [item.id, { ...data.decisionSnapshot[item.id] }]));
+  let state = defaultState();
+  const allowed = new Set(['undecided', 'approved', 'rejected', 'custom']);
+  const restore = payload => {
+    if (payload.schemaVersion !== data.schemaVersion || payload.baseCommit !== data.baseCommit || !Array.isArray(payload.decisions)) throw new Error('This file belongs to a different audit version or base commit.');
+    const next = defaultState();
+    const expectedOldCount = data.items.filter(item => item.proposalUpdate !== 'New suggestion in this revision').length;
+    if (payload.decisions.length !== data.items.length && payload.decisions.length !== expectedOldCount) throw new Error('The decision file does not contain every known audit item.');
+    const seen = new Set();
+    for (const incoming of payload.decisions) {
+      const item = byId.get(incoming.id);
+      if (!item) throw new Error(`Unknown change ID: ${incoming.id}`);
+      if (seen.has(incoming.id)) throw new Error(`Duplicate change ID: ${incoming.id}`);
+      seen.add(incoming.id);
+      if (incoming.sourceFingerprint !== item.source.fingerprint) throw new Error(`Source fingerprint changed for ${incoming.id}. Review the new site source before importing.`);
+      if (incoming.sourceFileSha256 !== item.source.fileSha256) throw new Error(`Source file fingerprint changed for ${incoming.id}.`);
+      if (!allowed.has(incoming.decision)) throw new Error(`Invalid decision for ${incoming.id}`);
+      const prior = data.decisionSnapshot[incoming.id];
+      const sameOwnerText = incoming.decision === 'custom' && incoming.customText === prior.customText;
+      const polishedText = String(incoming.polishedText || (sameOwnerText ? prior.polishedText : '') || '');
+      const implementationPlan = String(incoming.implementationPlan || (sameOwnerText ? prior.implementationPlan : '') || '');
+      const finalApproval = incoming.finalApproval === 'approved' && (polishedText.trim() || implementationPlan.trim()) ? 'approved' : 'pending';
+      next[incoming.id] = { decision: incoming.decision, customText: String(incoming.customText || ''), polishedText, implementationPlan, finalApproval,
+        notes: String(incoming.notes || '') };
+    }
+    if (seen.size !== expectedOldCount && seen.size !== data.items.length) throw new Error('The decision file is incomplete.');
+    for (const item of data.items) if (!seen.has(item.id) && item.proposalUpdate !== 'New suggestion in this revision') throw new Error(`Missing change ID: ${item.id}`);
+    state = next;
+  };
+  try { const saved = localStorage.getItem(storageKey); if (saved) restore(JSON.parse(saved)); $('save-state').textContent = saved ? 'Saved decisions restored from this browser.' : 'Ready to review.'; }
+  catch (error) { $('save-state').textContent = `Browser storage unavailable or incompatible: ${error.message} Export decisions regularly.`; }
+  const save = () => { try { localStorage.setItem(storageKey, JSON.stringify(exportObject())); $('save-state').textContent = 'Saved locally. Export JSON for a reliable copy.'; }
+    catch { $('save-state').textContent = 'Browser storage unavailable. Export JSON to save your work.'; } };
+  const exportObject = () => ({ schemaVersion: data.schemaVersion, reviewRevision: data.reviewRevision, baseCommit: data.baseCommit, exportedAt: new Date().toISOString(),
+    decisions: data.items.map(item => ({ id: item.id, page: item.page, url: item.url, section: item.section,
+      sourcePath: item.source.path, sourceKey: item.source.key, sourceLine: item.source.line, sourceFingerprint: item.source.fingerprint,
+      sourceFileSha256: item.source.fileSha256,
+      original: item.original, proposed: item.proposed, decision: state[item.id].decision, customText: state[item.id].customText,
+      polishedText: state[item.id].polishedText, implementationPlan: state[item.id].implementationPlan,
+      finalApproval: state[item.id].decision === 'custom' ? state[item.id].finalApproval : 'not-required', notes: state[item.id].notes })) });
+  const options = (select, values) => values.forEach(value => { const option = make('option', '', value); option.value = value; select.append(option); });
+  options($('page-filter'), [...new Set(data.items.map(item => item.page))].sort((a,b) => a.localeCompare(b)));
+  options($('category-filter'), [...new Set(data.items.map(item => item.category))].sort((a,b) => a.localeCompare(b)));
+  const needsReview = entry => entry.decision === 'undecided' || (entry.decision === 'custom' && entry.finalApproval !== 'approved');
+  const matchesStatus = (entry, filter) => filter === 'all' ||
+    (filter === 'needs-review' && needsReview(entry)) ||
+    (filter === 'approved' && (entry.decision === 'approved' || (entry.decision === 'custom' && entry.finalApproval === 'approved'))) ||
+    (filter === 'rejected' && entry.decision === 'rejected') ||
+    (filter === 'custom' && entry.decision === 'custom' && entry.finalApproval !== 'approved');
+  const filtered = () => data.items.filter(item => {
+    const entry = state[item.id];
+    const query = $('search').value.trim().toLocaleLowerCase();
+    return (!$('page-filter').value || item.page === $('page-filter').value)
+      && (!$('category-filter').value || item.category === $('category-filter').value)
+      && matchesStatus(entry, $('status-filter').value)
+      && (!query || [item.id,item.page,item.section,item.category,item.original,item.proposed,item.reason,item.warning,entry.notes,entry.customText,entry.polishedText,entry.implementationPlan].join(' ').toLocaleLowerCase().includes(query));
+  });
+  const totals = () => { const values = Object.values(state); return { total:values.length,
+    approved:values.filter(v=>v.decision==='approved').length, rejected:values.filter(v=>v.decision==='rejected').length,
+    custom:values.filter(v=>v.decision==='custom').length, undecided:values.filter(v=>v.decision==='undecided').length,
+    pendingPolish:values.filter(v=>v.decision==='custom' && v.finalApproval!=='approved').length,
+    remaining:values.filter(needsReview).length }; };
+  const updateSummary = () => {
+    const t = totals(); $('stats').replaceChildren(...[
+      ['Remaining',t.remaining],['Approved',t.approved],['Rejected',t.rejected],['Custom',t.custom],['Total',t.total]
+    ].map(([label,count]) => { const box=make('div','stat'); box.append(make('strong','',String(count)),make('span','',label)); return box; }));
+    $('progress-label').textContent = `${t.remaining} of ${t.total} items remain to review`;
+    $('review-progress').max = t.total; $('review-progress').value = t.total - t.remaining;
+    $('summary-decisions').textContent = `${t.total} total suggestions\n${t.remaining} need attention\n${t.approved} approved suggestions\n${t.rejected} rejected suggestions\n${t.custom} owner alternatives (${t.pendingPolish} awaiting final approval)\n${t.undecided} undecided`;
+    const next = $('summary-next'); next.replaceChildren();
+    for (const line of [
+      `${t.undecided} undecided items remain unchanged unless explicitly approved later.`,
+      `${t.pendingPolish} custom alternatives await your final approval of the proofread wording or implementation plan.`,
+      'Export your decisions JSON when your review is done. Keep a backup copy; website implementation requires separate authorization.'
+    ]) next.append(make('li','',line));
+    $('summary-warning').textContent = t.undecided || t.pendingPolish ? 'This review is not ready for implementation.' : 'Every item has a recorded decision; website implementation still requires explicit authorization.';
+    const selectedPage = $('page-filter').value;
+    $('approve-page').disabled = !selectedPage || !data.items.some(item => item.page === selectedPage && state[item.id].decision === 'undecided');
+    $('result-count').textContent = `${filtered().length} of ${data.items.length} suggestions shown`;
+  };
+  const textPanel = (label,value) => { const details=make('details'); details.open=true; details.append(make('summary','',label),make('p','text',value)); return details; };
+  const changeDecision = (id,decision) => { const entry=state[id]; entry.decision=decision;
+    if (decision !== 'custom') entry.finalApproval='pending'; save(); render(); };
+  const renderCard = item => {
+    const entry=state[item.id], card=make('article','card'); card.dataset.id=item.id;
+    const top=make('div','card-top'); top.append(make('span','chip',item.category),make('span',`chip status-${entry.decision}`,entry.decision === 'custom' ? (entry.finalApproval === 'approved' ? 'Own version approved' : 'Own version awaiting approval') : entry.decision));
+    if (item.priorApproval === 'exact') top.append(make('span','chip prior','Previously Approved'));
+    else if (item.priorApproval === 'scope') top.append(make('span','chip scope','Previously Approved direction · wording to review'));
+    if (item.proposalUpdate) top.append(make('span','chip scope',item.proposalUpdate));
+    card.append(top,make('h4','',item.section));
+    const meta=make('p','meta'); const link=make('a','',item.url); link.href=item.url; link.target='_blank'; link.rel='noopener noreferrer';
+    meta.append(make('span','',`${item.page} · ${item.id} · ${item.source.path}${item.source.line ? ':'+item.source.line : ''} · `),link);
+    card.append(meta);
+    const comparison=make('div','comparison'); comparison.append(textPanel(item.type==='text'?'Original wording':'Existing content or behavior',item.original),textPanel(item.type==='text'?'Current Codex suggestion':'Proposed change',item.proposed)); card.append(comparison);
+    if (item.previousProposed) { const previous=textPanel('Earlier Codex suggestion',item.previousProposed); previous.open=false; card.append(previous); }
+    const why=make('p','why'); why.append(make('strong','','Why: '),document.createTextNode(item.reason)); card.append(why);
+    if (item.warning) card.append(make('p','warning',`Verify before publishing: ${item.warning}`));
+    const choices=make('div','choices');
+    for (const [decision,label] of [['approved','Approve Codex Suggestion'],['rejected','Reject — Keep Original'],['custom',item.type==='text'?'Use My Own Wording':'Use My Own Modification']]) {
+      const button=make('button',`choice${entry.decision===decision?' selected':''}`,label); button.type='button'; button.setAttribute('aria-pressed',String(entry.decision===decision));
+      button.addEventListener('click',()=>changeDecision(item.id,decision)); choices.append(button);
+    }
+    const reset=make('button','choice reset','Clear decision'); reset.type='button'; reset.addEventListener('click',()=>changeDecision(item.id,'undecided')); choices.append(reset); card.append(choices);
+    if (entry.decision==='custom') {
+      const area=make('div','edit-area'); const label=make('label','',item.type==='text'?'Your wording':'Your requested modification');
+      const textarea=make('textarea'); textarea.value=entry.customText; textarea.id=`custom-${item.id}`; label.htmlFor=textarea.id;
+      textarea.addEventListener('input',()=>{ entry.customText=textarea.value; entry.polishedText=''; entry.implementationPlan=''; entry.finalApproval='pending';
+        area.querySelector('.polish-box')?.remove(); if (!area.querySelector('.warning')) area.append(make('p','warning','Waiting for Codex to review this revised entry before your final approval.'));
+        save(); updateSummary(); });
+      area.append(label,textarea,make('small','',item.type==='text' ? 'Your original wording is preserved. Review the proofread version separately.' : 'Your original instruction is preserved. Review the proposed implementation plan separately.'));
+      if (entry.polishedText || entry.implementationPlan) {
+        const isText=Boolean(entry.polishedText), polished=make('div','polish-box');
+        polished.append(make('strong','',isText?'My Original Wording:':'My Original Modification:'),make('p','',entry.customText),make('strong','',isText?'Codex’s Proofread Version:':'Codex’s Proposed Plan:'),make('p','',isText?entry.polishedText:entry.implementationPlan));
+        const approve=make('button','button secondary',entry.finalApproval==='approved'?'Final version approved':isText?'Approve proofread wording':'Approve proposed plan'); approve.type='button';
+        approve.disabled=entry.finalApproval==='approved'; approve.addEventListener('click',()=>{ entry.finalApproval='approved'; save(); render(); }); polished.append(approve); area.append(polished);
+      } else area.append(make('p','warning','Awaiting Codex review and your final approval.'));
+      card.append(area);
+    }
+    const noteArea=make('div','edit-area'); const noteLabel=make('label','','Reviewer notes (optional)'); const note=make('textarea'); note.rows=2; note.id=`notes-${item.id}`; note.value=entry.notes; noteLabel.htmlFor=note.id;
+    note.addEventListener('input',()=>{ entry.notes=note.value; save(); }); noteArea.append(noteLabel,note); card.append(noteArea);
+    return card;
+  };
+  const render = () => {
+    const results=filtered(), target=$('items'); target.replaceChildren();
+    if (!results.length) target.append(make('p','notice','No items match these filters.'));
+    const groups=new Map(); for (const item of results) { if (!groups.has(item.page)) groups.set(item.page,[]); groups.get(item.page).push(item); }
+    for (const [page, groupItems] of groups) {
+      const group=make('section','group'), heading=make('div','group-heading'); heading.append(make('h3','',page),make('span','',`${groupItems.length} suggestion${groupItems.length===1?'':'s'}`)); group.append(heading,...groupItems.map(renderCard)); target.append(group);
+    }
+    updateSummary();
+  };
+  for (const id of ['search','page-filter','category-filter','status-filter']) $(id).addEventListener(id==='search'?'input':'change',render);
+  $('show-all').addEventListener('click',()=>{ $('search').value=''; $('page-filter').value=''; $('category-filter').value=''; $('status-filter').value='all'; render(); });
+  $('approve-page').addEventListener('click',()=>{ const page=$('page-filter').value; if (!page) return;
+    const undecided = data.items.filter(item=>item.page===page && state[item.id].decision==='undecided');
+    if (!undecided.length || !confirm(`Approve ${undecided.length} undecided suggestion${undecided.length===1?'':'s'} for ${page}? Your existing decisions will stay as they are.`)) return;
+    for (const item of undecided) state[item.id].decision='approved';
+    save(); render(); });
+  $('export').addEventListener('click',()=>{ const blob=new Blob([JSON.stringify(exportObject(),null,2)+'\n'],{type:'application/json'}); const url=URL.createObjectURL(blob);
+    const link=make('a'); link.href=url; link.download=`klw-copy-review-decisions-${new Date().toISOString().slice(0,10)}.json`; document.body.append(link); link.click(); link.remove(); setTimeout(()=>URL.revokeObjectURL(url),1000); });
+  $('import-button').addEventListener('click',()=>$('import-file').click());
+  $('import-file').addEventListener('change',async event=>{ const file=event.target.files?.[0]; if (!file) return;
+    try { restore(JSON.parse(await file.text())); $('search').value=''; $('page-filter').value=''; $('category-filter').value=''; $('status-filter').value='needs-review'; save(); render(); $('save-state').textContent=`Imported ${file.name}. Showing items that need review.`; }
+    catch (error) { $('save-state').textContent=`Import failed: ${error.message}`; }
+    event.target.value=''; });
+  render();
+})();
+</script>
+</body>
+</html>

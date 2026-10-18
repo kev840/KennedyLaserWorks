@@ -124,9 +124,10 @@
 
   const productCard = (product, term = "") => {
     const gallery = productGallery(product);
+    const hoverImage = product.etsyListingId === "4592833137" && gallery.length > 5 ? gallery[5] : gallery[1];
     return `<article class="catalog-card${gallery.length > 1 ? " has-gallery" : ""}" data-product-id="${escapeHtml(product.id)}">
     <button class="catalog-card__image" type="button" data-open-quick-view="${escapeHtml(product.id)}">
-      <span class="catalog-card__primary-image">${pictureFromImage(gallery[0])}</span>${gallery.length > 1 ? `<span class="catalog-card__hover-image">${pictureFromImage(gallery[1], "lazy", "progressive-image catalog-card__secondary-image", true)}</span>` : ""}<span class="catalog-badges" aria-hidden="true">${productBadges(product)}</span>${gallery.length > 1 ? '<span class="catalog-card__gallery-count" aria-hidden="true">Multiple photos</span>' : ""}<span class="catalog-card__quick-label">Quick view</span>
+      <span class="catalog-card__primary-image">${pictureFromImage(gallery[0])}</span>${gallery.length > 1 ? `<span class="catalog-card__hover-image">${pictureFromImage(hoverImage, "lazy", "progressive-image catalog-card__secondary-image", true)}</span>` : ""}<span class="catalog-badges" aria-hidden="true">${productBadges(product)}</span>${gallery.length > 1 ? '<span class="catalog-card__gallery-count" aria-hidden="true">Multiple photos</span>' : ""}<span class="catalog-card__quick-label">Quick view</span>
     </button>
     <div class="catalog-card__body">
       <p class="catalog-card__category">${highlightText(categoryLabels.get(product.categories[0]) || titleCase(product.categories[0]), term)}</p>

@@ -33,7 +33,7 @@ const factRows = (item) => [
 ].filter(Boolean).map(([label, value]) => `<div><dt>${escape(label)}</dt><dd>${escape(value)}</dd></div>`).join("");
 const intersectionCount = (left = [], right = []) => left.filter((value) => right.includes(value)).length;
 const recommendationScore = (source, candidate) => (
-  intersectionCount(source.categories, candidate.categories) * 5
+  intersectionCount(source.categories.filter((category) => category !== "holidays"), candidate.categories) * 5
   + intersectionCount(source.seasons, candidate.seasons) * 4
   + intersectionCount(source.occasions, candidate.occasions) * 3
   + intersectionCount(source.recipients, candidate.recipients) * 3
