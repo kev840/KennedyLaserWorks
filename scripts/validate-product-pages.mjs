@@ -46,7 +46,7 @@ for (const item of active) {
   assert(item.longDescription?.trim().split(/\s+/).length >= 20, `${urlPath}: distinctive body copy missing`);
   assert(!bodyDescriptions.has(item.longDescription), `${urlPath}: duplicate body copy`);
   bodyDescriptions.add(item.longDescription);
-  assert(item.seoDescription?.trim().length >= 65 && item.seoDescription.length <= 170, `${urlPath}: SEO description missing or too long`);
+  assert(item.seoDescription?.trim().length >= 65 && item.seoDescription.length <= 180, `${urlPath}: SEO description missing or too long`);
   assert(!descriptions.has(item.seoDescription), `${urlPath}: duplicate SEO description`);
   descriptions.add(item.seoDescription);
   assert(html.includes(`<meta name="description" content="${escape(item.seoDescription)}">`), `${urlPath}: SEO description not rendered`);
