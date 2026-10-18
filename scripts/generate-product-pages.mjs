@@ -12,7 +12,7 @@ const products = catalog.products.filter((item) => item.active && item.listingSt
 const template = await readFile(path.join(root, "product.html"), "utf8");
 const escape = (value = "") => String(value).replace(/[&<>'"]/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[character]);
 const summary = (item) => item.shortDescription?.trim() || `${item.displayTitle} from Kennedy Laser Works.`;
-const title = (item) => `${item.displayTitle} | Kennedy Laser Works`;
+const title = (item) => `${item.seoTitle || item.displayTitle} | Kennedy Laser Works`;
 const description = (item) => item.seoDescription?.trim() || `${summary(item)} Handcrafted in Budd Lake, New Jersey by Kennedy Laser Works.`;
 const image = (item, index) => ({
   webp: item.images[index], fallback: item.imageFallbacks[index],
@@ -39,14 +39,64 @@ const recommendationScore = (source, candidate) => (
   + intersectionCount(source.recipients, candidate.recipients) * 3
   + intersectionCount(source.tags, candidate.tags)
 );
+// Build the related-product graph once, then give underlinked products a place
+// on the most relevant existing product pages. Every link is present in HTML.
+const relatedById = new Map(products.map((source) => [source.id, products
+  .filter((candidate) => candidate.id !== source.id)
+  .map((candidate) => ({ candidate, score: recommendationScore(source, candidate) }))
+  .filter(({ score }) => score > 0)
+  .sort((left, right) => right.score - left.score || left.candidate.displayTitle.localeCompare(right.candidate.displayTitle))
+  .slice(0, 4)
+  .map(({ candidate }) => candidate.id)
+]));
+// Distinctive pieces need links from pages a shopper would actually compare.
+// These pairings use photographed design or intended use rather than broad tags.
+const curatedLinks = [
+  ["Personalized Wooden Rose", "Personalized Wooden Flower Bouquet"],
+  ["Wooden Rose Bouquet & Vase", "Personalized Wooden Flower Bouquet"],
+  ["Custom Engraved Pencils", "Laser-Cut Wooden Decorative Box"],
+  ["F-Bomb Desk Accessory", "Laser-Cut Wooden Decorative Box"],
+  ["Personalized Snowflake Ornament", "Multi-Layer Year Ornament"],
+  ["Hand-Painted Santa Ornament", "Multi-Layer Year Ornament"],
+  ["Lavender Om Lotus Wall Art", "Coastal Adirondack Relax Sign"],
+  ["Welcome Fall Truck Sign", "Coastal Adirondack Relax Sign"],
+  ["Cherry Wood Scripture Plaque", "Scripture Cross Ornament"],
+  ["He Is Risen Easter Sign", "Scripture Cross Ornament"],
+  ["Scripture Cross Ornament", "He Is Risen Easter Sign"],
+  ["Gingerbread House Welcome Sign", "Gingerbread Mug Ornament"],
+  ["Santa & Tree Christmas Sign", "Gingerbread Mug Ornament"]
+];
+for (const [sourceName, targetName] of curatedLinks) {
+  const source = products.find((item) => item.displayTitle === sourceName);
+  const target = products.find((item) => item.displayTitle === targetName);
+  if (!source || !target) throw new Error(`Missing curated related product: ${sourceName} → ${targetName}`);
+  const ids = relatedById.get(source.id);
+  if (ids.includes(target.id)) continue;
+  const weakest = ids.map((id) => ({ id, score: recommendationScore(source, products.find((item) => item.id === id)) }))
+    .sort((left, right) => left.score - right.score || left.id.localeCompare(right.id))[0];
+  if (!weakest) throw new Error(`No related slot for ${sourceName}`);
+  ids[ids.indexOf(weakest.id)] = target.id;
+}
+const inbound = new Map(products.map((item) => [item.id, 0]));
+for (const ids of relatedById.values()) for (const id of ids) inbound.set(id, inbound.get(id) + 1);
+for (const target of products) {
+  while (inbound.get(target.id) < 2) {
+    const choices = products
+      .filter((source) => source.id !== target.id && !relatedById.get(source.id).includes(target.id) && recommendationScore(source, target) > 0)
+      .flatMap((source) => relatedById.get(source.id)
+        .filter((id) => inbound.get(id) > 2)
+        .map((replaceId) => ({ source, replaceId, targetScore: recommendationScore(source, target), replacedScore: recommendationScore(source, products.find((item) => item.id === replaceId)) })))
+      .sort((left, right) => right.targetScore - left.targetScore || left.replacedScore - right.replacedScore || left.source.displayTitle.localeCompare(right.source.displayTitle));
+    if (!choices.length) throw new Error(`Cannot give ${target.displayTitle} two relevant incoming product links.`);
+    const { source, replaceId } = choices[0];
+    const ids = relatedById.get(source.id);
+    ids[ids.indexOf(replaceId)] = target.id;
+    inbound.set(replaceId, inbound.get(replaceId) - 1);
+    inbound.set(target.id, inbound.get(target.id) + 1);
+  }
+}
 const relatedMarkup = (item) => {
-  const related = products
-    .filter((other) => other.id !== item.id)
-    .map((other) => ({ other, score: recommendationScore(item, other) }))
-    .filter(({ score }) => score > 0)
-    .sort((left, right) => right.score - left.score || left.other.displayTitle.localeCompare(right.other.displayTitle))
-    .slice(0, 4)
-    .map(({ other }) => other);
+  const related = relatedById.get(item.id).map((id) => products.find((other) => other.id === id));
   if (!related.length) return "";
   return `<section class="section product-related" aria-labelledby="related-title"><div class="container"><p class="section-kicker">More handcrafted pieces</p><h2 id="related-title">You May Also Like</h2><div class="product-related__grid">${related.map((other) => `<a href="${escape(productPath(other).slice(1))}">${picture(image(other, 0))}<span><small>${escape(labels.get(other.categories[0]) || other.categories[0])}</small>${escape(other.displayTitle)}</span></a>`).join("")}</div></div></section>`;
 };
@@ -69,7 +119,7 @@ const pageSchema = (item, canonical) => {
   const common = {
     "@id": `${canonical}#primary`,
     name: item.displayTitle,
-    description: summary(item),
+    description: item.structuredOffer ? summary(item) : description(item),
     image: item.images.map((source) => `${base}/${source}`),
     url: canonical
   };
@@ -133,8 +183,22 @@ const collectionsPath = path.join(root, "collections.html");
 const directoryStart = "<!-- PRODUCT_LINK_DIRECTORY_START -->";
 const directoryEnd = "<!-- PRODUCT_LINK_DIRECTORY_END -->";
 const directoryLinks = `<ul>${products.map((item) => `<li><a href="${escape(productPath(item).slice(1))}">${escape(item.displayTitle)}</a></li>`).join("")}</ul>`;
+const spotlightCards = (names) => `<div class="seo-product-links">${names.map((name) => {
+  const item = products.find((product) => product.displayTitle === name);
+  if (!item) throw new Error(`Spotlight product is missing: ${name}`);
+  return `<a href="${escape(productPath(item).slice(1))}">${picture(image(item, 0))}<span>${escape(item.displayTitle)}</span></a>`;
+}).join("")}</div>`;
+const replaceBlock = (html, start, end, markup) => {
+  if (!html.includes(start) || !html.includes(end)) throw new Error(`Missing static product link markers: ${start}`);
+  return html.replace(new RegExp(`${start}[\\s\\S]*?${end}`), `${start}\n          ${markup}\n          ${end}`);
+};
 const collections = await readFile(collectionsPath, "utf8");
-if (!collections.includes(directoryStart) || !collections.includes(directoryEnd)) throw new Error("Collections product-directory markers are missing.");
-const updatedCollections = collections.replace(new RegExp(`${directoryStart}[\\s\\S]*?${directoryEnd}`), `${directoryStart}\n          ${directoryLinks}\n          ${directoryEnd}`);
+const updatedCollections = replaceBlock(replaceBlock(collections, directoryStart, directoryEnd, directoryLinks),
+  "<!-- COLLECTION_SPOTLIGHT_START -->", "<!-- COLLECTION_SPOTLIGHT_END -->",
+  spotlightCards(["Personalized Heritage Family Name Plaque", "Baby Birth Stats Christmas Plaque", "Salem Broom Co. Sign", "Coastal Adirondack Relax Sign", "Laser-Cut Wooden Decorative Box", "Custom Engraved Pencils"]));
 await writeFile(collectionsPath, updatedCollections, "utf8");
+const homePath = path.join(root, "index.html");
+const home = await readFile(homePath, "utf8");
+await writeFile(homePath, replaceBlock(home, "<!-- HOME_PRODUCT_LINKS_START -->", "<!-- HOME_PRODUCT_LINKS_END -->",
+  spotlightCards(["Personalized Heritage Family Name Plaque", "Personalized Acacia Cutting Board", "Cedar Anniversary Plaque", "Personalized Mom Sunflower Sign", "Baby Birth Stats Christmas Plaque", "Personalized Memorial Angel Wings Ornament", "Astromech Droid Wall Art", "Custom Engraved Pencils"])), "utf8");
 console.log(`Generated ${products.length} static product pages.`);
