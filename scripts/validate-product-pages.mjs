@@ -95,7 +95,7 @@ for (const item of active) {
 for (const file of files) assert(expectedPaths.includes(`/products/${file}`), `Orphaned product page: ${file}`);
 for (const [urlPath, count] of incomingProductLinks) assert(count >= 2, `${urlPath}: only ${count} incoming links from product pages`);
 assert((home.match(/href="products\/[^"#?]+\.html"/g) || []).length >= 8, "Homepage lacks initial HTML product links");
-assert((collections.match(/href="products\/[^"#?]+\.html"/g) || []).length >= active.length + 6, "Collections spotlight or directory links missing");
+assert((collections.match(/href="products\/[^"#?]+\.html"/g) || []).length >= active.length, "Collections directory links missing");
 assert(!/<loc>[^<]*product\.html\?/.test(sitemap), "Dynamic product URL in sitemap");
 if (errors.length) { console.error(errors.join("\n")); process.exitCode = 1; }
 else console.log(`Validated ${active.length} generated product pages, unique content and metadata, image descriptions, price-free page display, at least two product-page incoming links each, structured data, assets, Etsy URLs, and sitemap entries.`);

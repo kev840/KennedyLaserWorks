@@ -193,12 +193,10 @@ const replaceBlock = (html, start, end, markup) => {
   return html.replace(new RegExp(`${start}[\\s\\S]*?${end}`), `${start}\n          ${markup}\n          ${end}`);
 };
 const collections = await readFile(collectionsPath, "utf8");
-const updatedCollections = replaceBlock(replaceBlock(collections, directoryStart, directoryEnd, directoryLinks),
-  "<!-- COLLECTION_SPOTLIGHT_START -->", "<!-- COLLECTION_SPOTLIGHT_END -->",
-  spotlightCards(["Personalized Heritage Family Name Plaque", "Baby Birth Stats Christmas Plaque", "Salem Broom Co. Sign", "Coastal Adirondack Relax Sign", "Laser-Cut Wooden Decorative Box", "Custom Engraved Pencils"]));
+const updatedCollections = replaceBlock(collections, directoryStart, directoryEnd, directoryLinks);
 await writeFile(collectionsPath, updatedCollections, "utf8");
 const homePath = path.join(root, "index.html");
 const home = await readFile(homePath, "utf8");
 await writeFile(homePath, replaceBlock(home, "<!-- HOME_PRODUCT_LINKS_START -->", "<!-- HOME_PRODUCT_LINKS_END -->",
-  spotlightCards(["Personalized Heritage Family Name Plaque", "Personalized Acacia Cutting Board", "Cedar Anniversary Plaque", "Personalized Mom Sunflower Sign", "Baby Birth Stats Christmas Plaque", "Personalized Memorial Angel Wings Ornament", "Astromech Droid Wall Art", "Custom Engraved Pencils"])), "utf8");
+  spotlightCards(["Personalized Heritage Family Name Plaque", "Baby Birth Stats Christmas Plaque", "Personalized Mom Sunflower Sign", "Astromech Droid Wall Art", "Cedar Anniversary Plaque", "Laser-Cut Wooden Decorative Box"])), "utf8");
 console.log(`Generated ${products.length} static product pages.`);

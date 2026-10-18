@@ -7,7 +7,7 @@
   .hero-product-note { left: -1.25rem; max-width: 7rem; }
 }
 
-@media (max-width: 56rem) {
+@media (max-width: 70rem) {
   :root { --header-height: 5rem; }
   .container { width: min(calc(100% - 2.5rem), var(--container)); }
   .nav-toggle { display: block; position: relative; z-index: 2; }

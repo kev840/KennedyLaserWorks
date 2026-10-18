@@ -44,7 +44,7 @@ for (const page of pages) {
     [/<meta property="og:title" content="[^"]+">/, "Open Graph title"],
     [/<meta name="theme-color" content="#[0-9a-fA-F]{6}">/, "theme color"],
     [/<main(?:\s|>)/, "main landmark"],
-    [/<nav class="breadcrumbs" aria-label="Breadcrumb">|<main[^>]+id="main-content"[^>]*>\s*<section class="hero/, "breadcrumb or homepage hero"]
+    [/<nav class="breadcrumbs" aria-label="Breadcrumb">|<main[^>]+id="main-content"[^>]*>\s*<section class="(?:hero|showroom-hero)/, "breadcrumb or homepage hero"]
   ];
   requiredPatterns.forEach(([pattern, label]) => { if (!pattern.test(markup)) failures.push(`${page}: missing ${label}`); });
   if (!/<html[^>]+class="no-js"/.test(markup) || !/classList\.replace\("no-js",\s*"js"\)/.test(markup)) failures.push(`${page}: missing resilient JavaScript capability class`);
