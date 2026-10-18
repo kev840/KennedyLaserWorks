@@ -20,7 +20,7 @@ const image = (item, index) => ({
   width: item.imageMetadata[index]?.width || item.imageWidth || 794,
   height: item.imageMetadata[index]?.height || item.imageHeight || 794
 });
-const picture = (value, decorative = false, loading = "lazy") => `<picture${decorative ? ' aria-hidden="true"' : ""}><source srcset="${escape(value.webp)}" type="image/webp"><img class="progressive-image" src="${escape(value.fallback)}" alt="${decorative ? "" : escape(value.alt)}" loading="${loading}" decoding="async" width="${value.width}" height="${value.height}"${decorative ? ' aria-hidden="true"' : ""}></picture>`;
+const picture = (value, decorative = false, loading = "lazy") => `<picture${decorative ? ' aria-hidden="true"' : ""}>${value.webp !== value.fallback ? `<source srcset="${escape(value.webp)}" type="image/webp">` : ""}<img class="progressive-image" src="${escape(value.fallback)}" alt="${decorative ? "" : escape(value.alt)}" loading="${loading}" decoding="async" width="${value.width}" height="${value.height}"${decorative ? ' aria-hidden="true"' : ""}></picture>`;
 const factRows = (item) => [
   item.bestFor && ["Best for", item.bestFor],
   item.personalizationGuidance ? ["Personalization", item.personalizationGuidance] : item.personalized === true && ["Personalization", "Available; see Etsy for current choices."],

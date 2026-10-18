@@ -59,8 +59,9 @@ for (const product of products) {
   (product.images || []).forEach((imagePath, index) => {
     const fallbackPath = product.imageFallbacks[index];
     const metadata = product.imageMetadata[index];
-    assert(typeof imagePath === "string" && imagePath.endsWith(".webp"), `${label}: gallery image ${index + 1} must be a WebP path.`);
-    assert(typeof fallbackPath === "string" && /\.jpe?g$/i.test(fallbackPath), `${label}: gallery fallback ${index + 1} must be a JPEG path.`);
+    const webpPair = typeof imagePath === "string" && imagePath.endsWith(".webp") && typeof fallbackPath === "string" && /\.jpe?g$/i.test(fallbackPath);
+    const originalPng = typeof imagePath === "string" && imagePath.endsWith(".png") && fallbackPath === imagePath;
+    assert(webpPair || originalPng, `${label}: gallery image ${index + 1} must use a WebP/JPEG pair or an original PNG.`);
     assert(metadata?.rank === index + 1, `${label}: gallery rank ${index + 1} is missing or out of order.`);
     assert(metadata?.width > 0 && metadata?.height > 0, `${label}: gallery image ${index + 1} dimensions are missing.`);
     assert(Boolean(metadata?.alt), `${label}: gallery image ${index + 1} alt text is missing.`);

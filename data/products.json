@@ -5840,8 +5840,8 @@
       "priceDisplay": "$20.00",
       "priceSnapshotDate": "2026-07-22",
       "etsyUrl": "https://www.etsy.com/listing/1807980228/handcrafted-laser-cut-wooden-decorative",
-      "primaryImage": "assets/images/products/1807980228-laser-cut-wooden-decorative-box.webp",
-      "imageFallback": "assets/images/products/1807980228-laser-cut-wooden-decorative-box.jpg",
+      "primaryImage": "assets/images/products/1807980228-laser-cut-wooden-decorative-box.png",
+      "imageFallback": "assets/images/products/1807980228-laser-cut-wooden-decorative-box.png",
       "remoteImageSource": "https://i.etsystatic.com/45577697/r/il/342c66/7218120209/il_fullxfull.7218120209_e9zk.jpg",
       "alternateImages": [
         {
@@ -5917,10 +5917,10 @@
       "customerFavorite": null,
       "listingStatus": "active",
       "active": true,
-      "imageWidth": 1024,
-      "imageHeight": 1024,
+      "imageWidth": 1254,
+      "imageHeight": 1254,
       "images": [
-        "assets/images/products/1807980228-laser-cut-wooden-decorative-box.webp",
+        "assets/images/products/1807980228-laser-cut-wooden-decorative-box.png",
         "assets/images/products/1807980228-laser-cut-wooden-decorative-box-02.webp",
         "assets/images/products/1807980228-laser-cut-wooden-decorative-box-03.webp",
         "assets/images/products/1807980228-laser-cut-wooden-decorative-box-04.webp",
@@ -5928,7 +5928,7 @@
         "assets/images/products/1807980228-laser-cut-wooden-decorative-box-06.webp"
       ],
       "imageFallbacks": [
-        "assets/images/products/1807980228-laser-cut-wooden-decorative-box.jpg",
+        "assets/images/products/1807980228-laser-cut-wooden-decorative-box.png",
         "assets/images/products/1807980228-laser-cut-wooden-decorative-box-02.jpg",
         "assets/images/products/1807980228-laser-cut-wooden-decorative-box-03.jpg",
         "assets/images/products/1807980228-laser-cut-wooden-decorative-box-04.jpg",
@@ -5937,9 +5937,9 @@
       ],
       "imageMetadata": [
         {
-          "width": 1024,
-          "height": 1024,
-          "alt": "laser-cut open wooden box with tree silhouettes, shown in a styled setting",
+          "width": 1254,
+          "height": 1254,
+          "alt": "Laser-cut wooden pen holder with candle and deer cutouts, holding pens and a pencil",
           "rank": 1,
           "etsyImageId": "7218120209",
           "remoteSource": "https://i.etsystatic.com/45577697/r/il/342c66/7218120209/il_fullxfull.7218120209_e9zk.jpg"

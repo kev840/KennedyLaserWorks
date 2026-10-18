@@ -97,7 +97,7 @@
     if (!gallery.length || !lightboxImage) return;
     currentIndex = (index + gallery.length) % gallery.length;
     const image = gallery[currentIndex];
-    if (lightboxSource) lightboxSource.srcset = image.webp || image.fallback;
+    if (lightboxSource) lightboxSource.srcset = image.webp !== image.fallback ? image.webp : "";
     lightboxImage.src = image.fallback;
     lightboxImage.alt = image.alt;
     lightboxImage.width = image.width;

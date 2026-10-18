@@ -347,7 +347,7 @@
     if (!activeGallery.length || !lightboxImage) return;
     activeGalleryIndex = (index + activeGallery.length) % activeGallery.length;
     const image = activeGallery[activeGalleryIndex];
-    if (lightboxSource) lightboxSource.srcset = image.webp || image.fallback;
+    if (lightboxSource) lightboxSource.srcset = image.webp !== image.fallback ? image.webp : "";
     lightboxImage.src = image.fallback;
     lightboxImage.alt = image.alt;
     lightboxImage.width = image.width;
