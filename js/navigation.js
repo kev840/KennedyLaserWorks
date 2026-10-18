@@ -36,7 +36,8 @@
     }
   });
 
-  const updateHeader = () => header.classList.toggle("is-scrolled", window.scrollY > 24);
+  const solidAtTop = header.classList.contains("is-scrolled");
+  const updateHeader = () => header.classList.toggle("is-scrolled", solidAtTop || window.scrollY > 24);
   let scrollFrame = 0;
   const queueHeaderUpdate = () => {
     if (scrollFrame) return;
