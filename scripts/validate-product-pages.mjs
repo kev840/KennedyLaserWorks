@@ -94,7 +94,9 @@ for (const item of active) {
 }
 for (const file of files) assert(expectedPaths.includes(`/products/${file}`), `Orphaned product page: ${file}`);
 for (const [urlPath, count] of incomingProductLinks) assert(count >= 2, `${urlPath}: only ${count} incoming links from product pages`);
-assert((home.match(/href="products\/[^"#?]+\.html"/g) || []).length >= 8, "Homepage lacks initial HTML product links");
+const featuredHtml = home.match(/<!-- HOME_PRODUCT_LINKS_START -->([\s\S]*?)<!-- HOME_PRODUCT_LINKS_END -->/)?.[1] || "";
+const featuredPaths = [...featuredHtml.matchAll(/href="(products\/[^"#?]+\.html)"/g)].map((match) => match[1]);
+assert(new Set(featuredPaths).size === 6, "Homepage must expose six distinct featured product links in initial HTML");
 assert((collections.match(/href="products\/[^"#?]+\.html"/g) || []).length >= active.length, "Collections directory links missing");
 assert(!/<loc>[^<]*product\.html\?/.test(sitemap), "Dynamic product URL in sitemap");
 if (errors.length) { console.error(errors.join("\n")); process.exitCode = 1; }
